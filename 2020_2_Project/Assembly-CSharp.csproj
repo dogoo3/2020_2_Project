@@ -65,6 +65,7 @@
     <Compile Include="Assets\ChoiceStage.cs" />
     <Compile Include="Assets\ControlEscape.cs" />
     <Compile Include="Assets\ControlVolume.cs" />
+    <Compile Include="Assets\Player.cs" />
     <Compile Include="Assets\Scripts\SoundManager.cs" />
     <Compile Include="Assets\TempStageOne.cs" />
     <None Include="Assets\SampleSprites\Blur\SettingWindowBlur.shader" />
