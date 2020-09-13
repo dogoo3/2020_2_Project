@@ -1,46 +1,36 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Weapon : MonoBehaviour, IPointerDownHandler
+[System.Serializable]
+public class Weapon
 {
-    public GameObject nonUseWeaponSignal; // 총알을 다 소진했을 때 표시할 UI
-    public RectTransform selectWeaponSignal; // 현재 선택한 무기를 표시할 UI
+    private bool isShot = true; // 발사 유무
 
     public Text text_bulletcount;
 
-    [SerializeField] private int bulletcount = default;
-    [SerializeField] private int weaponNum = default;
+    public int weaponNum; // 무기번호
+    public int bulletCount; // 총알 갯수
 
-    [SerializeField] private float cooltime = default;
+    public float coolTime; // 재사용 쿨타임
+    private float elapsecooltime; // 진행 쿨타임
 
-    private bool _isShot; // 무기를 사용할 수 있는지를 판별
-    private float _elapsetime; // 무기 사용 후 경과 시간
+    public virtual void Shoot(Vector2 _origin, Vector2 _direction) { }
 
-    private void Awake()
+    public void Init()
     {
-        text_bulletcount.text = "(" + bulletcount.ToString() + ")";
-        _elapsetime = 0f;
-        _isShot = true;
+        text_bulletcount.text = "(" + bulletCount.ToString() + ")";
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    public bool IsShootWeapon()
     {
-        if (bulletcount == 0) // 총알이 없으면
-            return; // 선택할 수 없다.
-        selectWeaponSignal.transform.position = transform.position; // 무기선택 시그널을 옮겨주고
-        WeaponManager.instance.SelectWeapon(weaponNum);
-    }
-
-    public bool IsShotWeapon()
-    {
-        if (bulletcount > 0) // 총알이 남아있는가?
+        if (bulletCount > 0) // 총알이 남아있는가?
         {
-            if (_isShot) // 쿨타임이 경과했는가?
+            if (isShot) // 쿨타임이 경과했는가?
             {
-                _isShot = false; // 쿨타임 상태로 전환한다
+                isShot = false; // 쿨타임 상태로 전환한다
                 return true;
             }
             else
@@ -50,24 +40,115 @@ public class Weapon : MonoBehaviour, IPointerDownHandler
             return false;
     }
 
-    public void MinusBulletCount()
+    public void LoadingCooltime()
     {
-        bulletcount--;
-        text_bulletcount.text = "(" + bulletcount.ToString() + ")";
-        if (bulletcount == 0)
-            nonUseWeaponSignal.SetActive(true);
-    }
-
-    private void Update()
-    {
-        if(!_isShot) // 쿨타임 중이면
+        if (!isShot) // 쿨타임 중이면
         {
-            _elapsetime += Time.deltaTime;
-            if (_elapsetime > cooltime)
+            elapsecooltime += Time.deltaTime;
+            if (elapsecooltime > coolTime)
             {
-                _isShot = true;
-                _elapsetime = 0;
+                isShot = true;
+                elapsecooltime = 0;
             }
+        }
+    }
+}
+
+public class Pistol : Weapon // 권총 
+{
+    public override void Shoot(Vector2 _origin, Vector2 _direction)
+    {
+        if (IsShootWeapon())
+        {
+            ObjectPoolingManager.instance.GetQueue_pistol(_origin, _direction);      
+            bulletCount--;
+            text_bulletcount.text = "(" + bulletCount.ToString() + ")";
+        }
+    }
+}
+
+public class SMG : Weapon // 소총
+{
+    public override void Shoot(Vector2 _origin, Vector2 _direction)
+    {
+        if (IsShootWeapon())
+        {
+            ObjectPoolingManager.instance.GetQueue_smg(_origin, _direction);    
+            bulletCount--;
+            text_bulletcount.text = "(" + bulletCount.ToString() + ")";
+        }
+    }
+}
+
+public class Sniper : Weapon // 저격소총 
+{
+    public override void Shoot(Vector2 _origin, Vector2 _direction)
+    {
+        if (IsShootWeapon())
+        {
+            ObjectPoolingManager.instance.GetQueue_sniper(_origin, _direction);     
+            bulletCount--;
+            text_bulletcount.text = "(" + bulletCount.ToString() + ")";
+        }
+    }
+}
+
+public class AR : Weapon // 기관단총
+{
+    public override void Shoot(Vector2 _origin, Vector2 _direction)
+    {
+        if (IsShootWeapon())
+        {
+            ObjectPoolingManager.instance.GetQueue_ar(_origin, _direction);      
+            bulletCount--;
+            text_bulletcount.text = "(" + bulletCount.ToString() + ")";
+        }
+    }
+}
+
+public class SG : Weapon // 샷건
+{
+    private int i; // for 돌림용
+    private Vector2 dir_bullet; // 산탄 방향
+    public int angle = 90;
+    public int line = 7;
+    public override void Shoot(Vector2 _origin, Vector2 _direction)
+    {
+        if (IsShootWeapon())
+        {
+            if (_direction.y == 0) // 좌 / 우 시점일 때
+            {
+                for (i = 0; i < line; i++)
+                {
+                    dir_bullet.x = Mathf.Cos((angle * 0.5f - (angle / (line - 1)) * i) * Mathf.Deg2Rad) * _direction.x;
+                    dir_bullet.y = Mathf.Sin((angle * 0.5f - (angle / (line - 1)) * i) * Mathf.Deg2Rad);
+                    ObjectPoolingManager.instance.GetQueue_sg(_origin, dir_bullet);
+                }
+            }
+            else
+            {
+                for (i = 0; i < line; i++)
+                {
+                    dir_bullet.x = Mathf.Cos((angle * 0.5f + (angle / (line - 1)) * i) * Mathf.Deg2Rad);
+                    dir_bullet.y = Mathf.Sin((angle * 0.5f + (angle / (line - 1)) * i) * Mathf.Deg2Rad);
+                    ObjectPoolingManager.instance.GetQueue_sg(_origin, dir_bullet);
+                }
+            }
+            bulletCount--;
+            text_bulletcount.text = "(" + bulletCount.ToString() + ")";
+        }
+    }
+}
+
+public class Grenade : Weapon // 수류탄
+{
+    public override void Shoot(Vector2 _origin, Vector2 _direction)
+    {
+        if (IsShootWeapon())
+        {
+            ObjectPoolingManager.instance.GetQueue_grenade(_origin, _direction);       
+            bulletCount--;
+            text_bulletcount.text = "(" + bulletCount.ToString() + ")";
         }
     }
 }

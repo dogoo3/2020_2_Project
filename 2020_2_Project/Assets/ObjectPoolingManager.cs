@@ -156,32 +156,12 @@ public class ObjectPoolingManager : MonoBehaviour
     }
     public void GetQueue_sg(Vector2 _origin, Vector2 _direction)
     {
-        if(queue_sg.Count != 0)
+        if (queue_sg.Count != 0)
         {
-            if (_direction.y == 1) // 위 키를 누른 상태에서 샷건을 쏘면
-            {
-                _direction.x = 1;
-                for (int i = 0; i < 7; i++)
-                {
-                    _direction.x -= i * 0.14286f; // 샷건 구현을 위한 연산
-                    _sg = queue_sg.Dequeue();
-                    _sg.transform.position = _origin;
-                    _sg.Direction(_direction.normalized);
-                    _sg.gameObject.SetActive(true);
-                }
-            }
-            else
-            {
-                _direction.y = 1;
-                for (int i = 0; i < 7; i++)
-                {
-                    _direction.y -= i * 0.14286f; // 샷건 구현을 위한 연산
-                    _sg = queue_sg.Dequeue();
-                    _sg.transform.position = _origin;
-                    _sg.Direction(_direction);
-                    _sg.gameObject.SetActive(true);
-                }
-            }
+            _sg = queue_sg.Dequeue();
+            _sg.transform.position = _origin;
+            _sg.Direction(_direction);
+            _sg.gameObject.SetActive(true);
         }
     }
     #endregion

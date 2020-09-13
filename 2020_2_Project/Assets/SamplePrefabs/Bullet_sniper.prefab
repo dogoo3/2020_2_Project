@@ -134,5 +134,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 50
-  shotSpeed: 10
-  surviveTime: 2
+  shotSpeed: 16
+  surviveTime: 1.5

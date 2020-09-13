@@ -94,7 +94,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void Shot()
+    public void Shoot()
     {
         WeaponManager.instance.Shoot(transform.position, _directionPos);
     }

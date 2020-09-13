@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.UI;
+using System;
+using System.Collections.Generic;
 
-public enum WeaponNumber
+public enum WeaponName
 {
     pistol,
     smg,
@@ -15,51 +16,73 @@ public enum WeaponNumber
 public class WeaponManager : MonoBehaviour
 {
     public static WeaponManager instance;
+    public Weapon pistol, smg, sniper, ar, sg, grenade;
 
-    [Header("0:pistol, 1:smg 2:sniper, 3:ar, 4:sg, 5:grenade")]
+    public Weapon[] weapons;
 
-    private Weapon[] _weapons;
-    private int _selectWeapon; // 현재 선택되어있는 무기 번호
+    private WeaponSelector[] _weaponSelectors;
+    private WeaponName selectWeapon;
+
+    private int i;// for문 돌림용
 
     private void Awake()
     {
         instance = this;
-
-        _weapons = GetComponentsInChildren<Weapon>();
-        _selectWeapon = 0; // 기본 0번
+        _weaponSelectors = GetComponentsInChildren<WeaponSelector>();
+        selectWeapon = WeaponName.pistol;
+        SetCommand();
     }
 
-    public void SelectWeapon(int _num)
+    private void SetCommand()
     {
-        _selectWeapon = _num;
+        weapons = new Weapon[6];
+
+        weapons[0] = new Pistol();
+        Copy_Paste(weapons[0], pistol);
+
+        weapons[1] = new SMG();
+        Copy_Paste(weapons[1], smg);
+
+        weapons[2] = new Sniper();
+        Copy_Paste(weapons[2], sniper);
+
+        weapons[3] = new AR();
+        Copy_Paste(weapons[3], ar);
+
+        weapons[4] = new SG();
+        Copy_Paste(weapons[4], sg);
+
+        weapons[5] = new Grenade();
+        Copy_Paste(weapons[5], grenade);
+
+        for (i = 0; i < weapons.Length; i++)
+            weapons[i].Init();
+    }
+
+    private void Copy_Paste(Weapon _paste, Weapon _copy)
+    {
+        _paste.text_bulletcount = _copy.text_bulletcount;
+        _paste.weaponNum = _copy.weaponNum;
+        _paste.bulletCount = _copy.bulletCount;
+        _paste.coolTime = _copy.coolTime;
+    }
+
+    public void ChangeSelectWeapon(WeaponName _weaponname)
+    {
+        selectWeapon = _weaponname;
     }
 
     public void Shoot(Vector2 _origin, Vector2 _direction)
     {
-        if(_weapons[_selectWeapon].IsShotWeapon())
-        {
-            switch (_selectWeapon)
-            {
-                case (int)WeaponNumber.pistol:
-                    ObjectPoolingManager.instance.GetQueue_pistol(_origin, _direction); // 권총
-                    break;
-                case (int)WeaponNumber.smg:
-                    ObjectPoolingManager.instance.GetQueue_smg(_origin, _direction); // 소총
-                    break;
-                case (int)WeaponNumber.sniper:
-                    ObjectPoolingManager.instance.GetQueue_sniper(_origin, _direction); // 저격총
-                    break;
-                case (int)WeaponNumber.ar:
-                    ObjectPoolingManager.instance.GetQueue_ar(_origin, _direction); // 기관단총
-                    break;
-                case (int)WeaponNumber.sg:
-                    ObjectPoolingManager.instance.GetQueue_sg(_origin, _direction); // 샷건
-                    break;
-                case (int)WeaponNumber.grenade:
-                    ObjectPoolingManager.instance.GetQueue_grenade(_origin, _direction); // 수류탄
-                    break;
-            }
-            _weapons[_selectWeapon].MinusBulletCount(); // 하나 깎고   
-        }
+        weapons[(int)selectWeapon].Shoot(_origin, _direction);
+        if (weapons[(int)selectWeapon].bulletCount == 0)
+            _weaponSelectors[(int)selectWeapon].Exhaust();
+    }
+
+    private void Update()
+    {
+        // 무기들의 쿨타임 계산
+        for (i = 0; i < weapons.Length; i++)
+            weapons[i].LoadingCooltime();
     }
 }

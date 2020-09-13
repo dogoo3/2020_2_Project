@@ -611,7 +611,7 @@ GameObject:
   - component: {fileID: 90735757}
   - component: {fileID: 90735756}
   m_Layer: 5
-  m_Name: NonUseSign
+  m_Name: NonUseSign (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -750,7 +750,7 @@ GameObject:
   - component: {fileID: 229585359}
   - component: {fileID: 229585358}
   m_Layer: 5
-  m_Name: NonUseSign
+  m_Name: NonUseSign (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -909,15 +909,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 336795753}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7413fe573c32a2745b9c934796eb2baf, type: 3}
+  m_Script: {fileID: 11500000, guid: 152fab89a374de94bbf60c19ab4eb001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nonUseWeaponSignal: {fileID: 955447176}
   selectWeaponSignal: {fileID: 66205415}
-  text_bulletcount: {fileID: 1207707164}
-  bulletcount: 100
   weaponNum: 0
-  cooltime: 1
 --- !u!114 &336795756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1427,15 +1424,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 738141275}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7413fe573c32a2745b9c934796eb2baf, type: 3}
+  m_Script: {fileID: 11500000, guid: 152fab89a374de94bbf60c19ab4eb001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nonUseWeaponSignal: {fileID: 229585356}
   selectWeaponSignal: {fileID: 66205415}
-  text_bulletcount: {fileID: 1000782881}
-  bulletcount: 300
   weaponNum: 3
-  cooltime: 0.5
 --- !u!114 &738141278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1485,7 +1479,7 @@ GameObject:
   - component: {fileID: 762911490}
   - component: {fileID: 762911489}
   m_Layer: 5
-  m_Name: NonUseSign
+  m_Name: NonUseSign (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1721,7 +1715,7 @@ GameObject:
   - component: {fileID: 955447179}
   - component: {fileID: 955447178}
   m_Layer: 5
-  m_Name: NonUseSign
+  m_Name: NonUseSign (0)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1908,15 +1902,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1093831405}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7413fe573c32a2745b9c934796eb2baf, type: 3}
+  m_Script: {fileID: 11500000, guid: 152fab89a374de94bbf60c19ab4eb001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nonUseWeaponSignal: {fileID: 1663266733}
   selectWeaponSignal: {fileID: 66205415}
-  text_bulletcount: {fileID: 548915699}
-  bulletcount: 30
   weaponNum: 4
-  cooltime: 2
 --- !u!114 &1093831408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2185,7 +2176,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1134022329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2262,15 +2253,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1173427641}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7413fe573c32a2745b9c934796eb2baf, type: 3}
+  m_Script: {fileID: 11500000, guid: 152fab89a374de94bbf60c19ab4eb001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nonUseWeaponSignal: {fileID: 1912997669}
   selectWeaponSignal: {fileID: 66205415}
-  text_bulletcount: {fileID: 1823458634}
-  bulletcount: 50
   weaponNum: 1
-  cooltime: 1
 --- !u!114 &1173427644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2719,6 +2707,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c93086a362baa946acbc34096195664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pistol:
+    text_bulletcount: {fileID: 1207707164}
+    weaponNum: 0
+    bulletCount: 100
+    coolTime: 1
+  smg:
+    text_bulletcount: {fileID: 1823458634}
+    weaponNum: 1
+    bulletCount: 50
+    coolTime: 1
+  sniper:
+    text_bulletcount: {fileID: 1296321237}
+    weaponNum: 2
+    bulletCount: 10
+    coolTime: 3
+  ar:
+    text_bulletcount: {fileID: 1000782881}
+    weaponNum: 3
+    bulletCount: 300
+    coolTime: 0.5
+  sg:
+    text_bulletcount: {fileID: 548915699}
+    weaponNum: 4
+    bulletCount: 30
+    coolTime: 2
+  grenade:
+    text_bulletcount: {fileID: 78613387}
+    weaponNum: 5
+    bulletCount: 1
+    coolTime: 3
+  weapons: []
 --- !u!1 &1614286901
 GameObject:
   m_ObjectHideFlags: 0
@@ -2967,7 +2986,7 @@ GameObject:
   - component: {fileID: 1663266736}
   - component: {fileID: 1663266735}
   m_Layer: 5
-  m_Name: NonUseSign
+  m_Name: NonUseSign (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3389,15 +3408,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1861345649}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7413fe573c32a2745b9c934796eb2baf, type: 3}
+  m_Script: {fileID: 11500000, guid: 152fab89a374de94bbf60c19ab4eb001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nonUseWeaponSignal: {fileID: 762911487}
   selectWeaponSignal: {fileID: 66205415}
-  text_bulletcount: {fileID: 1296321237}
-  bulletcount: 10
   weaponNum: 2
-  cooltime: 3
 --- !u!114 &1861345652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3447,7 +3463,7 @@ GameObject:
   - component: {fileID: 1912997672}
   - component: {fileID: 1912997671}
   m_Layer: 5
-  m_Name: NonUseSign
+  m_Name: NonUseSign (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3902,15 +3918,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2068939985}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7413fe573c32a2745b9c934796eb2baf, type: 3}
+  m_Script: {fileID: 11500000, guid: 152fab89a374de94bbf60c19ab4eb001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nonUseWeaponSignal: {fileID: 90735754}
   selectWeaponSignal: {fileID: 66205415}
-  text_bulletcount: {fileID: 78613387}
-  bulletcount: 1
   weaponNum: 5
-  cooltime: 3
 --- !u!114 &2068939988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4139,7 +4152,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 471293269}
-        m_MethodName: Shot
+        m_MethodName: Shoot
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

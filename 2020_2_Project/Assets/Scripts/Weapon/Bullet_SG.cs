@@ -8,9 +8,6 @@ public class Bullet_SG : MonoBehaviour
     public float shotSpeed;
     public float surviveTime;
 
-    public int angle;
-    public int line;
-
     private float _elapsedTime;
     private Vector2 _direction;
 
