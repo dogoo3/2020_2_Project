@@ -69,6 +69,7 @@
     <Compile Include="Assets\GaugeManager.cs" />
     <Compile Include="Assets\ObjectPoolingManager.cs" />
     <Compile Include="Assets\Player.cs" />
+    <Compile Include="Assets\RoundManager.cs" />
     <Compile Include="Assets\ScoreManager.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\SoundManager.cs" />
@@ -82,7 +83,7 @@
     <Compile Include="Assets\Scripts\Weapon\Weapon.cs" />
     <Compile Include="Assets\Scripts\Weapon\WeaponManager.cs" />
     <Compile Include="Assets\Scripts\Weapon\WeaponSelector.cs" />
-    <Compile Include="Assets\TempStageOne.cs" />
+    <Compile Include="Assets\SpawnMonsters.cs" />
     <None Include="Assets\SampleSprites\Blur\SettingWindowBlur.shader" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/2020_2_Project/2020_2_Project/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

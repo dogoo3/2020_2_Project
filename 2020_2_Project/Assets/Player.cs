@@ -116,11 +116,16 @@ public class Player : MonoBehaviour
     private void Update()
     {
         _rigidbody2d.transform.Translate(_movePos.normalized * Time.deltaTime * _speed);
-        if(_isshield)
+        if(_isshield) // 실드 키를 누르고 있을 때.
         {
             GaugeManager.instance.SetShieldGauge(_shield -= 0.16f);
             if(_shield < 0 )
                 UnShield();
+        }
+        else // 실드 키를 안 누르고 있을 때.
+        {
+            if(_shield < 100.0f)
+                GaugeManager.instance.SetShieldGauge(_shield = Mathf.Clamp(_shield + 0.08f, 0, 100.0f));
         }
     }
 

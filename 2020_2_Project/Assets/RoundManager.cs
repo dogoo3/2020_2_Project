@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TempStageOne : MonoBehaviour
+public class RoundManager : MonoBehaviour
 {
     public string bgmname;
 
-    private void Awake()
-    {
-        SoundManager.instance.PlayBGM(bgmname);
-    }
+    public SpawnMonsters[] spawnMonsters;
+
+    private bool _gameStart = false;
+    private bool _gameEnd = false;
+
     // Update is called once per frame
     void Update()
     {
@@ -18,5 +19,15 @@ public class TempStageOne : MonoBehaviour
             if (Application.platform == RuntimePlatform.Android)
                 Application.Quit();
         }
+    }
+
+    public void GameStart()
+    {
+        SoundManager.instance.PlayBGM(bgmname);
+    }
+
+    public void PlayBeepSound()
+    {
+        SoundManager.instance.PlaySFX("beepsound");
     }
 }

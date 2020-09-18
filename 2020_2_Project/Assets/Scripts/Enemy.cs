@@ -31,8 +31,11 @@ public class Enemy : MonoBehaviour
     public void MinusHP(float _hp)
     {
         HP -= _hp;
-        if(HP <= 0)
+        if (HP <= 0)
+        {
+            ScoreManager.instance.UpdateScore(score);
             gameObject.SetActive(false);
+        }
     }
     // 스코어 매니저 및 골드 매니저 만들어야 함
 }
