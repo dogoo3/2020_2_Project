@@ -19,7 +19,6 @@ public class GaugeManager : MonoBehaviour
 
     public void InitMaxValue(float _hp, float _shield)
     {
-        
         _maxHP = 1 / _hp;
         _maxShield = 1 / _shield;
     }

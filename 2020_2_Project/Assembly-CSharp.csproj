@@ -65,10 +65,14 @@
     <Compile Include="Assets\ChoiceStage.cs" />
     <Compile Include="Assets\ControlEscape.cs" />
     <Compile Include="Assets\ControlVolume.cs" />
+    <Compile Include="Assets\CountdownSound.cs" />
     <Compile Include="Assets\GaugeManager.cs" />
     <Compile Include="Assets\ObjectPoolingManager.cs" />
     <Compile Include="Assets\Player.cs" />
+    <Compile Include="Assets\ScoreManager.cs" />
+    <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\SoundManager.cs" />
+    <Compile Include="Assets\Scripts\Weapon\Bullet.cs" />
     <Compile Include="Assets\Scripts\Weapon\Bullet_AR.cs" />
     <Compile Include="Assets\Scripts\Weapon\Bullet_Grenade.cs" />
     <Compile Include="Assets\Scripts\Weapon\Bullet_Pistol.cs" />

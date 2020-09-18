@@ -125,7 +125,7 @@ public class SG : Weapon // 샷건
                     ObjectPoolingManager.instance.GetQueue_sg(_origin, dir_bullet);
                 }
             }
-            else
+            else // 위를 바라보고 있을 때 
             {
                 for (i = 0; i < line; i++)
                 {

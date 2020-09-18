@@ -99,6 +99,20 @@ public class Player : MonoBehaviour
         WeaponManager.instance.Shoot(transform.position, _directionPos);
     }
 
+    public void Attacked(float _damage)
+    {
+        _hp -= _damage;
+        GaugeManager.instance.SetHpGauge(_hp);
+    }
+
+    private void CheckDead()
+    {
+        if(_hp <= 0)
+        {
+            // 사망 모션 및 사망시 UI 구현해야 함.
+        }
+    }
+
     private void Update()
     {
         _rigidbody2d.transform.Translate(_movePos.normalized * Time.deltaTime * _speed);

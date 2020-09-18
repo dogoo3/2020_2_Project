@@ -4,29 +4,30 @@ using UnityEngine;
 
 public class Bullet_AR : MonoBehaviour
 {
+    private Bullet _ar;
+
     public float damage;
     public float shotSpeed;
     public float surviveTime;
 
-    private float _elapsedTime;
-    private Vector2 _direction;
-
-    public void Direction(Vector2 _direction)
+    private void Awake()
     {
-        this._direction = _direction;
+        _ar = new B_AR();
+        _ar.damage = damage;
+        _ar.shotSpeed = shotSpeed;
+        _ar.surviveTime = surviveTime;
     }
 
     private void Update()
     {
-        if (_elapsedTime > surviveTime)
+        if (_ar.CheckElapsedTime())
             ObjectPoolingManager.instance.InsertQueue_ar(this);
-        transform.Translate(_direction * shotSpeed * Time.deltaTime);
-        _elapsedTime += Time.deltaTime;
+        transform.Translate(_ar.Move());
     }
 
     private void OnDisable()
     {
-        _elapsedTime = 0;
+        _ar.ResetElapsedTime();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -38,5 +39,22 @@ public class Bullet_AR : MonoBehaviour
                 ObjectPoolingManager.instance.InsertQueue_ar(this);
                 break;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        switch (collision.tag)
+        {
+            case "enemy":
+                _ar.tempEnemy = collision.gameObject.GetComponent<Enemy>();
+                _ar.tempEnemy.MinusHP(_ar.damage);
+                ObjectPoolingManager.instance.InsertQueue_ar(this);
+                break;
+        }
+    }
+
+    public void Direction(Vector2 _direction)
+    {
+        _ar.Direction(_direction);
     }
 }

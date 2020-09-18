@@ -4,29 +4,30 @@ using UnityEngine;
 
 public class Bullet_Sniper : MonoBehaviour
 {
+    private Bullet _sniper;
+
     public float damage;
     public float shotSpeed;
     public float surviveTime;
 
-    private float _elapsedTime;
-    private Vector2 _direction;
-
-    public void Direction(Vector2 _direction)
+    private void Awake()
     {
-        this._direction = _direction;
+        _sniper = new B_Sniper();
+        _sniper.damage = damage;
+        _sniper.shotSpeed = shotSpeed;
+        _sniper.surviveTime = surviveTime;
     }
 
     private void Update()
     {
-        if (_elapsedTime > surviveTime)
+        if (_sniper.CheckElapsedTime())
             ObjectPoolingManager.instance.InsertQueue_sniper(this);
-        transform.Translate(_direction * shotSpeed * Time.deltaTime);
-        _elapsedTime += Time.deltaTime;
+        transform.Translate(_sniper.Move());
     }
 
     private void OnDisable()
     {
-        _elapsedTime = 0;
+        _sniper.ResetElapsedTime();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -38,5 +39,22 @@ public class Bullet_Sniper : MonoBehaviour
                 ObjectPoolingManager.instance.InsertQueue_sniper(this);
                 break;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        switch (collision.tag)
+        {
+            case "enemy":
+                _sniper.tempEnemy = collision.gameObject.GetComponent<Enemy>();
+                _sniper.tempEnemy.MinusHP(_sniper.damage);
+                ObjectPoolingManager.instance.InsertQueue_sniper(this);
+                break;
+        }
+    }
+
+    public void Direction(Vector2 _direction)
+    {
+        _sniper.Direction(_direction);
     }
 }

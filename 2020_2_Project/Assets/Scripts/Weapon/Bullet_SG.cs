@@ -4,29 +4,30 @@ using UnityEngine;
 
 public class Bullet_SG : MonoBehaviour
 {
+    private Bullet _sg;
+
     public float damage;
     public float shotSpeed;
     public float surviveTime;
 
-    private float _elapsedTime;
-    private Vector2 _direction;
-
-    public void Direction(Vector2 _direction)
+    private void Awake()
     {
-        this._direction = _direction;
+        _sg = new B_SG();
+        _sg.damage = damage;
+        _sg.shotSpeed = shotSpeed;
+        _sg.surviveTime = surviveTime;
     }
 
     private void Update()
     {
-        if (_elapsedTime > surviveTime)
+        if (_sg.CheckElapsedTime())
             ObjectPoolingManager.instance.InsertQueue_sg(this);
-        transform.Translate(_direction * shotSpeed * Time.deltaTime);
-        _elapsedTime += Time.deltaTime;
+        transform.Translate(_sg.Move());
     }
 
     private void OnDisable()
     {
-        _elapsedTime = 0;
+        _sg.ResetElapsedTime();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -34,9 +35,26 @@ public class Bullet_SG : MonoBehaviour
         switch (collision.gameObject.tag)
         {
             case "ground":
-            case "bullet":
+            case "enemy":
                 ObjectPoolingManager.instance.InsertQueue_sg(this);
                 break;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        switch (collision.tag)
+        {
+            case "enemy":
+                _sg.tempEnemy = collision.gameObject.GetComponent<Enemy>();
+                _sg.tempEnemy.MinusHP(_sg.damage);
+                ObjectPoolingManager.instance.InsertQueue_sg(this);
+                break;
+        }
+    }
+
+    public void Direction(Vector2 _direction)
+    {
+        _sg.Direction(_direction);
     }
 }
