@@ -18,6 +18,11 @@ public class Enemy : MonoBehaviour
 
     private Player _tempPlayer;
 
+    private void Awake()
+    {
+        _rigidbody2d = GetComponent<Rigidbody2D>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.name == "Character")
@@ -37,5 +42,12 @@ public class Enemy : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+
+    public void Spawn(Vector2 _direction, float _shotspeed)
+    {
+        gameObject.SetActive(true);
+        _rigidbody2d.velocity = _direction * _shotspeed;
+    }
+
     // 스코어 매니저 및 골드 매니저 만들어야 함
 }
