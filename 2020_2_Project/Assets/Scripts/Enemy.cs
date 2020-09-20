@@ -39,6 +39,7 @@ public class Enemy : MonoBehaviour
         if (HP <= 0)
         {
             ScoreManager.instance.UpdateScore(score);
+            SpawnMonstersManager.instance.CatchMonster();
             gameObject.SetActive(false);
         }
     }

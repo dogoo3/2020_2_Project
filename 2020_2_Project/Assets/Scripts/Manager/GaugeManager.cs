@@ -32,4 +32,10 @@ public class GaugeManager : MonoBehaviour
     {
         gauge_Shield.fillAmount = _shield * _maxShield;
     }
+
+    public void ResetGauge()
+    {
+        gauge_HP.fillAmount = 1;
+        gauge_Shield.fillAmount = 1;
+    }
 }

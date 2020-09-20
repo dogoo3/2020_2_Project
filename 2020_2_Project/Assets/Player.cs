@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     private bool _isjump, _isshield;
 
     private float _hp, _shield, _speed, _def, _jump;
+    private float _maxhp, _maxshield;
 
     public GameObject shieldsprite;
     
@@ -30,6 +31,9 @@ public class Player : MonoBehaviour
         _def = 10;
         _jump = 10;
         _jumpvalue.y = _jump;
+
+        _maxhp = _hp;
+        _maxshield = _shield;
     }
 
     private void Start()
@@ -97,6 +101,13 @@ public class Player : MonoBehaviour
     public void Shoot()
     {
         WeaponManager.instance.Shoot(transform.position, _directionPos);
+    }
+
+    public void ResetGauge()
+    {
+        _hp = _maxhp;
+        _shield = _maxshield;
+        GaugeManager.instance.ResetGauge();
     }
 
     public void Attacked(float _damage)

@@ -64,6 +64,12 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public void StopBGM()
+    {
+        bgmPlayer.Stop();
+        bgmPlayer.clip = null;
+    }
+
     public void PlaySFX(string _sfxName, bool _isOverlapSound = true)
     {
         if (!_isOverlapSound) // 효과음이 중복으로 재생되면 안 됩니다.

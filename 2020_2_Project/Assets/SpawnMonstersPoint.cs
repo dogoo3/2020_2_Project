@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnMonsters : MonoBehaviour
+public class SpawnMonstersPoint : MonoBehaviour
 {
     [Header("0도 : (0,1)방향, 시계반대방향으로 돌아감.")]
     [Range(0, 360)]

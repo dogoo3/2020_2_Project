@@ -22,4 +22,15 @@ public class ScoreManager : MonoBehaviour
         this._score += _score;
         text_score.text = _scoreString + this._score.ToString();
     }
+
+    public void ShowResultScore(Text _resultText)
+    {
+        _resultText.text = _score.ToString();
+    }
+
+    public void ResetScore()
+    {
+        _score = 0;
+        text_score.text = _scoreString + this._score.ToString();
+    }
 }

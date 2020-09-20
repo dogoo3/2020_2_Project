@@ -206,5 +206,5 @@ MonoBehaviour:
   runSpeed: 0
   damage: 40
   attackCooltime: 0
-  score: 0
+  score: 100
   dropGold: 0

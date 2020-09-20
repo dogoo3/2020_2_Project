@@ -18,7 +18,7 @@ public class WeaponManager : MonoBehaviour
     public static WeaponManager instance;
     public Weapon pistol, smg, sniper, ar, sg, grenade;
 
-    public Weapon[] weapons;
+    private Weapon[] weapons;
 
     private WeaponSelector[] _weaponSelectors;
     private WeaponName selectWeapon;
@@ -57,6 +57,45 @@ public class WeaponManager : MonoBehaviour
 
         for (i = 0; i < weapons.Length; i++)
             weapons[i].Init();
+    }
+
+    public void SetCommand(int _C_pistol, int _C_smg, int _C_sniper, int _C_ar, int _C_sg, int _C_grenade) // 라운드가 바뀔 때 총알 갯수를 갱신시켜줌.
+    {
+        pistol.bulletCount = _C_pistol;
+        smg.bulletCount = _C_smg;
+        sniper.bulletCount = _C_sniper;
+        ar.bulletCount = _C_ar;
+        sg.bulletCount = _C_sg;
+        grenade.bulletCount = _C_grenade;
+
+        weapons = new Weapon[6];
+
+        weapons[0] = new Pistol();
+        Copy_Paste(weapons[0], pistol);
+
+        weapons[1] = new SMG();
+        Copy_Paste(weapons[1], smg);
+
+        weapons[2] = new Sniper();
+        Copy_Paste(weapons[2], sniper);
+
+        weapons[3] = new AR();
+        Copy_Paste(weapons[3], ar);
+
+        weapons[4] = new SG();
+        Copy_Paste(weapons[4], sg);
+
+        weapons[5] = new Grenade();
+        Copy_Paste(weapons[5], grenade);
+
+        for (i = 0; i < weapons.Length; i++)
+            weapons[i].Init();
+    }
+
+    public void EnableWeapon()
+    {
+        for (i = 0; i < _weaponSelectors.Length; i++)
+            _weaponSelectors[i].Exhaust(false);
     }
 
     private void Copy_Paste(Weapon _paste, Weapon _copy)

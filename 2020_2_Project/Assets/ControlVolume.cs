@@ -16,6 +16,6 @@ public class ControlVolume : MonoBehaviour
     {
         SoundManager.instance.bgmPlayer.volume = _volumeController.value;
         for (int i = 0; i < SoundManager.instance.sfxPlayer.Length; i++)
-            SoundManager.instance.sfxPlayer[i].volume = _volumeController.value;
+             SoundManager.instance.sfxPlayer[i].volume = _volumeController.value;
     }
 }
