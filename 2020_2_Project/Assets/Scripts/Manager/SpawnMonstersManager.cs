@@ -21,7 +21,6 @@ public class SpawnMonstersManager : MonoBehaviour
     {
         instance = this;
         _killNumber = enemy.Length;
-        _nowkillNumber = 0;
         ResetEnemyList();
     }
 
@@ -51,8 +50,12 @@ public class SpawnMonstersManager : MonoBehaviour
 
     public void ResetEnemyList()
     {
+        for (int i = 0; i < enemy.Length; i++)
+            enemy[i].gameObject.SetActive(false);
+        _nowkillNumber = 0;
         _copyEnemy.Clear();
         _copyEnemy.AddRange(enemy);
+        CancelInvoke("SpawnRandomMonster");
     }
 
     private void ShowClearWindow()

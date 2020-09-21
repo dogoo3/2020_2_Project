@@ -38,9 +38,12 @@ public class Enemy : MonoBehaviour
         HP -= _hp;
         if (HP <= 0)
         {
-            ScoreManager.instance.UpdateScore(score);
-            SpawnMonstersManager.instance.CatchMonster();
-            gameObject.SetActive(false);
+            if (gameObject.activeSelf) // Translate 연산을 해서 한 프레임에 여러 발의 샷건 총알이 맞을 수 있기 때문에 한 발만 적용되도록 코드 수정.
+            {
+                ScoreManager.instance.UpdateScore(score);
+                SpawnMonstersManager.instance.CatchMonster();
+                gameObject.SetActive(false);
+            }
         }
     }
 

@@ -2309,10 +2309,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 403102960}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5eff4c596e0b854099d998ff73c35f9, type: 3}
+  m_Script: {fileID: 11500000, guid: 6937057f2c951f546bde5e4a67cbc285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   text_score: {fileID: 1313446762}
+  _player: {fileID: 0}
+  rounds: []
+  roundStartPos: []
+  round1_bulletCount: 
+  round2_bulletCount: 
+  round3_bulletCount: 
 --- !u!114 &403102963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3705,7 +3711,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 887348231}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1081557809}
+        m_MethodName: TouchRestartStageButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &887348231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4636,11 +4653,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1081557807}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f92a66132368b564c84f45722028a2d7, type: 3}
+  m_Script: {fileID: 11500000, guid: 6937057f2c951f546bde5e4a67cbc285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   text_score: {fileID: 899377289}
   _player: {fileID: 471293269}
+  rounds:
+  - {fileID: 1831801931}
+  - {fileID: 1580899728}
+  - {fileID: 15936234}
+  roundStartPos:
+  - {fileID: 99976134}
+  - {fileID: 1202179237}
+  - {fileID: 873584074}
+  round1_bulletCount: 64000000320000000a0000002c0100001e00000001000000
+  round2_bulletCount: 0a0000000a0000000a0000000a0000000a00000002000000
+  round3_bulletCount: 140000001400000014000000140000001400000003000000
 --- !u!114 &1081557810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5068,7 +5096,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1140970568}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55077e33dd15638429461adf9eb95a5f, type: 3}
+  m_Script: {fileID: 11500000, guid: 6937057f2c951f546bde5e4a67cbc285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   text_score: {fileID: 346933425}
@@ -5078,8 +5106,12 @@ MonoBehaviour:
   - {fileID: 1580899728}
   - {fileID: 15936234}
   roundStartPos:
+  - {fileID: 99976134}
   - {fileID: 1202179237}
   - {fileID: 873584074}
+  round1_bulletCount: 64000000320000000a0000002c0100001e00000001000000
+  round2_bulletCount: 0a0000000a0000000a0000000a0000000a00000002000000
+  round3_bulletCount: 140000001400000014000000140000001400000003000000
 --- !u!1 &1173427641
 GameObject:
   m_ObjectHideFlags: 0
@@ -6538,7 +6570,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1570620149}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1081557809}
+        m_MethodName: TouchExitButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1570620149
 MonoBehaviour:
   m_ObjectHideFlags: 0

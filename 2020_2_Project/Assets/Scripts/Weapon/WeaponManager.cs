@@ -59,14 +59,14 @@ public class WeaponManager : MonoBehaviour
             weapons[i].Init();
     }
 
-    public void SetCommand(int _C_pistol, int _C_smg, int _C_sniper, int _C_ar, int _C_sg, int _C_grenade) // 라운드가 바뀔 때 총알 갯수를 갱신시켜줌.
+    public void SetCommand(int[] _bulletCount) // 라운드가 바뀔 때 총알 갯수를 갱신시켜줌.
     {
-        pistol.bulletCount = _C_pistol;
-        smg.bulletCount = _C_smg;
-        sniper.bulletCount = _C_sniper;
-        ar.bulletCount = _C_ar;
-        sg.bulletCount = _C_sg;
-        grenade.bulletCount = _C_grenade;
+        pistol.bulletCount = _bulletCount[0];
+        smg.bulletCount = _bulletCount[1];
+        sniper.bulletCount = _bulletCount[2];
+        ar.bulletCount = _bulletCount[3];
+        sg.bulletCount = _bulletCount[4];
+        grenade.bulletCount = _bulletCount[5];
 
         weapons = new Weapon[6];
 

@@ -35,7 +35,6 @@ public class Bullet_SG : MonoBehaviour
         switch (collision.gameObject.tag)
         {
             case "ground":
-            case "enemy":
                 ObjectPoolingManager.instance.InsertQueue_sg(this);
                 break;
         }

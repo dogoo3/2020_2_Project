@@ -114,12 +114,14 @@ public class Player : MonoBehaviour
     {
         _hp -= _damage;
         GaugeManager.instance.SetHpGauge(_hp);
+        CheckDead();
     }
 
     private void CheckDead()
     {
         if(_hp <= 0)
         {
+            WindowManager.instance.ShowFailWindow();
             // 사망 모션 및 사망시 UI 구현해야 함.
         }
     }

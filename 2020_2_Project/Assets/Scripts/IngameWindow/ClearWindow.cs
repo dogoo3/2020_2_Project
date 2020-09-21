@@ -40,19 +40,19 @@ public class ClearWindow : MonoBehaviour
         _player.transform.position = roundStartPos[RoundManager.instance.nowRound].position;
         Camera.main.transform.position = _cameraPos[RoundManager.instance.nowRound];
         // SpawnMonstersManager에서 관련 내용 초기화(다음 라운드로 넘겨줌)
-        rounds[RoundManager.instance.nowRound++].gameObject.SetActive(false);
+        rounds[RoundManager.instance.nowRound++].gameObject.SetActive(false); // 현재 라운드의 스폰매니저 비활성화 후 1라운드 증가
         rounds[RoundManager.instance.nowRound].gameObject.SetActive(true);
 
         // WeaponManager에서 무기 탄알 수 초기화하기
-        switch (RoundManager.instance.nowRound)
-        {
-            case 1: // 1라운드 -> 2라운드
-                WeaponManager.instance.SetCommand(10, 10, 10, 10, 10, 2);
-                break;
-            case 2: // 2라운드 -> 3라운드
-                WeaponManager.instance.SetCommand(20, 20, 20, 20, 20, 3);
-                break;
-        }
+        //switch (RoundManager.instance.nowRound)
+        //{
+        //    case 1: // 1라운드 -> 2라운드
+        //        WeaponManager.instance.SetCommand(10, 10, 10, 10, 10, 2);
+        //        break;
+        //    case 2: // 2라운드 -> 3라운드
+        //        WeaponManager.instance.SetCommand(20, 20, 20, 20, 20, 3);
+        //        break;
+        //}
 
         // WeaponManager에서 이전 라운드 때 다 쓴 무기 활성화시키기
         WeaponManager.instance.EnableWeapon();
@@ -71,5 +71,6 @@ public class ClearWindow : MonoBehaviour
     public void TouchExitButton()
     {
         SceneManager.LoadScene("Title");
+        SoundManager.instance.PlayBGM("TalesWeaver_Title");
     }
 }

@@ -62,14 +62,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\AllClearWindow.cs" />
     <Compile Include="Assets\ChoiceStage.cs" />
-    <Compile Include="Assets\ClearWindow.cs" />
     <Compile Include="Assets\ControlEscape.cs" />
     <Compile Include="Assets\ControlVolume.cs" />
-    <Compile Include="Assets\FailWindow.cs" />
+    <Compile Include="Assets\InitScene.cs" />
     <Compile Include="Assets\Player.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\IngameWindow\AllClearWindow.cs" />
+    <Compile Include="Assets\Scripts\IngameWindow\ClearWindow.cs" />
+    <Compile Include="Assets\Scripts\IngameWindow\FailWindow.cs" />
+    <Compile Include="Assets\Scripts\IngameWindow\GameOverWindow.cs" />
     <Compile Include="Assets\Scripts\Manager\FileManager.cs" />
     <Compile Include="Assets\Scripts\Manager\GaugeManager.cs" />
     <Compile Include="Assets\Scripts\Manager\ObjectPoolingManager.cs" />
