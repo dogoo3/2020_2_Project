@@ -1,152 +1,200 @@
-﻿Shader "Unlit/BlurShader"
-{
-	Properties
-	{
-		_Radius("Radius", Range(1, 255)) = 1
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/BLUR" {
+	Properties{
+		_Color("Main Color", Color) = (1,1,1,1)
+		_BumpAmt("Distortion", Range(0,128)) = 10
+		_MainTex("Tint Color (RGB)", 2D) = "white" {}
+		_BumpMap("Normalmap", 2D) = "bump" {}
+		_Size("Size", Range(0, 20)) = 1
 	}
 
-		Category
-	{
-		Tags{ "Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Opaque" }
+		Category{
 
-		SubShader
-		{
-			GrabPass
-			{
-				Tags{ "LightMode" = "Always" }
-			}
+			Tags { "Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Opaque" }
 
-			Pass
-			{
-				Tags{ "LightMode" = "Always" }
 
-				CGPROGRAM
-				#pragma vertex vert
-				#pragma fragment frag
-				#pragma fragmentoption ARB_precision_hint_fastest
-				#include "UnityCG.cginc"
+			SubShader {
 
-				struct appdata_t
-				{
-					float4 vertex : POSITION;
-					float2 texcoord: TEXCOORD0;
-				};
-
-				struct v2f
-				{
-					float4 vertex : POSITION;
-					float4 uvgrab : TEXCOORD0;
-				};
-
-				v2f vert(appdata_t v)
-				{
-					v2f o;
-					o.vertex = UnityObjectToClipPos(v.vertex);
-					#if UNITY_UV_STARTS_AT_TOP
-					float scale = -1.0;
-					#else
-					float scale = 1.0;
-					#endif
-					o.uvgrab.xy = (float2(o.vertex.x, o.vertex.y*scale) + o.vertex.w) * 0.5;
-					o.uvgrab.zw = o.vertex.zw;
-					return o;
+				GrabPass {
+					Tags { "LightMode" = "Always" }
 				}
+				Pass {
+					Tags { "LightMode" = "Always" }
 
-				sampler2D _GrabTexture;
-				float4 _GrabTexture_TexelSize;
-				float _Radius;
+					CGPROGRAM
+					#pragma vertex vert
+					#pragma fragment frag
+					#pragma fragmentoption ARB_precision_hint_fastest
+					#include "UnityCG.cginc"
 
-				half4 frag(v2f i) : COLOR
-				{
-					half4 sum = half4(0,0,0,0);
+					struct appdata_t {
+						float4 vertex : POSITION;
+						float2 texcoord: TEXCOORD0;
+					};
 
-					#define GRABXYPIXEL(kernelx, kernely) tex2Dproj( _GrabTexture, UNITY_PROJ_COORD(float4(i.uvgrab.x + _GrabTexture_TexelSize.x * kernelx, i.uvgrab.y + _GrabTexture_TexelSize.y * kernely, i.uvgrab.z, i.uvgrab.w)))
+					struct v2f {
+						float4 vertex : POSITION;
+						float4 uvgrab : TEXCOORD0;
+					};
 
-					sum += GRABXYPIXEL(0.0, 0.0);
-					int measurments = 1;
-
-					for (float range = 0.1f; range <= _Radius; range += 0.1f)
-					{
-						sum += GRABXYPIXEL(range, range);
-						sum += GRABXYPIXEL(range, -range);
-						sum += GRABXYPIXEL(-range, range);
-						sum += GRABXYPIXEL(-range, -range);
-						measurments += 4;
+					v2f vert(appdata_t v) {
+						v2f o;
+						o.vertex = UnityObjectToClipPos(v.vertex);
+						#if UNITY_UV_STARTS_AT_TOP
+						float scale = -1.0;
+						#else
+						float scale = 1.0;
+						#endif
+						o.uvgrab.xy = (float2(o.vertex.x, o.vertex.y*scale) + o.vertex.w) * 0.5;
+						o.uvgrab.zw = o.vertex.zw;
+						return o;
 					}
 
-					return sum / measurments;
-				}
-				ENDCG
-			}
-			GrabPass
-			{
-				Tags{ "LightMode" = "Always" }
-			}
+					sampler2D _GrabTexture;
+					float4 _GrabTexture_TexelSize;
+					float _Size;
 
-			Pass
-			{
-				Tags{ "LightMode" = "Always" }
+					half4 frag(v2f i) : COLOR {
 
-				CGPROGRAM
-				#pragma vertex vert
-				#pragma fragment frag
-				#pragma fragmentoption ARB_precision_hint_fastest
-				#include "UnityCG.cginc"
+						half4 sum = half4(0,0,0,0);
+						#define GRABPIXEL(weight,kernelx) tex2Dproj( _GrabTexture, UNITY_PROJ_COORD(float4(i.uvgrab.x + _GrabTexture_TexelSize.x * kernelx*_Size, i.uvgrab.y, i.uvgrab.z, i.uvgrab.w))) * weight
+						sum += GRABPIXEL(0.05, -4.0);
+						sum += GRABPIXEL(0.09, -3.0);
+						sum += GRABPIXEL(0.12, -2.0);
+						sum += GRABPIXEL(0.15, -1.0);
+						sum += GRABPIXEL(0.18,  0.0);
+						sum += GRABPIXEL(0.15, +1.0);
+						sum += GRABPIXEL(0.12, +2.0);
+						sum += GRABPIXEL(0.09, +3.0);
+						sum += GRABPIXEL(0.05, +4.0);
 
-				struct appdata_t
-				{
-					float4 vertex : POSITION;
-					float2 texcoord: TEXCOORD0;
-				};
-
-				struct v2f
-				{
-					float4 vertex : POSITION;
-					float4 uvgrab : TEXCOORD0;
-				};
-
-				v2f vert(appdata_t v)
-				{
-					v2f o;
-					o.vertex = UnityObjectToClipPos(v.vertex);
-					#if UNITY_UV_STARTS_AT_TOP
-					float scale = -1.0;
-					#else
-					float scale = 1.0;
-					#endif
-					o.uvgrab.xy = (float2(o.vertex.x, o.vertex.y*scale) + o.vertex.w) * 0.5;
-					o.uvgrab.zw = o.vertex.zw;
-					return o;
+						return sum;
+					}
+					ENDCG
 				}
 
-				sampler2D _GrabTexture;
-				float4 _GrabTexture_TexelSize;
-				float _Radius;
+				GrabPass {
+					Tags { "LightMode" = "Always" }
+				}
+				Pass {
+					Tags { "LightMode" = "Always" }
 
-				half4 frag(v2f i) : COLOR
-				{
+					CGPROGRAM
+					#pragma vertex vert
+					#pragma fragment frag
+					#pragma fragmentoption ARB_precision_hint_fastest
+					#include "UnityCG.cginc"
 
-					half4 sum = half4(0,0,0,0);
-					float radius = 1.41421356237 * _Radius;
+					struct appdata_t {
+						float4 vertex : POSITION;
+						float2 texcoord: TEXCOORD0;
+					};
 
-					#define GRABXYPIXEL(kernelx, kernely) tex2Dproj( _GrabTexture, UNITY_PROJ_COORD(float4(i.uvgrab.x + _GrabTexture_TexelSize.x * kernelx, i.uvgrab.y + _GrabTexture_TexelSize.y * kernely, i.uvgrab.z, i.uvgrab.w)))
+					struct v2f {
+						float4 vertex : POSITION;
+						float4 uvgrab : TEXCOORD0;
+					};
 
-					sum += GRABXYPIXEL(0.0, 0.0);
-					int measurments = 1;
-
-					for (float range = 1.41421356237f; range <= radius * 1.41; range += 1.41421356237f)
-					{
-						sum += GRABXYPIXEL(range, 0);
-						sum += GRABXYPIXEL(-range, 0);
-						sum += GRABXYPIXEL(0, range);
-						sum += GRABXYPIXEL(0, -range);
-						measurments += 4;
+					v2f vert(appdata_t v) {
+						v2f o;
+						o.vertex = UnityObjectToClipPos(v.vertex);
+						#if UNITY_UV_STARTS_AT_TOP
+						float scale = -1.0;
+						#else
+						float scale = 1.0;
+						#endif
+						o.uvgrab.xy = (float2(o.vertex.x, o.vertex.y*scale) + o.vertex.w) * 0.5;
+						o.uvgrab.zw = o.vertex.zw;
+						return o;
 					}
 
-					return sum / measurments;
+					sampler2D _GrabTexture;
+					float4 _GrabTexture_TexelSize;
+					float _Size;
+
+					half4 frag(v2f i) : COLOR {
+
+						half4 sum = half4(0,0,0,0);
+						#define GRABPIXEL(weight,kernely) tex2Dproj( _GrabTexture, UNITY_PROJ_COORD(float4(i.uvgrab.x, i.uvgrab.y + _GrabTexture_TexelSize.y * kernely*_Size, i.uvgrab.z, i.uvgrab.w))) * weight
+
+						sum += GRABPIXEL(0.05, -4.0);
+						sum += GRABPIXEL(0.09, -3.0);
+						sum += GRABPIXEL(0.12, -2.0);
+						sum += GRABPIXEL(0.15, -1.0);
+						sum += GRABPIXEL(0.18,  0.0);
+						sum += GRABPIXEL(0.15, +1.0);
+						sum += GRABPIXEL(0.12, +2.0);
+						sum += GRABPIXEL(0.09, +3.0);
+						sum += GRABPIXEL(0.05, +4.0);
+
+						return sum;
+					}
+					ENDCG
 				}
-				ENDCG
+
+				GrabPass {
+					Tags { "LightMode" = "Always" }
+				}
+				Pass {
+					Tags { "LightMode" = "Always" }
+
+					CGPROGRAM
+					#pragma vertex vert
+					#pragma fragment frag
+					#pragma fragmentoption ARB_precision_hint_fastest
+					#include "UnityCG.cginc"
+
+					struct appdata_t {
+						float4 vertex : POSITION;
+						float2 texcoord: TEXCOORD0;
+					};
+
+					struct v2f {
+						float4 vertex : POSITION;
+						float4 uvgrab : TEXCOORD0;
+						float2 uvbump : TEXCOORD1;
+						float2 uvmain : TEXCOORD2;
+					};
+
+					float _BumpAmt;
+					float4 _BumpMap_ST;
+					float4 _MainTex_ST;
+
+					v2f vert(appdata_t v) {
+						v2f o;
+						o.vertex = UnityObjectToClipPos(v.vertex);
+						#if UNITY_UV_STARTS_AT_TOP
+						float scale = -1.0;
+						#else
+						float scale = 1.0;
+						#endif
+						o.uvgrab.xy = (float2(o.vertex.x, o.vertex.y*scale) + o.vertex.w) * 0.5;
+						o.uvgrab.zw = o.vertex.zw;
+						o.uvbump = TRANSFORM_TEX(v.texcoord, _BumpMap);
+						o.uvmain = TRANSFORM_TEX(v.texcoord, _MainTex);
+						return o;
+					}
+
+					fixed4 _Color;
+					sampler2D _GrabTexture;
+					float4 _GrabTexture_TexelSize;
+					sampler2D _BumpMap;
+					sampler2D _MainTex;
+
+					half4 frag(v2f i) : COLOR {
+
+						half2 bump = UnpackNormal(tex2D(_BumpMap, i.uvbump)).rg;
+						float2 offset = bump * _BumpAmt * _GrabTexture_TexelSize.xy;
+						i.uvgrab.xy = offset * i.uvgrab.z + i.uvgrab.xy;
+
+						half4 col = tex2Dproj(_GrabTexture, UNITY_PROJ_COORD(i.uvgrab));
+						half4 tint = tex2D(_MainTex, i.uvmain) * _Color;
+
+						return col * tint;
+					}
+					ENDCG
+				}
 			}
 		}
-	}
 }

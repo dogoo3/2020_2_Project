@@ -6,16 +6,17 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
     
-    public Dictionary<string, AudioClip> bgmSound = new Dictionary<string, AudioClip>();
-    public Dictionary<string, AudioClip> sfxSound = new Dictionary<string, AudioClip>();
+    private Dictionary<string, AudioClip> bgmSound = new Dictionary<string, AudioClip>();
+    private Dictionary<string, AudioClip> sfxSound = new Dictionary<string, AudioClip>();
     [Header("BGM 플레이어")]
     public AudioSource bgmPlayer;
     [Header("SFX 플레이어")]
     public AudioSource[] sfxPlayer;
-    
+
+    private bool _isPlaySFX; // bgm은 AudioSource의 Mute로 제어(Title이 바로 실행될 수 있도록)
+
     private void Awake()
     {
-        Screen.sleepTimeout = SleepTimeout.NeverSleep; // 추후 삭제요망
         instance = this;
         DontDestroyOnLoad(gameObject);
 
@@ -42,6 +43,16 @@ public class SoundManager : MonoBehaviour
                     bgmSound.Add(obj_bgm[i].name, obj_bgm[i] as AudioClip);
             }
         }
+    }
+
+    public void SetIsplayBGM(bool _isBgm)
+    {
+        bgmPlayer.mute = !_isBgm;
+    }
+
+    public void SetIsplaySFX(bool _isSfx)
+    {
+        _isPlaySFX = _isSfx;
     }
 
     public void PlayBGM(string _bgmName)
@@ -72,6 +83,8 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySFX(string _sfxName, bool _isOverlapSound = true)
     {
+        if (!_isPlaySFX)
+            return;
         if (!_isOverlapSound) // 효과음이 중복으로 재생되면 안 됩니다.
         {
             for (int i = 0; i < sfxPlayer.Length; i++) // 현재 실행중인 사운드 검색
