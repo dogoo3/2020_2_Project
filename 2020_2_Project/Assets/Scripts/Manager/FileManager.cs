@@ -13,17 +13,17 @@ using System.Text;
 
 public class FileManager : MonoBehaviour
 {
-    public static FileManager instance;
-
     public static Dictionary<string, float> playerInfo = new Dictionary<string, float>();
     public static Dictionary<string, bool> soundSetting = new Dictionary<string, bool>();
+    public static Dictionary<string, bool> stageClear = new Dictionary<string, bool>();
 
     private void Awake()
     {
-        instance = this;
         DontDestroyOnLoad(gameObject);
         ReadData("DB_player.csv", playerInfo);
         ReadData("DB_bool.csv", soundSetting);
+        ReadData("DB_bool_stageclear.csv", stageClear);
+        WriteData("DB_bool_stageclear.csv", stageClear);
     }
 
     private void OnApplicationQuit()
@@ -91,7 +91,7 @@ public class FileManager : MonoBehaviour
         }
     }
 
-    public void WriteData(string _filename, Dictionary<string, float> _saveDic)
+    public static void WriteData(string _filename, Dictionary<string, float> _saveDic)
     {
         string path = PathForDocumentsFile(_filename);
         FileStream f = new FileStream(path, FileMode.Create, FileAccess.Write);
@@ -117,7 +117,7 @@ public class FileManager : MonoBehaviour
         f.Close();
     }
 
-    public void WriteData(string _filename, Dictionary<string, int> _saveDic)
+    public static void WriteData(string _filename, Dictionary<string, int> _saveDic)
     {
         string path = PathForDocumentsFile(_filename);
         FileStream f = new FileStream(path, FileMode.Create, FileAccess.Write);

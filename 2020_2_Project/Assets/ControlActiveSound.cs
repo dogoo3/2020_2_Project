@@ -61,8 +61,10 @@ public class ControlActiveSound : MonoBehaviour
     public void SwitchingSFX(bool _is)
     {
         if(!_is) // SFX ON Toggle을 눌렀을 때
-            if (sfxOn.isOn) SwitchSFX(true);
+            if (sfxOn.isOn) // 중복 터치를 방지
+                SwitchSFX(true);
         else // SFX OFF Toggle을 눌렀을 때
-            if (sfxOff.isOn) SwitchSFX(false);
+            if (sfxOff.isOn) // 중복 터치를 방지
+                SwitchSFX(false);
     }
 }

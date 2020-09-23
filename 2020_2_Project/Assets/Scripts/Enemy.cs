@@ -42,6 +42,7 @@ public class Enemy : MonoBehaviour
             {
                 ScoreManager.instance.UpdateScore(score);
                 SpawnMonstersManager.instance.CatchMonster();
+                ObjectPoolingManager.instance.GetQueue_gold(transform.position);
                 gameObject.SetActive(false);
             }
         }

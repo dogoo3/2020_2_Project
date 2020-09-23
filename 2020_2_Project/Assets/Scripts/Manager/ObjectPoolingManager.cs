@@ -15,6 +15,7 @@ public class ObjectPoolingManager : MonoBehaviour
     public Bullet_AR ar;
     public Bullet_SG sg;
     public Bullet_Grenade grenade;
+    public Gold gold;
 
     // 임시 오브젝트
     private Bullet_Pistol _pistol;
@@ -23,14 +24,16 @@ public class ObjectPoolingManager : MonoBehaviour
     private Bullet_AR _ar;
     private Bullet_SG _sg;
     private Bullet_Grenade _grenade;
-    
+    private Gold _gold;
+
     // 저장 큐
-    public Queue<Bullet_Pistol> queue_pistol = new Queue<Bullet_Pistol>();
-    public Queue<Bullet_SMG> queue_smg = new Queue<Bullet_SMG>();
-    public Queue<Bullet_Sniper> queue_sniper = new Queue<Bullet_Sniper>();
-    public Queue<Bullet_AR> queue_ar = new Queue<Bullet_AR>();
-    public Queue<Bullet_SG> queue_sg = new Queue<Bullet_SG>();
-    public Queue<Bullet_Grenade> queue_grenade = new Queue<Bullet_Grenade>();
+    private Queue<Bullet_Pistol> queue_pistol = new Queue<Bullet_Pistol>();
+    private Queue<Bullet_SMG> queue_smg = new Queue<Bullet_SMG>();
+    private Queue<Bullet_Sniper> queue_sniper = new Queue<Bullet_Sniper>();
+    private Queue<Bullet_AR> queue_ar = new Queue<Bullet_AR>();
+    private Queue<Bullet_SG> queue_sg = new Queue<Bullet_SG>();
+    private Queue<Bullet_Grenade> queue_grenade = new Queue<Bullet_Grenade>();
+    private Queue<Gold> queue_gold = new Queue<Gold>();
 
     private void Awake()
     {
@@ -73,6 +76,12 @@ public class ObjectPoolingManager : MonoBehaviour
             _grenade.name = "grenade" + "(" + i.ToString() + ")";
             queue_grenade.Enqueue(_grenade);
             _grenade.gameObject.SetActive(false);
+
+            _gold = Instantiate(gold, Vector2.zero, Quaternion.identity);
+            _gold.transform.parent = gameObject.transform;
+            _gold.name = "gold" + "(" + i.ToString() + ")";
+            queue_gold.Enqueue(_gold);
+            _gold.gameObject.SetActive(false);
         }
     }
 
@@ -180,6 +189,24 @@ public class ObjectPoolingManager : MonoBehaviour
             _grenade.transform.position = _origin;
             _grenade.gameObject.SetActive(true);
             _grenade.Throw(_direction);
+        }
+    }
+    #endregion
+
+    #region gold
+    public void InsertQueue_gold(Gold _object)
+    {
+        queue_gold.Enqueue(_object);
+        _object.gameObject.SetActive(false);
+    }
+    public void GetQueue_gold(Vector2 _position)
+    {
+        if(queue_gold.Count != 0)
+        {
+            _gold = queue_gold.Dequeue();
+            _gold.transform.position = _position;
+            _gold.SetGoldValue(); // 골드의 범위는 Gold 스크립트에!
+            _gold.gameObject.SetActive(true);
         }
     }
     #endregion

@@ -65,9 +65,12 @@
     <Compile Include="Assets\ChoiceStage.cs" />
     <Compile Include="Assets\ControlActiveSound.cs" />
     <Compile Include="Assets\ControlEscape.cs" />
+    <Compile Include="Assets\GoldManager.cs" />
+    <Compile Include="Assets\GoldWindow.cs" />
     <Compile Include="Assets\InitScene.cs" />
     <Compile Include="Assets\Player.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Gold.cs" />
     <Compile Include="Assets\Scripts\IngameWindow\GameOverWindow.cs" />
     <Compile Include="Assets\Scripts\Manager\FileManager.cs" />
     <Compile Include="Assets\Scripts\Manager\GaugeManager.cs" />

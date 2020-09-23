@@ -66,10 +66,16 @@ public class GameOverWindow : MonoBehaviour
         TouchStageButton();
     }
 
-    public void TouchExitButton()
+    public void TouchExitButton(string _stage)
     {
         SceneManager.LoadScene("Title");
         SoundManager.instance.PlayBGM("TalesWeaver_Title");
+
+        if (_stage != "")
+        {
+            FileManager.stageClear[_stage] = true;
+            FileManager.WriteData("DB_bool_stageclear.csv", FileManager.stageClear);
+        }
     }
 
     private void TouchStageButton()
