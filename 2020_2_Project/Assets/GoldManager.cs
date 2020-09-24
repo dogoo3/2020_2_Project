@@ -11,6 +11,10 @@ public class GoldManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+    }
+
+    private void Start()
+    {
         // _myMoney = FileManager.playerInfo["gold"]; // 나중에 csv파일 만들면 적용
     }
 

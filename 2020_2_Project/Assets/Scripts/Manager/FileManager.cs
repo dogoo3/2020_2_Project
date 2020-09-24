@@ -13,7 +13,7 @@ using System.Text;
 
 public class FileManager : MonoBehaviour
 {
-    public static Dictionary<string, float> playerInfo = new Dictionary<string, float>();
+    public static Dictionary<string, int> playerInfo = new Dictionary<string, int>();
     public static Dictionary<string, bool> soundSetting = new Dictionary<string, bool>();
     public static Dictionary<string, bool> stageClear = new Dictionary<string, bool>();
 

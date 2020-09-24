@@ -92,6 +92,8 @@
     <Compile Include="Assets\SpawnMonstersPoint.cs" />
     <Compile Include="Assets\WindowManager.cs" />
     <None Include="Assets\SampleSprites\Blur\SettingWindowBlur.shader" />
+    <None Include="Assets\SampleSprites\3DGold\README.txt" />
+    <None Include="Assets\SampleSprites\3DGold\UnlitTransParentsShader.shader" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/2020_2_Project/2020_2_Project/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

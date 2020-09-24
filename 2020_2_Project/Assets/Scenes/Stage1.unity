@@ -1874,7 +1874,7 @@ MonoBehaviour:
   ar: {fileID: 3656618976391133450, guid: a6d115c8983714d40b68ec32bb6cb2e2, type: 3}
   sg: {fileID: 6559616511833513240, guid: 10605a6a894783a409e6618c9df76fc6, type: 3}
   grenade: {fileID: 6173058192675151989, guid: ad94109a8d641eb49a4f2e15f83f2ea5, type: 3}
-  gold: {fileID: 3255287338507476979, guid: 2cce97979ef52f243b1ca8d7c0603b2b, type: 3}
+  gold: {fileID: 2716453420790116908, guid: 964257750b9bf4e4a82a7e1422343d77, type: 3}
 --- !u!4 &232771780
 Transform:
   m_ObjectHideFlags: 0
@@ -2999,8 +2999,8 @@ RectTransform:
   - {fileID: 1611335359}
   - {fileID: 62203028}
   - {fileID: 1543349448}
-  - {fileID: 1452894848}
   - {fileID: 2034107215}
+  - {fileID: 1452894848}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6102,7 +6102,7 @@ RectTransform:
   - {fileID: 1081557808}
   - {fileID: 403102961}
   m_Father: {fileID: 737447259}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -8351,7 +8351,7 @@ RectTransform:
   m_Children:
   - {fileID: 2121440890}
   m_Father: {fileID: 737447259}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -9240,7 +9240,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: 0
 --- !u!222 &2121440892
 CanvasRenderer:
   m_ObjectHideFlags: 0
