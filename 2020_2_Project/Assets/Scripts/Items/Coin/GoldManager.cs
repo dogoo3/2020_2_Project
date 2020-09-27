@@ -20,24 +20,24 @@ public class GoldManager : MonoBehaviour
         _stageGetMoney = 0;
     }
 
-    public void GetCoin(int _value) // 코인을 얻었을 때
+    public void GetGold(int _value) // 코인을 얻었을 때
     {
         _roundGetMoney += _value;
         WriteGoldText(_roundGetMoney + _stageGetMoney);
     }
 
-    public void FailResetCoin() // 라운드 중 죽었을 때
+    public void FailResetGold() // 라운드 중 죽었을 때
     {
         _roundGetMoney = 0;
         WriteGoldText(_stageGetMoney);
     }
 
-    public void RoundClearCoin() // 라운드를 클리어했을 때
+    public void RoundClearGold() // 라운드를 클리어했을 때
     {
         _stageGetMoney += _roundGetMoney;
     }
 
-    public void AllClearCoin()
+    public void AllClearGold()
     {
         FileManager.playerInfo["gold"] += _stageGetMoney + _roundGetMoney;
         FileManager.WriteData("DB_int_player.csv", FileManager.playerInfo);

@@ -38,7 +38,7 @@ public class Gold : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            GoldManager.instance.GetCoin(_goldValue);
+            GoldManager.instance.GetGold(_goldValue);
             _collider2d.enabled = false;
             _isGet = true;
         }

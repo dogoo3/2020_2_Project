@@ -45,7 +45,7 @@ public class GameOverWindow : MonoBehaviour
         // 다음 라운드의 SpawnMonstersManager 활성화
         rounds[RoundManager.instance.nowRound].gameObject.SetActive(true);
         // 라운드 획득 골드 적립(내부에서 관리)
-        GoldManager.instance.RoundClearCoin();
+        GoldManager.instance.RoundClearGold();
         // 공통 속성 설정
         TouchStageButton();
     }
@@ -59,7 +59,7 @@ public class GameOverWindow : MonoBehaviour
         // 몬스터 풀 초기화
         SpawnMonstersManager.instance.ResetEnemyList();
         // 해당 라운드에 획득한 골드 초기화
-        GoldManager.instance.FailResetCoin();
+        GoldManager.instance.FailResetGold();
         // 아이템 스폰 포인트 초기화
         FarmingManager.instance.ResetRound();
         // 공통 속성 설정
@@ -72,9 +72,13 @@ public class GameOverWindow : MonoBehaviour
 
         if (_stage != "") // 3스테이지까지 완료했을 경우
         {
-            FileManager.stageClear[_stage] = true;
-            GoldManager.instance.AllClearCoin();
-            FileManager.WriteData("DB_bool_stageclear.csv", FileManager.stageClear);
+            if (!FileManager.stageClear[_stage]) // 아직 스테이지 클리어가 아닐 경우
+            {
+                FileManager.stageClear[_stage] = true; // 스테이지 클리어 처리를 하고
+                FileManager.playerInfo["skillpoint"]++; // 스킬포인트를 1 올려준다.
+                FileManager.WriteData("DB_bool_stageclear.csv", FileManager.stageClear); // 파일 갱신을 해준다.
+            }
+            GoldManager.instance.AllClearGold(); // 골드를 지급해준다. (스킬포인트도 여기서 같이 갱신해준다.)
         }
 
         // 할당 해제

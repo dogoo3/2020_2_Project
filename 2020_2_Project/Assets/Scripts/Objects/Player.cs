@@ -29,9 +29,9 @@ public class Player : MonoBehaviour
         _directionPos = Vector2.right;
 
         // 기본 능력치 설정
-        _hp = 100;
-        _shield = 100;
-        _speed = 4;
+        _hp = FileManager.playerInfo["hp"];
+        _shield = FileManager.playerInfo["shield"];
+        _speed = FileManager.playerInfo["speed"];
         _def = 10;
         _jump = 10;
         _jumpvalue.y = _jump;

@@ -1,34 +1,28 @@
 fileFormatVersion: 2
-guid: f11b23592d134ad46b8ca88245ab930c
+guid: 000f9e7c118dd644d8d2d67fc95cfbd3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7671309840380368398
-    second: Woman_Run_0
+      213: -5529231438030901389
+    second: Player_Dead_0
   - first:
-      213: 6027674717836631392
-    second: Woman_Run_1
+      213: 6218032439882275843
+    second: Player_Dead_1
   - first:
-      213: -5600220437755642223
-    second: Woman_Run_2
+      213: 6736401122079118152
+    second: Player_Dead_2
   - first:
-      213: 8602328994678046959
-    second: Woman_Run_3
+      213: 4590219750869751383
+    second: Player_Dead_3
   - first:
-      213: 4437870046282585125
-    second: Woman_Run_4
+      213: -2893020944959379324
+    second: Player_Dead_4
   - first:
-      213: -218753034790528977
-    second: Woman_Run_5
+      213: -2475452254751660232
+    second: Player_Dead_5
   - first:
-      213: 173387046599221458
-    second: Woman_Run_6
-  - first:
-      213: -1653766870540815050
-    second: Woman_Run_7
-  - first:
-      213: -6975404720990570328
-    second: Woman_Run_8
+      213: -3398842879529287369
+    second: Player_Dead_6
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -72,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -125,190 +119,148 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Woman_Run_0
+      name: Player_Dead_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 280
+        width: 270.14285
         height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f96b2238580a8590800000000000000
-      internalID: -7671309840380368398
+      spriteID: 37fee3f5d493443b0800000000000000
+      internalID: -5529231438030901389
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woman_Run_1
+      name: Player_Dead_1
       rect:
         serializedVersion: 2
-        x: 278
+        x: 270
         y: 0
-        width: 280
+        width: 270.14285
         height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06d514a483a96a350800000000000000
-      internalID: 6027674717836631392
+      spriteID: 30cd90d3f83ea4650800000000000000
+      internalID: 6218032439882275843
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woman_Run_2
+      name: Player_Dead_2
       rect:
         serializedVersion: 2
-        x: 560
+        x: 540
         y: 0
-        width: 280
+        width: 270.14285
         height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 19e31bfde250842b0800000000000000
-      internalID: -5600220437755642223
+      spriteID: 843911a21218c7d50800000000000000
+      internalID: 6736401122079118152
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woman_Run_3
+      name: Player_Dead_3
       rect:
         serializedVersion: 2
-        x: 840
+        x: 810
         y: 0
-        width: 280
+        width: 270.14285
         height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe004d0c4ac916770800000000000000
-      internalID: 8602328994678046959
+      spriteID: 756d29b1b8cb3bf30800000000000000
+      internalID: 4590219750869751383
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woman_Run_4
+      name: Player_Dead_4
       rect:
         serializedVersion: 2
-        x: 1120
+        x: 1080
         y: 0
-        width: 280
+        width: 270.14285
         height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52415045b4b769d30800000000000000
-      internalID: 4437870046282585125
+      spriteID: 4886ee747cce9d7d0800000000000000
+      internalID: -2893020944959379324
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woman_Run_5
+      name: Player_Dead_5
       rect:
         serializedVersion: 2
-        x: 1400
+        x: 1350
         y: 0
-        width: 280
+        width: 270.14285
         height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2895cb1645d6fcf0800000000000000
-      internalID: -218753034790528977
+      spriteID: 83766113a4d65add0800000000000000
+      internalID: -2475452254751660232
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woman_Run_6
+      name: Player_Dead_6
       rect:
         serializedVersion: 2
-        x: 1680
+        x: 1620
         y: 0
-        width: 280
+        width: 270.14285
         height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d06339a99ef76200800000000000000
-      internalID: 173387046599221458
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Woman_Run_7
-      rect:
-        serializedVersion: 2
-        x: 1960
-        y: 0
-        width: 280
-        height: 300
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 635fa141bc3ac09e0800000000000000
-      internalID: -1653766870540815050
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Woman_Run_8
-      rect:
-        serializedVersion: 2
-        x: 2298
-        y: 25
-        width: 146
-        height: 260
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8a836c01d52623f90800000000000000
-      internalID: -6975404720990570328
+      spriteID: 7318a4ea862e4d0d0800000000000000
+      internalID: -3398842879529287369
       vertices: []
       indices: 
       edges: []
