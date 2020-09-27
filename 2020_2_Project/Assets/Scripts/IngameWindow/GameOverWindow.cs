@@ -12,10 +12,6 @@ public class GameOverWindow : MonoBehaviour
     [SerializeField] private Transform[] roundStartPos;
 
     private Vector3[] _cameraPos;
-
-    public int[] round1_bulletCount;
-    public int[] round2_bulletCount;
-    public int[] round3_bulletCount;
     
     private void Awake()
     {
@@ -48,7 +44,8 @@ public class GameOverWindow : MonoBehaviour
         Camera.main.transform.position = _cameraPos[RoundManager.instance.nowRound];
         // 다음 라운드의 SpawnMonstersManager 활성화
         rounds[RoundManager.instance.nowRound].gameObject.SetActive(true);
-
+        // 라운드 획득 골드 적립(내부에서 관리)
+        GoldManager.instance.RoundClearCoin();
         // 공통 속성 설정
         TouchStageButton();
     }
@@ -61,47 +58,53 @@ public class GameOverWindow : MonoBehaviour
         Camera.main.transform.position = _cameraPos[RoundManager.instance.nowRound];
         // 몬스터 풀 초기화
         SpawnMonstersManager.instance.ResetEnemyList();
-
+        // 해당 라운드에 획득한 골드 초기화
+        GoldManager.instance.FailResetCoin();
+        // 아이템 스폰 포인트 초기화
+        FarmingManager.instance.ResetRound();
         // 공통 속성 설정
         TouchStageButton();
     }
 
     public void TouchExitButton(string _stage)
     {
-        SceneManager.LoadScene("Title");
         SoundManager.instance.PlayBGM("TalesWeaver_Title");
 
-        if (_stage != "")
+        if (_stage != "") // 3스테이지까지 완료했을 경우
         {
             FileManager.stageClear[_stage] = true;
+            GoldManager.instance.AllClearCoin();
             FileManager.WriteData("DB_bool_stageclear.csv", FileManager.stageClear);
         }
+
+        // 할당 해제
+        WeaponManager.instance = null;
+        ScoreManager.instance = null;
+        RoundManager.instance = null;
+        FarmingManager.instance = null;
+        GoldManager.instance = null;
+        Player.instance = null;
+        GaugeManager.instance = null;
+        ObjectPoolingManager.instance = null;
+        SpawnMonstersManager.instance = null;
+        WindowManager.instance = null;
+
+        SceneManager.LoadScene("Title");
     }
 
     private void TouchStageButton()
     {
-        // WeaponManager에서 무기 탄알 수 초기화하기
-        switch(RoundManager.instance.nowRound)
-        {
-            case 0:
-                WeaponManager.instance.SetCommand(round1_bulletCount);
-                break;
-            case 1:
-                WeaponManager.instance.SetCommand(round2_bulletCount);
-                break;
-            case 2:
-                WeaponManager.instance.SetCommand(round3_bulletCount);
-                break;
-        }
+        // WeaponManager에서 무기들의 탄알 수 0으로 만들기
+        WeaponManager.instance.ClearBullets();
         // HP / Shield 초기화(풀로 채우기)
         _player.ResetGauge();
-        // WeaponManager에서 이전 라운드 때 다 쓴 무기 활성화시키기
-        WeaponManager.instance.EnableWeapon();
         // ScoreManager의 score 0으로 초기화
         ScoreManager.instance.ResetScore();
         // 카운터 재시작 및 브금 일시중지
         RoundManager.instance.EnableAnimator();
         RoundManager.instance.StopBGM();
+        // 활성화된 아이템들을 모두 집어넣기
+        FarmingManager.instance.ClearItem();
         // 이 UI 없앰
         gameObject.SetActive(false);
     }

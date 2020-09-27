@@ -39,13 +39,13 @@ public class ControlActiveSound : MonoBehaviour
     {
         FileManager.soundSetting["bgmOn"] = _is;
         SoundManager.instance.SetIsplayBGM(_is);
-        FileManager.WriteData("DB_bool.csv", FileManager.soundSetting); // 불필요한 File 쓰기 방지
+        FileManager.WriteData("DB_bool_envset.csv", FileManager.soundSetting); // 불필요한 File 쓰기 방지
     }
     private void SwitchSFX(bool _is)
     {
         FileManager.soundSetting["sfxOn"] = _is;
         SoundManager.instance.SetIsplaySFX(_is);
-        FileManager.WriteData("DB_bool.csv", FileManager.soundSetting);
+        FileManager.WriteData("DB_bool_envset.csv", FileManager.soundSetting);
     }
 
     public void SwitchingBGM(bool _is)

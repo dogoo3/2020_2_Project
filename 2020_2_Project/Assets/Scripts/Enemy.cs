@@ -16,8 +16,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int score = default;
     [SerializeField] private int dropGold = default;
 
-    private Player _tempPlayer;
-
     private void Awake()
     {
         _rigidbody2d = GetComponent<Rigidbody2D>();
@@ -25,12 +23,8 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.name == "Character")
-        {
-            if (_tempPlayer == null)
-                _tempPlayer = collision.GetComponent<Player>();
-            _tempPlayer.Attacked(damage);
-        }
+        if(collision.CompareTag("Player"))
+            Player.instance.Attacked(damage);
     }
 
     public void MinusHP(float _hp)

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public static Player instance;
+
     private Rigidbody2D _rigidbody2d;
     private Animator _animator;
 
@@ -14,10 +16,12 @@ public class Player : MonoBehaviour
     private float _hp, _shield, _speed, _def, _jump;
     private float _maxhp, _maxshield;
 
-    public GameObject shieldsprite;
+    [SerializeField] private GameObject shieldsprite;
     
     private void Awake()
     {
+        instance = this;
+
         _rigidbody2d = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
 
@@ -115,6 +119,18 @@ public class Player : MonoBehaviour
         _hp -= _damage;
         GaugeManager.instance.SetHpGauge(_hp);
         CheckDead();
+    }
+
+    public void HealHP(float _healValue)
+    {
+        _hp = Mathf.Clamp(_hp + _healValue, 0, _maxhp);
+        GaugeManager.instance.SetHpGauge(_hp);
+    }
+
+    public void HealShield(float _healValue)
+    {
+        _shield = Mathf.Clamp(_shield + _healValue, 0, _maxshield);
+        GaugeManager.instance.SetShieldGauge(_shield);
     }
 
     private void CheckDead()

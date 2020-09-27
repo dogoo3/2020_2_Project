@@ -12,14 +12,14 @@ GameObject:
   - component: {fileID: 753504761269995387}
   - component: {fileID: 784513248360684499}
   - component: {fileID: 4547955357416433226}
-  - component: {fileID: 6519703814480469672}
+  - component: {fileID: 8004609223202219705}
   m_Layer: 8
   m_Name: Bullet_smg
   m_TagString: bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7169487372078499596
 Transform:
   m_ObjectHideFlags: 0
@@ -121,7 +121,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.12083103
---- !u!114 &6519703814480469672
+--- !u!114 &8004609223202219705
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5312036314925333735}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b657044f46b0c4941a20976fc9a3d669, type: 3}
+  m_Script: {fileID: 11500000, guid: 1570053344f22fc4d83b54b30401eff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10

@@ -227,8 +227,9 @@ GameObject:
   m_Component:
   - component: {fileID: 15936235}
   - component: {fileID: 15936234}
+  - component: {fileID: 15936236}
   m_Layer: 0
-  m_Name: R3_Monsters
+  m_Name: R3_Monsters_Farming
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -267,9 +268,28 @@ Transform:
   m_Children:
   - {fileID: 2085264596}
   - {fileID: 1030687641}
+  - {fileID: 522465405}
+  - {fileID: 1180376526}
+  - {fileID: 890735570}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &15936236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15936233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 499ff176d36a23c48970bf7988260778, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _farmingPos:
+  - {fileID: 522465404}
+  - {fileID: 1180376525}
+  - {fileID: 890735569}
 --- !u!1 &28932315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1185,7 +1205,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &90735755
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1783,7 +1803,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &229585357
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1868,13 +1888,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2587837f46e57c74f8d2e0e6ee5c32bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pistol: {fileID: 582559589832560841, guid: 42a005946979a04469e57765f069e95d, type: 3}
-  smg: {fileID: 6519703814480469672, guid: d1ef662784647ed47a882f146d560ea3, type: 3}
-  sniper: {fileID: 4969443847920112794, guid: 53b82a898f712e946990196a752d1a83, type: 3}
+  pistol: {fileID: 1741306100267057047, guid: 42a005946979a04469e57765f069e95d, type: 3}
+  smg: {fileID: 8004609223202219705, guid: d1ef662784647ed47a882f146d560ea3, type: 3}
+  sniper: {fileID: 3279792803026851161, guid: 53b82a898f712e946990196a752d1a83, type: 3}
   ar: {fileID: 3656618976391133450, guid: a6d115c8983714d40b68ec32bb6cb2e2, type: 3}
-  sg: {fileID: 6559616511833513240, guid: 10605a6a894783a409e6618c9df76fc6, type: 3}
-  grenade: {fileID: 6173058192675151989, guid: ad94109a8d641eb49a4f2e15f83f2ea5, type: 3}
+  sg: {fileID: 5511088004983176968, guid: 10605a6a894783a409e6618c9df76fc6, type: 3}
+  grenade: {fileID: 3683515132070865705, guid: ad94109a8d641eb49a4f2e15f83f2ea5, type: 3}
   gold: {fileID: 2716453420790116908, guid: 964257750b9bf4e4a82a7e1422343d77, type: 3}
+  farm_pistol: {fileID: 7185871511521486326, guid: 90fd7914121ff184db8587b8cfe815c6,
+    type: 3}
+  farm_smg: {fileID: 8317424594020236385, guid: f00de51c3fbbe724a894dd0872284a1a,
+    type: 3}
+  farm_sniper: {fileID: 3212745385626647691, guid: 6569289c161cf82449257ee9e542f620,
+    type: 3}
+  farm_ar: {fileID: 8697524905035653934, guid: 1d2b4d524f470b74aa19ffbc97324ae4, type: 3}
+  farm_sg: {fileID: 8178092213089617018, guid: ae15927f1de1ad44981c1e5c8a49347d, type: 3}
+  farm_grenade: {fileID: 1039419830157263043, guid: cd96215b217ebcd4a8caa45f0d2d0a13,
+    type: 3}
+  farm_hp: {fileID: 2475095505785749230, guid: 1285f8e5c7b520f4b90c314216c56166, type: 3}
+  farm_shield: {fileID: 8284030478538987048, guid: 33b31558ac81a0341ae6b5df04aaf3a6,
+    type: 3}
 --- !u!4 &232771780
 Transform:
   m_ObjectHideFlags: 0
@@ -1889,6 +1922,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &300864306
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 300864308}
+  - component: {fileID: 300864307}
+  m_Layer: 0
+  m_Name: FarmingPoint (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &300864307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300864306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eabb073387f6aa6469501bf8b10e6109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &300864308
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300864306}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.43, y: -1.66, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1580899729}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &336795753
 GameObject:
   m_ObjectHideFlags: 0
@@ -1902,7 +1978,7 @@ GameObject:
   - component: {fileID: 336795756}
   - component: {fileID: 336795755}
   m_Layer: 5
-  m_Name: Weapon (0)
+  m_Name: Weapon_Pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2317,9 +2393,6 @@ MonoBehaviour:
   _player: {fileID: 0}
   rounds: []
   roundStartPos: []
-  round1_bulletCount: 
-  round2_bulletCount: 
-  round3_bulletCount: 
 --- !u!114 &403102963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2432,6 +2505,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 415418973}
   m_CullTransparentMesh: 0
+--- !u!1 &438693367
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 438693369}
+  - component: {fileID: 438693368}
+  m_Layer: 0
+  m_Name: FarmingPoint (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &438693368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438693367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eabb073387f6aa6469501bf8b10e6109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &438693369
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438693367}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.67, y: -0.73, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1580899729}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &454792899
 GameObject:
   m_ObjectHideFlags: 0
@@ -2505,6 +2621,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 454792899}
   m_CullTransparentMesh: 0
+--- !u!1 &463922652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 463922653}
+  - component: {fileID: 463922654}
+  m_Layer: 0
+  m_Name: FarmingPoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &463922653
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463922652}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.48, y: -0.9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1831801930}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &463922654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463922652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eabb073387f6aa6469501bf8b10e6109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &471293263
 GameObject:
   m_ObjectHideFlags: 0
@@ -2671,6 +2830,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shieldsprite: {fileID: 1334530993}
+--- !u!1 &522465403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 522465405}
+  - component: {fileID: 522465404}
+  m_Layer: 0
+  m_Name: FarmingPoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &522465404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522465403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eabb073387f6aa6469501bf8b10e6109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &522465405
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522465403}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.34, y: 2.24, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 15936235}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &548915697
 GameObject:
   m_ObjectHideFlags: 0
@@ -3022,7 +3224,7 @@ GameObject:
   - component: {fileID: 738141278}
   - component: {fileID: 738141277}
   m_Layer: 5
-  m_Name: Weapon (3)
+  m_Name: Weapon_AR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3246,7 +3448,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &762911488
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3302,6 +3504,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 762911487}
   m_CullTransparentMesh: 0
+--- !u!1 &774978319
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 774978321}
+  - component: {fileID: 774978320}
+  m_Layer: 0
+  m_Name: FarmingPoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &774978320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774978319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eabb073387f6aa6469501bf8b10e6109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &774978321
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774978319}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.02, y: -1.92, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1580899729}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &810487241
 GameObject:
   m_ObjectHideFlags: 0
@@ -3761,6 +4006,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 887348228}
   m_CullTransparentMesh: 0
+--- !u!1 &890735568
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 890735570}
+  - component: {fileID: 890735569}
+  m_Layer: 0
+  m_Name: FarmingPoint (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &890735569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890735568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eabb073387f6aa6469501bf8b10e6109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &890735570
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890735568}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.13, y: -1.66, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 15936235}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &899377287
 GameObject:
   m_ObjectHideFlags: 0
@@ -3947,7 +4235,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &955447177
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4668,9 +4956,6 @@ MonoBehaviour:
   - {fileID: 99976134}
   - {fileID: 1202179237}
   - {fileID: 873584074}
-  round1_bulletCount: 64000000320000000a0000002c0100001e00000001000000
-  round2_bulletCount: 0a0000000a0000000a0000000a0000000a00000002000000
-  round3_bulletCount: 140000001400000014000000140000001400000003000000
 --- !u!114 &1081557810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4720,7 +5005,7 @@ GameObject:
   - component: {fileID: 1093831408}
   - component: {fileID: 1093831407}
   m_Layer: 5
-  m_Name: Weapon (4)
+  m_Name: Weapon_SG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5111,9 +5396,6 @@ MonoBehaviour:
   - {fileID: 99976134}
   - {fileID: 1202179237}
   - {fileID: 873584074}
-  round1_bulletCount: 64000000320000000a0000002c0100001e00000001000000
-  round2_bulletCount: 0a0000000a0000000a0000000a0000000a00000002000000
-  round3_bulletCount: 140000001400000014000000140000001400000003000000
 --- !u!1 &1173427641
 GameObject:
   m_ObjectHideFlags: 0
@@ -5127,7 +5409,7 @@ GameObject:
   - component: {fileID: 1173427644}
   - component: {fileID: 1173427643}
   m_Layer: 5
-  m_Name: Weapon (1)
+  m_Name: Weapon_SMG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5206,6 +5488,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1173427641}
   m_CullTransparentMesh: 0
+--- !u!1 &1180376524
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1180376526}
+  - component: {fileID: 1180376525}
+  m_Layer: 0
+  m_Name: FarmingPoint (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1180376525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180376524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eabb073387f6aa6469501bf8b10e6109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1180376526
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180376524}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.33, y: -1.69, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 15936235}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1196453096
 GameObject:
   m_ObjectHideFlags: 0
@@ -5678,6 +6003,49 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1271997881}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1272651177
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1272651178}
+  - component: {fileID: 1272651179}
+  m_Layer: 0
+  m_Name: FarmingPoint (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1272651178
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272651177}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.6, y: -1.54, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1831801930}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1272651179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272651177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eabb073387f6aa6469501bf8b10e6109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1285043091
 GameObject:
   m_ObjectHideFlags: 0
@@ -6220,6 +6588,49 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1518602585
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1518602587}
+  - component: {fileID: 1518602586}
+  m_Layer: 0
+  m_Name: FarmingPoint (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1518602586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518602585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eabb073387f6aa6469501bf8b10e6109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1518602587
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518602585}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.35, y: -1.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1580899729}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1520484882
 GameObject:
   m_ObjectHideFlags: 0
@@ -6630,8 +7041,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1580899729}
   - component: {fileID: 1580899728}
+  - component: {fileID: 1580899730}
   m_Layer: 0
-  m_Name: R2_Monsters
+  m_Name: R2_Monsters&Farming
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6670,9 +7082,30 @@ Transform:
   m_Children:
   - {fileID: 1271997883}
   - {fileID: 2142440717}
+  - {fileID: 774978321}
+  - {fileID: 1518602587}
+  - {fileID: 438693369}
+  - {fileID: 300864308}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1580899730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580899727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 499ff176d36a23c48970bf7988260778, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _farmingPos:
+  - {fileID: 774978320}
+  - {fileID: 1518602586}
+  - {fileID: 438693368}
+  - {fileID: 300864307}
 --- !u!1 &1609785882
 GameObject:
   m_ObjectHideFlags: 0
@@ -6843,32 +7276,32 @@ MonoBehaviour:
   pistol:
     text_bulletcount: {fileID: 1207707164}
     weaponNum: 0
-    bulletCount: 100
+    bulletCount: 0
     coolTime: 1
   smg:
     text_bulletcount: {fileID: 1823458634}
     weaponNum: 1
-    bulletCount: 50
+    bulletCount: 0
     coolTime: 1
   sniper:
     text_bulletcount: {fileID: 1296321237}
     weaponNum: 2
-    bulletCount: 10
+    bulletCount: 0
     coolTime: 3
   ar:
     text_bulletcount: {fileID: 1000782881}
     weaponNum: 3
-    bulletCount: 300
+    bulletCount: 0
     coolTime: 0.5
   sg:
     text_bulletcount: {fileID: 548915699}
     weaponNum: 4
-    bulletCount: 30
+    bulletCount: 0
     coolTime: 2
   grenade:
     text_bulletcount: {fileID: 78613387}
     weaponNum: 5
-    bulletCount: 1
+    bulletCount: 0
     coolTime: 3
 --- !u!1 &1614286901
 GameObject:
@@ -7230,7 +7663,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1663266734
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7286,6 +7719,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1663266733}
   m_CullTransparentMesh: 0
+--- !u!1 &1683408782
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1683408783}
+  - component: {fileID: 1683408784}
+  m_Layer: 0
+  m_Name: FarmingPoint (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1683408783
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683408782}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7.38, y: 2.14, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1831801930}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1683408784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683408782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eabb073387f6aa6469501bf8b10e6109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1705721386
 GameObject:
   m_ObjectHideFlags: 0
@@ -7705,8 +8181,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1831801930}
   - component: {fileID: 1831801931}
+  - component: {fileID: 1831801932}
   m_Layer: 0
-  m_Name: R1_Monsters
+  m_Name: R1_Monsters&Farming
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7725,6 +8202,9 @@ Transform:
   m_Children:
   - {fileID: 931264818}
   - {fileID: 988646884}
+  - {fileID: 463922653}
+  - {fileID: 1683408783}
+  - {fileID: 1272651178}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7748,6 +8228,22 @@ MonoBehaviour:
   enemy:
   - {fileID: 931264817}
   - {fileID: 988646883}
+--- !u!114 &1831801932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831801929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 499ff176d36a23c48970bf7988260778, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _farmingPos:
+  - {fileID: 463922654}
+  - {fileID: 1683408784}
+  - {fileID: 1272651179}
 --- !u!1 &1861345649
 GameObject:
   m_ObjectHideFlags: 0
@@ -7761,7 +8257,7 @@ GameObject:
   - component: {fileID: 1861345652}
   - component: {fileID: 1861345651}
   m_Layer: 5
-  m_Name: Weapon (2)
+  m_Name: Weapon_Sniper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8061,7 +8557,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1912997670
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8689,7 +9185,7 @@ GameObject:
   - component: {fileID: 2068939988}
   - component: {fileID: 2068939987}
   m_Layer: 5
-  m_Name: Weapon (5)
+  m_Name: Weapon_Grenade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -12,14 +12,14 @@ GameObject:
   - component: {fileID: 4708367692861806319}
   - component: {fileID: 1232989563253532677}
   - component: {fileID: 6560491117313568009}
-  - component: {fileID: 6173058192675151989}
+  - component: {fileID: 3683515132070865705}
   m_Layer: 8
   m_Name: Bullet_grenade
   m_TagString: bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2165775540268013249
 Transform:
   m_ObjectHideFlags: 0
@@ -121,7 +121,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.12083103
---- !u!114 &6173058192675151989
+--- !u!114 &3683515132070865705
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7526835714605239110}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea6fd994abf7afc4f813bddf008d2282, type: 3}
+  m_Script: {fileID: 11500000, guid: efa66292cd5a7c74b925bf4daf22f631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 200

@@ -38,6 +38,7 @@ public class RoundManager : MonoBehaviour
     {
         SoundManager.instance.PlayBGM(bgmname);
         SpawnMonstersManager.instance.GameStart();
+        FarmingManager.instance.GameStart();
     }
 
     public void PlayBeepSound() // Animator Func

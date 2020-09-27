@@ -16,20 +16,22 @@ public class FileManager : MonoBehaviour
     public static Dictionary<string, int> playerInfo = new Dictionary<string, int>();
     public static Dictionary<string, bool> soundSetting = new Dictionary<string, bool>();
     public static Dictionary<string, bool> stageClear = new Dictionary<string, bool>();
+    public static Dictionary<string, bool> weaponembago = new Dictionary<string, bool>();
+
 
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
-        ReadData("DB_player.csv", playerInfo);
-        ReadData("DB_bool.csv", soundSetting);
+        ReadData("DB_int_player.csv", playerInfo);
+        ReadData("DB_bool_envset.csv", soundSetting);
         ReadData("DB_bool_stageclear.csv", stageClear);
-        WriteData("DB_bool_stageclear.csv", stageClear);
+        ReadData("DB_bool_weaponembago.csv", weaponembago);
     }
 
-    private void OnApplicationQuit()
-    {
-        WriteData("DB_player.csv", playerInfo);
-    }
+    //private void OnApplicationQuit()
+    //{
+    //    WriteData("DB_player.csv", playerInfo);
+    //}
 
     public void ReadData(string _filename, Dictionary<string,float> _readDic)
     {

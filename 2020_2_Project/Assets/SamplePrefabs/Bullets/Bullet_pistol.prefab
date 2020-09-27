@@ -12,14 +12,14 @@ GameObject:
   - component: {fileID: 7280654760766248610}
   - component: {fileID: 9173700397393803869}
   - component: {fileID: 224253127374421056}
-  - component: {fileID: 582559589832560841}
+  - component: {fileID: 1741306100267057047}
   m_Layer: 8
   m_Name: Bullet_pistol
   m_TagString: bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2272476168249082044
 Transform:
   m_ObjectHideFlags: 0
@@ -121,7 +121,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.12083103
---- !u!114 &582559589832560841
+--- !u!114 &1741306100267057047
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2325717650840918173}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70b80c0fa675838478e3772e2fa89732, type: 3}
+  m_Script: {fileID: 11500000, guid: 64b929ec0b0e53c4a9afdeb0205cd13a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
