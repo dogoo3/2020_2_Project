@@ -762,10 +762,9 @@ GameObject:
   - component: {fileID: 62203030}
   - component: {fileID: 62203029}
   - component: {fileID: 62203033}
-  - component: {fileID: 62203032}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: StartRound
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -844,36 +843,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 62203027}
   m_CullTransparentMesh: 0
---- !u!60 &62203032
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 62203027}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0, y: 1}
-      - {x: -0.95105654, y: 0.30901697}
-      - {x: -0.5877852, y: -0.80901706}
-      - {x: 0.58778536, y: -0.80901694}
-      - {x: 0.9510565, y: 0.30901712}
 --- !u!114 &62203033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -888,9 +857,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rounds:
   - {fileID: 1831801931}
-  - {fileID: 0}
-  - {fileID: 0}
-  roundStartPos: []
+  - {fileID: 1591563937}
+  - {fileID: 167143997}
+  roundStartPos:
+  - {fileID: 599403523}
+  - {fileID: 876019109}
+  - {fileID: 86636976}
+  cameraCollider:
+  - {fileID: 1831801933}
+  - {fileID: 1591563935}
+  - {fileID: 167143995}
+  cinemachineConfiner: {fileID: 1883541252}
   bgmname: Raidia
   nowRound: 0
 --- !u!1 &66205414
@@ -1161,7 +1138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 86636976}
   m_Layer: 0
-  m_Name: R1_StartPos
+  m_Name: R3_StartPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1306,7 +1283,7 @@ GameObject:
   - component: {fileID: 123063387}
   - component: {fileID: 123063386}
   m_Layer: 0
-  m_Name: R1_SpawnPoint (2)
+  m_Name: R3_SpawnPoint (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1520,6 +1497,7 @@ MonoBehaviour:
   - {fileID: 510005713}
   - {fileID: 1443335514}
   - {fileID: 1878662182}
+  _nowactiveItem: []
 --- !u!114 &167143997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2025,7 +2003,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nonUseWeaponSignal: {fileID: 955447176}
   selectWeaponSignal: {fileID: 66205415}
-  weaponNum: 0
+  weaponName: 0
 --- !u!114 &336795756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2248,7 +2226,7 @@ GameObject:
   - component: {fileID: 393994815}
   - component: {fileID: 393994814}
   m_Layer: 0
-  m_Name: stage1_background
+  m_Name: R2_background
   m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2539,7 +2517,7 @@ GameObject:
   - component: {fileID: 429474631}
   - component: {fileID: 429474630}
   m_Layer: 0
-  m_Name: R1_SpawnPoint (1)
+  m_Name: R3_SpawnPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3053,7 +3031,7 @@ GameObject:
   - component: {fileID: 520788877}
   - component: {fileID: 520788876}
   m_Layer: 0
-  m_Name: R1_SpawnPoint (2)
+  m_Name: R2_SpawnPoint (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3408,9 +3386,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1798430753
+  m_SortingLayer: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3434,7 +3412,7 @@ GameObject:
   - component: {fileID: 618417117}
   - component: {fileID: 618417116}
   m_Layer: 0
-  m_Name: R1_SpawnPoint (3)
+  m_Name: R2_SpawnPoint (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3726,7 +3704,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nonUseWeaponSignal: {fileID: 229585356}
   selectWeaponSignal: {fileID: 66205415}
-  weaponNum: 3
+  weaponName: 3
 --- !u!114 &738141278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4466,7 +4444,7 @@ GameObject:
   m_Component:
   - component: {fileID: 876019109}
   m_Layer: 0
-  m_Name: R1_StartPos
+  m_Name: R2_StartPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4691,6 +4669,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 899377287}
   m_CullTransparentMesh: 1
+--- !u!1 &921125465
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 921125466}
+  m_Layer: 9
+  m_Name: GunMuzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &921125466
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921125465}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1628016224}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &931264816
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4868,7 +4876,7 @@ GameObject:
   - component: {fileID: 971283680}
   - component: {fileID: 971283679}
   m_Layer: 0
-  m_Name: R1_SpawnPoint
+  m_Name: R3_SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5553,7 +5561,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nonUseWeaponSignal: {fileID: 1663266733}
   selectWeaponSignal: {fileID: 66205415}
-  weaponNum: 4
+  weaponName: 4
 --- !u!114 &1093831408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5840,7 +5848,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nonUseWeaponSignal: {fileID: 1912997669}
   selectWeaponSignal: {fileID: 66205415}
-  weaponNum: 1
+  weaponName: 1
 --- !u!114 &1173427644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6685,7 +6693,7 @@ GameObject:
   - component: {fileID: 1383704254}
   - component: {fileID: 1383704253}
   m_Layer: 0
-  m_Name: R1_SpawnPoint
+  m_Name: R2_SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7243,7 +7251,7 @@ GameObject:
   - component: {fileID: 1571148858}
   - component: {fileID: 1571148857}
   m_Layer: 0
-  m_Name: stage1_background
+  m_Name: R3_background
   m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7530,6 +7538,7 @@ MonoBehaviour:
   - {fileID: 1087083281}
   - {fileID: 459496650}
   - {fileID: 1486266673}
+  _nowactiveItem: []
 --- !u!114 &1591563937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7963,6 +7972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shieldsprite: {fileID: 601502062}
+  muzzleGunPos: {fileID: 921125466}
 --- !u!95 &1628016220
 Animator:
   serializedVersion: 3
@@ -8092,6 +8102,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 601502063}
+  - {fileID: 921125466}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8180,7 +8191,7 @@ GameObject:
   - component: {fileID: 1638904106}
   - component: {fileID: 1638904105}
   m_Layer: 0
-  m_Name: R1_SpawnPoint (1)
+  m_Name: R2_SpawnPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8767,6 +8778,7 @@ MonoBehaviour:
   - {fileID: 463922654}
   - {fileID: 1683408784}
   - {fileID: 1272651179}
+  _nowactiveItem: []
 --- !u!60 &1831801933
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -8850,7 +8862,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nonUseWeaponSignal: {fileID: 762911487}
   selectWeaponSignal: {fileID: 66205415}
-  weaponNum: 2
+  weaponName: 2
 --- !u!114 &1861345652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9830,7 +9842,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nonUseWeaponSignal: {fileID: 90735754}
   selectWeaponSignal: {fileID: 66205415}
-  weaponNum: 5
+  weaponName: 5
 --- !u!114 &2068939988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9880,7 +9892,7 @@ GameObject:
   - component: {fileID: 2069178198}
   - component: {fileID: 2069178197}
   m_Layer: 0
-  m_Name: R1_SpawnPoint (3)
+  m_Name: R3_SpawnPoint (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10032,8 +10044,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -416080765
-  m_SortingLayer: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d18fd901dbd22d84b8430cb25bc38a3b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

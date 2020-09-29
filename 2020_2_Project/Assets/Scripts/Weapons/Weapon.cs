@@ -19,9 +19,16 @@ public class Weapon
 
     public virtual void Shoot(Vector2 _origin, Vector2 _direction) { }
     public virtual void Supply(int _plusBulletCount) { }
+
     public void Init()
     {
         text_bulletcount.text = "(" + bulletCount.ToString() + ")";
+    }
+
+    protected void SpendBullet()
+    {
+        bulletCount--;
+        Init();
     }
 
     public bool IsShootWeapon()
@@ -30,8 +37,8 @@ public class Weapon
         {
             if (isShot) // 쿨타임이 경과했는가?
             {
-                isShot = false; // 쿨타임 상태로 전환한다
-                return true;
+                isShot = false; // 쿨타임 상태로 전환한 다음
+                return true; // true를 반환하면 총을 발사한다. (자식클래스 참조. if문의 반환bool 함수이기 때문에 쿨타임 시작되자마자 총알을 발사하기 때문)
             }
             else
                 return false;
@@ -58,12 +65,8 @@ public class Pistol : Weapon // 권총
 {
     public override void Shoot(Vector2 _origin, Vector2 _direction)
     {
-        if (IsShootWeapon())
-        {
-            ObjectPoolingManager.instance.GetQueue_pistol(_origin, _direction);      
-            bulletCount--;
-            text_bulletcount.text = "(" + bulletCount.ToString() + ")";
-        }
+        ObjectPoolingManager.instance.GetQueue_pistol(_origin, _direction);
+        SpendBullet();
     }
 
     public override void Supply(int _plusBulletCount)
@@ -77,12 +80,8 @@ public class SMG : Weapon // 소총
 {
     public override void Shoot(Vector2 _origin, Vector2 _direction)
     {
-        if (IsShootWeapon())
-        {
-            ObjectPoolingManager.instance.GetQueue_smg(_origin, _direction);    
-            bulletCount--;
-            text_bulletcount.text = "(" + bulletCount.ToString() + ")";
-        }
+        ObjectPoolingManager.instance.GetQueue_smg(_origin, _direction);
+        SpendBullet();
     }
 
     public override void Supply(int _plusBulletCount)
@@ -96,12 +95,8 @@ public class Sniper : Weapon // 저격소총
 {
     public override void Shoot(Vector2 _origin, Vector2 _direction)
     {
-        if (IsShootWeapon())
-        {
-            ObjectPoolingManager.instance.GetQueue_sniper(_origin, _direction);     
-            bulletCount--;
-            text_bulletcount.text = "(" + bulletCount.ToString() + ")";
-        }
+        ObjectPoolingManager.instance.GetQueue_sniper(_origin, _direction);
+        SpendBullet();
     }
 
     public override void Supply(int _plusBulletCount)
@@ -115,12 +110,8 @@ public class AR : Weapon // 기관단총
 {
     public override void Shoot(Vector2 _origin, Vector2 _direction)
     {
-        if (IsShootWeapon())
-        {
-            ObjectPoolingManager.instance.GetQueue_ar(_origin, _direction);      
-            bulletCount--;
-            text_bulletcount.text = "(" + bulletCount.ToString() + ")";
-        }
+        ObjectPoolingManager.instance.GetQueue_ar(_origin, _direction);
+        SpendBullet();
     }
 
     public override void Supply(int _plusBulletCount)
@@ -138,29 +129,25 @@ public class SG : Weapon // 샷건
     public int line = 7;
     public override void Shoot(Vector2 _origin, Vector2 _direction)
     {
-        if (IsShootWeapon())
+        if (_direction.y == 0) // 좌 / 우 시점일 때
         {
-            if (_direction.y == 0) // 좌 / 우 시점일 때
+            for (i = 0; i < line; i++)
             {
-                for (i = 0; i < line; i++)
-                {
-                    dir_bullet.x = Mathf.Cos((angle * 0.5f - (angle / (line - 1)) * i) * Mathf.Deg2Rad) * _direction.x;
-                    dir_bullet.y = Mathf.Sin((angle * 0.5f - (angle / (line - 1)) * i) * Mathf.Deg2Rad);
-                    ObjectPoolingManager.instance.GetQueue_sg(_origin, dir_bullet);
-                }
+                dir_bullet.x = Mathf.Cos((angle * 0.5f - (angle / (line - 1)) * i) * Mathf.Deg2Rad) * _direction.x;
+                dir_bullet.y = Mathf.Sin((angle * 0.5f - (angle / (line - 1)) * i) * Mathf.Deg2Rad);
+                ObjectPoolingManager.instance.GetQueue_sg(_origin, dir_bullet);
             }
-            else // 위를 바라보고 있을 때 
-            {
-                for (i = 0; i < line; i++)
-                {
-                    dir_bullet.x = Mathf.Cos((angle * 0.5f + (angle / (line - 1)) * i) * Mathf.Deg2Rad);
-                    dir_bullet.y = Mathf.Sin((angle * 0.5f + (angle / (line - 1)) * i) * Mathf.Deg2Rad);
-                    ObjectPoolingManager.instance.GetQueue_sg(_origin, dir_bullet);
-                }
-            }
-            bulletCount--;
-            text_bulletcount.text = "(" + bulletCount.ToString() + ")";
         }
+        else // 위를 바라보고 있을 때 
+        {
+            for (i = 0; i < line; i++)
+            {
+                dir_bullet.x = Mathf.Cos((angle * 0.5f + (angle / (line - 1)) * i) * Mathf.Deg2Rad);
+                dir_bullet.y = Mathf.Sin((angle * 0.5f + (angle / (line - 1)) * i) * Mathf.Deg2Rad);
+                ObjectPoolingManager.instance.GetQueue_sg(_origin, dir_bullet);
+            }
+        }
+        SpendBullet();
     }
 
     public override void Supply(int _plusBulletCount)
@@ -174,12 +161,8 @@ public class Grenade : Weapon // 수류탄
 {
     public override void Shoot(Vector2 _origin, Vector2 _direction)
     {
-        if (IsShootWeapon())
-        {
-            ObjectPoolingManager.instance.GetQueue_grenade(_origin, _direction);       
-            bulletCount--;
-            text_bulletcount.text = "(" + bulletCount.ToString() + ")";
-        }
+        ObjectPoolingManager.instance.GetQueue_grenade(_origin, _direction);
+        SpendBullet();
     }
 
     public override void Supply(int _plusBulletCount)

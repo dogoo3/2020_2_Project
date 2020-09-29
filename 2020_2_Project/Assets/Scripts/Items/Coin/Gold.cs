@@ -30,6 +30,8 @@ public class Gold : MonoBehaviour
         _coloralpha.a = 1; // 다시 보여야 하기 때문에 알파값 1로 설정
         _isGet = false; // 획득 설정 초기화
         meshRenderer.material.color = _coloralpha; // 머터리얼의 색상 설정 변경
+        meshRenderer.sortingLayerName = "Object";
+        meshRenderer.sortingOrder = 2;
         Invoke("EnableCollider", 1.0f); // 1초뒤 활성화
         _collider2d.enabled = false; // 콜라이더 꺼 줌
     }

@@ -22,7 +22,7 @@ public class FarmingItem : MonoBehaviour
     private Collider2D _collider2d;
 
     private Item _item;
-    private FarmingPoint _mySpawnPoint;
+    public FarmingPoint _mySpawnPoint;
 
     private int _itemId;
     public int supplyValue;
@@ -111,7 +111,7 @@ public class FarmingItem : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             _mySpawnPoint.GetItem();
-            _item.Supply();
+            _item.Supply(); // 아이템 공급
             InsertQueue();
             _collider2d.enabled = false;
             FarmingManager.instance.OutputItem(this);

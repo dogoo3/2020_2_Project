@@ -17,7 +17,8 @@ public class Player : MonoBehaviour
     private float _maxhp, _maxshield;
 
     [SerializeField] private GameObject shieldsprite;
-    
+    [SerializeField] private Transform muzzleGunPos;
+
     private void Awake()
     {
         instance = this;
@@ -76,7 +77,7 @@ public class Player : MonoBehaviour
     {
         if (!_isjump)
         {
-            _animator.SetTrigger("jump");
+            _animator.SetBool("jump", true);
             _rigidbody2d.velocity = _jumpvalue;
             _isjump = true;
         }
@@ -102,9 +103,26 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void Shoot()
+    public void Shoot() // 버튼을 누르면 작동하는 함수
     {
-        WeaponManager.instance.Shoot(transform.position, _directionPos);
+        // 탄환 유무 체크 -> 그 탄환의 쿨타임 체크
+        if (WeaponManager.instance.IsShootWeapon())
+        {
+            switch(WeaponManager.instance.GetSelectWeapon())
+            {
+                case WeaponName.grenade:
+                    _animator.SetTrigger("throw");
+                    break;
+                default:
+                    _animator.SetTrigger("shoot");
+                    break;
+            }
+        }
+    }
+
+    public void ShootMotion() // 발사 버튼을 누르고 난 뒤 애니메이션 프레임에서 작동하는 함수
+    {
+        WeaponManager.instance.Shoot(muzzleGunPos.position, _directionPos);
     }
 
     public void ResetGauge()
@@ -160,7 +178,10 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("ground"))
+        if (collision.gameObject.CompareTag("ground"))
+        {
+            _animator.SetBool("jump", false);
             _isjump = false;
+        }
     }
 }

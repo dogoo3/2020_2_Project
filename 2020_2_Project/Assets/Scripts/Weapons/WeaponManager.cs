@@ -78,6 +78,11 @@ public class WeaponManager : MonoBehaviour
         _paste.coolTime = _copy.coolTime;
     }
 
+    public WeaponName GetSelectWeapon()
+    {
+        return selectWeapon;
+    }
+
     public void ChangeSelectWeapon(WeaponName _weaponname)
     {
         selectWeapon = _weaponname;
@@ -102,5 +107,18 @@ public class WeaponManager : MonoBehaviour
         // 무기들의 쿨타임 계산
         for (i = 0; i < _weapons.Length; i++)
             _weapons[i].LoadingCooltime();
+    }
+
+    public bool IsShootWeapon() // 총알을 발사할 수 있는지를 판단하는 함수. 
+    {
+        if (_weapons[(int)selectWeapon].bulletCount == 0) // 총알이 한 발도 없으면 false 반환
+            return false;
+        else
+        {
+            if (_weapons[(int)selectWeapon].IsShootWeapon()) // true이면 총알을 발사한다.
+                return true;
+            else
+                return false;
+        }
     }
 }

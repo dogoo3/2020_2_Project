@@ -4,37 +4,37 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 6928391225410331513
-    second: Sample_Countdown_0
+    second: 5
   - first:
       213: -1262343001391288684
-    second: Sample_Countdown_1
+    second: 4
   - first:
       213: -7719307874882761894
-    second: Sample_Countdown_2
+    second: 3
   - first:
       213: 861643421698290154
-    second: Sample_Countdown_3
+    second: 2
   - first:
       213: -2841567681963700210
-    second: Sample_Countdown_4
+    second: 1
   - first:
       213: -800012613325689540
-    second: Sample_Countdown_0
+    second: 5
   - first:
       213: 3174610990071902878
-    second: Sample_Countdown_1
+    second: 4
   - first:
       213: 311715063130697655
-    second: Sample_Countdown_2
+    second: 3
   - first:
       213: -693074646961153370
-    second: Sample_Countdown_3
+    second: 2
   - first:
       213: -3893761513301316116
-    second: Sample_Countdown_4
+    second: 1
   - first:
       213: 1459776295612587265
-    second: Sample_Countdown_5
+    second: GO
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -131,7 +131,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sample_Countdown_0
+      name: 5
       rect:
         serializedVersion: 2
         x: 0
@@ -139,7 +139,7 @@ TextureImporter:
         width: 300
         height: 300
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -152,7 +152,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sample_Countdown_1
+      name: 4
       rect:
         serializedVersion: 2
         x: 300
@@ -160,7 +160,7 @@ TextureImporter:
         width: 300
         height: 300
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -173,7 +173,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sample_Countdown_2
+      name: 3
       rect:
         serializedVersion: 2
         x: 600
@@ -181,7 +181,7 @@ TextureImporter:
         width: 300
         height: 300
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -194,7 +194,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sample_Countdown_3
+      name: 2
       rect:
         serializedVersion: 2
         x: 900
@@ -202,7 +202,7 @@ TextureImporter:
         width: 300
         height: 300
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -215,7 +215,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sample_Countdown_4
+      name: 1
       rect:
         serializedVersion: 2
         x: 1200
@@ -223,7 +223,7 @@ TextureImporter:
         width: 300
         height: 300
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -236,7 +236,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sample_Countdown_5
+      name: GO
       rect:
         serializedVersion: 2
         x: 1500
@@ -244,7 +244,7 @@ TextureImporter:
         width: 300
         height: 300
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

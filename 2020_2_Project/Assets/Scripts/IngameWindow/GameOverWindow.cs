@@ -18,34 +18,34 @@ public class GameOverWindow : MonoBehaviour
 
     public void TouchNextStageButton()
     {
+        // 공통 속성 설정
+        TouchStageButton();
         /* 다음 라운드 속성 설정 */
         // Clear한 SpawnMonstersManager 오브젝트 비활성화
         RoundManager.instance.SetRound(false);
-        // 카메라 & 플레이어 이동
+        // 플레이어 이동
         Player.instance.transform.position = RoundManager.instance.GetRoundStartPos(++RoundManager.instance.nowRound);
-        // Camera.main.transform.position = _cameraPos[RoundManager.instance.nowRound];
+        // 카메라 콜라이더 변경
+        RoundManager.instance.SetCameraCollider();
         // 다음 라운드의 SpawnMonstersManager 활성화
         RoundManager.instance.SetRound(true);
         // 라운드 획득 골드 적립(내부에서 관리)
         GoldManager.instance.RoundClearGold();
-        // 공통 속성 설정
-        TouchStageButton();
     }
 
     public void TouchRestartStageButton()
     {
+        // 공통 속성 설정
+        TouchStageButton();
         /* 현재 라운드 속성 재설정 */
-        // 카메라 & 플레이어 이동
+        // 플레이어 이동
         Player.instance.transform.position = RoundManager.instance.GetRoundStartPos(RoundManager.instance.nowRound);
-        // Camera.main.transform.position = _cameraPos[RoundManager.instance.nowRound];
         // 몬스터 풀 초기화
         SpawnMonstersManager.instance.ResetEnemyList();
         // 해당 라운드에 획득한 골드 초기화
         GoldManager.instance.FailResetGold();
         // 아이템 스폰 포인트 초기화
         FarmingManager.instance.ResetRound();
-        // 공통 속성 설정
-        TouchStageButton();
     }
 
     public void TouchExitButton(string _stage)

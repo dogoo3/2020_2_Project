@@ -8,7 +8,7 @@ public class FarmingManager : MonoBehaviour
 
     [SerializeField] private List<FarmingPoint> _farmingPos;
 
-    private List<FarmingItem> _nowactiveItem = new List<FarmingItem>(); // 현재 활성화된 아이템의 정보를 가지고 있는 List
+    public List<FarmingItem> _nowactiveItem = new List<FarmingItem>(); // 현재 활성화된 아이템의 정보를 가지고 있는 List
     private Dictionary<int, int> _activeItems = new Dictionary<int, int>(); // 어떤 아이템을 스폰할지 판독하는 딕셔너리. <난수값, 아이템번호>
 
     private int _randFarmPos, _randItemNum;
@@ -49,6 +49,7 @@ public class FarmingManager : MonoBehaviour
 
     public void ClearItem() // 라운드 종료로 인해 아이템을 비활성화하는 함수
     {
+        Debug.Log(_nowactiveItem.Count);
         for (int i = 0; i < _nowactiveItem.Count; i++)
             _nowactiveItem[i].InsertQueue();
         _nowactiveItem.Clear();
