@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6402709420935792161}
   - component: {fileID: 8810944419917510287}
   - component: {fileID: 8284030478538987048}
+  - component: {fileID: -5097597913278977262}
   m_Layer: 0
   m_Name: Farming_Shield
   m_TagString: Untagged
@@ -70,9 +71,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1798430753
+  m_SortingLayer: 2
+  m_SortingOrder: 2
   m_Sprite: {fileID: -5424938587947946085, guid: 5d689e19e6de34a499c47857d0ebee97,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -92,7 +93,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4264509971515406262}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -115,6 +116,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemKind: 7
   supplyValue: 18
+--- !u!50 &-5097597913278977262
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4264509971515406262}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &4896121097788523021
 GameObject:
   m_ObjectHideFlags: 0

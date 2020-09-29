@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 680f6723cb96d244b8470c10827a589d
+guid: 4f1781daa6c098743a41648be23bf809
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -14,6 +14,9 @@ TextureImporter:
   - first:
       213: 7069005636327514907
     second: Player_Shoot_3
+  - first:
+      213: 5959281240547110345
+    second: Player_Shoot_4
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -115,7 +118,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 298
+        width: 300
         height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -134,9 +137,9 @@ TextureImporter:
       name: Player_Shoot_1
       rect:
         serializedVersion: 2
-        x: 298
+        x: 300
         y: 0
-        width: 298
+        width: 300
         height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -155,9 +158,9 @@ TextureImporter:
       name: Player_Shoot_2
       rect:
         serializedVersion: 2
-        x: 596
+        x: 600
         y: 0
-        width: 298
+        width: 300
         height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -176,9 +179,9 @@ TextureImporter:
       name: Player_Shoot_3
       rect:
         serializedVersion: 2
-        x: 894
+        x: 900
         y: 0
-        width: 298
+        width: 300
         height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -189,6 +192,27 @@ TextureImporter:
       bones: []
       spriteID: b13298c4c272a1260800000000000000
       internalID: 7069005636327514907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Shoot_4
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 0
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cda573f6be93b250800000000000000
+      internalID: 5959281240547110345
       vertices: []
       indices: 
       edges: []

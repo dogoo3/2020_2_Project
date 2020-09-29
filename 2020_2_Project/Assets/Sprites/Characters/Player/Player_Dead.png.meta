@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 000f9e7c118dd644d8d2d67fc95cfbd3
+guid: fcca519bed619a047bd77200aad609ea
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -124,7 +124,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 270.14285
+        width: 305.57144
         height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -143,9 +143,9 @@ TextureImporter:
       name: Player_Dead_1
       rect:
         serializedVersion: 2
-        x: 270
+        x: 305
         y: 0
-        width: 270.14285
+        width: 305.57144
         height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -164,9 +164,9 @@ TextureImporter:
       name: Player_Dead_2
       rect:
         serializedVersion: 2
-        x: 540
+        x: 610
         y: 0
-        width: 270.14285
+        width: 305.57144
         height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -185,9 +185,9 @@ TextureImporter:
       name: Player_Dead_3
       rect:
         serializedVersion: 2
-        x: 810
+        x: 915
         y: 0
-        width: 270.14285
+        width: 305.57144
         height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -206,9 +206,9 @@ TextureImporter:
       name: Player_Dead_4
       rect:
         serializedVersion: 2
-        x: 1080
+        x: 1220
         y: 0
-        width: 270.14285
+        width: 305.57144
         height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -227,9 +227,9 @@ TextureImporter:
       name: Player_Dead_5
       rect:
         serializedVersion: 2
-        x: 1350
+        x: 1525
         y: 0
-        width: 270.14285
+        width: 305.57144
         height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -248,9 +248,9 @@ TextureImporter:
       name: Player_Dead_6
       rect:
         serializedVersion: 2
-        x: 1620
+        x: 1830
         y: 0
-        width: 270.14285
+        width: 305.57144
         height: 300
       alignment: 0
       pivot: {x: 0, y: 0}

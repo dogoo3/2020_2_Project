@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
 
     public void Move(int _direction)
     {
-        _animator.SetInteger("direction", _direction);
+        _animator.SetFloat("direction", _direction);
         _animator.SetBool("move", true);
         _movePos.x = _direction;
         _directionPos.x = _direction;
@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
     {
         if(_isLookup) // 위를 바라볼 때(키를 누르고 있을 때)
         {
-            _oldDirectionPos = _directionPos;
+            _oldDirectionPos = _directionPos; // 위를 바라보기 직전에 어느 시점을 보고 있었는지를 저장
             _directionPos = Vector2.up;
         }
         else // 위 그만 바라볼 때(키에서 손을 뗄 때)

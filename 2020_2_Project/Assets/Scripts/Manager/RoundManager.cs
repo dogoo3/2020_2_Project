@@ -6,10 +6,15 @@ public class RoundManager : MonoBehaviour
 {
     public static RoundManager instance;
 
+    [SerializeField] private SpawnMonstersManager[] rounds;
+
+    [SerializeField] private Transform[] roundStartPos;
+
     public string bgmname;
 
     private Animator _animator;
 
+    [HideInInspector]
     public int nowRound;
 
     private void Awake()
@@ -49,5 +54,15 @@ public class RoundManager : MonoBehaviour
     public void EnableAnimator() // Animation Func
     {
         _animator.Play("countdown", -1, 0);
+    }
+
+    public void SetRound(bool _is)
+    {
+        rounds[nowRound].gameObject.SetActive(_is);
+    }
+
+    public Vector3 GetRoundStartPos(int _index)
+    {
+        return roundStartPos[_index].position;
     }
 }

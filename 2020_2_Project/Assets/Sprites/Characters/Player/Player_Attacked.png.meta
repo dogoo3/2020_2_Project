@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f44f52823c96e7e489ac78f80cac2a9f
+guid: 593ebddd808271148833ee41b4bb591c
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -118,7 +118,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 208.6
+        width: 300
         height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -137,9 +137,9 @@ TextureImporter:
       name: Player_Attacked_1
       rect:
         serializedVersion: 2
-        x: 208
+        x: 300
         y: 0
-        width: 208.6
+        width: 300
         height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -158,9 +158,9 @@ TextureImporter:
       name: Player_Attacked_2
       rect:
         serializedVersion: 2
-        x: 416
+        x: 600
         y: 0
-        width: 208.6
+        width: 300
         height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -179,9 +179,9 @@ TextureImporter:
       name: Player_Attacked_3
       rect:
         serializedVersion: 2
-        x: 624
+        x: 900
         y: 0
-        width: 208.6
+        width: 300
         height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -200,9 +200,9 @@ TextureImporter:
       name: Player_Attacked_4
       rect:
         serializedVersion: 2
-        x: 832
+        x: 1200
         y: 0
-        width: 208.6
+        width: 300
         height: 300
       alignment: 0
       pivot: {x: 0, y: 0}

@@ -18,6 +18,9 @@ public class FarmingItem : MonoBehaviour
     [Header("아이템 속성 반드시 잡아줘야 함!")]
     public ItemKind itemKind;
 
+    private Rigidbody2D _rigidbody2d;
+    private Collider2D _collider2d;
+
     private Item _item;
     private FarmingPoint _mySpawnPoint;
 
@@ -26,6 +29,8 @@ public class FarmingItem : MonoBehaviour
 
     private void Awake()
     {
+        _rigidbody2d = GetComponent<Rigidbody2D>();
+        _collider2d = GetComponent<Collider2D>();
         switch (itemKind)
         {
             case ItemKind.pistol:
@@ -59,6 +64,15 @@ public class FarmingItem : MonoBehaviour
                 _item = new F_Shield(supplyValue);
                 break;
         }
+    }
+
+    private void OnEnable()
+    {
+        // Active 시 멋지게(?) 등장하기 위한 모션
+        _rigidbody2d.velocity = new Vector2(0, 4.0f);
+
+        Invoke("EnableCollider", 1.0f); // 1초뒤 활성화
+        _collider2d.enabled = false; // 콜라이더 꺼 줌
     }
 
     public void InsertQueue()
@@ -99,8 +113,14 @@ public class FarmingItem : MonoBehaviour
             _mySpawnPoint.GetItem();
             _item.Supply();
             InsertQueue();
+            _collider2d.enabled = false;
             FarmingManager.instance.OutputItem(this);
         }
+    }
+
+    private void EnableCollider() // Invoke Func
+    {
+        _collider2d.enabled = true;
     }
 
     public void PutMySpawnPoint(FarmingPoint _point) // 파라미터의 point에서 나온 아이템이 살아있는지 죽었는지를 판별하기 위해서 넣어줌.

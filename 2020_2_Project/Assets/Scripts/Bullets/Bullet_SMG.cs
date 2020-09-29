@@ -36,6 +36,7 @@ public class Bullet_SMG : MonoBehaviour
         {
             case "ground":
             case "bullet":
+            case "wall:":
                 ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_smg);
                 break;
         }

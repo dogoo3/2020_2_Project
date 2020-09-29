@@ -7,6 +7,7 @@ TagManager:
   - ground
   - bullet
   - enemy
+  - wall
   layers:
   - Default
   - TransparentFX
@@ -43,4 +44,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BackGround
+    uniqueID: 3878886531
+    locked: 0
+  - name: Object
+    uniqueID: 1798430753
     locked: 0

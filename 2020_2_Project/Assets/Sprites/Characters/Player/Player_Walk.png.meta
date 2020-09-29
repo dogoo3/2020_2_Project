@@ -1,22 +1,55 @@
 fileFormatVersion: 2
-guid: d867556fc8b9dc140813891fcf170a26
+guid: fd6caa75775f02840a3024c732bb25a1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6583451004067504980
-    second: Player_ThrowGrenade_0
+      213: 6271674672454095231
+    second: Player_Walk_0
   - first:
-      213: -3644889147643112769
-    second: Player_ThrowGrenade_1
+      213: -5472852325172983002
+    second: Player_Walk_1
   - first:
-      213: -5126645428406518843
-    second: Player_ThrowGrenade_2
+      213: 6740012380587470751
+    second: Player_Walk_2
   - first:
-      213: 6351630669852248874
-    second: Player_ThrowGrenade_3
+      213: 2027882306579495052
+    second: Player_Walk_3
   - first:
-      213: -3515341305648624712
-    second: Player_ThrowGrenade_4
+      213: -4198330706962942397
+    second: Player_Walk_4
+  - first:
+      213: -7328556770771104369
+    second: Player_Walk_5
+  - first:
+      213: 1120088206422936072
+    second: Player_Walk_6
+  - first:
+      213: -8072317575308007845
+    second: Player_Walk_7
+  - first:
+      213: 621327102584340408
+    second: Player_Walk_0
+  - first:
+      213: -3413492655210405832
+    second: Player_Walk_1
+  - first:
+      213: -8535235476923316611
+    second: Player_Walk_2
+  - first:
+      213: -4408716971579472669
+    second: Player_Walk_3
+  - first:
+      213: -5406199934774473651
+    second: Player_Walk_4
+  - first:
+      213: -7132373880707025095
+    second: Player_Walk_5
+  - first:
+      213: -4547020791658468364
+    second: Player_Walk_6
+  - first:
+      213: -7567026576240351701
+    second: Player_Walk_7
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -113,12 +146,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player_ThrowGrenade_0
+      name: Player_Walk_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 296.8
+        width: 300
         height: 300
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -127,19 +160,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 453e1adbecd1d5b50800000000000000
-      internalID: 6583451004067504980
+      spriteID: 8bfbcd635b56f9800800000000000000
+      internalID: 621327102584340408
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_ThrowGrenade_1
+      name: Player_Walk_1
       rect:
         serializedVersion: 2
-        x: 296
+        x: 300
         y: 0
-        width: 296.8
+        width: 300
         height: 300
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -148,19 +181,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fb25e05b1a0ca6dc0800000000000000
-      internalID: -3644889147643112769
+      spriteID: 83067caf386d0a0d0800000000000000
+      internalID: -3413492655210405832
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_ThrowGrenade_2
+      name: Player_Walk_2
       rect:
         serializedVersion: 2
-        x: 592
+        x: 604
         y: 0
-        width: 296.8
+        width: 300
         height: 300
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -169,19 +202,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5cbf27e152f7ad8b0800000000000000
-      internalID: -5126645428406518843
+      spriteID: d768cab2e80cc8980800000000000000
+      internalID: -8535235476923316611
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_ThrowGrenade_3
+      name: Player_Walk_3
       rect:
         serializedVersion: 2
-        x: 888
+        x: 908
         y: 0
-        width: 296.8
+        width: 300
         height: 300
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -190,19 +223,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2b050d1176852850800000000000000
-      internalID: 6351630669852248874
+      spriteID: 3e405c1d54711d2c0800000000000000
+      internalID: -4408716971579472669
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_ThrowGrenade_4
+      name: Player_Walk_4
       rect:
         serializedVersion: 2
-        x: 1187
+        x: 1214
         y: 0
-        width: 297
+        width: 300
         height: 300
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -211,8 +244,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8bb4e8425bff63fc0800000000000000
-      internalID: -3515341305648624712
+      spriteID: d4c07077dc159f4b0800000000000000
+      internalID: -5406199934774473651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Walk_5
+      rect:
+        serializedVersion: 2
+        x: 1511
+        y: 0
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 937fe239eb7b40d90800000000000000
+      internalID: -7132373880707025095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Walk_6
+      rect:
+        serializedVersion: 2
+        x: 1817
+        y: 0
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fba1ee5eacb5e0c0800000000000000
+      internalID: -4547020791658468364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Walk_7
+      rect:
+        serializedVersion: 2
+        x: 2144
+        y: 0
+        width: 256
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b26e045bb658cf690800000000000000
+      internalID: -7567026576240351701
       vertices: []
       indices: 
       edges: []
