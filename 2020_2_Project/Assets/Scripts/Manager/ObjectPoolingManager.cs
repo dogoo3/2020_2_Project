@@ -71,7 +71,7 @@ public class ObjectPoolingManager : MonoBehaviour
     {
         instance = this;
 
-        if (FileManager.weaponembago["pistol"])
+        if (FileManager.weaponembargo["pistol"])
         {
             for (i = 0; i < 5; i++)
             {
@@ -80,7 +80,7 @@ public class ObjectPoolingManager : MonoBehaviour
             }
         }
 
-        if (FileManager.weaponembago["smg"])
+        if (FileManager.weaponembargo["smg"])
         {
             for (i = 0; i < 5; i++)
             {
@@ -89,7 +89,7 @@ public class ObjectPoolingManager : MonoBehaviour
             }
         }
 
-        if (FileManager.weaponembago["sniper"])
+        if (FileManager.weaponembargo["sniper"])
         {
             for (i = 0; i < 5; i++)
             {
@@ -98,7 +98,7 @@ public class ObjectPoolingManager : MonoBehaviour
             }
         }
 
-        if (FileManager.weaponembago["ar"])
+        if (FileManager.weaponembargo["ar"])
         {
             for (i = 0; i < 5; i++)
             {
@@ -107,7 +107,7 @@ public class ObjectPoolingManager : MonoBehaviour
             }
         }
 
-        if (FileManager.weaponembago["sg"])
+        if (FileManager.weaponembargo["sg"])
         {
             for (i = 0; i < 15; i++)
             {
@@ -117,7 +117,7 @@ public class ObjectPoolingManager : MonoBehaviour
             }
         }
 
-        if (FileManager.weaponembago["grenade"])
+        if (FileManager.weaponembargo["grenade"])
         {
             for (i = 0; i < 5; i++)
             {

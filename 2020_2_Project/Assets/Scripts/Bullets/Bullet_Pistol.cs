@@ -13,7 +13,7 @@ public class Bullet_Pistol : MonoBehaviour
     private void Awake()
     {
         _pistol = new B_Pistol();
-        _pistol.damage = damage;
+        _pistol.damage = FileManager.weaponInfo["pistol_deal"];
         _pistol.shotSpeed = shotSpeed;
         _pistol.surviveTime = surviveTime;
     }

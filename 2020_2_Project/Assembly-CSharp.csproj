@@ -70,12 +70,6 @@
     <Compile Include="Assets\Scripts\Bullets\Bullet_SMG.cs" />
     <Compile Include="Assets\Scripts\Bullets\Bullet_Sniper.cs" />
     <Compile Include="Assets\Scripts\IngameWindow\GameOverWindow.cs" />
-    <Compile Include="Assets\Scripts\Items\Coin\Gold.cs" />
-    <Compile Include="Assets\Scripts\Items\Coin\GoldManager.cs" />
-    <Compile Include="Assets\Scripts\Items\Farming\FarmingItem.cs" />
-    <Compile Include="Assets\Scripts\Items\Farming\FarmingManager.cs" />
-    <Compile Include="Assets\Scripts\Items\Farming\FarmingPoint.cs" />
-    <Compile Include="Assets\Scripts\Items\Farming\Item.cs" />
     <Compile Include="Assets\Scripts\Manager\FileManager.cs" />
     <Compile Include="Assets\Scripts\Manager\GaugeManager.cs" />
     <Compile Include="Assets\Scripts\Manager\ObjectPoolingManager.cs" />
@@ -84,7 +78,13 @@
     <Compile Include="Assets\Scripts\Manager\SoundManager.cs" />
     <Compile Include="Assets\Scripts\Manager\SpawnMonstersManager.cs" />
     <Compile Include="Assets\Scripts\Manager\WindowManager.cs" />
+    <Compile Include="Assets\Scripts\Objects\Coin\Gold.cs" />
+    <Compile Include="Assets\Scripts\Objects\Coin\GoldManager.cs" />
     <Compile Include="Assets\Scripts\Objects\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Objects\Farming\FarmingItem.cs" />
+    <Compile Include="Assets\Scripts\Objects\Farming\FarmingManager.cs" />
+    <Compile Include="Assets\Scripts\Objects\Farming\FarmingPoint.cs" />
+    <Compile Include="Assets\Scripts\Objects\Farming\Item.cs" />
     <Compile Include="Assets\Scripts\Objects\Player.cs" />
     <Compile Include="Assets\Scripts\Objects\SpawnMonstersPoint.cs" />
     <Compile Include="Assets\Scripts\UI\ChoiceStage.cs" />
@@ -95,6 +95,10 @@
     <Compile Include="Assets\Scripts\Weapons\Weapon.cs" />
     <Compile Include="Assets\Scripts\Weapons\WeaponManager.cs" />
     <Compile Include="Assets\Scripts\Weapons\WeaponSelector.cs" />
+    <Compile Include="Assets\ShopGetWeapon.cs" />
+    <Compile Include="Assets\ShopUpgradeWeapon.cs" />
+    <Compile Include="Assets\ShopWeaponIcon.cs" />
+    <Compile Include="Assets\WeaponCooltimeWatcher.cs" />
     <None Include="Assets\SampleSprites\Blur\SettingWindowBlur.shader" />
     <None Include="Assets\SampleSprites\3DGold\README.txt" />
     <None Include="Assets\SampleSprites\3DGold\UnlitTransParentsShader.shader" />

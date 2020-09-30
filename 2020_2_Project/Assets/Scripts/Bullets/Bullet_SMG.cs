@@ -13,7 +13,7 @@ public class Bullet_SMG : MonoBehaviour
     private void Awake()
     {
         _smg = new B_SMG();
-        _smg.damage = damage;
+        _smg.damage = FileManager.weaponInfo["smg_deal"];
         _smg.shotSpeed = shotSpeed;
         _smg.surviveTime = surviveTime;
     }

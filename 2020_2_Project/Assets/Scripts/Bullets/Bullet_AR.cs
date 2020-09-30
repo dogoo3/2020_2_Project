@@ -13,7 +13,7 @@ public class Bullet_AR : MonoBehaviour
     private void Awake()
     {
         _ar = new B_AR();
-        _ar.damage = damage;
+        _ar.damage = FileManager.weaponInfo["ar_deal"];
         _ar.shotSpeed = shotSpeed;
         _ar.surviveTime = surviveTime;
     }

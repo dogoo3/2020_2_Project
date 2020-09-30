@@ -9,6 +9,10 @@ public class Shop : MonoBehaviour
 
     [SerializeField] private int upgradeValue_playerHP, upgradeValue_playerSpeed, upgradeValue_playerShield;
 
+    [SerializeField] private ShopWeaponIcon[] _shopWeaponIcons;
+    [SerializeField] private ShopGetWeapon _shopGetWeaponWindow;
+    [SerializeField] private ShopUpgradeWeapon _shopUpgradeWeaponWindow;
+
     private void OnEnable()
     {
         skillPoint.text = FileManager.playerInfo["skillpoint"].ToString();
@@ -51,6 +55,20 @@ public class Shop : MonoBehaviour
             FileManager.WriteData("DB_int_player.csv", FileManager.playerInfo);
             playerSpeed.text = FileManager.playerInfo["speed"].ToString();
             skillPoint.text = FileManager.playerInfo["skillpoint"].ToString();
+        }
+    }
+
+    public void TouchWeaponIcon(int _index)
+    {
+        if(_shopWeaponIcons[_index].isembargo) // 무기가 해금되어 있는 상태라면
+        {
+            // 업그레이드를 위한 윈도우를 띄워준다.
+            _shopUpgradeWeaponWindow.Init(_shopWeaponIcons[_index]);
+        }
+        else 
+        {
+            // 해금을 위한 윈도우를 띄워준다.
+            _shopGetWeaponWindow.Init(_shopWeaponIcons[_index]);
         }
     }
 }

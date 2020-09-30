@@ -39,21 +39,33 @@ public class WeaponManager : MonoBehaviour
         _weapons = new Weapon[6];
 
         _weapons[0] = new Pistol();
+        pistol.coolTime = FileManager.weaponInfo["pistol_respawn"];
+        pistol.divCooltime = 1 / pistol.coolTime;
         Copy_Paste(_weapons[0], pistol);
 
         _weapons[1] = new SMG();
+        smg.coolTime = FileManager.weaponInfo["smg_respawn"];
+        smg.divCooltime = 1 / smg.coolTime;
         Copy_Paste(_weapons[1], smg);
 
         _weapons[2] = new Sniper();
+        sniper.coolTime = FileManager.weaponInfo["sniper_respawn"];
+        sniper.divCooltime = 1 / sniper.coolTime;
         Copy_Paste(_weapons[2], sniper);
 
         _weapons[3] = new AR();
+        ar.coolTime = FileManager.weaponInfo["ar_respawn"];
+        ar.divCooltime = 1 / ar.coolTime;
         Copy_Paste(_weapons[3], ar);
 
         _weapons[4] = new SG();
+        sg.coolTime = FileManager.weaponInfo["sg_respawn"];
+        sg.divCooltime = 1 / sg.coolTime;
         Copy_Paste(_weapons[4], sg);
 
         _weapons[5] = new Grenade();
+        grenade.coolTime = FileManager.weaponInfo["grenade_respawn"];
+        grenade.divCooltime = 1 / grenade.coolTime;
         Copy_Paste(_weapons[5], grenade);
 
         for (i = 0; i < _weapons.Length; i++)
@@ -76,6 +88,7 @@ public class WeaponManager : MonoBehaviour
         _paste.weaponNum = _copy.weaponNum;
         _paste.bulletCount = _copy.bulletCount;
         _paste.coolTime = _copy.coolTime;
+        _paste.divCooltime = _copy.divCooltime;
     }
 
     public WeaponName GetSelectWeapon()
@@ -120,5 +133,13 @@ public class WeaponManager : MonoBehaviour
             else
                 return false;
         }
+    }
+
+    public float GetElapseCooltime()
+    {
+        if (_weapons[(int)selectWeapon].GetIsShot()) // 총알을 발사할 수 있는 상태일 경우
+            return 0;
+        else // 아닐 경우
+            return _weapons[(int)selectWeapon].GetElapseCooltime();
     }
 }

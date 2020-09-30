@@ -15,8 +15,8 @@ public class Weapon
     public int bulletCount; // 총알 갯수
 
     public float coolTime; // 재사용 쿨타임
+    public float divCooltime; // UI 연산을 위해 1 / coolTime 을 연산한 값
     private float elapsecooltime; // 진행 쿨타임
-
     public virtual void Shoot(Vector2 _origin, Vector2 _direction) { }
     public virtual void Supply(int _plusBulletCount) { }
 
@@ -58,6 +58,16 @@ public class Weapon
                 elapsecooltime = 0;
             }
         }
+    }
+
+    public float GetElapseCooltime()
+    {
+        return elapsecooltime * divCooltime;
+    }
+
+    public bool GetIsShot()
+    {
+        return isShot;
     }
 }
 

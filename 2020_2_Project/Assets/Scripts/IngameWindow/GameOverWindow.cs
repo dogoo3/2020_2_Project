@@ -44,8 +44,6 @@ public class GameOverWindow : MonoBehaviour
         SpawnMonstersManager.instance.ResetEnemyList();
         // 해당 라운드에 획득한 골드 초기화
         GoldManager.instance.FailResetGold();
-        // 아이템 스폰 포인트 초기화
-        FarmingManager.instance.ResetRound();
     }
 
     public void TouchExitButton(string _stage)
@@ -82,8 +80,8 @@ public class GameOverWindow : MonoBehaviour
     {
         // WeaponManager에서 무기들의 탄알 수 0으로 만들기
         WeaponManager.instance.ClearBullets();
-        // HP / Shield 초기화(풀로 채우기)
-        Player.instance.ResetGauge();
+        // HP / Shield 초기화 및 변수값 초기화(사망 변수)
+        Player.instance.ResetSetting();
         // ScoreManager의 score 0으로 초기화
         ScoreManager.instance.ResetScore();
         // 카운터 재시작 및 브금 일시중지

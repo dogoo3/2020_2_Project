@@ -1,0 +1,16 @@
+pistol_deal,5
+pistol_respawn,1
+smg_deal,3
+smg_respawn,0.5
+sniper_deal,50
+sniper_respawn,3
+sniper_cost,500
+ar_deal,10
+ar_respawn,1
+ar_cost,600
+sg_deal,7
+sg_respawn,2
+sg_cost,700
+grenade_deal,200
+grenade_respawn,3
+grenade_cost,800

@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 
     private Vector2 _movePos, _directionPos, _jumpvalue;
     private Vector2 _oldDirectionPos; // 위 보는 키 누를 때 이전 시점을 저장하는 변수
-    private bool _isjump, _isshield;
+    private bool _isjump, _isshield, _isdead;
 
     private float _hp, _shield, _speed, _def, _jump;
     private float _maxhp, _maxshield;
@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
         _shield = FileManager.playerInfo["shield"];
         _speed = FileManager.playerInfo["speed"];
         _def = 10;
-        _jump = 10;
+        _jump = 14;
         _jumpvalue.y = _jump;
 
         _maxhp = _hp;
@@ -48,6 +48,8 @@ public class Player : MonoBehaviour
 
     public void Move(int _direction)
     {
+        if (_isdead)
+            return;
         _animator.SetFloat("direction", _direction);
         _animator.SetBool("move", true);
         _movePos.x = _direction;
@@ -75,47 +77,59 @@ public class Player : MonoBehaviour
 
     public void Jump()
     {
-        if (!_isjump)
+        if(!_isdead)
         {
-            _animator.SetBool("jump", true);
-            _rigidbody2d.velocity = _jumpvalue;
-            _isjump = true;
+            if (!_isjump)
+            {
+                _animator.SetBool("jump", true);
+                _rigidbody2d.velocity = _jumpvalue;
+                _isjump = true;
+            }
         }
     }
 
     public void Shield()
     {
-        if (_shield > 0)
+        if(!_isdead)
         {
-            _isshield = true;
-            _def *= 2;
-            shieldsprite.SetActive(true);
+            if (_shield > 0)
+            {
+                _isshield = true;
+                _def *= 2;
+                shieldsprite.SetActive(true);
+            }
         }
     }
 
     public void UnShield()
     {
-        if (_isshield)
-        {
-            _isshield = false;
-            _def *= 0.5f;
-            shieldsprite.SetActive(false);
+        if(!_isdead)
+        { 
+            if (_isshield)
+            {
+                _isshield = false;
+                _def *= 0.5f;
+                shieldsprite.SetActive(false);
+            }
         }
     }
 
     public void Shoot() // 버튼을 누르면 작동하는 함수
     {
-        // 탄환 유무 체크 -> 그 탄환의 쿨타임 체크
-        if (WeaponManager.instance.IsShootWeapon())
+        if (!_isdead)
         {
-            switch(WeaponManager.instance.GetSelectWeapon())
+            // 탄환 유무 체크 -> 그 탄환의 쿨타임 체크
+            if (WeaponManager.instance.IsShootWeapon())
             {
-                case WeaponName.grenade:
-                    _animator.SetTrigger("throw");
-                    break;
-                default:
-                    _animator.SetTrigger("shoot");
-                    break;
+                switch (WeaponManager.instance.GetSelectWeapon())
+                {
+                    case WeaponName.grenade:
+                        _animator.SetTrigger("throw");
+                        break;
+                    default:
+                        _animator.SetTrigger("shoot");
+                        break;
+                }
             }
         }
     }
@@ -125,10 +139,12 @@ public class Player : MonoBehaviour
         WeaponManager.instance.Shoot(muzzleGunPos.position, _directionPos);
     }
 
-    public void ResetGauge()
+    public void ResetSetting()
     {
         _hp = _maxhp;
         _shield = _maxshield;
+        _isdead = false;
+        _animator.Rebind();
         GaugeManager.instance.ResetGauge();
     }
 
@@ -136,6 +152,7 @@ public class Player : MonoBehaviour
     {
         _hp -= _damage;
         GaugeManager.instance.SetHpGauge(_hp);
+        _animator.SetTrigger("attacked");
         CheckDead();
     }
 
@@ -155,24 +172,28 @@ public class Player : MonoBehaviour
     {
         if(_hp <= 0)
         {
-            WindowManager.instance.ShowFailWindow();
-            // 사망 모션 및 사망시 UI 구현해야 함.
+            _isdead = true;
+            WindowManager.instance.Invoke("ShowFailWindow",3.0f); // 3초 뒤에 실패 윈도우를 띄운다.
+            _animator.SetTrigger("dead");
         }
     }
 
     private void Update()
     {
-        _rigidbody2d.transform.Translate(_movePos.normalized * Time.deltaTime * _speed);
-        if(_isshield) // 실드 키를 누르고 있을 때.
+        if(!_isdead) // dead가 true이면 플레이어가 죽었다는 의미.
         {
-            GaugeManager.instance.SetShieldGauge(_shield -= 0.16f);
-            if(_shield < 0 )
-                UnShield();
-        }
-        else // 실드 키를 안 누르고 있을 때.
-        {
-            if(_shield < 100.0f)
-                GaugeManager.instance.SetShieldGauge(_shield = Mathf.Clamp(_shield + 0.08f, 0, 100.0f));
+            _rigidbody2d.transform.Translate(_movePos.normalized * Time.deltaTime * _speed);
+            if (_isshield) // 실드 키를 누르고 있을 때.
+            {
+                GaugeManager.instance.SetShieldGauge(_shield -= 0.16f);
+                if (_shield < 0)
+                    UnShield();
+            }
+            else // 실드 키를 안 누르고 있을 때.
+            {
+                if (_shield < 100.0f)
+                    GaugeManager.instance.SetShieldGauge(_shield = Mathf.Clamp(_shield + 0.08f, 0, 100.0f));
+            }
         }
     }
 

@@ -26,7 +26,7 @@ public class Bullet_Grenade : MonoBehaviour
         _direction = Vector2.up;
 
         _grenade = new B_Grenade();
-        _grenade.damage = damage;
+        _grenade.damage = FileManager.weaponInfo["grenade_deal"];
         _grenade.shotSpeed = shotSpeed;
         _grenade.surviveTime = surviveTime;
 

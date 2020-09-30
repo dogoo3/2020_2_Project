@@ -13,7 +13,7 @@ public class Bullet_Sniper : MonoBehaviour
     private void Awake()
     {
         _sniper = new B_Sniper();
-        _sniper.damage = damage;
+        _sniper.damage = FileManager.weaponInfo["sniper_deal"];
         _sniper.shotSpeed = shotSpeed;
         _sniper.surviveTime = surviveTime;
     }

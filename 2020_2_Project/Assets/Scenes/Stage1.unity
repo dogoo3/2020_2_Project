@@ -337,7 +337,6 @@ GameObject:
   - component: {fileID: 28932319}
   - component: {fileID: 28932318}
   - component: {fileID: 28932317}
-  - component: {fileID: 28932320}
   m_Layer: 5
   m_Name: Button_Jump
   m_TagString: Untagged
@@ -406,7 +405,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 28932318}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1628016219}
+        m_MethodName: Jump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &28932318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -443,34 +453,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 28932315}
   m_CullTransparentMesh: 0
---- !u!114 &28932320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 28932315}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1628016219}
-          m_MethodName: Jump
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &33064017
 GameObject:
   m_ObjectHideFlags: 0
@@ -2717,6 +2699,92 @@ Transform:
   m_Father: {fileID: 1591563938}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &462100903
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 462100904}
+  - component: {fileID: 462100906}
+  - component: {fileID: 462100905}
+  - component: {fileID: 462100907}
+  m_Layer: 5
+  m_Name: Image_WeaponCooltimeViewer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &462100904
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462100903}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2129509506}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &462100905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462100903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.7490196}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: ffb84064761ee1d43aaac0145a990204, type: 3}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 0.465
+  m_FillClockwise: 0
+  m_FillOrigin: 2
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &462100906
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462100903}
+  m_CullTransparentMesh: 0
+--- !u!114 &462100907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462100903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77364308115f7af49bae5c735f9dc725, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &463922652
 GameObject:
   m_ObjectHideFlags: 0
@@ -7749,32 +7817,38 @@ MonoBehaviour:
     text_bulletcount: {fileID: 1207707164}
     weaponNum: 0
     bulletCount: 0
-    coolTime: 1
+    coolTime: 0
+    divCooltime: 0
   smg:
     text_bulletcount: {fileID: 1823458634}
     weaponNum: 1
     bulletCount: 0
-    coolTime: 1
+    coolTime: 0
+    divCooltime: 0
   sniper:
     text_bulletcount: {fileID: 1296321237}
     weaponNum: 2
     bulletCount: 0
-    coolTime: 3
+    coolTime: 0
+    divCooltime: 0
   ar:
     text_bulletcount: {fileID: 1000782881}
     weaponNum: 3
     bulletCount: 0
-    coolTime: 0.5
+    coolTime: 0
+    divCooltime: 0
   sg:
     text_bulletcount: {fileID: 548915699}
     weaponNum: 4
     bulletCount: 0
-    coolTime: 2
+    coolTime: 0
+    divCooltime: 0
   grenade:
     text_bulletcount: {fileID: 78613387}
     weaponNum: 5
     bulletCount: 0
-    coolTime: 3
+    coolTime: 0
+    divCooltime: 0
 --- !u!1 &1614286901
 GameObject:
   m_ObjectHideFlags: 0
@@ -10047,7 +10121,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d18fd901dbd22d84b8430cb25bc38a3b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2b36d92db843f0e49876912743f4f33b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -10210,7 +10284,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 462100904}
   m_Father: {fileID: 737447259}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
