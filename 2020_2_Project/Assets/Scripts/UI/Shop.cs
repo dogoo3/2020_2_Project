@@ -7,11 +7,13 @@ public class Shop : MonoBehaviour
 {
     public Text skillPoint, haveMoney, playerHP, playerSpeed, playerShield;
 
-    [SerializeField] private int upgradeValue_playerHP, upgradeValue_playerSpeed, upgradeValue_playerShield;
+    [SerializeField] private int upgradeValue_playerHP = default,
+        upgradeValue_playerSpeed = default,
+        upgradeValue_playerShield = default;
 
-    [SerializeField] private ShopWeaponIcon[] _shopWeaponIcons;
-    [SerializeField] private ShopGetWeapon _shopGetWeaponWindow;
-    [SerializeField] private ShopUpgradeWeapon _shopUpgradeWeaponWindow;
+    [SerializeField] private ShopWeaponIcon[] _shopWeaponIcons = default;
+    [SerializeField] private ShopGetWeapon _shopGetWeaponWindow = default;
+    [SerializeField] private ShopUpgradeWeapon _shopUpgradeWeaponWindow = default;
 
     private void OnEnable()
     {

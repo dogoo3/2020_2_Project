@@ -7,12 +7,12 @@ public class RoundManager : MonoBehaviour
 {
     public static RoundManager instance;
 
-    [SerializeField] private SpawnMonstersManager[] rounds;
+    [SerializeField] private SpawnMonstersManager[] rounds = default;
 
-    [SerializeField] private Transform[] roundStartPos;
+    [SerializeField] private Transform[] roundStartPos = default;
 
-    [SerializeField] private Collider2D[] cameraCollider;
-    [SerializeField] private CinemachineConfiner cinemachineConfiner;
+    [SerializeField] private Collider2D[] cameraCollider = default;
+    [SerializeField] private CinemachineConfiner cinemachineConfiner = default;
 
     public string bgmname;
 

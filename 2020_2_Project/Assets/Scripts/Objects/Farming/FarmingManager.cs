@@ -6,7 +6,7 @@ public class FarmingManager : MonoBehaviour
 {
     public static FarmingManager instance;
 
-    [SerializeField] private List<FarmingPoint> _farmingPos;
+    [SerializeField] private List<FarmingPoint> _farmingPos = default;
 
     public List<FarmingItem> _nowactiveItem = new List<FarmingItem>(); // 현재 활성화된 아이템의 정보를 가지고 있는 List
     private Dictionary<int, int> _activeItems = new Dictionary<int, int>(); // 어떤 아이템을 스폰할지 판독하는 딕셔너리. <난수값, 아이템번호>

@@ -6,9 +6,9 @@ public class WindowManager : MonoBehaviour
 {
     public static WindowManager instance;
 
-    [SerializeField] private GameOverWindow clearWindow;
-    [SerializeField] private GameOverWindow failWindow;
-    [SerializeField] private GameOverWindow allclearWindow;
+    [SerializeField] private GameOverWindow clearWindow = default;
+    [SerializeField] private GameOverWindow failWindow = default;
+    [SerializeField] private GameOverWindow allclearWindow = default;
 
     private void Awake()
     {

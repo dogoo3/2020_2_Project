@@ -9,22 +9,14 @@ public class Enemy : MonoBehaviour
 
     [Header("적 능력치 설정")]
     [SerializeField] private float HP = default;
-    [SerializeField] private float speed = default;
-    [SerializeField] private float runSpeed = default;
-    [SerializeField] private float damage = default;
-    [SerializeField] private float attackCooltime = default;
-    [SerializeField] private int score = default;
-    [SerializeField] private int dropGold = default;
+    [SerializeField] private readonly int score = default;
+    [SerializeField] private readonly int minGold = default;
+    [SerializeField] private readonly int maxGold = default;
 
     private void Awake()
     {
         _rigidbody2d = GetComponent<Rigidbody2D>();
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.CompareTag("Player"))
-            Player.instance.Attacked(damage);
+        _animator = GetComponent<Animator>();
     }
 
     public void MinusHP(float _hp)
@@ -37,7 +29,8 @@ public class Enemy : MonoBehaviour
                 ScoreManager.instance.UpdateScore(score);
                 SpawnMonstersManager.instance.CatchMonster();
                 ObjectPoolingManager.instance.GetQueue_gold(transform.position);
-                gameObject.SetActive(false);
+                // 나중에 Parameter로 goldMin, goldMax도 같이 넘겨줄 것...
+                _animator.SetTrigger("dead");
             }
         }
     }
@@ -47,6 +40,4 @@ public class Enemy : MonoBehaviour
         gameObject.SetActive(true);
         _rigidbody2d.velocity = _direction * _shotspeed;
     }
-
-    // 스코어 매니저 및 골드 매니저 만들어야 함
 }

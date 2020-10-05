@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameOverWindow : MonoBehaviour
 {
-    [SerializeField] private Text text_score;
+    [SerializeField] private Text text_score = default;
 
     private Vector3[] _cameraPos;
     

@@ -20,7 +20,7 @@ public class SpawnMonstersManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        _killNumber = enemy.Length;
+        _killNumber = enemy.Length; // 적 배열의 길이 = 죽여야 할 몬스터의 마릿수
         ResetEnemyList();
     }
 
@@ -43,9 +43,9 @@ public class SpawnMonstersManager : MonoBehaviour
 
     public void CatchMonster()
     {
-        _nowkillNumber++;
-        if (_killNumber == _nowkillNumber)
-            Invoke("ShowClearWindow", 5.0f);
+        _nowkillNumber++; // 처치 수 ++
+        if (_killNumber == _nowkillNumber) // 라운드의 모든 몬스터 처치 시
+            Invoke("ShowClearWindow", 5.0f); // 클리어 윈도우를 띄운다.
     }
 
     public void ResetEnemyList()

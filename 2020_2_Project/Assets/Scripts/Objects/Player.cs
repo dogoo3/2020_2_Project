@@ -16,8 +16,8 @@ public class Player : MonoBehaviour
     private float _hp, _shield, _speed, _def, _jump;
     private float _maxhp, _maxshield;
 
-    [SerializeField] private GameObject shieldsprite;
-    [SerializeField] private Transform muzzleGunPos;
+    [SerializeField] private GameObject shieldsprite = default;
+    [SerializeField] private Transform muzzleGunPos = default;
 
     private void Awake()
     {
@@ -194,7 +194,11 @@ public class Player : MonoBehaviour
                 if (_shield < 100.0f)
                     GaugeManager.instance.SetShieldGauge(_shield = Mathf.Clamp(_shield + 0.08f, 0, 100.0f));
             }
+
+            if (_isjump)
+                Debug.Log(transform.position);
         }
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

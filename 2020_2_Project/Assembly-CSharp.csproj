@@ -98,6 +98,7 @@
     <Compile Include="Assets\ShopGetWeapon.cs" />
     <Compile Include="Assets\ShopUpgradeWeapon.cs" />
     <Compile Include="Assets\ShopWeaponIcon.cs" />
+    <Compile Include="Assets\Temp\Zombie.cs" />
     <Compile Include="Assets\WeaponCooltimeWatcher.cs" />
     <None Include="Assets\SampleSprites\Blur\SettingWindowBlur.shader" />
     <None Include="Assets\SampleSprites\3DGold\README.txt" />
