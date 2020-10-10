@@ -230,3 +230,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
+  moveSpeed: 3
+  detectPlayerSpeed: 9
+  patrolTime: 3
+  detectTime: 2
+  rayLength: 5

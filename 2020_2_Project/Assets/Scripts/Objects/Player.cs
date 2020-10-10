@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     private Vector2 _oldDirectionPos; // 위 보는 키 누를 때 이전 시점을 저장하는 변수
     private bool _isjump, _isshield, _isdead;
 
-    private float _hp, _shield, _speed, _def, _jump;
+    private float _hp, _shield, _speed, _def;
     private float _maxhp, _maxshield;
 
     [SerializeField] private GameObject shieldsprite = default;
@@ -33,9 +33,8 @@ public class Player : MonoBehaviour
         _hp = FileManager.playerInfo["hp"];
         _shield = FileManager.playerInfo["shield"];
         _speed = FileManager.playerInfo["speed"];
-        _def = 10;
-        _jump = 14;
-        _jumpvalue.y = _jump;
+        _def = FileManager.playerInfo["def"];
+        _jumpvalue.y = FileManager.playerInfo["jump"];
 
         _maxhp = _hp;
         _maxshield = _shield;
@@ -194,11 +193,7 @@ public class Player : MonoBehaviour
                 if (_shield < 100.0f)
                     GaugeManager.instance.SetShieldGauge(_shield = Mathf.Clamp(_shield + 0.08f, 0, 100.0f));
             }
-
-            if (_isjump)
-                Debug.Log(transform.position);
         }
-        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
