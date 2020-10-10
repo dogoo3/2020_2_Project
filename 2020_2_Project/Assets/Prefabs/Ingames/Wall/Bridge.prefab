@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4826630455736604134}
   - component: {fileID: 4826630455736603672}
   - component: {fileID: 4826630455736603673}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bridge
   m_TagString: ground
   m_Icon: {fileID: 0}

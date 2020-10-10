@@ -29,15 +29,6 @@ public class RoundManager : MonoBehaviour
         StopBGM();
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (Application.platform == RuntimePlatform.Android)
-                Application.Quit();
-        }
-    }
-
     public void StopBGM() // Animation Func
     {
         SoundManager.instance.StopBGM();

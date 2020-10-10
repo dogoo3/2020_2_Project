@@ -6,7 +6,7 @@ public class Zombie : MonoBehaviour
 {
     private Animator _animator;
 
-    private RaycastHit2D _ray2D;
+    private RaycastHit2D _rayPlayer, _rayGround;
     private Vector3 _vectordir;
 
     private bool _isdetect; // 플레이어를 감지했을 때
@@ -60,9 +60,9 @@ public class Zombie : MonoBehaviour
                 if (Vector2.Distance(Player.instance.transform.position, transform.position) < rayLength) // 매 프레임마다 Raycast는 Performance를 낭비할 수 있으므로, 일정 거리 안으로 들어오면 Ray를 쏜다.
                 {
                     // Player를 RayCast로 찾는다.
-                    _ray2D = Physics2D.Raycast(transform.position, _vectordir, rayLength, 1 << LayerMask.NameToLayer("Player"));
+                    _rayPlayer = Physics2D.Raycast(transform.position, _vectordir, rayLength, 1 << LayerMask.NameToLayer("Player"));
 
-                    if (_ray2D.collider != null) // 플레이어가 감지되면 인페테란처럼 빠르게 플레이어가 있는 방향으로 달려간다.
+                    if (_rayPlayer.collider != null) // 플레이어가 감지되면 인페테란처럼 빠르게 플레이어가 있는 방향으로 달려간다.
                     {
                         _isdetect = true;
                         _animator.SetBool("Run", _isdetect);
@@ -78,10 +78,12 @@ public class Zombie : MonoBehaviour
                     _isdetect = false; // 다시 탐색 상태로 돌아간다.
                     _animator.SetBool("Run", _isdetect);
                     _vectordir.x *= -1; // 방향 전환
-                    _changedirTime = 0;
+                    _animator.SetFloat("direction", _vectordir.x);
+                    _changedirTime = 0; 
                 }
             }
         }
+        DetectGround();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -106,5 +108,17 @@ public class Zombie : MonoBehaviour
     {
         SpawnMonstersManager.instance.CatchMonster();
         Player.instance.Attacked(damage);
+    }
+
+    private void DetectGround() // 좀비가 일정 땅 안에서만 이동할 수 있도록 
+    {
+        _rayPlayer = Physics2D.Raycast(transform.position + _vectordir, Vector2.down, 1.5f, 1 << LayerMask.NameToLayer("Ground"));
+
+        if(_rayPlayer.collider == null) // 시선 앞에 땅이 없으면
+        {
+            _vectordir.x *= -1; // 시점변경
+            _animator.SetFloat("direction", _vectordir.x);
+            _changedirTime = 0;
+        }
     }
 }
