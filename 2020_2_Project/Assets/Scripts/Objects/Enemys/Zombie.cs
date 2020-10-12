@@ -11,6 +11,7 @@ public class Zombie : MonoBehaviour
 
     private bool _isdetect; // 플레이어를 감지했을 때
     private bool _isSuicide; // 플레이어와 붙어 자살할 때
+    private bool _isDetectStart; // 땅을 밟아 플레이어 감지를 시작함
 
     private float _changedirTime; // 시점 변환 시간을 계산하는 변수
 
@@ -43,7 +44,7 @@ public class Zombie : MonoBehaviour
 
     private void Update()
     {
-        if (!_isSuicide) // 플레이어에게 붙어 자살할 때는 움직이게 하지 않는다.
+        if (!_isSuicide && _isDetectStart) // 플레이어에게 붙어 자살할 때는 움직이게 하지 않는다. or 처음 땅을 밟기 전에는 움직이게 하지 않는다.
         {
             _changedirTime += Time.deltaTime;
 
@@ -69,6 +70,7 @@ public class Zombie : MonoBehaviour
                         _changedirTime = 0;
                     }
                 }
+                DetectGround();
             }
             else // 플레이어를 감지해서 플레이어의 방향으로 빠르게 달려가는 상태이다.
             {
@@ -83,7 +85,6 @@ public class Zombie : MonoBehaviour
                 }
             }
         }
-        DetectGround();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -91,6 +92,12 @@ public class Zombie : MonoBehaviour
         {
             _animator.SetTrigger("suicide");
             _isSuicide = true;
+        }
+        if(!_isDetectStart)
+        {
+            Debug.Log("fasdhjlkfja");
+            if (collision.CompareTag("ground"))
+                _isDetectStart = true;
         }
     }
 
