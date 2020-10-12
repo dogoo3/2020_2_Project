@@ -8,23 +8,23 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D _rigidbody2d;
     private Animator _animator;
-
+    private SpriteRenderer _spriterenderer;
+    
     private Vector2 _movePos, _directionPos, _jumpvalue;
     private Vector2 _oldDirectionPos; // 위 보는 키 누를 때 이전 시점을 저장하는 변수
     private bool _isjump, _isshield, _isdead;
 
     private float _hp, _shield, _speed, _def;
     private float _maxhp, _maxshield;
-
     [SerializeField] private GameObject shieldsprite = default;
     [SerializeField] private Transform muzzleGunPos = default;
 
     private void Awake()
     {
         instance = this;
-
         _rigidbody2d = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        _spriterenderer = GetComponent<SpriteRenderer>();
 
         // 게임 시작 시 기본 시선 설정
         _directionPos = Vector2.right;
@@ -69,9 +69,7 @@ public class Player : MonoBehaviour
             _directionPos = Vector2.up;
         }
         else // 위 그만 바라볼 때(키에서 손을 뗄 때)
-        {
             _directionPos = _oldDirectionPos;
-        }
     }
 
     public void Jump()
@@ -153,8 +151,34 @@ public class Player : MonoBehaviour
         GaugeManager.instance.SetHpGauge(_hp);
         _animator.SetTrigger("attacked");
         CheckDead();
+        Blink();
+        Invoke("CancelBlink", 2.0f);
     }
 
+    #region AttackBlinkFunc
+    private void Blink()
+    {
+        InvokeRepeating("BlinkAtt", 0f, 0.2f);
+        InvokeRepeating("BlinkOri", 0.1f, 0.2f);
+    }
+
+    public void CancelBlink() // Animation Func
+    {
+        BlinkOri();
+        CancelInvoke("BlinkAtt");
+        CancelInvoke("BlinkOri");
+    }
+
+    private void BlinkAtt()
+    {
+        _spriterenderer.color = Color.gray;
+    }
+
+    private void BlinkOri()
+    {
+        _spriterenderer.color = Color.white;
+    }
+    #endregion
     public void HealHP(float _healValue)
     {
         _hp = Mathf.Clamp(_hp + _healValue, 0, _maxhp);
@@ -172,6 +196,7 @@ public class Player : MonoBehaviour
         if(_hp <= 0)
         {
             _isdead = true;
+            CancelBlink();
             WindowManager.instance.Invoke("ShowFailWindow",3.0f); // 3초 뒤에 실패 윈도우를 띄운다.
             _animator.SetTrigger("dead");
         }
