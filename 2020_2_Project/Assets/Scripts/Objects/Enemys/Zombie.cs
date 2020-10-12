@@ -70,7 +70,7 @@ public class Zombie : MonoBehaviour
                         _changedirTime = 0;
                     }
                 }
-                DetectGround();
+                DetectGround(); // 플레이어를 감지하지 않을 때에만 일정 구역 안에서 움직이게 한다.
             }
             else // 플레이어를 감지해서 플레이어의 방향으로 빠르게 달려가는 상태이다.
             {
