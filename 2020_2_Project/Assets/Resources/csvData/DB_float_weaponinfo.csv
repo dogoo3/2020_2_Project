@@ -1,7 +1,7 @@
 pistol_deal,5
 pistol_respawn,1
 smg_deal,3
-smg_respawn,0.5
+smg_respawn,0.2
 sniper_deal,50
 sniper_respawn,3
 sniper_cost,500
