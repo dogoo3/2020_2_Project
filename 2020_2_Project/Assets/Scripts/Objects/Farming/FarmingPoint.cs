@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class FarmingPoint : MonoBehaviour
 {
+    [Header("오오라 파밍존인가?")]
+    public bool isauraZone;
+
     public void Spawn(int _itemNum)
     {
-        FarmingManager.instance.DeletePoint(this); // 내 Zone에서 Item이 Spawn되었기 때문에 중복 Spawn을 막음.
+        if (isauraZone)
+            FarmingManager.instance.DeleteAuraPoint(this);
+        else
+            FarmingManager.instance.DeletePoint(this); // 내 Zone에서 Item이 Spawn되었기 때문에 중복 Spawn을 막음.
         switch(_itemNum)
         {
             case 0: // Pistol
@@ -36,8 +42,11 @@ public class FarmingPoint : MonoBehaviour
         }
     }
 
-    public void GetItem()
+    public void GetItem() // 아이템 획득 시 아이템을 소환해도 된다는 신호를 주는 함수.
     {
-        FarmingManager.instance.AddPoint(this);
+        if (isauraZone)
+            FarmingManager.instance.AddAuraPoint(this);
+        else
+            FarmingManager.instance.AddPoint(this);
     }
 }

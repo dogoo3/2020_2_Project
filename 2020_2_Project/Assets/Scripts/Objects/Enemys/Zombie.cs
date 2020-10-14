@@ -7,13 +7,13 @@ public class Zombie : MonoBehaviour
     private Animator _animator;
 
     private RaycastHit2D _rayPlayer, _rayGround;
-    private Vector3 _vectordir;
+    private Vector2 _vectordir;
 
-    private bool _isdetect; // 플레이어를 감지했을 때
-    private bool _isSuicide; // 플레이어와 붙어 자살할 때
-    private bool _isDetectStart; // 땅을 밟아 플레이어 감지를 시작함
+    public bool _isdetect; // 플레이어를 감지했을 때
+    public bool _isSuicide; // 플레이어와 붙어 자살할 때
+    public bool _isDetectStart; // 땅을 밟아 플레이어 감지를 시작함
 
-    private float _changedirTime; // 시점 변환 시간을 계산하는 변수
+    public float _changedirTime; // 시점 변환 시간을 계산하는 변수
 
     [Header("플레이어에게 입힐 데미지")]
     [SerializeField] private int damage = default;
@@ -36,8 +36,12 @@ public class Zombie : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
+        _isSuicide = false;
+        _isDetectStart = false;
+        _isdetect = false;
+        _changedirTime = 0;
         _vectordir = Vector2.right;
         _animator.SetFloat("direction", _vectordir.x);
     }
@@ -93,9 +97,8 @@ public class Zombie : MonoBehaviour
             _animator.SetTrigger("suicide");
             _isSuicide = true;
         }
-        if(!_isDetectStart)
+        if (!_isDetectStart)
         {
-            Debug.Log("fasdhjlkfja");
             if (collision.CompareTag("ground"))
                 _isDetectStart = true;
         }
@@ -119,7 +122,7 @@ public class Zombie : MonoBehaviour
 
     private void DetectGround() // 좀비가 일정 땅 안에서만 이동할 수 있도록 
     {
-        _rayPlayer = Physics2D.Raycast(transform.position + _vectordir, Vector2.down, 1.5f, 1 << LayerMask.NameToLayer("Ground"));
+        _rayPlayer = Physics2D.Raycast(transform.position + (Vector3)_vectordir - (Vector3.down * 0.5f), Vector2.down, 2.5f, 1 << LayerMask.NameToLayer("Ground"));
 
         if(_rayPlayer.collider == null) // 시선 앞에 땅이 없으면
         {

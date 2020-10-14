@@ -114,7 +114,12 @@ public class FarmingItem : MonoBehaviour
             _item.Supply(); // 아이템 공급
             InsertQueue();
             _collider2d.enabled = false;
-            FarmingManager.instance.OutputItem(this);
+
+            // 오오라존여부에 따라 어느 리스트로 들어가야 하는지를 분기한다.
+            if (_mySpawnPoint.isauraZone)
+                FarmingManager.instance.OutputAuraItem(this);
+            else
+                FarmingManager.instance.OutputItem(this);
         }
     }
 

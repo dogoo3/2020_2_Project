@@ -19,9 +19,9 @@ public class Gold : MonoBehaviour
         _coloralpha = new Color(1, 1, 1, 1);
     }
 
-    public void SetGoldValue()
+    public void SetGoldValue(int _value)
     {
-        _goldValue = Random.Range(50, 201);
+        _goldValue = _value;
     }
 
     private void OnEnable()

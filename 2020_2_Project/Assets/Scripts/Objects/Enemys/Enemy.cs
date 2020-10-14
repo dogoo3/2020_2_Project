@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
             {
                 ScoreManager.instance.UpdateScore(score);
                 SpawnMonstersManager.instance.CatchMonster();
-                ObjectPoolingManager.instance.GetQueue_gold(transform.position);
+                ObjectPoolingManager.instance.GetQueue_gold(transform.position, Random.Range(minGold,maxGold));
                 // 나중에 Parameter로 goldMin, goldMax도 같이 넘겨줄 것...
                 _animator.SetTrigger("dead");
             }

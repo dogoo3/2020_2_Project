@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -150,9 +151,20 @@ public class Player : MonoBehaviour
         _hp -= _damage;
         GaugeManager.instance.SetHpGauge(_hp);
         _animator.SetTrigger("attacked");
-        CheckDead();
         Blink();
+        CheckDead();
         Invoke("CancelBlink", 2.0f);
+    }
+    
+    public bool GetisDead() // 클리어를 띄울 때 플레이어 사망 유무를 반환하는 함수.
+    {
+        return _isdead;
+    }
+
+    public void KnockBack(int _damage, Vector2 _knockback)
+    {
+        Attacked(_damage);
+        _rigidbody2d.velocity = _knockback;
     }
 
     #region AttackBlinkFunc
@@ -164,9 +176,9 @@ public class Player : MonoBehaviour
 
     public void CancelBlink() // Animation Func
     {
-        BlinkOri();
         CancelInvoke("BlinkAtt");
         CancelInvoke("BlinkOri");
+        BlinkOri();
     }
 
     private void BlinkAtt()
@@ -217,6 +229,31 @@ public class Player : MonoBehaviour
             {
                 if (_shield < 100.0f)
                     GaugeManager.instance.SetShieldGauge(_shield = Mathf.Clamp(_shield + 0.08f, 0, 100.0f));
+            }
+
+            if(Application.platform == RuntimePlatform.WindowsEditor)
+            {
+                if (Input.GetKeyDown(KeyCode.LeftArrow))
+                    Move(-1);
+                else if (Input.GetKeyDown(KeyCode.RightArrow))
+                    Move(1);
+                else if (Input.GetKeyDown(KeyCode.UpArrow))
+                    LookUp(true);
+                else if (Input.GetKeyDown(KeyCode.DownArrow))
+                    Shield();
+                else if (Input.GetKeyDown(KeyCode.Z)) // Shoot
+                    Shoot();
+                else if (Input.GetKeyDown(KeyCode.Space))
+                    Jump();
+                else { }
+
+                if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
+                    Idle();
+                else if (Input.GetKeyUp(KeyCode.UpArrow))
+                    LookUp(false);
+                else if (Input.GetKeyUp(KeyCode.DownArrow))
+                    UnShield();
+                else { }
             }
         }
     }

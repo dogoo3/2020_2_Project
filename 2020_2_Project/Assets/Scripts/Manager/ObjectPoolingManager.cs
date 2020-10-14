@@ -206,13 +206,13 @@ public class ObjectPoolingManager : MonoBehaviour
         }
     }
 
-    public void GetQueue_gold(Vector2 _position)
+    public void GetQueue_gold(Vector2 _position, int _value)
     {
         if(queue_gold.Count != 0)
         {
             _gold = queue_gold.Dequeue();
             _gold.transform.position = _position;
-            _gold.SetGoldValue(); // 골드의 범위는 Gold 스크립트에!
+            _gold.SetGoldValue(_value); // 골드의 범위는 Enemy에서 Random으로 받아온다.
             _gold.gameObject.SetActive(true);
         }
     }
@@ -222,7 +222,10 @@ public class ObjectPoolingManager : MonoBehaviour
         _farmItem.transform.position = _position;
         _farmItem.PutMySpawnPoint(_point);
         _farmItem.gameObject.SetActive(true);
-        FarmingManager.instance.InputItem(_farmItem);
+        if (_point.isauraZone)
+            FarmingManager.instance.InputAuraItem(_farmItem);
+        else
+            FarmingManager.instance.InputItem(_farmItem);
     }
 
     public void GetQueue_Item_pistol(Vector2 _position, FarmingPoint _point)

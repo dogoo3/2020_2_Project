@@ -40,7 +40,10 @@ public class ControlSound : MonoBehaviour, IPointerDownHandler
     private void Set(string _key)
     {
         FileManager.soundSetting[_key] = _isOn;
-        SoundManager.instance.SetIsplayBGM(_isOn);
+        if (_key == "bgmOn")
+            SoundManager.instance.SetIsplayBGM(_isOn);
+        else
+            SoundManager.instance.SetIsplaySFX(_isOn);
         FileManager.WriteData("DB_bool_envset.csv", FileManager.soundSetting);
     }
 

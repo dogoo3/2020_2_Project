@@ -158,9 +158,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 45
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 10
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -215,8 +215,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 50
   score: 110
-  minGold: 0
-  maxGold: 0
+  minGold: 80
+  maxGold: 160
 --- !u!114 &3230243925740643267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03cbda5420ea0d04ca37700f69116019, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 80
   moveSpeed: 3
   detectPlayerSpeed: 9
   patrolTime: 3
