@@ -15,7 +15,8 @@ public class WeaponCooltimeWatcher : MonoBehaviour
 
     private void Update()
     {
-        _elapsed = WeaponManager.instance.GetElapseCooltime();
+        if(WeaponManager.instance != null)
+            _elapsed = WeaponManager.instance.GetElapseCooltime();
         _image.fillAmount = _elapsed;
     }
 }

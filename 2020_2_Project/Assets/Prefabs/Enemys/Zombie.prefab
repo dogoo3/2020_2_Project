@@ -229,7 +229,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03cbda5420ea0d04ca37700f69116019, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 80
+  _isdetect: 0
+  _isSuicide: 0
+  _isDetectStart: 0
+  _changedirTime: 0
+  damage: 20
   moveSpeed: 3
   detectPlayerSpeed: 9
   patrolTime: 3

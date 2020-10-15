@@ -9,8 +9,8 @@ public class FarmingManager : MonoBehaviour
     [SerializeField] private List<FarmingPoint> _farmingPos = default; // 랜덤 생성 위치
     [SerializeField] private List<FarmingPoint> _auraFarmingPos = default; // 고정 생성 위치 
 
-    public List<FarmingItem> _nowactiveItem = new List<FarmingItem>(); // 현재 활성화된 아이템의 정보를 가지고 있는 List
-    public List<FarmingItem> _nowAuraActiveItem = new List<FarmingItem>(); // 고정생성위치에 활성화된 아이템의 정보를 가지고 있는 List
+    private List<FarmingItem> _nowactiveItem = new List<FarmingItem>(); // 현재 활성화된 아이템의 정보를 가지고 있는 List
+    private List<FarmingItem> _nowAuraActiveItem = new List<FarmingItem>(); // 고정생성위치에 활성화된 아이템의 정보를 가지고 있는 List
 
     private Dictionary<int, int> _activeItems = new Dictionary<int, int>(); // 어떤 아이템을 스폰할지 판독하는 딕셔너리. <난수값, 아이템번호>
 

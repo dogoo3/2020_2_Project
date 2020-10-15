@@ -9,8 +9,10 @@ public class SpawnMonstersManager : MonoBehaviour
     public SpawnMonstersPoint[] spawnMonstersPoint;
 
     private List<Enemy> _copyEnemy = new List<Enemy>();
-    public Enemy[] enemy;
-
+    [SerializeField] private List<Enemy> enemy;
+    [Header("몬스터 스폰 간격")]
+    [SerializeField] private float elapseSpawnTime;
+    
     private int _spawnEnemyIndex; // enemy List에서 소환할 적 인덱스 번호 랜덤값
     private int _spawnPointIndex; // 소환 포인트 인덱스 번호 랜덤값 
 
@@ -20,14 +22,14 @@ public class SpawnMonstersManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        _killNumber = enemy.Length; // 적 배열의 길이 = 죽여야 할 몬스터의 마릿수
+        _killNumber = enemy.Count; // 적 배열의 길이 = 죽여야 할 몬스터의 마릿수
         ResetEnemyList();
     }
 
     public void GameStart() // Animator Func
     {
         if (_copyEnemy.Count != 0)
-            InvokeRepeating("SpawnRandomMonster", 0f, 6.0f);
+            InvokeRepeating("SpawnRandomMonster", 0f, elapseSpawnTime);
     }
 
     private void SpawnRandomMonster()
@@ -50,7 +52,7 @@ public class SpawnMonstersManager : MonoBehaviour
 
     public void ResetEnemyList()
     {
-        for (int i = 0; i < enemy.Length; i++)
+        for (int i = 0; i < enemy.Count; i++)
             enemy[i].gameObject.SetActive(false);
         _nowkillNumber = 0;
         _copyEnemy.Clear();
@@ -58,10 +60,17 @@ public class SpawnMonstersManager : MonoBehaviour
         CancelInvoke("SpawnRandomMonster");
     }
 
+    public void AddMonster(Enemy _enemy)
+    {
+        enemy.Add(_enemy);
+    }
+
     private void ShowClearWindow()
     {
         if (!Player.instance.GetisDead()) // 플레이어가 죽지 않았을 경우
             WindowManager.instance.ShowClearWindow();
     }
+
+
     
 }
