@@ -186,7 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemKind: 4
   _mySpawnPoint: {fileID: 0}
-  supplyValue: 20
+  supplyValue: 7
 --- !u!50 &2717567551687385878
 Rigidbody2D:
   serializedVersion: 4
