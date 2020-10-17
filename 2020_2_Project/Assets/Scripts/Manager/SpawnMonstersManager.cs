@@ -9,9 +9,9 @@ public class SpawnMonstersManager : MonoBehaviour
     public SpawnMonstersPoint[] spawnMonstersPoint;
 
     private List<Enemy> _copyEnemy = new List<Enemy>();
-    [SerializeField] private List<Enemy> enemy;
+    [SerializeField] private List<Enemy> enemy = default;
     [Header("몬스터 스폰 간격")]
-    [SerializeField] private float elapseSpawnTime;
+    [SerializeField] private float elapseSpawnTime = default;
     
     private int _spawnEnemyIndex; // enemy List에서 소환할 적 인덱스 번호 랜덤값
     private int _spawnPointIndex; // 소환 포인트 인덱스 번호 랜덤값 

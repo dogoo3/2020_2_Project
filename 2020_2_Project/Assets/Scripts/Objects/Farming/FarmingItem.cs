@@ -20,17 +20,22 @@ public class FarmingItem : MonoBehaviour
 
     private Rigidbody2D _rigidbody2d;
     private Collider2D _collider2d;
-
+    private SpriteRenderer _spriterenderer;
     private Item _item;
+    private Color _color;
+
     public FarmingPoint _mySpawnPoint;
 
     private int _itemId;
     public int supplyValue;
+    private bool _isGet;
 
     private void Awake()
     {
         _rigidbody2d = GetComponent<Rigidbody2D>();
         _collider2d = GetComponent<Collider2D>();
+        _spriterenderer = GetComponent<SpriteRenderer>();
+
         switch (itemKind)
         {
             case ItemKind.pistol:
@@ -69,9 +74,11 @@ public class FarmingItem : MonoBehaviour
     private void OnEnable()
     {
         // Active 시 멋지게(?) 등장하기 위한 모션
+        _rigidbody2d.gravityScale = 1;
         _rigidbody2d.velocity = new Vector2(0, 4.0f);
-
-        Invoke("EnableCollider", 1.0f); // 1초뒤 활성화
+        _spriterenderer.color = Color.white;
+        _color = Color.white;
+        Invoke("EnableComponent", 1.0f); // 1초뒤 활성화
         _collider2d.enabled = false; // 콜라이더 꺼 줌
     }
 
@@ -112,10 +119,10 @@ public class FarmingItem : MonoBehaviour
         {
             _mySpawnPoint.GetItem();
             _item.Supply(); // 아이템 공급
-            InsertQueue();
             _collider2d.enabled = false;
-
+            _isGet = true;
             // 오오라존여부에 따라 어느 리스트로 들어가야 하는지를 분기한다.
+            // 아이템 획득 시 활성화 아이템이 들어있는 배열에서 삭제해주는 함수임.
             if (_mySpawnPoint.isauraZone)
                 FarmingManager.instance.OutputAuraItem(this);
             else
@@ -123,7 +130,21 @@ public class FarmingItem : MonoBehaviour
         }
     }
 
-    private void EnableCollider() // Invoke Func
+    private void Update()
+    {
+        if (_isGet)
+        {
+            _color.a -= 0.032f;
+            _spriterenderer.color = _color;
+            if (_color.a <= 0)
+            {
+                _isGet = false;
+                InsertQueue();
+            }
+        }
+    }
+
+    private void EnableComponent() // Invoke Func
     {
         _collider2d.enabled = true;
     }
@@ -133,8 +154,13 @@ public class FarmingItem : MonoBehaviour
         _mySpawnPoint = _point;
     }
 
-    public FarmingPoint GetSpawnPoint()
+    public FarmingPoint GetSpawnPoint() // 라운드를 종료할 때 아이템들을 모두 없애주는 함수이다.
     {
         return _mySpawnPoint;
+    }
+
+    public void SetGround() // 자식 스크립트(PatrolItem)를 위한 함수
+    {
+        _rigidbody2d.gravityScale = 0;
     }
 }

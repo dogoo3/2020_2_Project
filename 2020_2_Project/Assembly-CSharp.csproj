@@ -88,6 +88,7 @@
     <Compile Include="Assets\Scripts\Objects\Farming\FarmingManager.cs" />
     <Compile Include="Assets\Scripts\Objects\Farming\FarmingPoint.cs" />
     <Compile Include="Assets\Scripts\Objects\Farming\Item.cs" />
+    <Compile Include="Assets\Scripts\Objects\PatrolItem.cs" />
     <Compile Include="Assets\Scripts\Objects\Player.cs" />
     <Compile Include="Assets\Scripts\Objects\SpawnMonstersPoint.cs" />
     <Compile Include="Assets\Scripts\UI\ChoiceStage.cs" />

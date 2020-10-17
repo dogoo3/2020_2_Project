@@ -101,7 +101,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.35759515
+  m_Radius: 0.4246853
 --- !u!114 &8284030478538987048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +148,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8137206742628067325}
   - component: {fileID: 4163205204737469260}
+  - component: {fileID: 9208220803319208296}
   m_Layer: 11
   m_Name: GroundCollider
   m_TagString: Untagged
@@ -195,3 +196,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2502416, y: 0.08795977}
   m_EdgeRadius: 0
+--- !u!114 &9208220803319208296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4896121097788523021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2d2aebffb325940bbf33d5436eeebd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _patrolTime: 0.25
