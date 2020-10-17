@@ -36,7 +36,7 @@ public class Bullet_Sniper : MonoBehaviour
         {
             case "ground":
             case "bullet":
-            case "wall:":
+            case "wall":
                 ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_sniper);
                 break;
         }
