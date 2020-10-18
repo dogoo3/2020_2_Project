@@ -4,19 +4,16 @@ using UnityEngine;
 
 public class Zombie : MonoBehaviour
 {
-    private Rigidbody2D _rigidbody2d;
     private Animator _animator;
 
     private RaycastHit2D _rayPlayer, _rayGround;
     private Vector2 _vectordir;
 
-    private bool _isdetect; // 플레이어를 감지했을 때
-    private bool _isSuicide; // 플레이어와 붙어 자살할 때
-    private bool _isDetectStart; // 땅을 밟아 플레이어 감지를 시작함
-    private bool _isJump; // 점프할 때
-    private float _changedirTime; // 시점 변환 시간을 계산하는 변수
+    public bool _isdetect; // 플레이어를 감지했을 때
+    public bool _isSuicide; // 플레이어와 붙어 자살할 때
+    public bool _isDetectStart; // 땅을 밟아 플레이어 감지를 시작함
 
-    private int _randAction;
+    public float _changedirTime; // 시점 변환 시간을 계산하는 변수
 
     [Header("플레이어에게 입힐 데미지")]
     [SerializeField] private int damage = default;
@@ -36,7 +33,6 @@ public class Zombie : MonoBehaviour
 
     private void Awake()
     {
-        _rigidbody2d = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
     }
 
@@ -45,7 +41,6 @@ public class Zombie : MonoBehaviour
         _isSuicide = false;
         _isDetectStart = false;
         _isdetect = false;
-        _isJump = false;
         _changedirTime = 0;
         _vectordir = Vector2.right;
         _animator.SetFloat("direction", _vectordir.x);
@@ -57,11 +52,15 @@ public class Zombie : MonoBehaviour
         {
             _changedirTime += Time.deltaTime;
 
-            if (!_isdetect) // 플레이어를 탐색하는 상태이다.
+            if (!_isdetect) // 플레이어를 감지하는 상태이다.
             {
                 transform.Translate(_vectordir * moveSpeed * Time.deltaTime);
                 if (_changedirTime > patrolTime) // 일정 시간이 지나면 시점을 바꿔준다.
-                    ChangeDir();
+                {
+                    _vectordir.x *= -1;
+                    _animator.SetFloat("direction", _vectordir.x);
+                    _changedirTime = 0;
+                }
 
                 if (Vector2.Distance(Player.instance.transform.position, transform.position) < rayLength) // 매 프레임마다 Raycast는 Performance를 낭비할 수 있으므로, 일정 거리 안으로 들어오면 Ray를 쏜다.
                 {
@@ -75,9 +74,7 @@ public class Zombie : MonoBehaviour
                         _changedirTime = 0;
                     }
                 }
-
-                if(!_isJump)
-                    DetectGround(); // 플레이어를 감지하지 않을 때에만 일정 구역 안에서 움직이게 한다.
+                DetectGround(); // 플레이어를 감지하지 않을 때에만 일정 구역 안에서 움직이게 한다.
             }
             else // 플레이어를 감지해서 플레이어의 방향으로 빠르게 달려가는 상태이다.
             {
@@ -86,7 +83,9 @@ public class Zombie : MonoBehaviour
                 {
                     _isdetect = false; // 다시 탐색 상태로 돌아간다.
                     _animator.SetBool("Run", _isdetect);
-                    ChangeDir();
+                    _vectordir.x *= -1; // 방향 전환
+                    _animator.SetFloat("direction", _vectordir.x);
+                    _changedirTime = 0; 
                 }
             }
         }
@@ -102,10 +101,6 @@ public class Zombie : MonoBehaviour
         {
             if (collision.CompareTag("ground"))
                 _isDetectStart = true;
-        }
-        if(collision.CompareTag("ground"))
-        {
-            _isJump = false;
         }
     }
 
@@ -127,37 +122,13 @@ public class Zombie : MonoBehaviour
 
     private void DetectGround() // 좀비가 일정 땅 안에서만 이동할 수 있도록 
     {
-        _rayPlayer = Physics2D.Raycast(transform.position + (Vector3)_vectordir + (Vector3.down * 1.5f), Vector2.down, 1f, 1 << LayerMask.NameToLayer("Ground"));
+        _rayPlayer = Physics2D.Raycast(transform.position + (Vector3)_vectordir - (Vector3.down * 0.5f), Vector2.down, 2.5f, 1 << LayerMask.NameToLayer("Ground"));
 
-        if (_rayPlayer.collider == null) // 시선 앞에 땅이 없으면
+        if(_rayPlayer.collider == null) // 시선 앞에 땅이 없으면
         {
-            _randAction = Random.Range(0, 2);
-            if (_randAction == 0) // 0 & 1 & 2 중에 랜덤 돌려서 0이면 시선 바꿈
-                ChangeDir();
-            else if(_randAction == 1) // 1이면 점프
-            {
-                _rayPlayer = Physics2D.Raycast(transform.position + (Vector3.down * 0.5f), _vectordir, 4.0f, 1 << LayerMask.NameToLayer("Ground"));
-                Debug.DrawRay(transform.position + (Vector3.down * 0.5f), _vectordir*4.0f, Color.red, 2.0f);
-                if (_rayPlayer.collider != null)
-                {
-                    _isJump = true;
-                    _rigidbody2d.velocity = new Vector2(0, 22.0f);
-                }
-            }
+            _vectordir.x *= -1; // 시점변경
+            _animator.SetFloat("direction", _vectordir.x);
+            _changedirTime = 0;
         }
-        else // 앞으로 갈 땅은 있는데 앞에 장애물이 있는 경우
-        {
-            // 진행방향 바로 앞에 벽이 있을 경우
-            _rayPlayer = Physics2D.Raycast(transform.position + (Vector3.down * 0.5f), _vectordir, 1f, 1 << LayerMask.NameToLayer("Ground"));
-            if (_rayPlayer.collider != null)
-                ChangeDir();
-        }
-    }
-
-    private void ChangeDir()
-    {
-        _vectordir.x *= -1; // 시점변경
-        _animator.SetFloat("direction", _vectordir.x);
-        _changedirTime = 0;
     }
 }

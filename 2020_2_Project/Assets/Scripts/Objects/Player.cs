@@ -13,15 +13,12 @@ public class Player : MonoBehaviour
     
     private Vector2 _movePos, _directionPos, _jumpvalue;
     private Vector2 _oldDirectionPos; // 위 보는 키 누를 때 이전 시점을 저장하는 변수
-    
     private bool _isjump, _isshield, _isdead;
 
     private float _hp, _shield, _speed, _def;
     private float _maxhp, _maxshield;
     [SerializeField] private GameObject shieldsprite = default;
     [SerializeField] private Transform muzzleGunPos = default;
-
-    private RaycastHit2D _rayPlayer;
 
     private void Awake()
     {
@@ -53,7 +50,6 @@ public class Player : MonoBehaviour
     {
         if (_isdead)
             return;
-
         _animator.SetFloat("direction", _direction);
         _animator.SetBool("move", true);
         _movePos.x = _direction;
@@ -81,15 +77,11 @@ public class Player : MonoBehaviour
     {
         if(!_isdead)
         {
-            _rayPlayer = Physics2D.Raycast(transform.position + (Vector3.down * 1.3f), Vector2.down, 0.5f, 1 << LayerMask.NameToLayer("Ground"));
-            if (_rayPlayer.collider != null)
+            if (!_isjump)
             {
-                if (!_isjump)
-                {
-                    _animator.SetBool("jump", true);
-                    _rigidbody2d.velocity = _jumpvalue;
-                    _isjump = true;
-                }
+                _animator.SetBool("jump", true);
+                _rigidbody2d.velocity = _jumpvalue;
+                _isjump = true;
             }
         }
     }
@@ -224,7 +216,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (!_isdead) // dead가 true이면 플레이어가 죽었다는 의미.
+        if(!_isdead) // dead가 true이면 플레이어가 죽었다는 의미.
         {
             _rigidbody2d.transform.Translate(_movePos.normalized * Time.deltaTime * _speed);
             if (_isshield) // 실드 키를 누르고 있을 때.
@@ -239,7 +231,7 @@ public class Player : MonoBehaviour
                     GaugeManager.instance.SetShieldGauge(_shield = Mathf.Clamp(_shield + 0.08f, 0, 100.0f));
             }
 
-            if (Application.platform == RuntimePlatform.WindowsEditor)
+            if(Application.platform == RuntimePlatform.WindowsEditor)
             {
                 if (Input.GetKeyDown(KeyCode.LeftArrow))
                     Move(-1);

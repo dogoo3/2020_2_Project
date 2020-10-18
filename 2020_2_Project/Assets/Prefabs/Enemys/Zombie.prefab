@@ -158,9 +158,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 5
+  m_LinearDrag: 45
   m_AngularDrag: 0.05
-  m_GravityScale: 4
+  m_GravityScale: 10
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -229,8 +229,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03cbda5420ea0d04ca37700f69116019, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isdetect: 0
+  _isSuicide: 0
+  _isDetectStart: 0
+  _changedirTime: 0
   damage: 20
-  moveSpeed: 4
+  moveSpeed: 3
   detectPlayerSpeed: 9
   patrolTime: 3
   detectTime: 2

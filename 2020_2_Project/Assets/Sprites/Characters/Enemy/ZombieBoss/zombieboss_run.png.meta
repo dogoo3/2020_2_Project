@@ -1,31 +1,7 @@
 fileFormatVersion: 2
 guid: be8e7b5bb7c85b8429d6c3fe388d8756
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -8155828652310094957
-    second: zombieboss_run_0
-  - first:
-      213: 8768161649043984413
-    second: zombieboss_run_1
-  - first:
-      213: -2485979382674044210
-    second: zombieboss_run_2
-  - first:
-      213: -1741428265503081007
-    second: zombieboss_run_3
-  - first:
-      213: 7780468188305122943
-    second: zombieboss_run_4
-  - first:
-      213: -6882533650093661160
-    second: zombieboss_run_5
-  - first:
-      213: -3728750961454489688
-    second: zombieboss_run_6
-  - first:
-      213: 8411629186279222583
-    second: zombieboss_run_7
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -64,7 +40,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -94,201 +70,9 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: zombieboss_run_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 400
-        height: 550
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 39b9a1a5d0da0de80800000000000000
-      internalID: -8155828652310094957
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: zombieboss_run_1
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 0
-        width: 400
-        height: 550
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d1058786094cea970800000000000000
-      internalID: 8768161649043984413
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: zombieboss_run_2
-      rect:
-        serializedVersion: 2
-        x: 800
-        y: 0
-        width: 400
-        height: 550
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ecac4c83ce6008dd0800000000000000
-      internalID: -2485979382674044210
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: zombieboss_run_3
-      rect:
-        serializedVersion: 2
-        x: 1200
-        y: 0
-        width: 400
-        height: 550
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1dd3dd0183435d7e0800000000000000
-      internalID: -1741428265503081007
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: zombieboss_run_4
-      rect:
-        serializedVersion: 2
-        x: 1600
-        y: 0
-        width: 400
-        height: 550
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f7667263896c9fb60800000000000000
-      internalID: 7780468188305122943
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: zombieboss_run_5
-      rect:
-        serializedVersion: 2
-        x: 2000
-        y: 0
-        width: 400
-        height: 550
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 814ae774c145c70a0800000000000000
-      internalID: -6882533650093661160
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: zombieboss_run_6
-      rect:
-        serializedVersion: 2
-        x: 2400
-        y: 0
-        width: 400
-        height: 550
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8afdb9e91c0d04cc0800000000000000
-      internalID: -3728750961454489688
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: zombieboss_run_7
-      rect:
-        serializedVersion: 2
-        x: 2800
-        y: 0
-        width: 400
-        height: 550
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 73d2b7e9d2c1cb470800000000000000
-      internalID: 8411629186279222583
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
