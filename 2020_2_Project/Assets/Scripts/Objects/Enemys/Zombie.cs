@@ -136,8 +136,8 @@ public class Zombie : MonoBehaviour
                 ChangeDir();
             else if(_randAction == 1) // 1이면 점프
             {
-                _rayPlayer = Physics2D.Raycast(transform.position + (Vector3.down * 0.5f), _vectordir, 4.0f, 1 << LayerMask.NameToLayer("Ground"));
-                Debug.DrawRay(transform.position + (Vector3.down * 0.5f), _vectordir*4.0f, Color.red, 2.0f);
+                _rayPlayer = Physics2D.Raycast(transform.position + (Vector3.down * 0.5f), _vectordir, 5.0f, 1 << LayerMask.NameToLayer("Ground"));
+                Debug.DrawRay(transform.position + (Vector3.down * 0.5f), _vectordir*5.0f, Color.red, 2.0f);
                 if (_rayPlayer.collider != null)
                 {
                     _isJump = true;
