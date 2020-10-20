@@ -9,7 +9,7 @@ public class Bullet
     public float surviveTime;
     public Enemy tempEnemy;
 
-    protected Vector2 _direction;
+    public Vector2 _direction;
     protected float _elapsedTime;
     
     public virtual void Direction(Vector2 _direction) { }

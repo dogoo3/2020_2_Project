@@ -49,6 +49,7 @@ public class Bullet_AR : MonoBehaviour
             case "enemy":
                 _ar.tempEnemy = collision.gameObject.GetComponent<Enemy>();
                 _ar.tempEnemy.MinusHP(_ar.damage);
+                _ar.tempEnemy.Knockback(_ar._direction);
                 ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_ar);
                 break;
         }

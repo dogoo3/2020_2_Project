@@ -1,25 +1,28 @@
 fileFormatVersion: 2
-guid: 538924f760e2a7747a255011ad039160
+guid: ac695cac67264df42a17c0aa8b9d5d08
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5882454136460379622
-    second: zombieboss_dead_0
+      213: 8898841159139044369
+    second: DEAD ZOMBIEKING_0
   - first:
-      213: 283847976391158238
-    second: zombieboss_dead_1
+      213: -5249739132812313627
+    second: DEAD ZOMBIEKING_1
   - first:
-      213: -5790716566375020565
-    second: zombieboss_dead_2
+      213: -7411377455793090012
+    second: DEAD ZOMBIEKING_2
   - first:
-      213: -604228305883718884
-    second: zombieboss_dead_3
+      213: -8344369815070565439
+    second: DEAD ZOMBIEKING_3
   - first:
-      213: -6330919183564176103
-    second: zombieboss_dead_4
+      213: -8353340493335421651
+    second: DEAD ZOMBIEKING_4
   - first:
-      213: -3502544212969369536
-    second: zombieboss_dead_5
+      213: -7730166013467549277
+    second: DEAD ZOMBIEKING_5
+  - first:
+      213: 7911772800236607483
+    second: DEAD ZOMBIEKING_6
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -116,70 +119,70 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: zombieboss_dead_0
+      name: DEAD ZOMBIEKING_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 600
+        width: 497
         height: 620
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e58f3bdedca2a150800000000000000
-      internalID: 5882454136460379622
+      spriteID: 11cab1bd2e80f7b70800000000000000
+      internalID: 8898841159139044369
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zombieboss_dead_1
+      name: DEAD ZOMBIEKING_1
       rect:
         serializedVersion: 2
         x: 600
         y: 0
-        width: 600
+        width: 467
         height: 620
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed9220b0b3e60f300800000000000000
-      internalID: 283847976391158238
+      spriteID: 5eb3141b21e2527b0800000000000000
+      internalID: -5249739132812313627
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zombieboss_dead_2
+      name: DEAD ZOMBIEKING_2
       rect:
         serializedVersion: 2
-        x: 1200
+        x: 1202
         y: 0
-        width: 600
+        width: 585
         height: 620
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.4138117, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be74f32a6fd33afa0800000000000000
-      internalID: -5790716566375020565
+      spriteID: 4225d1b987f752990800000000000000
+      internalID: -7411377455793090012
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zombieboss_dead_3
+      name: DEAD ZOMBIEKING_3
       rect:
         serializedVersion: 2
         x: 1800
@@ -187,47 +190,68 @@ TextureImporter:
         width: 600
         height: 620
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c1b9090ae895d97f0800000000000000
-      internalID: -604228305883718884
+      spriteID: 1cb1a321dd7d23c80800000000000000
+      internalID: -8344369815070565439
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zombieboss_dead_4
+      name: DEAD ZOMBIEKING_4
       rect:
         serializedVersion: 2
         x: 2400
         y: 0
-        width: 600
+        width: 566
         height: 620
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.43, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 91583f19b8e0428a0800000000000000
-      internalID: -6330919183564176103
+      spriteID: d2d1bd64419f21c80800000000000000
+      internalID: -8353340493335421651
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zombieboss_dead_5
+      name: DEAD ZOMBIEKING_5
       rect:
         serializedVersion: 2
         x: 3000
         y: 0
         width: 600
         height: 620
+      alignment: 9
+      pivot: {x: 0.39, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a1287887fee8b490800000000000000
+      internalID: -7730166013467549277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DEAD ZOMBIEKING_6
+      rect:
+        serializedVersion: 2
+        x: 3508
+        y: 203
+        width: 92
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,8 +259,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0405cd77896746fc0800000000000000
-      internalID: -3502544212969369536
+      spriteID: bf753b581734ccd60800000000000000
+      internalID: 7911772800236607483
       vertices: []
       indices: 
       edges: []

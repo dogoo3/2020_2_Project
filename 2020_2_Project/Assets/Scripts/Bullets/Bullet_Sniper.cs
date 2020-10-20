@@ -49,6 +49,7 @@ public class Bullet_Sniper : MonoBehaviour
             case "enemy":
                 _sniper.tempEnemy = collision.gameObject.GetComponent<Enemy>();
                 _sniper.tempEnemy.MinusHP(_sniper.damage);
+                _sniper.tempEnemy.Knockback(_sniper._direction);
                 ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_sniper);
                 break;
         }

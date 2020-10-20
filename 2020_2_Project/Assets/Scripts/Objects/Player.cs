@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform muzzleGunPos = default;
 
     private RaycastHit2D _rayPlayer;
+    private bool _isBlink;
 
     private void Awake()
     {
@@ -159,9 +160,12 @@ public class Player : MonoBehaviour
         _hp -= _damage;
         GaugeManager.instance.SetHpGauge(_hp);
         _animator.SetTrigger("attacked");
-        Blink();
+        if (!_isBlink)
+        {
+            Blink();
+            Invoke("CancelBlink", 2.0f);
+        }
         CheckDead();
-        Invoke("CancelBlink", 2.0f);
     }
     
     public bool GetisDead() // 클리어를 띄울 때 플레이어 사망 유무를 반환하는 함수.
@@ -178,12 +182,14 @@ public class Player : MonoBehaviour
     #region AttackBlinkFunc
     private void Blink()
     {
+        _isBlink = true;
         InvokeRepeating("BlinkAtt", 0f, 0.2f);
         InvokeRepeating("BlinkOri", 0.1f, 0.2f);
     }
 
     public void CancelBlink() // Animation Func
     {
+        _isBlink = false;
         CancelInvoke("BlinkAtt");
         CancelInvoke("BlinkOri");
         BlinkOri();

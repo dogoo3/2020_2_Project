@@ -49,6 +49,7 @@ public class Bullet_SMG : MonoBehaviour
             case "enemy":
                 _smg.tempEnemy = collision.gameObject.GetComponent<Enemy>();
                 _smg.tempEnemy.MinusHP(_smg.damage);
+                _smg.tempEnemy.Knockback(_smg._direction);
                 ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_smg);
                 break;
         }

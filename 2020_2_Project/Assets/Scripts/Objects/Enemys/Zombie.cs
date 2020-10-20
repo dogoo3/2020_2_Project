@@ -62,17 +62,19 @@ public class Zombie : MonoBehaviour
                 transform.Translate(_vectordir * moveSpeed * Time.deltaTime);
                 if (_changedirTime > patrolTime) // 일정 시간이 지나면 시점을 바꿔준다.
                     ChangeDir();
-
-                if (Vector2.Distance(Player.instance.transform.position, transform.position) < rayLength) // 매 프레임마다 Raycast는 Performance를 낭비할 수 있으므로, 일정 거리 안으로 들어오면 Ray를 쏜다.
+                if (Player.instance != null)
                 {
-                    // Player를 RayCast로 찾는다.
-                    _rayPlayer = Physics2D.Raycast(transform.position, _vectordir, rayLength, 1 << LayerMask.NameToLayer("Player"));
-
-                    if (_rayPlayer.collider != null) // 플레이어가 감지되면 인페테란처럼 빠르게 플레이어가 있는 방향으로 달려간다.
+                    if (Vector2.Distance(Player.instance.transform.position, transform.position) < rayLength) // 매 프레임마다 Raycast는 Performance를 낭비할 수 있으므로, 일정 거리 안으로 들어오면 Ray를 쏜다.
                     {
-                        _isdetect = true;
-                        _animator.SetBool("Run", _isdetect);
-                        _changedirTime = 0;
+                        // Player를 RayCast로 찾는다.
+                        _rayPlayer = Physics2D.Raycast(transform.position, _vectordir, rayLength, 1 << LayerMask.NameToLayer("Player"));
+
+                        if (_rayPlayer.collider != null) // 플레이어가 감지되면 인페테란처럼 빠르게 플레이어가 있는 방향으로 달려간다.
+                        {
+                            _isdetect = true;
+                            _animator.SetBool("Run", _isdetect);
+                            _changedirTime = 0;
+                        }
                     }
                 }
 
@@ -132,18 +134,20 @@ public class Zombie : MonoBehaviour
         if (_rayPlayer.collider == null) // 시선 앞에 땅이 없으면
         {
             _randAction = Random.Range(0, 2);
+            Debug.Log(_randAction);
             if (_randAction == 0) // 0 & 1 & 2 중에 랜덤 돌려서 0이면 시선 바꿈
                 ChangeDir();
-            else if(_randAction == 1) // 1이면 점프
+            else if (_randAction == 1) // 1이면 점프
             {
                 _rayPlayer = Physics2D.Raycast(transform.position + (Vector3.down * 0.5f), _vectordir, 5.0f, 1 << LayerMask.NameToLayer("Ground"));
-                Debug.DrawRay(transform.position + (Vector3.down * 0.5f), _vectordir*5.0f, Color.red, 2.0f);
+                Debug.DrawRay(transform.position + (Vector3.down * 0.5f), _vectordir * 5.0f, Color.red, 2.0f);
                 if (_rayPlayer.collider != null)
                 {
                     _isJump = true;
                     _rigidbody2d.velocity = new Vector2(0, 22.0f);
                 }
             }
+            else { }
         }
         else // 앞으로 갈 땅은 있는데 앞에 장애물이 있는 경우
         {
