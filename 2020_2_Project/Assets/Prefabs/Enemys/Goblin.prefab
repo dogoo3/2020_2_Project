@@ -71,6 +71,7 @@ GameObject:
   - component: {fileID: 7669378667451171116}
   - component: {fileID: 4950288664950708854}
   - component: {fileID: 708442835500143841}
+  - component: {fileID: 8271799489495260261}
   m_Layer: 10
   m_Name: Goblin
   m_TagString: enemy
@@ -175,10 +176,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 7
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -212,7 +213,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4399c94d2d1c68b44affc072958eb827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 0
-  score: 0
-  minGold: 0
-  maxGold: 0
+  HP: 70
+  score: 160
+  minGold: 200
+  maxGold: 230
+--- !u!114 &8271799489495260261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9208058338663838723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c3f028f9b823aa458b5c51fc26c92b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 50
+  moveSpeed: 7
+  runSpeed: 12
+  jumpforce: 14
+  minpatrolTime: 2.5
+  maxpatrolTime: 3.5
+  rayLength: 5

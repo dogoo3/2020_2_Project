@@ -276,8 +276,12 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("ground"))
         {
-            _animator.SetBool("jump", false);
-            _isjump = false;
+            _rayPlayer = Physics2D.Raycast(transform.position, Vector3.up, 1.12f, 1 << LayerMask.NameToLayer("Ground"));
+            if (_rayPlayer.collider == null)
+            {
+                _animator.SetBool("jump", false);
+                _isjump = false;
+            }
         }
     }
 }

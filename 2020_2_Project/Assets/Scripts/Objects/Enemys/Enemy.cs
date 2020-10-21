@@ -7,6 +7,8 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D _rigidbody2d;
     private Animator _animator;
 
+    private bool _isDef; // Goblin을 위한 방어력 증가 변수
+
     [Header("적 능력치 설정")]
     [SerializeField] private float HP = default;
     [SerializeField] private int score = default;
@@ -17,11 +19,15 @@ public class Enemy : MonoBehaviour
     {
         _rigidbody2d = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        _isDef = false;
     }
 
     public void MinusHP(float _hp)
     {
-        HP -= _hp;
+        if (_isDef)
+            HP -= (_hp * 0.5f);
+        else
+            HP -= _hp;
         if (HP <= 0)
         {
             if (gameObject.activeSelf) // Translate 연산을 해서 한 프레임에 여러 발의 샷건 총알이 맞을 수 있기 때문에 한 발만 적용되도록 코드 수정.
@@ -44,5 +50,10 @@ public class Enemy : MonoBehaviour
     public void Knockback(Vector2 _direction)
     {
         _rigidbody2d.velocity = _direction * 10.0f;
+    }
+
+    public void SetDef(bool _is)
+    {
+        _isDef = _is;
     }
 }

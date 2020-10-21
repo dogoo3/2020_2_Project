@@ -134,7 +134,6 @@ public class Zombie : MonoBehaviour
         if (_rayPlayer.collider == null) // 시선 앞에 땅이 없으면
         {
             _randAction = Random.Range(0, 2);
-            Debug.Log(_randAction);
             if (_randAction == 0) // 0 & 1 & 2 중에 랜덤 돌려서 0이면 시선 바꿈
                 ChangeDir();
             else if (_randAction == 1) // 1이면 점프
@@ -149,7 +148,7 @@ public class Zombie : MonoBehaviour
             }
             else { }
         }
-        else // 앞으로 갈 땅은 있는데 앞에 장애물이 있는 경우
+        else // 시선 앞에 땅이 있으면
         {
             // 진행방향 바로 앞에 벽이 있을 경우
             _rayPlayer = Physics2D.Raycast(transform.position + (Vector3.down * 0.5f), _vectordir, 1f, 1 << LayerMask.NameToLayer("Ground"));
