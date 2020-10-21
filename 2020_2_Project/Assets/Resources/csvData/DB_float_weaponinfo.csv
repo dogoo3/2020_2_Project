@@ -1,5 +1,5 @@
 pistol_deal,5
-pistol_respawn,1
+pistol_respawn,0.5
 smg_deal,3
 smg_respawn,0.2
 sniper_deal,50
