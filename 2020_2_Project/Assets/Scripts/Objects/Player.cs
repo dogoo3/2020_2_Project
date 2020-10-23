@@ -65,6 +65,7 @@ public class Player : MonoBehaviour
     {
         _animator.SetBool("move", false);
         _movePos = Vector2.zero;
+        SoundManager.instance.StopSFX("playerwalk");
     }
 
     public void LookUp(bool _isLookup)
@@ -90,6 +91,7 @@ public class Player : MonoBehaviour
                     _animator.SetBool("jump", true);
                     _rigidbody2d.velocity = _jumpvalue;
                     _isjump = true;
+                    SoundManager.instance.StopSFX("playerwalk");
                 }
             }
         }
@@ -219,12 +221,13 @@ public class Player : MonoBehaviour
 
     private void CheckDead()
     {
-        if(_hp <= 0)
+        if(_hp <= 0 && !_isdead)
         {
             _isdead = true;
             CancelBlink();
             WindowManager.instance.Invoke("ShowFailWindow",3.0f); // 3초 뒤에 실패 윈도우를 띄운다.
             _animator.SetTrigger("dead");
+            _movePos = Vector2.zero;
         }
     }
 
@@ -232,6 +235,8 @@ public class Player : MonoBehaviour
     {
         if (!_isdead) // dead가 true이면 플레이어가 죽었다는 의미.
         {
+            if(_movePos.x != 0 && !_isjump)
+                SoundManager.instance.PlaySFX("playerwalk",false);
             _rigidbody2d.transform.Translate(_movePos.normalized * Time.deltaTime * _speed);
             if (_isshield) // 실드 키를 누르고 있을 때.
             {

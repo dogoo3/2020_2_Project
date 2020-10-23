@@ -43,7 +43,7 @@ public class EnvsetWindow : MonoBehaviour
 
     public void ExitStage()
     {
-        SoundManager.instance.PlayBGM("TalesWeaver_Title");
+        SoundManager.instance.PlayBGM("title");
 
         // 할당 해제
         WeaponManager.instance = null;

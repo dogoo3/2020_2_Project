@@ -48,7 +48,7 @@ public class GameOverWindow : MonoBehaviour
 
     public void TouchExitButton(string _stage)
     {
-        SoundManager.instance.PlayBGM("TalesWeaver_Title");
+        SoundManager.instance.PlayBGM("title");
 
         if (_stage != "") // 3스테이지까지 완료했을 경우
         {

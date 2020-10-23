@@ -25,9 +25,15 @@ public class ControlEscape : MonoBehaviour
                     if (envSettingWindow.activeSelf) // 환경설정 창이 열려있는 경우
                         envSettingWindow.SetActive(false);
                     else if (shopWindow.activeSelf) // 상점 창이 열려있는 경우
+                    {
+                        SoundManager.instance.PlayBGM("title");
                         shopWindow.SetActive(false);
+                    }
                     else if (selectStageWindow.activeSelf) // 스테이지 선택 창이 열려있는 경우
+                    {
+                        SoundManager.instance.PlayBGM("title");
                         selectStageWindow.SetActive(false);
+                    }
                     else
                         Application.Quit();
                 }
@@ -37,6 +43,7 @@ public class ControlEscape : MonoBehaviour
 
     public void ActiveSelectStageWindow()
     {
+        SoundManager.instance.PlayBGM("stageselect");
         selectStageWindow.SetActive(true);
     }
 
@@ -47,6 +54,10 @@ public class ControlEscape : MonoBehaviour
 
     public void ActiveShopWindow(bool _isActive)
     {
+        if(_isActive)
+            SoundManager.instance.PlayBGM("shop");
+        else
+            SoundManager.instance.PlayBGM("title");
         shopWindow.SetActive(_isActive);
     }
 

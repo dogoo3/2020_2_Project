@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemKind: 6
+  _sfxSoundname: gauge
   _mySpawnPoint: {fileID: 0}
   supplyValue: 25
 --- !u!50 &-7798316683732202947
@@ -207,4 +208,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d2d2aebffb325940bbf33d5436eeebd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _patrolTime: 0.25

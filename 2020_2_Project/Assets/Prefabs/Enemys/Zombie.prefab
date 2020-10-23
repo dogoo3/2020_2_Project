@@ -217,6 +217,7 @@ MonoBehaviour:
   score: 110
   minGold: 80
   maxGold: 160
+  _isboss: 0
 --- !u!114 &3230243925740643267
 MonoBehaviour:
   m_ObjectHideFlags: 0

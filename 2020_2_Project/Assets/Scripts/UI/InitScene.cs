@@ -10,6 +10,6 @@ public class InitScene : MonoBehaviour
         SceneManager.LoadScene("Title");
         SoundManager.instance.SetIsplayBGM(FileManager.soundSetting["bgmOn"]);
         SoundManager.instance.SetIsplaySFX(FileManager.soundSetting["sfxOn"]);
-        SoundManager.instance.PlayBGM("TalesWeaver_Title");
+        SoundManager.instance.PlayBGM("title");
     }
 }

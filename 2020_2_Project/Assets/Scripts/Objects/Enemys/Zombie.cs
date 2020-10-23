@@ -121,7 +121,7 @@ public class Zombie : MonoBehaviour
         _isSuicide = true;
     }
 
-    public void Attacked() // Animation Func, 폭발 프레임 쯤에 심어놓을 예정.
+    public void Attack() // Animation Func, 폭발 프레임 쯤에 심어놓을 예정.
     {
         SpawnMonstersManager.instance.CatchMonster();
         Player.instance.Attacked(damage);

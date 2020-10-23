@@ -17,6 +17,8 @@ public class FarmingItem : MonoBehaviour
 {
     [Header("아이템 속성 반드시 잡아줘야 함!")]
     public ItemKind itemKind;
+    [Header("아이템 획득 시 재생할 효과음")]
+    [SerializeField] private string _sfxSoundname = default;
 
     private Rigidbody2D _rigidbody2d;
     private Collider2D _collider2d;
@@ -121,6 +123,7 @@ public class FarmingItem : MonoBehaviour
             _item.Supply(); // 아이템 공급
             _collider2d.enabled = false;
             _isGet = true;
+            SoundManager.instance.PlaySFX(_sfxSoundname);
             // 오오라존여부에 따라 어느 리스트로 들어가야 하는지를 분기한다.
             // 아이템 획득 시 활성화 아이템이 들어있는 배열에서 삭제해주는 함수임.
             if (_mySpawnPoint.isauraZone)

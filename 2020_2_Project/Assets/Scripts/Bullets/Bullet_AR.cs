@@ -38,6 +38,7 @@ public class Bullet_AR : MonoBehaviour
             case "bullet":
             case "wall":
                 ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_ar);
+                SoundManager.instance.PlaySFX("bulletTowall");
                 break;
         }
     }
@@ -49,8 +50,10 @@ public class Bullet_AR : MonoBehaviour
             case "enemy":
                 _ar.tempEnemy = collision.gameObject.GetComponent<Enemy>();
                 _ar.tempEnemy.MinusHP(_ar.damage);
-                _ar.tempEnemy.Knockback(_ar._direction);
+                if (!_ar.tempEnemy.CheckBoss())
+                    _ar.tempEnemy.Knockback(_ar._direction);
                 ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_ar);
+                SoundManager.instance.PlaySFX("bulletToenemy");
                 break;
         }
     }

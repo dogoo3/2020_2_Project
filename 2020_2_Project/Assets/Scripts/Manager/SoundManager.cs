@@ -85,7 +85,7 @@ public class SoundManager : MonoBehaviour
     {
         if (!_isPlaySFX)
             return;
-        if (!_isOverlapSound) // 효과음이 중복으로 재생되면 안 됩니다.
+        if (!_isOverlapSound) // 효과음이 중복으로 재생되면 안 됩니다.(_isOverlapSound가 false면 중복 재생이 불가능)
         {
             for (int i = 0; i < sfxPlayer.Length; i++) // 현재 실행중인 사운드 검색
             {

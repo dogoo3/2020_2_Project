@@ -76,6 +76,7 @@ public class Pistol : Weapon // 권총
     public override void Shoot(Vector2 _origin, Vector2 _direction)
     {
         ObjectPoolingManager.instance.GetQueue_pistol(_origin, _direction);
+        SoundManager.instance.PlaySFX("shoot_pistol");
         SpendBullet();
     }
 
@@ -91,6 +92,7 @@ public class SMG : Weapon // 소총
     public override void Shoot(Vector2 _origin, Vector2 _direction)
     {
         ObjectPoolingManager.instance.GetQueue_smg(_origin, _direction);
+        SoundManager.instance.PlaySFX("shoot_smg");
         SpendBullet();
     }
 

@@ -131,7 +131,10 @@ public class Goblin : MonoBehaviour
                     {
                         // 점프한다
                         if (!_isJump)
+                        {
                             _rigidbody2d.velocity = new Vector2(0, jumpforce);
+                            _isJump = true;
+                        }
                     }
                 }
 

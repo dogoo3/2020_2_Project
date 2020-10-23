@@ -14,7 +14,7 @@ public class RoundManager : MonoBehaviour
     [SerializeField] private Collider2D[] cameraCollider = default;
     [SerializeField] private CinemachineConfiner cinemachineConfiner = default;
 
-    public string bgmname;
+    public string[] bgmname;
 
     private Animator _animator;
 
@@ -36,7 +36,7 @@ public class RoundManager : MonoBehaviour
 
     public void GameStart() // Animator Func
     {
-        SoundManager.instance.PlayBGM(bgmname);
+        SoundManager.instance.PlayBGM(bgmname[nowRound]);
         SpawnMonstersManager.instance.GameStart();
         FarmingManager.instance.GameStart();
     }
