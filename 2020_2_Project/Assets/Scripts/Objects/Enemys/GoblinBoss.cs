@@ -64,14 +64,17 @@ public class GoblinBoss : MonoBehaviour
 
         if (Player.instance != null)
         {
-            if (Vector2.Distance(Player.instance.transform.position, transform.position) < 2.2f)
+            if (!Player.instance.CheckAttacked())
             {
-                _rayPlayer = Physics2D.Raycast(transform.position + (Vector3.down * 1.5f), _direction, 2.2f, 1 << LayerMask.NameToLayer("Player")); // 공격 Ray 발사
-
-                if (_rayPlayer.collider != null)
+                if (Vector2.Distance(Player.instance.transform.position, transform.position) < 2.2f)
                 {
-                    _animator.SetTrigger("attack");
-                    _isdead = true;
+                    _rayPlayer = Physics2D.Raycast(transform.position + (Vector3.down * 1.5f), _direction, 2.2f, 1 << LayerMask.NameToLayer("Player")); // 공격 Ray 발사
+
+                    if (_rayPlayer.collider != null)
+                    {
+                        _animator.SetTrigger("attack");
+                        _isdead = true;
+                    }
                 }
             }
         }

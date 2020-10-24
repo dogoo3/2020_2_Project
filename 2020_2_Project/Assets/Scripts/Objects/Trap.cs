@@ -20,11 +20,14 @@ public class Trap : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            _angle = Random.Range(_minKnockBackAngle, _maxKnockBackAngle);
-            _force = Random.Range(_minKnockBackForce, _maxKnockBackForce);
-            _knockback.x = Mathf.Sin(_angle * Mathf.Deg2Rad);
-            _knockback.y = Mathf.Cos(_angle * Mathf.Deg2Rad);
-            Player.instance.KnockBack(_damage, _knockback * _force);
+            if (!Player.instance.CheckAttacked())
+            {
+                _angle = Random.Range(_minKnockBackAngle, _maxKnockBackAngle);
+                _force = Random.Range(_minKnockBackForce, _maxKnockBackForce);
+                _knockback.x = Mathf.Sin(_angle * Mathf.Deg2Rad);
+                _knockback.y = Mathf.Cos(_angle * Mathf.Deg2Rad);
+                Player.instance.KnockBack(_damage, _knockback * _force);
+            }
         }
     }
 }

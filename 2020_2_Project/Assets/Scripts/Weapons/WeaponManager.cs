@@ -135,11 +135,11 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
-    public float GetElapseCooltime()
+    public float GetElapseCooltime(WeaponName _weaponName)
     {
-        if (_weapons[(int)selectWeapon].GetIsShot()) // 총알을 발사할 수 있는 상태일 경우
+        if (_weapons[(int)_weaponName].GetIsShot()) // 총알을 발사할 수 있는 상태일 경우
             return 0;
         else // 아닐 경우
-            return _weapons[(int)selectWeapon].GetElapseCooltime();
+            return _weapons[(int)_weaponName].GetElapseCooltime();
     }
 }

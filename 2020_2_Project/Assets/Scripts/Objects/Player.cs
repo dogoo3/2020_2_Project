@@ -13,8 +13,8 @@ public class Player : MonoBehaviour
     
     private Vector2 _movePos, _directionPos, _jumpvalue;
     private Vector2 _oldDirectionPos; // 위 보는 키 누를 때 이전 시점을 저장하는 변수
-    
-    private bool _isjump, _isshield, _isdead;
+
+    private bool _isjump, _isshield, _isdead, _isattacked;
 
     private float _hp, _shield, _speed, _def;
     private float _maxhp, _maxshield;
@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
 
     private RaycastHit2D _rayPlayer;
     private bool _isBlink;
+    private float _invincibleTime = 2.0f;
 
     private void Awake()
     {
@@ -159,13 +160,19 @@ public class Player : MonoBehaviour
     {
         _hp -= _damage;
         GaugeManager.instance.SetHpGauge(_hp);
+        _isattacked = true;
         _animator.SetTrigger("attacked");
-        if (!_isBlink)
+        if (!_isBlink) // 처음 피격받는다면 깜빡임을 실행해준다.
         {
             Blink();
-            Invoke("CancelBlink", 2.0f);
+            Invoke("CancelBlink", _invincibleTime);
         }
         CheckDead();
+    }
+
+    public bool CheckAttacked()
+    {
+        return _isattacked;
     }
     
     public bool GetisDead() // 클리어를 띄울 때 플레이어 사망 유무를 반환하는 함수.
@@ -190,6 +197,7 @@ public class Player : MonoBehaviour
     public void CancelBlink() // Animation Func
     {
         _isBlink = false;
+        _isattacked = false;
         CancelInvoke("BlinkAtt");
         CancelInvoke("BlinkOri");
         BlinkOri();

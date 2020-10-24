@@ -65,16 +65,18 @@ public class Goblin : MonoBehaviour
             {
                 if (!_isIdle && !_isattack) // 무브상태일때(아이들이 아닐 경우), 혹은 비공격상태일때
                     transform.Translate(_direction * moveSpeed * Time.deltaTime);
-                if (_changedirTime > _patrolTime)
-                    ChangeMotion();
-                if (!_isJump)
-                    DetectGround();
+                if (_changedirTime > _patrolTime) // 상태변환 시간
+                    ChangeMotion(); // 모션변경
+                if (!_isJump) // 평지를 걷고 있을 경우
+                    DetectGround(); // 지속적인 Raycast 탐색
+
                 if (_isattack) // 고블린이 공격을 했을 때 일정시간동안 공격할 수 없게한다.
                 {
                     _changeatkTime += Time.deltaTime;
                     if (_changeatkTime > 3.0f)
                         _isattack = false;
                 }
+
                 if (_isattacked) // 고블린이 공격을 당했을 때부터 일정시간 경과하면 방패 모드를 해제한다.
                 {
                     _changeatkedTime += Time.deltaTime;
@@ -86,27 +88,23 @@ public class Goblin : MonoBehaviour
                     }
                 }
 
-                _rayPlayer = Physics2D.Raycast(transform.position + (Vector3.down * 1.2f), _direction, 1.0f, 1 << LayerMask.NameToLayer("Ground"));
-                if (_rayPlayer.collider != null) // 앞에 벽이 있으면
-                    ChangeDir(); // 방향전환
-                _rayPlayer = Physics2D.Raycast(transform.position + (Vector3.down * 0.5f), _direction, 1.0f, 1 << LayerMask.NameToLayer("Ground"));
-                if (_rayPlayer.collider != null) // 앞에 벽이 있으면
-                    ChangeDir(); // 방향전환
-
                 if (Player.instance != null)
                 {
-                    if (!_isattack) // 고블린이 공격이 가능한 상태여야 공격할수있음!
+                    if(!Player.instance.CheckAttacked())
                     {
-                        if (Vector2.Distance(Player.instance.transform.position, transform.position) < rayLength) // 시점 내에 플레이어가 감지될경우
+                        if (!_isattack) // 고블린이 공격이 가능한 상태여야 공격할수있음!
                         {
-                            _rayPlayer = Physics2D.Raycast(transform.position, _direction, rayLength, 1 << LayerMask.NameToLayer("Player"));
-
-                            if (_rayPlayer.collider != null)
+                            if (Vector2.Distance(Player.instance.transform.position, transform.position) < rayLength) // 시점 내에 플레이어가 감지될경우
                             {
-                                _isdetect = true;
-                                _animator.SetFloat("run", 1.5f);
-                                _changedirTime = 0;
-                                SetPatrolTime();
+                                _rayPlayer = Physics2D.Raycast(transform.position, _direction, rayLength, 1 << LayerMask.NameToLayer("Player"));
+
+                                if (_rayPlayer.collider != null)
+                                {
+                                    _isdetect = true;
+                                    _animator.SetFloat("run", 1.5f);
+                                    _changedirTime = 0;
+                                    SetPatrolTime();
+                                }
                             }
                         }
                     }
@@ -138,21 +136,17 @@ public class Goblin : MonoBehaviour
                     }
                 }
 
-                _rayPlayer = Physics2D.Raycast(transform.position + (Vector3.down * 1f), _direction, 1.0f, 1 << LayerMask.NameToLayer("Ground"));
-                if (_rayPlayer.collider != null) // 앞에 벽이 있으면
-                    ChangeMotion();
-                _rayPlayer = Physics2D.Raycast(transform.position + (Vector3.down * 0.5f), _direction, 1.0f, 1 << LayerMask.NameToLayer("Ground"));
-                if (_rayPlayer.collider != null) // 앞에 벽이 있으면
-                    ChangeMotion();
-
-                if (Vector2.Distance(Player.instance.transform.position, transform.position) < 1.5f) // 플레이어가 특정범위 내로 들어왔을경우 고블린이 공격을 한다
+                if (!Player.instance.CheckAttacked()) // 플레이어가 피격후 무적상태면 감지하지 않는다. (무적상태 : true)
                 {
-                    Player.instance.Attacked(damage);
-                    _animator.SetTrigger("attack");
-                    _animator.SetBool("idle", true);
-                    _isdetect = false; // 플레이어 감지 해제
-                    _isattack = true; // 고블린이 공격모션을 취함. 이 이후로 n초동안 공격 및 감지 불가능.
-                    _changeatkTime = 0;
+                    if (Vector2.Distance(Player.instance.transform.position, transform.position) < 1.5f) // 플레이어가 특정범위 내로 들어왔을경우 고블린이 공격을 한다
+                    {
+                        Player.instance.Attacked(damage);
+                        _animator.SetTrigger("attack");
+                        _animator.SetBool("idle", true);
+                        _isdetect = false; // 플레이어 감지 해제
+                        _isattack = true; // 고블린이 공격모션을 취함. 이 이후로 n초동안 공격 및 감지 불가능.
+                        _changeatkTime = 0;
+                    }
                 }
             }
         }
@@ -183,7 +177,7 @@ public class Goblin : MonoBehaviour
     private void DetectGround()
     {
         _rayPlayer = Physics2D.Raycast(transform.position + (Vector3)_direction + (Vector3.down * 1.5f), Vector2.down, 2f, 1 << LayerMask.NameToLayer("Ground"));
-        
+        Debug.DrawRay(transform.position + (Vector3)_direction + (Vector3.down * 1.5f), Vector2.down, Color.red, 0.1f);
         if(_rayPlayer.collider == null) // 시선 앞에 땅이 없으면
         {
             _randAction = Random.Range(0, 2);

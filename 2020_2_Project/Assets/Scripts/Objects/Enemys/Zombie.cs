@@ -64,16 +64,19 @@ public class Zombie : MonoBehaviour
                     ChangeDir();
                 if (Player.instance != null)
                 {
-                    if (Vector2.Distance(Player.instance.transform.position, transform.position) < rayLength) // 매 프레임마다 Raycast는 Performance를 낭비할 수 있으므로, 일정 거리 안으로 들어오면 Ray를 쏜다.
+                    if (!Player.instance.CheckAttacked())
                     {
-                        // Player를 RayCast로 찾는다.
-                        _rayPlayer = Physics2D.Raycast(transform.position, _vectordir, rayLength, 1 << LayerMask.NameToLayer("Player"));
-
-                        if (_rayPlayer.collider != null) // 플레이어가 감지되면 인페테란처럼 빠르게 플레이어가 있는 방향으로 달려간다.
+                        if (Vector2.Distance(Player.instance.transform.position, transform.position) < rayLength) // 매 프레임마다 Raycast는 Performance를 낭비할 수 있으므로, 일정 거리 안으로 들어오면 Ray를 쏜다.
                         {
-                            _isdetect = true;
-                            _animator.SetBool("Run", _isdetect);
-                            _changedirTime = 0;
+                            // Player를 RayCast로 찾는다.
+                            _rayPlayer = Physics2D.Raycast(transform.position, _vectordir, rayLength, 1 << LayerMask.NameToLayer("Player"));
+
+                            if (_rayPlayer.collider != null) // 플레이어가 감지되면 인페테란처럼 빠르게 플레이어가 있는 방향으로 달려간다.
+                            {
+                                _isdetect = true;
+                                _animator.SetBool("Run", _isdetect);
+                                _changedirTime = 0;
+                            }
                         }
                     }
                 }

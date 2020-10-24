@@ -8,6 +8,8 @@ public class WeaponCooltimeWatcher : MonoBehaviour
     private Image _image;
     private float _elapsed;
 
+    public WeaponName weaponName;
+
     private void Awake()
     {
         _image = GetComponent<Image>();
@@ -16,7 +18,7 @@ public class WeaponCooltimeWatcher : MonoBehaviour
     private void Update()
     {
         if(WeaponManager.instance != null)
-            _elapsed = WeaponManager.instance.GetElapseCooltime();
+            _elapsed = WeaponManager.instance.GetElapseCooltime(weaponName);
         _image.fillAmount = _elapsed;
     }
 }
