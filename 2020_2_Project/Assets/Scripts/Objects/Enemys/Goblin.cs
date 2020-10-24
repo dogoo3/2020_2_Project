@@ -186,7 +186,7 @@ public class Goblin : MonoBehaviour
         
         if(_rayPlayer.collider == null) // 시선 앞에 땅이 없으면
         {
-            _randAction = Random.Range(0, 3);
+            _randAction = Random.Range(0, 2);
             if (_randAction == 0) // 방향변경
             {
                 ChangeDir();
