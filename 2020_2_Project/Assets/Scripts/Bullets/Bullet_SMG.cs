@@ -51,7 +51,7 @@ public class Bullet_SMG : MonoBehaviour
                 _smg.tempEnemy = collision.gameObject.GetComponent<Enemy>();
                 _smg.tempEnemy.MinusHP(_smg.damage);
                 if (!_smg.tempEnemy.CheckBoss())
-                    _smg.tempEnemy.Knockback(_smg._direction);
+                    // _smg.tempEnemy.Knockback(_smg._direction);
                 ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_smg);
                 SoundManager.instance.PlaySFX("bulletToenemy");
                 break;

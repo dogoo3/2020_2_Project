@@ -162,6 +162,7 @@ public class Player : MonoBehaviour
         GaugeManager.instance.SetHpGauge(_hp);
         _isattacked = true;
         _animator.SetTrigger("attacked");
+        SoundManager.instance.PlaySFX("playerattacked");
         if (!_isBlink) // 처음 피격받는다면 깜빡임을 실행해준다.
         {
             Blink();
@@ -184,6 +185,13 @@ public class Player : MonoBehaviour
     {
         Attacked(_damage);
         _rigidbody2d.velocity = _knockback;
+    }
+
+    public void Fly(Vector2 _force)
+    {
+        _isjump = true;
+        _animator.SetBool("jump", _isjump);
+        _rigidbody2d.velocity = _force;
     }
 
     #region AttackBlinkFunc
@@ -231,6 +239,7 @@ public class Player : MonoBehaviour
         {
             _isdead = true;
             CancelBlink();
+            SoundManager.instance.PlaySFX("playerdead");
             WindowManager.instance.Invoke("ShowFailWindow",3.0f); // 3초 뒤에 실패 윈도우를 띄운다.
             _animator.SetTrigger("dead");
             _movePos = Vector2.zero;

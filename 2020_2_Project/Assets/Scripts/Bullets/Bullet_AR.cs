@@ -51,7 +51,7 @@ public class Bullet_AR : MonoBehaviour
                 _ar.tempEnemy = collision.gameObject.GetComponent<Enemy>();
                 _ar.tempEnemy.MinusHP(_ar.damage);
                 if (!_ar.tempEnemy.CheckBoss())
-                    _ar.tempEnemy.Knockback(_ar._direction);
+                    // _ar.tempEnemy.Knockback(_ar._direction);
                 ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_ar);
                 SoundManager.instance.PlaySFX("bulletToenemy");
                 break;

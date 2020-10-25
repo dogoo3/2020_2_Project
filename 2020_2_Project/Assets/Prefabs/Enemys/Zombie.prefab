@@ -160,7 +160,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 5
   m_AngularDrag: 0.05
-  m_GravityScale: 4
+  m_GravityScale: 7
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -218,6 +218,8 @@ MonoBehaviour:
   minGold: 80
   maxGold: 160
   _isboss: 0
+  deadSfxname: zombiedead
+  _direction: {x: 0, y: 0}
 --- !u!114 &3230243925740643267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,6 +235,5 @@ MonoBehaviour:
   damage: 20
   moveSpeed: 3
   detectPlayerSpeed: 7
-  patrolTime: 3
   detectTime: 2
   rayLength: 5

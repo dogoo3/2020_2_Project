@@ -11,7 +11,7 @@ public class Gold : MonoBehaviour
 
     private bool _isGet;
     private int _goldValue;
-    
+    private bool _isplaysfx;
     private void Awake()
     {
         _rigidbody2d = GetComponent<Rigidbody2D>();
@@ -26,9 +26,11 @@ public class Gold : MonoBehaviour
 
     private void OnEnable()
     {
+        _rigidbody2d.bodyType = RigidbodyType2D.Dynamic;
         _rigidbody2d.velocity = new Vector2(0, 4.0f);
         _coloralpha.a = 1; // 다시 보여야 하기 때문에 알파값 1로 설정
         _isGet = false; // 획득 설정 초기화
+        _isplaysfx = false;
         meshRenderer.material.color = _coloralpha; // 머터리얼의 색상 설정 변경
         meshRenderer.sortingLayerName = "Object";
         meshRenderer.sortingOrder = 2;
@@ -53,6 +55,12 @@ public class Gold : MonoBehaviour
     {
         if(_isGet)
         {
+            if (!_isplaysfx)
+            {
+                _isplaysfx = true;
+                SoundManager.instance.PlaySFX("coinget");
+                _rigidbody2d.bodyType = RigidbodyType2D.Static;
+            }
             _coloralpha.a -= 0.0166f;
             meshRenderer.material.color = _coloralpha;
             if(_coloralpha.a <= 0)

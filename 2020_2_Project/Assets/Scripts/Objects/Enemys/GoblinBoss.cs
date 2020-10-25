@@ -7,7 +7,7 @@ public class GoblinBoss : MonoBehaviour
     private Rigidbody2D _rigidbody2d;
     private Animator _animator;
 
-    private Vector2 _direction;
+    private Enemy _enemy;
 
     private RaycastHit2D _rayPlayer;
 
@@ -20,9 +20,6 @@ public class GoblinBoss : MonoBehaviour
 
     [Header("기본 이동속도 및 플레이어 감지시 이동속도")]
     [SerializeField] private float moveSpeed = default;
-
-    [Header("패트롤 시간")]
-    [SerializeField] private float _patrolTime = default;
 
     [Header("스폰할 고블린들")]
     [SerializeField] private Enemy[] goblins = default;
@@ -37,14 +34,15 @@ public class GoblinBoss : MonoBehaviour
         _rigidbody2d = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _weapon = GetComponentInChildren<EnemyWeapon>();
+        _enemy = GetComponent<Enemy>();
         _weapon.InputDamage(damage);
     }
 
     private void OnEnable()
     {
         _isdead = false;
-        _direction = Vector2.right;
-        _animator.SetFloat("direction", _direction.x);
+        _enemy._direction = Vector2.right;
+        _animator.SetFloat("direction", _enemy._direction.x);
         InvokeRepeating("ActiveMonster", 5.0f, _goblinActivetime);
     }
 
@@ -52,28 +50,21 @@ public class GoblinBoss : MonoBehaviour
     {
         if (!_isdead)
         {
-            _elapsedTime += Time.deltaTime;
-            transform.Translate(_direction * moveSpeed * Time.deltaTime);
-            if (_elapsedTime > _patrolTime)
-            {
-                _direction.x *= -1;
-                _animator.SetFloat("direction", _direction.x);
-                _elapsedTime = 0;
-            }
-        }
+            transform.Translate(_enemy._direction * moveSpeed * Time.deltaTime);
 
-        if (Player.instance != null)
-        {
-            if (!Player.instance.CheckAttacked())
+            if (Player.instance != null)
             {
-                if (Vector2.Distance(Player.instance.transform.position, transform.position) < 2.2f)
+                if (!Player.instance.CheckAttacked())
                 {
-                    _rayPlayer = Physics2D.Raycast(transform.position + (Vector3.down * 1.5f), _direction, 2.2f, 1 << LayerMask.NameToLayer("Player")); // 공격 Ray 발사
-
-                    if (_rayPlayer.collider != null)
+                    if (Vector2.Distance(Player.instance.transform.position, transform.position) < 2.2f)
                     {
-                        _animator.SetTrigger("attack");
-                        _isdead = true;
+                        _rayPlayer = Physics2D.Raycast(transform.position + (Vector3.down * 1.5f), _enemy._direction, 2.2f, 1 << LayerMask.NameToLayer("Player")); // 공격 Ray 발사
+
+                        if (_rayPlayer.collider != null)
+                        {
+                            _animator.SetTrigger("attack");
+                            _isdead = true;
+                        }
                     }
                 }
             }

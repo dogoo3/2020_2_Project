@@ -18,6 +18,11 @@ public class Enemy : MonoBehaviour
 
     [Header("보스몬스터인가?")]
     [SerializeField] private bool _isboss = default;
+    [Header("사망 효과음 파일 이름")]
+    [SerializeField] private string deadSfxname = default;
+
+    [HideInInspector]
+    public Vector2 _direction;
 
     private void Awake()
     {
@@ -29,6 +34,7 @@ public class Enemy : MonoBehaviour
     private void OnEnable()
     {
         _isDead = false;
+        _rigidbody2d.bodyType = RigidbodyType2D.Dynamic;
     }
 
     public void MinusHP(float _hp)
@@ -43,11 +49,13 @@ public class Enemy : MonoBehaviour
             {
                 if (gameObject.activeSelf) // Translate 연산을 해서 한 프레임에 여러 발의 샷건 총알이 맞을 수 있기 때문에 한 발만 적용되도록 코드 수정.
                 {
+                    _rigidbody2d.bodyType = RigidbodyType2D.Static;
                     ScoreManager.instance.UpdateScore(score);
                     SpawnMonstersManager.instance.CatchMonster();
                     ObjectPoolingManager.instance.GetQueue_gold(transform.position, Random.Range(minGold, maxGold));
                     // 나중에 Parameter로 goldMin, goldMax도 같이 넘겨줄 것...
                     _animator.SetTrigger("dead");
+                    SoundManager.instance.PlaySFX(deadSfxname);
                     _isDead = true;
                 }
             }
@@ -59,10 +67,19 @@ public class Enemy : MonoBehaviour
         gameObject.SetActive(true);
         _rigidbody2d.velocity = _direction * _shotspeed;
     }
+    //public void Knockback(Vector2 _direction)
+    //{
+    //    _rigidbody2d.velocity = _direction * 10.0f;
+    //}
 
-    public void Knockback(Vector2 _direction)
+    public bool GetDead()
     {
-        _rigidbody2d.velocity = _direction * 10.0f;
+        return _isDead;
+    }
+
+    public void SetDead(bool _is)
+    {
+        _isDead = _is;
     }
 
     public void SetDef(bool _is)
@@ -70,8 +87,34 @@ public class Enemy : MonoBehaviour
         _isDef = _is;
     }
 
+    public void Jump(Vector2 _force)
+    {
+        _rigidbody2d.velocity = _force;
+    }
+
+    public void ChangeDir(Animator _animator)
+    {
+        _direction.x *= -1;
+        _animator.SetFloat("direction", _direction.x);
+    }
+
     public bool CheckBoss()
     {
         return _isboss;
+    }
+
+    public Animator GetAnimator()
+    {
+        return _animator;
+    }
+
+    public float GetHP()
+    {
+        return HP;
+    }
+
+    public Vector2 GetVelocityForce()
+    {
+        return _rigidbody2d.velocity;
     }
 }
