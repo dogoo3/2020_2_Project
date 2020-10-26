@@ -194,7 +194,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 15
   m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 7
@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4399c94d2d1c68b44affc072958eb827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 300
+  HP: 1
   score: 1000
   minGold: 600
   maxGold: 750
