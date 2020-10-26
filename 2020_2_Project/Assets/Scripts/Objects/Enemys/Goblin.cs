@@ -145,7 +145,6 @@ public class Goblin : MonoBehaviour
 
     public void ActiveDeteteStart() // Animation Func, 모든 행동을 정지할 때 사용.
     {
-        Debug.Log("고블린 멈춤!@");
         _isDetectStart = false;
     }
 

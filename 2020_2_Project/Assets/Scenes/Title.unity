@@ -2094,8 +2094,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isType: 0
-  onSprite: {fileID: 21300000, guid: c47b7cfc03eea9147a9922524af63ba4, type: 3}
-  offSprite: {fileID: 21300000, guid: 2e811abb1970b7641ac9b712a72482b2, type: 3}
+  onSprite: {fileID: 21300000, guid: 2e811abb1970b7641ac9b712a72482b2, type: 3}
+  offSprite: {fileID: 21300000, guid: c47b7cfc03eea9147a9922524af63ba4, type: 3}
 --- !u!114 &551895902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4740,8 +4740,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isType: 1
-  onSprite: {fileID: 21300000, guid: c47b7cfc03eea9147a9922524af63ba4, type: 3}
-  offSprite: {fileID: 21300000, guid: 2e811abb1970b7641ac9b712a72482b2, type: 3}
+  onSprite: {fileID: 21300000, guid: 2e811abb1970b7641ac9b712a72482b2, type: 3}
+  offSprite: {fileID: 21300000, guid: c47b7cfc03eea9147a9922524af63ba4, type: 3}
 --- !u!114 &1343812243
 MonoBehaviour:
   m_ObjectHideFlags: 0

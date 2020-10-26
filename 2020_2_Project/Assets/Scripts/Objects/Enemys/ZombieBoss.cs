@@ -109,6 +109,8 @@ public class ZombieBoss : MonoBehaviour
         {
             for (int i = 0; i < zombies.Length; i++)
                 zombies[i].gameObject.SetActive(false);
+
+            CancelInvoke("ActiveMonster");
         }
     }
 }

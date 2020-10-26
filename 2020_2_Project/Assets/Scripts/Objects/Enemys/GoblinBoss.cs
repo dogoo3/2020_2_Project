@@ -106,4 +106,15 @@ public class GoblinBoss : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
+    private void OnDisable()
+    {
+        if (_enemy.GetHP() > 0) // 비활성화될때 체력이 0 초과면 플레이어가 사망한 것이므로, 모든 부하몬스터들을 비활성화
+        {
+            for (int i = 0; i < goblins.Length; i++)
+                goblins[i].gameObject.SetActive(false);
+
+            CancelInvoke("ActiveMonster");
+        }
+    }
 }

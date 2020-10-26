@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6340838d533a8941be8148fcc9517f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 2
+  _damage: 10
   _minKnockBackForce: 12
   _maxKnockBackForce: 14
   _minKnockBackAngle: 35

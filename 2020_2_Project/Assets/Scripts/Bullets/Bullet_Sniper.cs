@@ -50,7 +50,7 @@ public class Bullet_Sniper : MonoBehaviour
             case "enemy":
                 _sniper.tempEnemy = collision.gameObject.GetComponent<Enemy>();
                 _sniper.tempEnemy.MinusHP(_sniper.damage);
-                if(!_sniper.tempEnemy.CheckBoss())
+                // if(!_sniper.tempEnemy.CheckBoss())
                     // _sniper.tempEnemy.Knockback(_sniper._direction);
                 ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_sniper);
                 SoundManager.instance.PlaySFX("bulletToenemy");

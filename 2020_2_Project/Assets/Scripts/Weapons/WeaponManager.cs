@@ -135,6 +135,14 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
+    public bool IsHaveWeapon() // 총알을 가지고 있는지를 판단하는 함수.
+    {
+        if (_weapons[(int)selectWeapon].bulletCount == 0) // 총알이 한 발도 없으면 false 반환
+            return false;
+        else
+            return true;
+    }
+
     public float GetElapseCooltime(WeaponName _weaponName)
     {
         if (_weapons[(int)_weaponName].GetIsShot()) // 총알을 발사할 수 있는 상태일 경우

@@ -49,7 +49,7 @@ public class Bullet_SG : MonoBehaviour
             case "enemy":
                 _sg.tempEnemy = collision.gameObject.GetComponent<Enemy>();
                 _sg.tempEnemy.MinusHP(_sg.damage);
-                if (!_sg.tempEnemy.CheckBoss())
+                // if (!_sg.tempEnemy.CheckBoss())
                     // _sg.tempEnemy.Knockback(_sg._direction);
                 ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_sg);
                 SoundManager.instance.PlaySFX("bulletToenemy");

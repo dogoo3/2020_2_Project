@@ -90,6 +90,7 @@ public class Enemy : MonoBehaviour
     public void Jump(Vector2 _force)
     {
         _rigidbody2d.velocity = _force;
+        _animator.SetTrigger("jump");
     }
 
     public void ChangeDir(Animator _animator)

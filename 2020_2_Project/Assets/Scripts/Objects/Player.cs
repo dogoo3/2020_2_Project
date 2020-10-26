@@ -14,16 +14,17 @@ public class Player : MonoBehaviour
     private Vector2 _movePos, _directionPos, _jumpvalue;
     private Vector2 _oldDirectionPos; // 위 보는 키 누를 때 이전 시점을 저장하는 변수
 
-    private bool _isjump, _isshield, _isdead, _isattacked;
+    private bool _isjump, _isshield, _isdead, _isattacked, _isLookup;
 
     private float _hp, _shield, _speed, _def;
     private float _maxhp, _maxshield;
+
     [SerializeField] private GameObject shieldsprite = default;
     [SerializeField] private Transform muzzleGunPos = default;
 
     private RaycastHit2D _rayPlayer;
     private bool _isBlink;
-    private float _invincibleTime = 2.0f;
+    private float _invincibleTime = 2.0f, _lookupTime;
 
     private void Awake()
     {
@@ -70,13 +71,31 @@ public class Player : MonoBehaviour
 
     public void LookUp(bool _isLookup)
     {
-        if(_isLookup) // 위를 바라볼 때(키를 누르고 있을 때)
+        if (_isLookup) // 위를 바라볼 때(키를 누르고 있을 때)
         {
-            _oldDirectionPos = _directionPos; // 위를 바라보기 직전에 어느 시점을 보고 있었는지를 저장
-            _directionPos = Vector2.up;
+            if (WeaponManager.instance.IsHaveWeapon())
+            {
+                _oldDirectionPos = _directionPos; // 위를 바라보기 직전에 어느 시점을 보고 있었는지를 저장
+                _directionPos = Vector2.up;
+                //_animator.SetBool("Lookup", true); // Transition을 위한 Lookup 파라미터
+                _animator.Play("Lookup", 0, _lookupTime);
+                _animator.SetFloat("float_Lookup", 1.0f); // Blend Tree 내 분기를 위한 Lookup 파라미터
+                this._isLookup = true;
+                _animator.SetBool("Lookup", this._isLookup);
+            }
         }
         else // 위 그만 바라볼 때(키에서 손을 뗄 때)
-            _directionPos = _oldDirectionPos;
+        {
+            if (WeaponManager.instance.IsHaveWeapon())
+            {
+                this._isLookup = false;
+                _animator.SetBool("Lookup", this._isLookup);
+                _directionPos = _oldDirectionPos;
+                _animator.SetBool("Lookup", false);
+                _animator.SetFloat("float_Lookup", 0f);
+                _animator.Play("LookupReverse", 0, 1 - _lookupTime);
+            }
+        }
     }
 
     public void Jump()
@@ -100,10 +119,9 @@ public class Player : MonoBehaviour
     {
         if(!_isdead)
         {
-            if (_shield > 0)
+            if (_shield > 30.0f)
             {
                 _isshield = true;
-                _def *= 2;
                 shieldsprite.SetActive(true);
             }
         }
@@ -116,7 +134,6 @@ public class Player : MonoBehaviour
             if (_isshield)
             {
                 _isshield = false;
-                _def *= 0.5f;
                 shieldsprite.SetActive(false);
             }
         }
@@ -126,18 +143,11 @@ public class Player : MonoBehaviour
     {
         if (!_isdead)
         {
-            // 탄환 유무 체크 -> 그 탄환의 쿨타임 체크
-            if (WeaponManager.instance.IsShootWeapon())
+            if (_lookupTime == 1.0f || _lookupTime == 0) // 시점을 변경하는 동안(위를 보기 위해 고개를 드는 동안)에는 공격할 수 없다.
             {
-                switch (WeaponManager.instance.GetSelectWeapon())
-                {
-                    case WeaponName.grenade:
-                        _animator.SetTrigger("throw");
-                        break;
-                    default:
-                        _animator.SetTrigger("shoot");
-                        break;
-                }
+                // 탄환 유무 체크 -> 그 탄환의 쿨타임 체크
+                if (WeaponManager.instance.IsShootWeapon())
+                    _animator.SetTrigger("shoot");
             }
         }
     }
@@ -145,6 +155,12 @@ public class Player : MonoBehaviour
     public void ShootMotion() // 발사 버튼을 누르고 난 뒤 애니메이션 프레임에서 작동하는 함수
     {
         WeaponManager.instance.Shoot(muzzleGunPos.position, _directionPos);
+    }
+
+    public void CheckShootAfterLookup()
+    {
+        if (_isLookup)
+            _animator.Play("Lookup", 0, 1f);
     }
 
     public void ResetSetting()
@@ -158,6 +174,18 @@ public class Player : MonoBehaviour
 
     public void Attacked(float _damage)
     {
+        if(_isshield)
+        {
+            if (_shield >= 50.0f)
+                _shield -= 50.0f;
+            else
+                _shield = 0f;
+
+            SoundManager.instance.PlaySFX("shielddef");
+            _isattacked = true;
+            Invoke("DEFShield", 1.0f);
+            return;
+        }
         _hp -= _damage;
         GaugeManager.instance.SetHpGauge(_hp);
         _isattacked = true;
@@ -169,6 +197,11 @@ public class Player : MonoBehaviour
             Invoke("CancelBlink", _invincibleTime);
         }
         CheckDead();
+    }
+
+    private void DEFShield()
+    {
+        _isattacked = false;
     }
 
     public bool CheckAttacked()
@@ -192,6 +225,11 @@ public class Player : MonoBehaviour
         _isjump = true;
         _animator.SetBool("jump", _isjump);
         _rigidbody2d.velocity = _force;
+    }
+
+    public void SetWeaponAnimation(WeaponName _weaponNum)
+    {
+        _animator.SetFloat("weaponNum", (float)_weaponNum);
     }
 
     #region AttackBlinkFunc
@@ -254,15 +292,19 @@ public class Player : MonoBehaviour
             if (_isshield) // 실드 키를 누르고 있을 때.
             {
                 GaugeManager.instance.SetShieldGauge(_shield -= 0.16f);
-                if (_shield < 0)
+                if (_shield <= 0)
                     UnShield();
             }
             else // 실드 키를 안 누르고 있을 때.
             {
                 if (_shield < 100.0f)
-                    GaugeManager.instance.SetShieldGauge(_shield = Mathf.Clamp(_shield + 0.08f, 0, 100.0f));
+                    GaugeManager.instance.SetShieldGauge(_shield = Mathf.Clamp(_shield + 0.02f, 0, 100.0f));
             }
 
+            if (_isLookup)
+                _lookupTime = Mathf.Clamp(_lookupTime + 0.33333333f, 0, 1f);
+            else
+                _lookupTime = Mathf.Clamp(_lookupTime - 0.33333333f, 0, 1f);
             if (Application.platform == RuntimePlatform.WindowsEditor)
             {
                 if (Input.GetKeyDown(KeyCode.LeftArrow))

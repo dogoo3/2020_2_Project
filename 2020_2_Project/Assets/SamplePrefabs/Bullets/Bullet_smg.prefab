@@ -133,6 +133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1570053344f22fc4d83b54b30401eff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  shotSpeed: 11
-  surviveTime: 0.5
+  damage: 12
+  shotSpeed: 22
+  surviveTime: 0.3

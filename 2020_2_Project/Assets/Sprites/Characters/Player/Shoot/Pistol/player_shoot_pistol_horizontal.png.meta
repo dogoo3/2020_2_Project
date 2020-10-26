@@ -4,16 +4,16 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -7169371653411447740
-    second: Player_Shoot_0
+    second: player_shoot_pistol_horizontal_0
   - first:
       213: 998706065937494223
-    second: Player_Shoot_1
+    second: player_shoot_pistol_horizontal_1
   - first:
       213: 3218591608074427183
-    second: Player_Shoot_2
+    second: player_shoot_pistol_horizontal_2
   - first:
       213: 7069005636327514907
-    second: Player_Shoot_3
+    second: player_shoot_pistol_horizontal_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player_Shoot_0
+      name: player_shoot_pistol_horizontal_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,7 +118,7 @@ TextureImporter:
         width: 298
         height: 300
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -131,7 +131,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Shoot_1
+      name: player_shoot_pistol_horizontal_1
       rect:
         serializedVersion: 2
         x: 298
@@ -139,7 +139,7 @@ TextureImporter:
         width: 298
         height: 300
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -152,7 +152,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Shoot_2
+      name: player_shoot_pistol_horizontal_2
       rect:
         serializedVersion: 2
         x: 596
@@ -160,7 +160,7 @@ TextureImporter:
         width: 298
         height: 300
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -173,7 +173,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Shoot_3
+      name: player_shoot_pistol_horizontal_3
       rect:
         serializedVersion: 2
         x: 894
@@ -181,7 +181,7 @@ TextureImporter:
         width: 298
         height: 300
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

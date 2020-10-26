@@ -53,7 +53,6 @@ public class SpawnMonstersManager : MonoBehaviour
     public void CatchMonster()
     {
         _nowkillNumber++; // 처치 수 ++
-        Debug.Log(_nowkillNumber);
         if (_killNumber == _nowkillNumber) // 라운드의 모든 몬스터 처치 시
             Invoke("ShowClearWindow", 3.0f); // 클리어 윈도우를 띄운다.
     }

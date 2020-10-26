@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4399c94d2d1c68b44affc072958eb827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 1
+  HP: 20
   score: 160
   minGold: 200
   maxGold: 230
@@ -232,9 +232,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c3f028f9b823aa458b5c51fc26c92b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 50
+  damage: 25
   moveSpeed: 5.5
-  runSpeed: 12
+  runSpeed: 9
   minpatrolTime: 2.5
   maxpatrolTime: 3.5
   rayLength: 5

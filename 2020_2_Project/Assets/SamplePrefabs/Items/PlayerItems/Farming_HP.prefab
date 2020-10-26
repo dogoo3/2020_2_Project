@@ -116,7 +116,7 @@ MonoBehaviour:
   itemKind: 6
   _sfxSoundname: gauge
   _mySpawnPoint: {fileID: 0}
-  supplyValue: 25
+  supplyValue: 75
 --- !u!50 &-7798316683732202947
 Rigidbody2D:
   serializedVersion: 4

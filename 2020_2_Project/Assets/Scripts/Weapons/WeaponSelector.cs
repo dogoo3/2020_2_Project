@@ -23,6 +23,7 @@ public class WeaponSelector : MonoBehaviour, IPointerDownHandler
         {
             WeaponManager.instance.ChangeSelectWeapon(weaponName);
             selectWeaponSignal.transform.position = transform.position; // 무기선택 시그널을 옮겨줌
+            Player.instance.SetWeaponAnimation(weaponName);
         }
     }
 
