@@ -8,23 +8,29 @@ public class Player : MonoBehaviour
     public static Player instance;
 
     private Rigidbody2D _rigidbody2d;
+    [SerializeField] private Collider2D _collider2d = default;
+    private Collider2D _detectRope;
+
     private Animator _animator;
     private SpriteRenderer _spriterenderer;
     
     private Vector2 _movePos, _directionPos, _jumpvalue;
     private Vector2 _oldDirectionPos; // 위 보는 키 누를 때 이전 시점을 저장하는 변수
+    private Vector2 _catchRopeHeight;
 
-    private bool _isjump, _isshield, _isdead, _isattacked, _isLookup;
+    private Rope _rope;
+
+    private bool _isjump, _isshield, _isdead, _isattacked, _isLookup, _isRope, _isBlink;
+    private bool _isRopeUp, _isRopeDown;
 
     private float _hp, _shield, _speed, _def;
     private float _maxhp, _maxshield;
+    private float _invincibleTime = 2.0f, _lookupTime;
 
     [SerializeField] private GameObject shieldsprite = default;
     [SerializeField] private Transform muzzleGunPos = default;
 
     private RaycastHit2D _rayPlayer;
-    private bool _isBlink;
-    private float _invincibleTime = 2.0f, _lookupTime;
 
     private void Awake()
     {
@@ -73,28 +79,46 @@ public class Player : MonoBehaviour
     {
         if (_isLookup) // 위를 바라볼 때(키를 누르고 있을 때)
         {
-            if (WeaponManager.instance.IsHaveWeapon())
+            if(!_isRope) // 로프를 타고 있는 상태가 아니면
             {
-                _oldDirectionPos = _directionPos; // 위를 바라보기 직전에 어느 시점을 보고 있었는지를 저장
-                _directionPos = Vector2.up;
-                //_animator.SetBool("Lookup", true); // Transition을 위한 Lookup 파라미터
-                _animator.Play("Lookup", 0, _lookupTime);
-                _animator.SetFloat("float_Lookup", 1.0f); // Blend Tree 내 분기를 위한 Lookup 파라미터
-                this._isLookup = true;
-                _animator.SetBool("Lookup", this._isLookup);
+                _detectRope = Physics2D.OverlapBox(transform.position, Vector2.one * 0.5f, 0, 1 << LayerMask.NameToLayer("Rope")); // 로프 탐색
+                Debug.Log("adsjf;lkajsdklf");
+                if(_detectRope == null) // 로프가 없으면 시점 위로
+                {
+                    if (WeaponManager.instance.IsHaveWeapon())
+                    {
+                        this._isLookup = true;
+                        _animator.SetBool("Lookup", this._isLookup);
+                        _oldDirectionPos = _directionPos; // 위를 바라보기 직전에 어느 시점을 보고 있었는지를 저장
+                        _directionPos = Vector2.up;
+                        _animator.SetFloat("float_Lookup", 1.0f); // Blend Tree 내 분기를 위한 Lookup 파라미터
+                        _animator.Play("Lookup", 0, _lookupTime);
+                    }
+                }
+                else // 로프가 감지되면
+                {
+                    DetectRope();
+                    _isRopeUp = true;
+                }
             }
+            else // 로프를 타고 있는 상태면
+                _isRopeUp = true;
         }
         else // 위 그만 바라볼 때(키에서 손을 뗄 때)
         {
-            if (WeaponManager.instance.IsHaveWeapon())
+            if(!_isRope)
             {
-                this._isLookup = false;
-                _animator.SetBool("Lookup", this._isLookup);
-                _directionPos = _oldDirectionPos;
-                _animator.SetBool("Lookup", false);
-                _animator.SetFloat("float_Lookup", 0f);
-                _animator.Play("LookupReverse", 0, 1 - _lookupTime);
+                if (WeaponManager.instance.IsHaveWeapon())
+                {
+                    this._isLookup = false;
+                    _animator.SetBool("Lookup", this._isLookup);
+                    _animator.SetFloat("float_Lookup", 0f);
+                    _animator.Play("LookupReverse", 0, 1 - _lookupTime);
+                    _directionPos = _oldDirectionPos;
+                }
             }
+            else
+                _isRopeUp = false;
         }
     }
 
@@ -102,40 +126,73 @@ public class Player : MonoBehaviour
     {
         if(!_isdead)
         {
-            _rayPlayer = Physics2D.Raycast(transform.position + (Vector3.down * 1.3f), Vector2.down, 0.5f, 1 << LayerMask.NameToLayer("Ground"));
-            if (_rayPlayer.collider != null)
+            if(!_isRope) // 로프를 타고 있지 않을 때에는 일반 점프동작을 수행
             {
-                if (!_isjump)
+                _rayPlayer = Physics2D.Raycast(transform.position + (Vector3.down * 1.3f), Vector2.down, 0.5f, 1 << LayerMask.NameToLayer("Ground"));
+                if (_rayPlayer.collider != null)
                 {
-                    _animator.SetBool("jump", true);
-                    _rigidbody2d.velocity = _jumpvalue;
-                    _isjump = true;
+                    if (!_isjump)
+                        JumpSet(_jumpvalue);
+                }
+            }
+            else // 로프를 타고 있을 때 다른 방향키를 누르고 있으면 로프를 탈출하면서 점프함.
+            {
+                if(_movePos != Vector2.zero)
+                {
+                    JumpSet(_jumpvalue * 0.5f);
+                    EscapeRope();
                 }
             }
         }
+    }
+
+    private void JumpSet(Vector2 _jumpforce)
+    {
+        _animator.SetBool("jump", true);
+        _rigidbody2d.velocity = _jumpforce;
+        _isjump = true;
     }
 
     public void Shield()
     {
         if(!_isdead)
         {
-            if (_shield > 30.0f)
+            if(!_isRope)
             {
-                _isshield = true;
-                shieldsprite.SetActive(true);
+                _detectRope = Physics2D.OverlapBox(transform.position + Vector3.down*1.25f, Vector2.one * 0.5f, 0, 1 << LayerMask.NameToLayer("Rope")); // 로프 탐색
+                if (_detectRope == null) // 로프가 없으면 실드 사용
+                {
+                    if (_shield > 30.0f)
+                    {
+                        _isshield = true;
+                        shieldsprite.SetActive(true);
+                    }
+                }
+                else // 로프 감지 시
+                {
+                    DetectRope();
+                    _isRopeDown = true;
+                }
             }
+            else
+                _isRopeDown = true;
         }
     }
 
     public void UnShield()
     {
         if(!_isdead)
-        { 
-            if (_isshield)
+        {
+            if (!_isRope)
             {
-                _isshield = false;
-                shieldsprite.SetActive(false);
+                if (_isshield)
+                {
+                    _isshield = false;
+                    shieldsprite.SetActive(false);
+                }
             }
+            else
+                _isRopeDown = false;
         }
     }
 
@@ -270,6 +327,26 @@ public class Player : MonoBehaviour
         _shield = Mathf.Clamp(_shield + _healValue, 0, _maxshield);
         GaugeManager.instance.SetShieldGauge(_shield);
     }
+    
+    private void DetectRope()
+    {
+        _rope = _detectRope.GetComponent<Rope>();
+        _rigidbody2d.gravityScale = 0;
+        _collider2d.isTrigger = true;
+        _catchRopeHeight = transform.position;
+        _catchRopeHeight.x = _detectRope.transform.position.x;
+        transform.position = _catchRopeHeight;
+        _isRope = true;
+    }
+
+    private void EscapeRope()
+    {
+        _animator.SetBool("jump", false);
+        _isjump = false;
+        _isRope = false;
+        _rigidbody2d.gravityScale = 3.3f;
+        _collider2d.isTrigger = false;
+    }
 
     private void CheckDead()
     {
@@ -288,7 +365,8 @@ public class Player : MonoBehaviour
     {
         if (!_isdead) // dead가 true이면 플레이어가 죽었다는 의미.
         {
-            _rigidbody2d.transform.Translate(_movePos.normalized * Time.deltaTime * _speed);
+            if(!_isRope) // 로프를 타고 있을때는 키를 눌러도 이동하지 않음.
+                transform.Translate(_movePos.normalized * Time.deltaTime * _speed);
             if (_isshield) // 실드 키를 누르고 있을 때.
             {
                 GaugeManager.instance.SetShieldGauge(_shield -= 0.16f);
@@ -305,6 +383,25 @@ public class Player : MonoBehaviour
                 _lookupTime = Mathf.Clamp(_lookupTime + 0.33333333f, 0, 1f);
             else
                 _lookupTime = Mathf.Clamp(_lookupTime - 0.33333333f, 0, 1f);
+
+            if(_isRopeDown)
+            {
+                transform.Translate(Vector3.down * 2.0f * Time.deltaTime);
+                if (_rope.CarculateDownPos(transform))
+                {
+                    EscapeRope();
+                    _isRopeDown = false;
+                }
+            }
+            if(_isRopeUp)
+            {
+                transform.Translate(Vector3.up * 2.0f * Time.deltaTime);
+                if (_rope.CarculateUpPos(transform))
+                {
+                    EscapeRope();
+                    _isRopeUp = false;
+                }
+            }
             if (Application.platform == RuntimePlatform.WindowsEditor)
             {
                 if (Input.GetKeyDown(KeyCode.LeftArrow))
