@@ -5,23 +5,27 @@ using UnityEngine.UI;
 
 public class ShopUpgradeWeapon : MonoBehaviour
 {
-    public Image image;
+    public Image weaponImage;
     public Text dealText, respawnText;
 
     public Text shopGoldText;
 
     // public Text dealCostText, respawnCostText;
+    public Image upgDamageImage, upgCooltimeImage;
 
     private ShopWeaponIcon _weaponInfo;
     
     public void Init(ShopWeaponIcon _info)
     {
         _weaponInfo = _info;
-        image.sprite = _weaponInfo._image.sprite;
+        weaponImage.sprite = _weaponInfo._image.sprite;
         dealText.text = _weaponInfo.damage.ToString();
         respawnText.text = _weaponInfo.cooltime.ToString();
         //dealCostText.text = _weaponInfo.cost_upgradeDamage.ToString();
         //respawnCostText.text = _weaponInfo.cost_upgradeCooltime.ToString();
+        upgDamageImage.fillAmount = FileManager.weaponLevel[_weaponInfo.weaponName + "_deal"] * 0.2f;
+        upgCooltimeImage.fillAmount = FileManager.weaponLevel[_weaponInfo.weaponName + "_respawn"] * 0.2f;
+        
         gameObject.SetActive(true);
     }
 
@@ -37,7 +41,7 @@ public class ShopUpgradeWeapon : MonoBehaviour
                 _weaponInfo.UpdateWeaponDealInfo();
                 dealText.text = _weaponInfo.damage.ToString();
                 shopGoldText.text = FileManager.playerInfo["gold"].ToString();
-                FileManager.weaponLevel[_weaponInfo.weaponName + "_deal"]++;
+                upgDamageImage.fillAmount = ++FileManager.weaponLevel[_weaponInfo.weaponName + "_deal"] * 0.2f;
                 FileManager.WriteData("DB_int_weaponlevel.csv", FileManager.weaponLevel);
             }
         }
@@ -55,7 +59,7 @@ public class ShopUpgradeWeapon : MonoBehaviour
                 _weaponInfo.UpdateWeaponCooltimeInfo();
                 respawnText.text = _weaponInfo.cooltime.ToString();
                 shopGoldText.text = FileManager.playerInfo["gold"].ToString();
-                FileManager.weaponLevel[_weaponInfo.weaponName + "_respawn"]++;
+                upgCooltimeImage.fillAmount = ++FileManager.weaponLevel[_weaponInfo.weaponName + "_respawn"] * 0.2f;
                 FileManager.WriteData("DB_int_weaponlevel.csv", FileManager.weaponLevel);
             }
         }

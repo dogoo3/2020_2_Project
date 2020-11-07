@@ -67,6 +67,7 @@ public class Enemy : MonoBehaviour
         gameObject.SetActive(true);
         _rigidbody2d.velocity = _direction * _shotspeed;
     }
+
     //public void Knockback(Vector2 _direction)
     //{
     //    _rigidbody2d.velocity = _direction * 10.0f;

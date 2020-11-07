@@ -83,6 +83,7 @@
     <Compile Include="Assets\Scripts\Objects\Coin\Gold.cs" />
     <Compile Include="Assets\Scripts\Objects\Coin\GoldManager.cs" />
     <Compile Include="Assets\Scripts\Objects\Coin\InputGoldValue.cs" />
+    <Compile Include="Assets\Scripts\Objects\Enemys\Alian.cs" />
     <Compile Include="Assets\Scripts\Objects\Enemys\Enemy.cs" />
     <Compile Include="Assets\Scripts\Objects\Enemys\EnemyWeapon.cs" />
     <Compile Include="Assets\Scripts\Objects\Enemys\Goblin.cs" />
