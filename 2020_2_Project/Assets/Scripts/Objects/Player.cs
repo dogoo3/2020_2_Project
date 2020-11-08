@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     private Vector2 _movePos, _directionPos, _jumpvalue;
     private Vector2 _oldDirectionPos; // 위 보는 키 누를 때 이전 시점을 저장하는 변수
     private Vector2 _catchRopeHeight;
-
+    private Vector2 _upShootVector = new Vector2(0.40159f, 0.91581f);
     private Rope _rope;
 
     private bool _isjump, _isshield, _isdead, _isattacked, _isLookup, _isRope, _isBlink;
@@ -90,9 +90,11 @@ public class Player : MonoBehaviour
                         this._isLookup = true;
                         _animator.SetBool("Lookup", this._isLookup);
                         _oldDirectionPos = _directionPos; // 위를 바라보기 직전에 어느 시점을 보고 있었는지를 저장
-                        _directionPos = Vector2.up;
+                        _directionPos = _upShootVector; // 위로 쏠 때 벡터 정규화값 저장
+                        _directionPos.x *= _oldDirectionPos.x; // 방향 변경
                         _animator.SetFloat("float_Lookup", 1.0f); // Blend Tree 내 분기를 위한 Lookup 파라미터
                         _animator.Play("Lookup", 0, _lookupTime);
+                        
                     }
                 }
                 else // 로프가 감지되면
@@ -427,6 +429,11 @@ public class Player : MonoBehaviour
                 else { }
             }
         }
+    }
+
+    public void OnConveyorBelt(Vector2 vector2)
+    {
+        _rigidbody2d.velocity = vector2;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
