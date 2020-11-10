@@ -39,6 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4174530100150238507}
+  - component: {fileID: 3974837304002661642}
   m_Layer: 11
   m_Name: GroundCollider
   m_TagString: Untagged
@@ -60,6 +61,32 @@ Transform:
   m_Father: {fileID: 4174530101528722110}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &3974837304002661642
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4174530100150238506}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.06743002, y: -1.5848684}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.3257017, y: 0.26918602}
+  m_EdgeRadius: 0
 --- !u!1 &4174530101528722050
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,7 +210,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.020745754, y: -0.23341084}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -194,7 +221,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.0001, y: 0.0001}
+  m_Size: {x: 0.8798189, y: 2.975607}
   m_EdgeRadius: 0
 --- !u!95 &4174530101528722111
 Animator:
@@ -227,10 +254,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4399c94d2d1c68b44affc072958eb827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 0
-  score: 0
-  minGold: 0
-  maxGold: 0
+  HP: 300
+  score: 150
+  minGold: 200
+  maxGold: 300
   _isboss: 0
   deadSfxname: 
   _direction: {x: 0, y: 0}
@@ -246,3 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0370a650ed0e1aa409c1904a5fcbcd29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  muzzleGunPos: {fileID: 4174530099794690573}
+  _detectRange: 12.5
+  _moveSpeed: 6
+  _attackCooltime: 2

@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\BackDoor\RoundClear.cs" />
     <Compile Include="Assets\Scripts\Bullets\Bullet.cs" />
     <Compile Include="Assets\Scripts\Bullets\Bullet_AR.cs" />
+    <Compile Include="Assets\Scripts\Bullets\Bullet_Alian.cs" />
     <Compile Include="Assets\Scripts\Bullets\Bullet_Grenade.cs" />
     <Compile Include="Assets\Scripts\Bullets\Bullet_Pistol.cs" />
     <Compile Include="Assets\Scripts\Bullets\Bullet_SG.cs" />

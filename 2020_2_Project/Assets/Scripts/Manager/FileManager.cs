@@ -3,6 +3,7 @@ using System.Collections;
 using System.IO;
 using System.Collections.Generic;
 using System.Text;
+using System;
 
 // Use Manual
 // 첫 앱 실행 시 파일을 받아오는 것은 Resources에서 담당
@@ -91,27 +92,72 @@ public class FileManager : MonoBehaviour
         }
     }
 
-    public static void WriteData(string _filename, Dictionary<string, float> _saveDic)
+    //public void ReadData<T>(string _filename, Dictionary<string, T> _readDic) where T : Parsing
+    //{
+    //    string filepath = PathForDocumentsFile(_filename);
+    //    if (File.Exists(filepath)) // 이 파일이 존재한다면
+    //    {
+    //        List<string> readList = ReadData_oldFile(filepath);
+
+    //        for (int i = 0; i < readList.Count; i += 2)
+    //            _readDic.Add(readList[i].ToString(), T.Parse(readList[i + 1]));
+    //    }
+    //    else // 파일이 존재하지 않다면(앱 설치 후 첫 실행 시에만 작동)
+    //    {
+    //        List<string> readList = ReadData_newFile(_filename);
+
+    //        for (int i = 0; i < readList.Count; i += 2)
+    //            _readDic.Add(readList[i].ToString(), T.Parse(readList[i + 1]));
+    //    }
+    //}
+
+    //public static void WriteData(string _filename, Dictionary<string, float> _saveDic)
+    //{
+    //    string path = PathForDocumentsFile(_filename);
+    //    FileStream f = new FileStream(path, FileMode.Create, FileAccess.Write);
+
+    //    StreamWriter writer = new StreamWriter(f);
+
+    //    foreach (KeyValuePair<string, float> items in _saveDic)
+    //        writer.WriteLine(items.Key + "," + items.Value);
+    //    writer.Close();
+    //    f.Close();
+    //}
+
+    //public static void WriteData(string _filename, Dictionary<string, bool> _saveDic)
+    //{
+    //    string path = PathForDocumentsFile(_filename);
+    //    FileStream f = new FileStream(path, FileMode.Create, FileAccess.Write);
+
+    //    StreamWriter writer = new StreamWriter(f);
+
+    //    foreach (KeyValuePair<string, bool> items in _saveDic)
+    //        writer.WriteLine(items.Key + "," + items.Value);
+    //    writer.Close();
+    //    f.Close();
+    //}
+
+    //public static void WriteData(string _filename, Dictionary<string, float> _saveDic)
+    //{
+    //    string path = PathForDocumentsFile(_filename);
+    //    FileStream f = new FileStream(path, FileMode.Create, FileAccess.Write);
+
+    //    StreamWriter writer = new StreamWriter(f);
+
+    //    foreach (KeyValuePair<string, float> items in _saveDic)
+    //        writer.WriteLine(items.Key + "," + items.Value);
+    //    writer.Close();
+    //    f.Close();
+    //}
+
+    public static void WriteData<T>(string _filename, Dictionary<string, T> _saveDic)
     {
         string path = PathForDocumentsFile(_filename);
         FileStream f = new FileStream(path, FileMode.Create, FileAccess.Write);
 
         StreamWriter writer = new StreamWriter(f);
 
-        foreach (KeyValuePair<string, float> items in _saveDic)
-            writer.WriteLine(items.Key + "," + items.Value);
-        writer.Close();
-        f.Close();
-    }
-
-    public static void WriteData(string _filename, Dictionary<string, bool> _saveDic)
-    {
-        string path = PathForDocumentsFile(_filename);
-        FileStream f = new FileStream(path, FileMode.Create, FileAccess.Write);
-
-        StreamWriter writer = new StreamWriter(f);
-
-        foreach (KeyValuePair<string, bool> items in _saveDic)
+        foreach (KeyValuePair<string, T> items in _saveDic)
             writer.WriteLine(items.Key + "," + items.Value);
         writer.Close();
         f.Close();

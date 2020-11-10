@@ -48,7 +48,7 @@ public class HoldTrap : MonoBehaviour
             if (_isdetect)
             {
                 _isdetect = false;
-                // Player.instance.Attacked(_damage);
+                Player.instance.Attacked(_damage);
             }
         }
     }

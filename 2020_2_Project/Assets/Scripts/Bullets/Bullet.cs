@@ -105,3 +105,16 @@ public class B_Grenade : Bullet
         return this._direction;
     }
 }
+
+public class B_Ailan : Bullet
+{
+    public override void Direction(Vector2 _direction)
+    {
+        this._direction = _direction;
+    }
+    public override Vector2 Move()
+    {
+        LoadElapsedTime();
+        return _direction * shotSpeed * Time.deltaTime;
+    }
+}

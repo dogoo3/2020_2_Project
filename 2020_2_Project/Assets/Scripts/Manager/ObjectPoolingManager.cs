@@ -16,6 +16,7 @@ public class ObjectPoolingManager : MonoBehaviour
     public Bullet_AR ar;
     public Bullet_SG sg;
     public Bullet_Grenade grenade;
+    public Bullet_Alian alianBullet;
     public Gold gold;
 
     public FarmingItem farm_pistol;
@@ -34,6 +35,7 @@ public class ObjectPoolingManager : MonoBehaviour
     private Bullet_AR _ar;
     private Bullet_SG _sg;
     private Bullet_Grenade _grenade;
+    private Bullet_Alian _alianBullet;
     private Gold _gold;
 
     private FarmingItem _farmItem;
@@ -45,6 +47,7 @@ public class ObjectPoolingManager : MonoBehaviour
     public Queue<Bullet_AR> queue_ar = new Queue<Bullet_AR>();
     public Queue<Bullet_SG> queue_sg = new Queue<Bullet_SG>();
     public Queue<Bullet_Grenade> queue_grenade = new Queue<Bullet_Grenade>();
+    public Queue<Bullet_Alian> queue_alianBullet = new Queue<Bullet_Alian>();
     public Queue<Gold> queue_gold = new Queue<Gold>();
 
     public Queue<FarmingItem> queue_f_pistol = new Queue<FarmingItem>();
@@ -126,6 +129,10 @@ public class ObjectPoolingManager : MonoBehaviour
             }
         }
 
+        // 외계인 총알
+        for (i = 0; i < 15; i++)
+            Init(alianBullet, queue_alianBullet, "alianBullet", i);
+
         for (i = 0; i < 5; i++)
         {
             Init(gold, queue_gold, "gold", i);
@@ -203,6 +210,17 @@ public class ObjectPoolingManager : MonoBehaviour
             _grenade.transform.position = _origin;
             _grenade.gameObject.SetActive(true);
             _grenade.Throw(_direction);
+        }
+    }
+
+    public void GetQueue_alienBullet(Vector2 _origin, Vector2 _direction)
+    {
+        if (queue_alianBullet.Count != 0)
+        {
+            _alianBullet = queue_alianBullet.Dequeue();
+            _alianBullet.transform.position = _origin;
+            _alianBullet.gameObject.SetActive(true);
+            _alianBullet.Direction(_direction);
         }
     }
 
