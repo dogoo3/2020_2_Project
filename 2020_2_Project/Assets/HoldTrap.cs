@@ -12,10 +12,6 @@ public class HoldTrap : MonoBehaviour
     private float _elapsedTime, _angle;
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-        }
-
         if(!_isdetect)
         {
             _elapsedTime += Time.deltaTime;

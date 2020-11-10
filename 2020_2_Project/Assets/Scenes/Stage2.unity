@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &2812244
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6685,7 +6685,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1291772096
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8119,7 +8119,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1581271087
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10487,10 +10487,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 25.29, y: 14.79}
-      - {x: -25.29, y: 14.79}
-      - {x: -25.29, y: -14.79}
-      - {x: 25.29, y: -14.79}
+    - - {x: 23.545805, y: 13.30743}
+      - {x: -23.720224, y: 13.30743}
+      - {x: -23.720222, y: -13.569061}
+      - {x: 23.633013, y: -13.56906}
 --- !u!1 &1861345649
 GameObject:
   m_ObjectHideFlags: 0
@@ -11041,7 +11041,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1908509465
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12231,7 +12231,7 @@ SpriteRenderer:
   m_SortingLayerID: -416080765
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2b36d92db843f0e49876912743f4f33b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 44a1e088213d63948b1e48231c52220c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

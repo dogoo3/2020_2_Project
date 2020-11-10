@@ -150,7 +150,7 @@ public class Player : MonoBehaviour
     private void JumpSet(Vector2 _jumpforce)
     {
         _animator.SetBool("jump", true);
-        _rigidbody2d.velocity = _jumpforce;
+        _rigidbody2d.velocity += _jumpforce;
         _isjump = true;
     }
 
