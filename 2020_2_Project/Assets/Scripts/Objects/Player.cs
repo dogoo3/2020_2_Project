@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     private Vector2 _oldDirectionPos; // 위 보는 키 누를 때 이전 시점을 저장하는 변수
     private Vector2 _catchRopeHeight;
     private Vector2 _upShootVector = new Vector2(0.40159f, 0.91581f);
-    private Rope _rope;
+    private Ladder _rope;
 
     private bool _isjump, _isshield, _isdead, _isattacked, _isLookup, _isRope, _isBlink;
     private bool _isRopeUp, _isRopeDown;
@@ -331,7 +331,7 @@ public class Player : MonoBehaviour
     
     private void DetectRope()
     {
-        _rope = _detectRope.GetComponent<Rope>();
+        _rope = _detectRope.GetComponent<Ladder>();
         _rigidbody2d.gravityScale = 0;
         _collider2d.isTrigger = true;
         _catchRopeHeight = transform.position;

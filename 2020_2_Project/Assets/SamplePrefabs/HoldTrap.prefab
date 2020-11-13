@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _recoveryTime: 3
-  _damage: 0
+  _damage: 100
   _blade:
   - {fileID: 6103103055825945666}
   - {fileID: 6103103055783350659}

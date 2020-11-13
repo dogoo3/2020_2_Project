@@ -24,9 +24,9 @@ public class ConveyorBelt : MonoBehaviour
     {
         _playerPos = Player.instance.transform;
         if (_arrow)
-            _animator.runtimeAnimatorController = belt[0];
-        else
             _animator.runtimeAnimatorController = belt[1];
+        else
+            _animator.runtimeAnimatorController = belt[0];
     }
     private void Update()
     {
@@ -41,10 +41,10 @@ public class ConveyorBelt : MonoBehaviour
         if(_isOnPlayer)
         {
             if (_arrow) // Left
-                Player.instance.OnConveyorBelt(-Vector2.left*5.0f);
+                Player.instance.OnConveyorBelt(Vector2.right * 5.0f);
             //_playerPos.Translate(Vector2.left * 3.0f * Time.deltaTime);
             else
-                Player.instance.OnConveyorBelt(Vector2.right*5.0f);
+                Player.instance.OnConveyorBelt(Vector2.left * 5.0f);
                 //_playerPos.Translate(Vector2.right * 3.0f * Time.deltaTime);
         }
     }

@@ -6,7 +6,7 @@ public class HoldTrap : MonoBehaviour
 {
     [SerializeField] private float _recoveryTime = default, _damage = default;
     [Header("0번은 왼쪽, 1번은 오른쪽")]
-    [SerializeField] Transform[] _blade;
+    [SerializeField] Transform[] _blade = default;
 
     private bool _isdetect = true;
     private float _elapsedTime, _angle;
