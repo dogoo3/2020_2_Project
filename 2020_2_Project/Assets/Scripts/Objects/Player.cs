@@ -432,6 +432,7 @@ public class Player : MonoBehaviour
 
     public void OnConveyorBelt(Vector2 vector2)
     {
+        vector2.y = _rigidbody2d.velocity.y;
         _rigidbody2d.velocity = vector2;
     }
 
