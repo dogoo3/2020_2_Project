@@ -15,7 +15,7 @@ public class Ladder : MonoBehaviour
 
     private void Start()
     {
-        _upPos = transform.position.y+1.0f + transform.localScale.y * _collider.size.y * 0.5f; // 최고점 연산
+        _upPos = transform.position.y + transform.localScale.y * _collider.size.y * 0.5f; // 최고점 연산
         _downPos = transform.position.y - transform.localScale.y * _collider.size.y * 0.5f; // 최저점 연산
     }
 

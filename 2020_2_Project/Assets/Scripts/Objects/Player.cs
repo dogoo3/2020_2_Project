@@ -8,20 +8,22 @@ public class Player : MonoBehaviour
     public static Player instance;
 
     private Rigidbody2D _rigidbody2d;
-    [SerializeField] private Collider2D _collider2d = default;
-    private Collider2D _detectRope;
-
     private Animator _animator;
     private SpriteRenderer _spriterenderer;
+    private CapsuleCollider2D _collider2d;
+    private BoxCollider2D _groundCollider;
+
+    private Collider2D _detectRope;
     
     private Vector2 _movePos, _directionPos, _jumpvalue;
     private Vector2 _oldDirectionPos; // 위 보는 키 누를 때 이전 시점을 저장하는 변수
     private Vector2 _catchRopeHeight;
     private Vector2 _upShootVector = new Vector2(0.40159f, 0.91581f);
+
     private Ladder _rope;
 
     private bool _isjump, _isshield, _isdead, _isattacked, _isLookup, _isRope, _isBlink;
-    private bool _isRopeUp, _isRopeDown;
+    private bool _isRopeUp, _isRopeDown, _isSquash;
 
     private float _hp, _shield, _speed, _def;
     private float _maxhp, _maxshield;
@@ -38,6 +40,8 @@ public class Player : MonoBehaviour
         _rigidbody2d = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _spriterenderer = GetComponent<SpriteRenderer>();
+        _collider2d = GetComponent<CapsuleCollider2D>();
+        _groundCollider = GetComponentInChildren<BoxCollider2D>();
 
         // 게임 시작 시 기본 시선 설정
         _directionPos = Vector2.right;
@@ -60,7 +64,7 @@ public class Player : MonoBehaviour
 
     public void Move(int _direction)
     {
-        if (_isdead)
+        if (_isdead || _isSquash)
             return;
 
         _animator.SetFloat("direction", _direction);
@@ -77,24 +81,23 @@ public class Player : MonoBehaviour
 
     public void LookUp(bool _isLookup)
     {
+        if (_isdead || _isSquash)
+            return;
+
         if (_isLookup) // 위를 바라볼 때(키를 누르고 있을 때)
         {
-            if(!_isRope) // 로프를 타고 있는 상태가 아니면
+            if (!_isRope) // 로프를 타고 있는 상태가 아니면
             {
                 _detectRope = Physics2D.OverlapBox(transform.position, Vector2.one * 0.5f, 0, 1 << LayerMask.NameToLayer("Rope")); // 로프 탐색
-                if(_detectRope == null) // 로프가 없으면 시점 위로
+                if (_detectRope == null) // 로프가 없으면 시점 위로
                 {
-                    if (WeaponManager.instance.IsHaveWeapon())
-                    {
-                        this._isLookup = true;
-                        _animator.SetBool("Lookup", this._isLookup);
-                        _oldDirectionPos = _directionPos; // 위를 바라보기 직전에 어느 시점을 보고 있었는지를 저장
-                        _directionPos = _upShootVector; // 위로 쏠 때 벡터 정규화값 저장
-                        _directionPos.x *= _oldDirectionPos.x; // 방향 변경
-                        _animator.SetFloat("float_Lookup", 1.0f); // Blend Tree 내 분기를 위한 Lookup 파라미터
-                        _animator.Play("Lookup", 0, _lookupTime);
-                        
-                    }
+                    this._isLookup = true;
+                    _animator.SetBool("Lookup", this._isLookup);
+                    _oldDirectionPos = _directionPos; // 위를 바라보기 직전에 어느 시점을 보고 있었는지를 저장
+                    _directionPos = _upShootVector; // 위로 쏠 때 벡터 정규화값 저장
+                    _directionPos.x *= _oldDirectionPos.x; // 방향 변경
+                    _animator.SetFloat("float_Lookup", 1.0f); // Blend Tree 내 분기를 위한 Lookup 파라미터
+                    _animator.Play("Lookup", 0, _lookupTime);
                 }
                 else // 로프가 감지되면
                 {
@@ -103,46 +106,48 @@ public class Player : MonoBehaviour
                 }
             }
             else // 로프를 타고 있는 상태면
+            {
                 _isRopeUp = true;
+                _animator.SetFloat("ropemove", 1.0f);
+            }
         }
         else // 위 그만 바라볼 때(키에서 손을 뗄 때)
         {
-            if(!_isRope)
+            if (!_isRope)
             {
-                if (WeaponManager.instance.IsHaveWeapon())
-                {
-                    this._isLookup = false;
-                    _animator.SetBool("Lookup", this._isLookup);
-                    _animator.SetFloat("float_Lookup", 0f);
-                    _animator.Play("LookupReverse", 0, 1 - _lookupTime);
-                    _directionPos = _oldDirectionPos;
-                }
+                this._isLookup = false;
+                _animator.SetBool("Lookup", this._isLookup);
+                _animator.SetFloat("float_Lookup", 0f);
+                _animator.Play("LookupReverse", 0, 1 - _lookupTime);
+                _directionPos = _oldDirectionPos;
             }
             else
+            {
                 _isRopeUp = false;
+                _animator.SetFloat("ropemove", 0.0f);
+            }
         }
     }
 
     public void Jump()
     {
-        if(!_isdead)
+        if (_isdead || _isSquash)
+            return;
+        if (!_isRope) // 로프를 타고 있지 않을 때에는 일반 점프동작을 수행
         {
-            if(!_isRope) // 로프를 타고 있지 않을 때에는 일반 점프동작을 수행
+            _rayPlayer = Physics2D.Raycast(transform.position, Vector2.down, 0.5f, 1 << LayerMask.NameToLayer("Ground"));
+            if (_rayPlayer.collider != null)
             {
-                _rayPlayer = Physics2D.Raycast(transform.position + (Vector3.down * 1.3f), Vector2.down, 0.5f, 1 << LayerMask.NameToLayer("Ground"));
-                if (_rayPlayer.collider != null)
-                {
-                    if (!_isjump)
-                        JumpSet(_jumpvalue);
-                }
+                if (!_isjump)
+                    JumpSet(_jumpvalue);
             }
-            else // 로프를 타고 있을 때 다른 방향키를 누르고 있으면 로프를 탈출하면서 점프함.
+        }
+        else // 로프를 타고 있을 때 다른 방향키를 누르고 있으면 로프를 탈출하면서 점프함.
+        {
+            if (_movePos != Vector2.zero)
             {
-                if(_movePos != Vector2.zero)
-                {
-                    JumpSet(_jumpvalue * 0.5f);
-                    EscapeRope();
-                }
+                JumpSet(_jumpvalue * 0.5f);
+                EscapeRope();
             }
         }
     }
@@ -156,50 +161,59 @@ public class Player : MonoBehaviour
 
     public void Shield()
     {
-        if(!_isdead)
+        if (_isdead || _isSquash)
+            return;
+
+        if (!_isRope)
         {
-            if(!_isRope)
+            _detectRope = Physics2D.OverlapBox(transform.position + Vector3.down * 1.25f, Vector2.one * 0.5f, 0, 1 << LayerMask.NameToLayer("Rope")); // 로프 탐색
+            if (_detectRope == null) // 로프가 없으면 실드 사용
             {
-                _detectRope = Physics2D.OverlapBox(transform.position + Vector3.down*1.25f, Vector2.one * 0.5f, 0, 1 << LayerMask.NameToLayer("Rope")); // 로프 탐색
-                if (_detectRope == null) // 로프가 없으면 실드 사용
+                if (_shield > 30.0f)
                 {
-                    if (_shield > 30.0f)
-                    {
-                        _isshield = true;
-                        shieldsprite.SetActive(true);
-                    }
-                }
-                else // 로프 감지 시
-                {
-                    DetectRope();
-                    _isRopeDown = true;
+                    _isshield = true;
+                    shieldsprite.SetActive(true);
                 }
             }
-            else
+            else // 로프 감지 시
+            {
+                DetectRope();
                 _isRopeDown = true;
+            }
+        }
+        else
+        {
+            _isRopeDown = true;
+            _animator.SetFloat("ropemove", 1.0f);
         }
     }
 
     public void UnShield()
     {
-        if(!_isdead)
+        if (_isdead || _isSquash)
+            return;
+
+        if (!_isRope)
         {
-            if (!_isRope)
+            if (_isshield)
             {
-                if (_isshield)
-                {
-                    _isshield = false;
-                    shieldsprite.SetActive(false);
-                }
+                _isshield = false;
+                shieldsprite.SetActive(false);
             }
-            else
-                _isRopeDown = false;
+        }
+        else
+        {
+            _isRopeDown = false;
+            _animator.SetFloat("ropemove", 0.0f);
         }
     }
 
     public void Shoot() // 버튼을 누르면 작동하는 함수
     {
-        if (!_isdead)
+        if (_isdead || _isSquash)
+            return;
+
+        if (!_isRope)
         {
             if (_lookupTime == 1.0f || _lookupTime == 0) // 시점을 변경하는 동안(위를 보기 위해 고개를 드는 동안)에는 공격할 수 없다.
             {
@@ -212,7 +226,7 @@ public class Player : MonoBehaviour
 
     public void ShootMotion() // 발사 버튼을 누르고 난 뒤 애니메이션 프레임에서 작동하는 함수
     {
-        WeaponManager.instance.Shoot(muzzleGunPos.position, _directionPos);
+         WeaponManager.instance.Shoot(muzzleGunPos.position, _directionPos);
     }
 
     public void CheckShootAfterLookup()
@@ -232,6 +246,9 @@ public class Player : MonoBehaviour
 
     public void Attacked(float _damage)
     {
+        if (_isattacked)
+            return;
+
         if(_isshield)
         {
             if (_shield >= 50.0f)
@@ -240,7 +257,6 @@ public class Player : MonoBehaviour
                 _shield = 0f;
 
             SoundManager.instance.PlaySFX("shielddef");
-            _isattacked = true;
             Invoke("DEFShield", 1.0f);
             return;
         }
@@ -333,7 +349,7 @@ public class Player : MonoBehaviour
     {
         _rope = _detectRope.GetComponent<Ladder>();
         _rigidbody2d.gravityScale = 0;
-        _collider2d.isTrigger = true;
+        _groundCollider.isTrigger = true; // 1행은 GroundCollider
         _catchRopeHeight = transform.position;
         _catchRopeHeight.x = _detectRope.transform.position.x;
         transform.position = _catchRopeHeight;
@@ -346,7 +362,7 @@ public class Player : MonoBehaviour
         _isjump = false;
         _isRope = false;
         _rigidbody2d.gravityScale = 3.3f;
-        _collider2d.isTrigger = false;
+        _groundCollider.isTrigger = false; // 1행은 GroundCollider
     }
 
     private void CheckDead()
@@ -436,11 +452,33 @@ public class Player : MonoBehaviour
         _rigidbody2d.velocity = vector2;
     }
 
+    public void Squash(bool _is, float _damage = 0)
+    {
+        if (_is)
+        {
+            Attacked(_damage);
+            Vector2 size = transform.localScale;
+            size.y = 0.25f;
+            transform.localScale = size;
+            _isSquash = true;
+        }
+        else
+            Invoke("ResetScale", 0.5f);
+    }
+
+    private void ResetScale()
+    {
+        transform.localScale = Vector3.one;
+        _isSquash = false;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("ground"))
         {
-            _rayPlayer = Physics2D.Raycast(transform.position, Vector3.up, 1.12f, 1 << LayerMask.NameToLayer("Ground"));
+            Vector2 _rayPos = transform.position;
+            _rayPos.y += _collider2d.size.y;
+            _rayPlayer = Physics2D.Raycast(_rayPos, Vector3.up, 0.2f, 1 << LayerMask.NameToLayer("Ground"));
             if (_rayPlayer.collider == null)
             {
                 _animator.SetBool("jump", false);
