@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int score = default;
     [SerializeField] private int minGold = default;
     [SerializeField] private int maxGold = default;
+    public float _detectTime;
 
     [Header("보스몬스터인가?")]
     [SerializeField] private bool _isboss = default;
@@ -23,6 +24,8 @@ public class Enemy : MonoBehaviour
 
     [HideInInspector]
     public Vector2 _direction;
+    [HideInInspector]
+    public bool _isdetect;
 
     private void Awake()
     {
@@ -94,7 +97,7 @@ public class Enemy : MonoBehaviour
         _animator.SetTrigger("jump");
     }
 
-    public void ChangeDir(Animator _animator)
+    public void ChangeDir()
     {
         _direction.x *= -1;
         _animator.SetFloat("direction", _direction.x);
@@ -103,11 +106,6 @@ public class Enemy : MonoBehaviour
     public bool CheckBoss()
     {
         return _isboss;
-    }
-
-    public Animator GetAnimator()
-    {
-        return _animator;
     }
 
     public float GetHP()

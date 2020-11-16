@@ -258,9 +258,11 @@ MonoBehaviour:
   score: 150
   minGold: 200
   maxGold: 300
+  _detectTime: 3
   _isboss: 0
   deadSfxname: 
   _direction: {x: 0, y: 0}
+  _isdetect: 0
 --- !u!114 &7961954012186395690
 MonoBehaviour:
   m_ObjectHideFlags: 0

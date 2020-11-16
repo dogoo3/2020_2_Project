@@ -430,7 +430,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 439615986}
         m_MethodName: Jump
         m_Mode: 1
         m_Arguments:
@@ -675,7 +675,7 @@ PrefabInstance:
     - target: {fileID: 4826630455736604134, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 24
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 4826630455736604134, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
@@ -695,7 +695,7 @@ PrefabInstance:
     - target: {fileID: 4826630455736604135, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
       propertyPath: m_Name
-      value: Bridge (16)
+      value: Bridge_2F_(7)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7e9ea978b0086446985ccb3e022f1d5, type: 3}
@@ -825,9 +825,9 @@ MonoBehaviour:
   - {fileID: 167143995}
   cinemachineConfiner: {fileID: 1883541252}
   bgmname:
-  - 1s1r
-  - 1s2r
-  - 1s3r
+  - 2s1r
+  - 2s2r
+  - 2s3r
   nowRound: 0
 --- !u!1 &66205414
 GameObject:
@@ -1229,19 +1229,19 @@ Transform:
   - {fileID: 1581271088}
   - {fileID: 1492114803}
   - {fileID: 1095993184}
-  - {fileID: 184596389}
+  - {fileID: 685824096}
+  - {fileID: 458263041}
   - {fileID: 456261199}
   - {fileID: 758292816}
-  - {fileID: 685824096}
+  - {fileID: 184596389}
+  - {fileID: 1604667202}
   - {fileID: 1981992933}
   - {fileID: 905465286}
-  - {fileID: 1604667202}
-  - {fileID: 664907859}
-  - {fileID: 458263041}
-  - {fileID: 459720046}
   - {fileID: 833866305}
   - {fileID: 949850196}
   - {fileID: 57606130}
+  - {fileID: 664907859}
+  - {fileID: 459720046}
   - {fileID: 945990872}
   - {fileID: 1638504428}
   - {fileID: 1703012007}
@@ -1364,7 +1364,7 @@ PrefabInstance:
     - target: {fileID: 2327096002831331420, guid: 7974ef129cf5215439fc8d07237f8ae5,
         type: 3}
       propertyPath: _force.y
-      value: 3
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2327096002831331422, guid: 7974ef129cf5215439fc8d07237f8ae5,
         type: 3}
@@ -1688,7 +1688,7 @@ PrefabInstance:
     - target: {fileID: 4826630455736604134, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 4826630455736604134, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
@@ -1708,7 +1708,7 @@ PrefabInstance:
     - target: {fileID: 4826630455736604135, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
       propertyPath: m_Name
-      value: Bridge (3)
+      value: Bridge_2F_(1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7e9ea978b0086446985ccb3e022f1d5, type: 3}
@@ -2055,7 +2055,7 @@ PrefabInstance:
     - target: {fileID: 2327096002831331420, guid: 7974ef129cf5215439fc8d07237f8ae5,
         type: 3}
       propertyPath: _force.y
-      value: 3
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2327096002831331422, guid: 7974ef129cf5215439fc8d07237f8ae5,
         type: 3}
@@ -3042,6 +3042,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 439615984}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &439615986 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2460765724074957411, guid: 6a43ad76abacafa4099bb2d4b3760507,
+    type: 3}
+  m_PrefabInstance: {fileID: 439615984}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02691096ad8b64d4aa37cf2f4e361a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &454792899
 GameObject:
   m_ObjectHideFlags: 0
@@ -3160,7 +3172,7 @@ PrefabInstance:
     - target: {fileID: 4826630455736604134, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4826630455736604134, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
@@ -3180,7 +3192,7 @@ PrefabInstance:
     - target: {fileID: 4826630455736604135, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
       propertyPath: m_Name
-      value: Bridge (6)
+      value: Bridge_1F_(5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7e9ea978b0086446985ccb3e022f1d5, type: 3}
@@ -3235,7 +3247,7 @@ PrefabInstance:
     - target: {fileID: 4826630455736604134, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4826630455736604134, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
@@ -3255,7 +3267,7 @@ PrefabInstance:
     - target: {fileID: 4826630455736604135, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
       propertyPath: m_Name
-      value: Bridge (11)
+      value: Bridge_1F_(4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7e9ea978b0086446985ccb3e022f1d5, type: 3}
@@ -3354,7 +3366,7 @@ PrefabInstance:
     - target: {fileID: 4826630455736604134, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 4826630455736604134, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
@@ -3374,7 +3386,7 @@ PrefabInstance:
     - target: {fileID: 4826630455736604135, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
       propertyPath: m_Name
-      value: Bridge (13)
+      value: Bridge_2F_(9)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7e9ea978b0086446985ccb3e022f1d5, type: 3}
@@ -3951,7 +3963,12 @@ PrefabInstance:
     - target: {fileID: 2327096002831331420, guid: 7974ef129cf5215439fc8d07237f8ae5,
         type: 3}
       propertyPath: _force.y
-      value: 3
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2327096002831331420, guid: 7974ef129cf5215439fc8d07237f8ae5,
+        type: 3}
+      propertyPath: _action
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2327096002831331422, guid: 7974ef129cf5215439fc8d07237f8ae5,
         type: 3}
@@ -4112,7 +4129,7 @@ PrefabInstance:
     - target: {fileID: 2327096002831331420, guid: 7974ef129cf5215439fc8d07237f8ae5,
         type: 3}
       propertyPath: _force.y
-      value: 3
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2327096002831331422, guid: 7974ef129cf5215439fc8d07237f8ae5,
         type: 3}
@@ -4572,7 +4589,7 @@ PrefabInstance:
     - target: {fileID: 4826630455736604134, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 4826630455736604134, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
@@ -4592,7 +4609,7 @@ PrefabInstance:
     - target: {fileID: 4826630455736604135, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
       propertyPath: m_Name
-      value: Bridge (10)
+      value: Bridge_2F_(8)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7e9ea978b0086446985ccb3e022f1d5, type: 3}
@@ -4647,7 +4664,7 @@ PrefabInstance:
     - target: {fileID: 4826630455736604134, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4826630455736604134, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
@@ -4667,7 +4684,7 @@ PrefabInstance:
     - target: {fileID: 4826630455736604135, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
       propertyPath: m_Name
-      value: Bridge (4)
+      value: Bridge_1F_(3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7e9ea978b0086446985ccb3e022f1d5, type: 3}
@@ -5189,7 +5206,7 @@ PrefabInstance:
     - target: {fileID: 4826630455736604134, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4826630455736604134, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
@@ -5209,7 +5226,7 @@ PrefabInstance:
     - target: {fileID: 4826630455736604135, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
       propertyPath: m_Name
-      value: Bridge (5)
+      value: Bridge_1F_(6)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7e9ea978b0086446985ccb3e022f1d5, type: 3}
@@ -5312,7 +5329,7 @@ PrefabInstance:
     - target: {fileID: 2327096002831331420, guid: 7974ef129cf5215439fc8d07237f8ae5,
         type: 3}
       propertyPath: _force.y
-      value: 3
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2327096002831331422, guid: 7974ef129cf5215439fc8d07237f8ae5,
         type: 3}
@@ -5657,7 +5674,7 @@ PrefabInstance:
     - target: {fileID: 4826630455736604134, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4826630455736604134, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
@@ -5677,7 +5694,7 @@ PrefabInstance:
     - target: {fileID: 4826630455736604135, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
       propertyPath: m_Name
-      value: Bridge (14)
+      value: Bridge_2F_(5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7e9ea978b0086446985ccb3e022f1d5, type: 3}
@@ -5824,7 +5841,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 439615986}
           m_MethodName: LookUp
           m_Mode: 6
           m_Arguments:
@@ -5839,7 +5856,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 439615986}
           m_MethodName: LookUp
           m_Mode: 6
           m_Arguments:
@@ -6130,7 +6147,7 @@ PrefabInstance:
     - target: {fileID: 4826630455736604134, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 4826630455736604134, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
@@ -6150,7 +6167,7 @@ PrefabInstance:
     - target: {fileID: 4826630455736604135, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
       propertyPath: m_Name
-      value: Bridge (8)
+      value: Bridge_2F_(4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7e9ea978b0086446985ccb3e022f1d5, type: 3}
@@ -6225,7 +6242,7 @@ PrefabInstance:
     - target: {fileID: 4826630455736604135, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
       propertyPath: m_Name
-      value: Bridge (17)
+      value: Bridge_3F_(1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7e9ea978b0086446985ccb3e022f1d5, type: 3}
@@ -6280,7 +6297,7 @@ PrefabInstance:
     - target: {fileID: 4826630455736604134, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 23
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 4826630455736604134, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
@@ -6300,7 +6317,7 @@ PrefabInstance:
     - target: {fileID: 4826630455736604135, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
       propertyPath: m_Name
-      value: Bridge (15)
+      value: Bridge_2F_(6)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7e9ea978b0086446985ccb3e022f1d5, type: 3}
@@ -7190,7 +7207,7 @@ PrefabInstance:
     - target: {fileID: 4826630455736604135, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
       propertyPath: m_Name
-      value: Bridge (1)
+      value: Bridge_1F_(2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7e9ea978b0086446985ccb3e022f1d5, type: 3}
@@ -9275,7 +9292,7 @@ PrefabInstance:
     - target: {fileID: 4174530101528722050, guid: 4013841769d27c04e99a8c05962e9e71,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4174530101528722110, guid: 4013841769d27c04e99a8c05962e9e71,
         type: 3}
@@ -9688,7 +9705,7 @@ PrefabInstance:
     - target: {fileID: 4826630455736604135, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
       propertyPath: m_Name
-      value: Bridge
+      value: Bridge_1F_(1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7e9ea978b0086446985ccb3e022f1d5, type: 3}
@@ -10604,7 +10621,7 @@ PrefabInstance:
     - target: {fileID: 4826630455736604134, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 4826630455736604134, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
@@ -10624,7 +10641,7 @@ PrefabInstance:
     - target: {fileID: 4826630455736604135, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
       propertyPath: m_Name
-      value: Bridge (12)
+      value: Bridge_2F_(2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7e9ea978b0086446985ccb3e022f1d5, type: 3}
@@ -10974,7 +10991,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 439615986}
           m_MethodName: Move
           m_Mode: 3
           m_Arguments:
@@ -10989,7 +11006,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 439615986}
           m_MethodName: Idle
           m_Mode: 1
           m_Arguments:
@@ -12188,7 +12205,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 439615986}
           m_MethodName: Move
           m_Mode: 3
           m_Arguments:
@@ -12203,7 +12220,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 439615986}
           m_MethodName: Idle
           m_Mode: 1
           m_Arguments:
@@ -13322,7 +13339,7 @@ PrefabInstance:
     - target: {fileID: 4826630455736604134, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4826630455736604134, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
@@ -13342,7 +13359,7 @@ PrefabInstance:
     - target: {fileID: 4826630455736604135, guid: e7e9ea978b0086446985ccb3e022f1d5,
         type: 3}
       propertyPath: m_Name
-      value: Bridge (7)
+      value: Bridge_2F_(3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7e9ea978b0086446985ccb3e022f1d5, type: 3}
@@ -13791,7 +13808,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 439615986}
           m_MethodName: Shield
           m_Mode: 1
           m_Arguments:
@@ -13806,7 +13823,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 439615986}
           m_MethodName: UnShield
           m_Mode: 1
           m_Arguments:
@@ -14066,7 +14083,12 @@ PrefabInstance:
     - target: {fileID: 2327096002831331420, guid: 7974ef129cf5215439fc8d07237f8ae5,
         type: 3}
       propertyPath: _force.y
-      value: 3
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2327096002831331420, guid: 7974ef129cf5215439fc8d07237f8ae5,
+        type: 3}
+      propertyPath: _action
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2327096002831331422, guid: 7974ef129cf5215439fc8d07237f8ae5,
         type: 3}
@@ -14370,7 +14392,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 439615986}
         m_MethodName: Shoot
         m_Mode: 1
         m_Arguments:

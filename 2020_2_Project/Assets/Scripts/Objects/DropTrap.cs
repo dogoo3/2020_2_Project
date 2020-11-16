@@ -20,12 +20,12 @@ public class DropTrap : MonoBehaviour
 
     private void Awake()
     {
-        _rigidbody2d = GetComponent<Rigidbody2D>();
+        _rigidbody2d = GetComponentInParent<Rigidbody2D>();
     }
 
     private void Start()
     {
-        _oripos = transform.position;
+        _oripos = transform.parent.position;
         _gravityScale = _rigidbody2d.gravityScale;
     }
 
@@ -46,8 +46,8 @@ public class DropTrap : MonoBehaviour
         if (_isReset)
         {
             _uppos = Vector2.Lerp(_uppos, _oripos, CalcTime());
-            transform.position = _uppos;
-            if ((Vector2)transform.position == _oripos)
+            transform.parent.position = _uppos;
+            if ((Vector2)transform.parent.position == _oripos)
             {
                 _elapsetime = 0;
                 _isReset = false;
@@ -61,7 +61,7 @@ public class DropTrap : MonoBehaviour
         if(collision.gameObject.CompareTag("ground"))
         {
             _islandGround = true;
-            _uppos = transform.position;
+            _uppos = transform.parent.position;
             _rigidbody2d.gravityScale = 0;
         }
     }
@@ -69,7 +69,7 @@ public class DropTrap : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
-            Player.instance.Squash(true);
+            Player.instance.Squash(true, _damage);
     }
 
     private void OnTriggerExit2D(Collider2D collision)

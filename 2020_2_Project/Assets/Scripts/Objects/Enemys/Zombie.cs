@@ -48,13 +48,9 @@ public class Zombie : MonoBehaviour
     {
         if (!_isSuicide) // 플레이어에게 붙어 자살할 때는 움직이게 하지 않는다. or 처음 땅을 밟기 전에는 움직이게 하지 않는다.
         {
-            //_changedirTime += Time.deltaTime;
-
             if (!_isdetect) // 플레이어를 탐색하는 상태이다.
             {
                 transform.Translate(_enemy._direction * moveSpeed * Time.deltaTime);
-                //if (_changedirTime > patrolTime) // 일정 시간이 지나면 시점을 바꿔준다.
-                //    ChangeDir();
 
                 if (Player.instance != null)
                 {
