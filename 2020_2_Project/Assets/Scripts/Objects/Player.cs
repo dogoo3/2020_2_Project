@@ -378,6 +378,14 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void AlwaysDead()
+    {
+        _hp = 0;
+        GaugeManager.instance.SetHpGauge(_hp);
+        CheckDead();
+        // 나중에 여기에 SFX 하나 넣어줄 것.
+    }
+
     private void Update()
     {
         if (!_isdead) // dead가 true이면 플레이어가 죽었다는 의미.
