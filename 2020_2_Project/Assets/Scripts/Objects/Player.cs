@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
     {
         GaugeManager.instance.InitMaxValue(_hp, _shield);
     }
-
+    
     public void Move(int _direction)
     {
         if (_isdead || _isSquash)
@@ -237,9 +237,12 @@ public class Player : MonoBehaviour
 
     public void ResetSetting()
     {
+        _rigidbody2d.velocity = Vector2.zero;
         _hp = _maxhp;
         _shield = _maxshield;
         _isdead = false;
+        _isSquash = false;
+        ResetScale();
         _animator.Rebind();
         GaugeManager.instance.ResetGauge();
     }
