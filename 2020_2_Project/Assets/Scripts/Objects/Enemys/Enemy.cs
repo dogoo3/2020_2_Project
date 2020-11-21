@@ -113,8 +113,14 @@ public class Enemy : MonoBehaviour
         return HP;
     }
 
-    public Vector2 GetVelocityForce()
+    public float GetVelocityForce()
     {
-        return _rigidbody2d.velocity;
+        return _rigidbody2d.velocity.y;
+    }
+
+    public void OnConveyorBelt(Vector2 vector2)
+    {
+        vector2.y = _rigidbody2d.velocity.y;
+        _rigidbody2d.velocity = vector2;
     }
 }

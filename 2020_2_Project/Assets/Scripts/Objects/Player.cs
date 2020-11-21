@@ -353,6 +353,7 @@ public class Player : MonoBehaviour
         _catchRopeHeight = transform.position;
         _catchRopeHeight.x = _detectRope.transform.position.x;
         transform.position = _catchRopeHeight;
+        _oldDirectionPos = _directionPos;
         _isRope = true;
     }
 
@@ -362,6 +363,8 @@ public class Player : MonoBehaviour
         _isjump = false;
         _isRope = false;
         _rigidbody2d.gravityScale = 3.3f;
+        _directionPos = _oldDirectionPos;
+        _animator.SetFloat("direction", _directionPos.x);
         _groundCollider.isTrigger = false; // 1행은 GroundCollider
     }
 

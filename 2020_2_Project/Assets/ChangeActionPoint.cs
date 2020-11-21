@@ -36,47 +36,57 @@ public class ChangeActionPoint : MonoBehaviour
         else
             return;
 
-        if (_enemy.GetVelocityForce() == Vector2.zero) // 점프 상태 및 낙하중일 때는 적용되지 않는다.
+        if (_enemy.GetVelocityForce() == 0f) // 점프 상태 및 낙하중일 때는 적용되지 않는다. (y의 속력값으로 판단)
         {
             // 플레이어 감지 상태일때 액션 변환
             if(_enemy._isdetect)
             {
-                if(transform.position.x > collision.transform.position.x) // 객체가 왼쪽에서 접근했다.
-                {
-                    if (_arrow == Arrow.right)
-                        return;
-
-                    DetectMotion(true);
-                }
-                else // 객체가 오른쪽에서 접근했다.
-                {
-                    if (_arrow == Arrow.Left)
-                        return;
-
-                    DetectMotion(false);
-                }
+                CheckDetectMotion(collision.transform);
                 return;
             }
 
             // 플레이어 미감지 상태일 때 액션 변환
-            if (transform.position.x > collision.transform.position.x) // 객체가 왼쪽에서 접근했다.
-            {
-                if (_arrow == Arrow.right)
-                    return;
-
-                Motion(true);
-            }
-            else // 객체가 오른쪽에서 접근했다.
-            {
-                if (_arrow == Arrow.Left)
-                    return;
-
-                Motion(false);
-            }
+            CheckMotion(collision.transform);
         }
     }
 
-    private void Motion(bool _is)
+    public void CheckDetectMotion(Transform _checkObj)
+    {
+        if (transform.position.x > _checkObj.position.x) // 객체가 왼쪽에서 접근했다.
+        {
+            if (_arrow == Arrow.right)
+                return;
+
+            DetectMotion(true);
+        }
+        else // 객체가 오른쪽에서 접근했다.
+        {
+            if (_arrow == Arrow.Left)
+                return;
+
+            DetectMotion(false);
+        }
+    }
+
+    public void CheckMotion(Transform _checkObj)
+    {
+        if (transform.position.x > _checkObj.position.x) // 객체가 왼쪽에서 접근했다.
+        {
+            if (_arrow == Arrow.right)
+                return;
+
+            Motion(true);
+        }
+        else // 객체가 오른쪽에서 접근했다.
+        {
+            if (_arrow == Arrow.Left)
+                return;
+
+            Motion(false);
+        }
+    }
+
+    private void Motion(bool _is) // 일반모션은 랜덤이 진짜 랜덤이다.
     {
         switch (_action)
         {
@@ -103,7 +113,7 @@ public class ChangeActionPoint : MonoBehaviour
         }
     }
 
-    private void DetectMotion(bool _is)
+    private void DetectMotion(bool _is) // 플레이어 감지 모션은 랜덤 = 점프다.
     {
         switch (_action)
         {

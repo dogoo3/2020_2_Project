@@ -275,7 +275,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0370a650ed0e1aa409c1904a5fcbcd29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  muzzleGunPos: {fileID: 4174530099794690573}
+  _groundcollider: {fileID: 3974837304002661642}
+  _muzzleGunPos: {fileID: 4174530099794690573}
   _detectRange: 12.5
   _moveSpeed: 6
   _attackCooltime: 2

@@ -9,13 +9,15 @@ public class Alian : MonoBehaviour
     private Enemy _enemy;
 
     private Transform _playerPos;
+    private Collider2D _changemotionpoint;
 
-    [SerializeField] private Transform muzzleGunPos = default;
+    [SerializeField] private BoxCollider2D _groundcollider = default;
+    [SerializeField] private Transform _muzzleGunPos = default;
     [SerializeField] private float _detectRange = default, _moveSpeed = default;
     [SerializeField] private float _attackCooltime = default;
     private bool _isDetectStart, _isattacked, _isattack, _isJump, _isattackCool;
 
-    private float _maxHP, _elapsedtime, _elapsedChangetime;
+    private float _maxHP, _elapsedtime, _elapsedChangetime, _elapsedAttackCooltime;
 
     private void Awake()
     {
@@ -57,12 +59,17 @@ public class Alian : MonoBehaviour
                             _isattack = true;
                         }
                         _isattackCool = true;
-                        Invoke("SetAttackCooltime", _attackCooltime);
                     }
                     else
-                    {
                         _isattackCool = true;
-                        Invoke("SetAttackCooltime", _attackCooltime);
+                }
+                else
+                {
+                    _elapsedAttackCooltime += Time.deltaTime;
+                    if(_elapsedAttackCooltime >= _attackCooltime)
+                    {
+                        _isattackCool = false;
+                        _elapsedAttackCooltime = 0;
                     }
                 }
             }
@@ -94,6 +101,14 @@ public class Alian : MonoBehaviour
             {
                 _isattacked = true;
                 _animator.SetTrigger("attacked");
+                ChangeDir();
+
+                if (!_isJump)
+                {
+                    _animator.SetTrigger("attack");
+                    _isattack = true;
+                    _isattackCool = true;
+                }
             }
         }
         if(!_isDetectStart)
@@ -129,6 +144,21 @@ public class Alian : MonoBehaviour
                 if (_enemy._direction == Vector2.right) // 오른쪽을 보고 있으면
                     _enemy.ChangeDir();
             }
+
+            _changemotionpoint = Physics2D.OverlapBox((Vector2)transform.position + _groundcollider.offset,
+                _groundcollider.size, 0, 1 << LayerMask.NameToLayer("ChangePoint")); // (groundcollider box offset, size, angle)
+            if (_changemotionpoint != null)
+            {
+                Debug.Log(_changemotionpoint.gameObject.name);
+                ChangeActionPoint _point = _groundcollider.GetComponent<ChangeActionPoint>();
+                if (_point != null)
+                {
+                    if (_enemy._isdetect)
+                        _point.CheckDetectMotion(transform);
+                    else
+                        _point.CheckMotion(transform);
+                }
+            }
         }
     }
     public void SetFalseIsAttack() // Animator Func
@@ -149,11 +179,6 @@ public class Alian : MonoBehaviour
     }
     public void ShootMotion() // Animation Func
     {
-        ObjectPoolingManager.instance.GetQueue_alienBullet(muzzleGunPos.position, _enemy._direction);
-    }
-
-    private void SetAttackCooltime() // Invoke Func
-    {
-        _isattackCool = false;
+        ObjectPoolingManager.instance.GetQueue_alienBullet(_muzzleGunPos.position, _enemy._direction);
     }
 }

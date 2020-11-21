@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2327096002831331423}
   - component: {fileID: 2327096002831331421}
   - component: {fileID: 2327096002831331420}
-  m_Layer: 0
-  m_Name: ChangeActionPoint
+  m_Layer: 15
+  m_Name: JumpPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

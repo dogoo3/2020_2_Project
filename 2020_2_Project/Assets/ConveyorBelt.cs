@@ -14,7 +14,10 @@ public class ConveyorBelt : MonoBehaviour
 
     private Transform _playerPos;
 
+    private List<Enemy> _enemies = new List<Enemy>();
+
     private bool _isOnPlayer;
+    private int i;
 
     private void Awake()
     {
@@ -47,17 +50,38 @@ public class ConveyorBelt : MonoBehaviour
                 Player.instance.OnConveyorBelt(Vector2.left * 5.0f);
                 //_playerPos.Translate(Vector2.right * 3.0f * Time.deltaTime);
         }
+
+        if (_enemies.Count != 0)
+        {
+            if(_arrow)
+            {
+                for (i = 0; i < _enemies.Count; i++)
+                    _enemies[i].OnConveyorBelt(Vector2.right * 5.0f);
+            }
+            else
+            {
+                for (i = 0; i < _enemies.Count; i++)
+                    _enemies[i].OnConveyorBelt(Vector2.left * 5.0f);
+            }
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
             _isOnPlayer = true;
+
+        if (collision.CompareTag("enemy"))
+            _enemies.Add(collision.GetComponent<Enemy>());
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
             _isOnPlayer = false;
+
+        if (collision.CompareTag("enemy"))
+            _enemies.Remove(collision.GetComponent<Enemy>());
     }
 }
