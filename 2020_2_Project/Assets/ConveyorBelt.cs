@@ -43,12 +43,13 @@ public class ConveyorBelt : MonoBehaviour
 
         if(_isOnPlayer)
         {
-            if (_arrow) // Left
-                Player.instance.OnConveyorBelt(Vector2.right * 5.0f);
-            //_playerPos.Translate(Vector2.left * 3.0f * Time.deltaTime);
-            else
-                Player.instance.OnConveyorBelt(Vector2.left * 5.0f);
-                //_playerPos.Translate(Vector2.right * 3.0f * Time.deltaTime);
+            if (!Player.instance.GetSquash()) // DropTrap에 깔려있는경우에는 이동되지 않는다.
+            {
+                if (_arrow) // Left
+                    Player.instance.OnConveyorBelt(Vector2.right * 5.0f);
+                else
+                    Player.instance.OnConveyorBelt(Vector2.left * 5.0f);
+            }
         }
 
         if (_enemies.Count != 0)
