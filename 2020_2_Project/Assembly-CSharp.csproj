@@ -88,11 +88,12 @@
     <Compile Include="Assets\Scripts\Objects\Coin\GoldManager.cs" />
     <Compile Include="Assets\Scripts\Objects\Coin\InputGoldValue.cs" />
     <Compile Include="Assets\Scripts\Objects\DropTrap.cs" />
-    <Compile Include="Assets\Scripts\Objects\Enemys\Alian.cs" />
+    <Compile Include="Assets\Scripts\Objects\Enemys\Alien.cs" />
     <Compile Include="Assets\Scripts\Objects\Enemys\Enemy.cs" />
     <Compile Include="Assets\Scripts\Objects\Enemys\EnemyWeapon.cs" />
     <Compile Include="Assets\Scripts\Objects\Enemys\Goblin.cs" />
     <Compile Include="Assets\Scripts\Objects\Enemys\GoblinBoss.cs" />
+    <Compile Include="Assets\Scripts\Objects\Enemys\Robot.cs" />
     <Compile Include="Assets\Scripts\Objects\Enemys\Zombie.cs" />
     <Compile Include="Assets\Scripts\Objects\Enemys\ZombieBoss.cs" />
     <Compile Include="Assets\Scripts\Objects\Farming\FarmingItem.cs" />

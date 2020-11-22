@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
     private bool _isDef; // Goblin을 위한 방어력 증가 변수
     private bool _isDead; // 사망을 1회만 체크하도록 함.
 
+    private float _resetHP;
+
     [Header("적 능력치 설정")]
     [SerializeField] private float HP = default;
     [SerializeField] private int score = default;
@@ -32,12 +34,16 @@ public class Enemy : MonoBehaviour
         _rigidbody2d = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _isDef = false;
+        _resetHP = HP;
     }
 
     private void OnEnable()
     {
         _isDead = false;
         _rigidbody2d.bodyType = RigidbodyType2D.Dynamic;
+        _direction = Vector2.right;
+        _animator.SetFloat("direction", _direction.x);
+        HP = _resetHP;
     }
 
     public void MinusHP(float _hp)
@@ -121,6 +127,7 @@ public class Enemy : MonoBehaviour
     public void OnConveyorBelt(Vector2 vector2)
     {
         vector2.y = _rigidbody2d.velocity.y;
-        _rigidbody2d.velocity = vector2;
+        if(_rigidbody2d.bodyType == RigidbodyType2D.Dynamic)
+            _rigidbody2d.velocity = vector2;
     }
 }

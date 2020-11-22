@@ -8,7 +8,6 @@ public class GameOverWindow : MonoBehaviour
     [SerializeField] private Text text_score = default;
 
     private Vector3[] _cameraPos;
-    
 
     public void Init()
     {
@@ -44,6 +43,8 @@ public class GameOverWindow : MonoBehaviour
         SpawnMonstersManager.instance.ResetEnemyList();
         // 해당 라운드에 획득한 골드 초기화
         GoldManager.instance.FailResetGold();
+        // 해당 라운드에 활성화되어있는 골드 삭제
+        RoundManager.instance.AllGetCoin();
     }
 
     public void TouchExitButton(string _stage)

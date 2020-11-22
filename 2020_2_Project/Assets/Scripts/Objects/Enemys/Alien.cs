@@ -2,26 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Alian : MonoBehaviour
+public class Alien : MonoBehaviour
 {
     private Rigidbody2D _rigidbody2d;
+    private BoxCollider2D _collider2d;
     private Animator _animator;
     private Enemy _enemy;
+    private Collider2D size;
 
     private Transform _playerPos;
     private Collider2D _changemotionpoint;
-
-    [SerializeField] private BoxCollider2D _groundcollider = default;
+    
     [SerializeField] private Transform _muzzleGunPos = default;
     [SerializeField] private float _detectRange = default, _moveSpeed = default;
     [SerializeField] private float _attackCooltime = default;
-    private bool _isDetectStart, _isattacked, _isattack, _isJump, _isattackCool;
+    private bool _isDetectStart, _isattacked, _isattack, _isJump, _isattackCool, _isonConveyorBelt;
 
     private float _maxHP, _elapsedtime, _elapsedChangetime, _elapsedAttackCooltime;
 
     private void Awake()
     {
         _rigidbody2d = GetComponent<Rigidbody2D>();
+        _collider2d = GetComponent<BoxCollider2D>();
         _animator = GetComponent<Animator>();
         _enemy = GetComponent<Enemy>();
     }
@@ -29,7 +31,6 @@ public class Alian : MonoBehaviour
     private void OnEnable()
     {
         _isDetectStart = false;
-        _enemy._direction = Vector2.right;
     }
 
     private void Start()
@@ -40,10 +41,12 @@ public class Alian : MonoBehaviour
 
     private void Update()
     {
-        if (!_isattack)
-            transform.Translate(_enemy._direction * _moveSpeed * Time.deltaTime);
+        if (!_isDetectStart)
+            return;
 
-        if(Vector2.Distance(_playerPos.position,transform.position) <= _detectRange)
+        transform.Translate(_enemy._direction * _moveSpeed * Time.deltaTime);
+
+        if (Vector2.Distance(_playerPos.position,transform.position) <= _detectRange)
         {
             if (!_isJump)
             {
@@ -53,11 +56,9 @@ public class Alian : MonoBehaviour
                     if(_enemy._direction == Vector2.right && transform.position.x < _playerPos.position.x ||
                         _enemy._direction == Vector2.left && transform.position.x > _playerPos.position.x)
                     {
-                        if (!_isJump)
-                        {
-                            _animator.SetTrigger("attack");
-                            _isattack = true;
-                        }
+                        _animator.SetTrigger("attack");
+                        SoundManager.instance.PlaySFX("alien_Attack");
+                        _isattack = true;
                         _isattackCool = true;
                     }
                     else
@@ -106,15 +107,22 @@ public class Alian : MonoBehaviour
                 if (!_isJump)
                 {
                     _animator.SetTrigger("attack");
+                    SoundManager.instance.PlaySFX("alien_Attack");
                     _isattack = true;
                     _isattackCool = true;
                 }
             }
         }
-        if(!_isDetectStart)
+
+        if(collision.CompareTag("ground"))
         {
-            if (collision.CompareTag("ground"))
+            if (!_isDetectStart)
                 _isDetectStart = true;
+            if (_isJump)
+            {
+                _isJump = false;
+                CheckChangeMotionPoint();
+            }
         }
     }
 
@@ -145,22 +153,27 @@ public class Alian : MonoBehaviour
                     _enemy.ChangeDir();
             }
 
-            _changemotionpoint = Physics2D.OverlapBox((Vector2)transform.position + _groundcollider.offset,
-                _groundcollider.size, 0, 1 << LayerMask.NameToLayer("ChangePoint")); // (groundcollider box offset, size, angle)
-            if (_changemotionpoint != null)
+            CheckChangeMotionPoint();
+        }
+    }
+
+    public void CheckChangeMotionPoint()
+    {
+        _changemotionpoint = Physics2D.OverlapBox((Vector2)transform.position + _collider2d.offset,
+       _collider2d.size, 0, 1 << LayerMask.NameToLayer("ChangePoint")); // (groundcollider box offset, size, angle)
+        if (_changemotionpoint != null)
+        {
+            ChangeActionPoint _point = _collider2d.GetComponent<ChangeActionPoint>();
+            if (_point != null)
             {
-                Debug.Log(_changemotionpoint.gameObject.name);
-                ChangeActionPoint _point = _groundcollider.GetComponent<ChangeActionPoint>();
-                if (_point != null)
-                {
-                    if (_enemy._isdetect)
-                        _point.CheckDetectMotion(transform);
-                    else
-                        _point.CheckMotion(transform);
-                }
+                if (_enemy._isdetect)
+                    _point.CheckDetectMotion(transform);
+                else
+                    _point.CheckMotion(transform);
             }
         }
     }
+
     public void SetFalseIsAttack() // Animator Func
     {
         _isattack = false;

@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RightJump
+  m_Name: RightWalk
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -39,19 +39,19 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -64121124231222650, guid: a1f975724395d2e41bb816b785139cfc,
+      value: {fileID: -5130215297938788251, guid: 3206a50507f5bee4086f51c503d6e437,
         type: 3}
     - time: 0.1
-      value: {fileID: 4111220823786646796, guid: a1f975724395d2e41bb816b785139cfc,
+      value: {fileID: -5783094451452584931, guid: 3206a50507f5bee4086f51c503d6e437,
         type: 3}
     - time: 0.2
-      value: {fileID: 3900293899368611384, guid: a1f975724395d2e41bb816b785139cfc,
+      value: {fileID: -3424548894656071855, guid: 3206a50507f5bee4086f51c503d6e437,
         type: 3}
     - time: 0.3
-      value: {fileID: -6866762052617525962, guid: a1f975724395d2e41bb816b785139cfc,
+      value: {fileID: 7573779330003828531, guid: 3206a50507f5bee4086f51c503d6e437,
         type: 3}
     - time: 0.4
-      value: {fileID: -923384936462518060, guid: a1f975724395d2e41bb816b785139cfc,
+      value: {fileID: 1583127274651013362, guid: 3206a50507f5bee4086f51c503d6e437,
         type: 3}
     attribute: m_Sprite
     path: 
@@ -79,11 +79,11 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -64121124231222650, guid: a1f975724395d2e41bb816b785139cfc, type: 3}
-    - {fileID: 4111220823786646796, guid: a1f975724395d2e41bb816b785139cfc, type: 3}
-    - {fileID: 3900293899368611384, guid: a1f975724395d2e41bb816b785139cfc, type: 3}
-    - {fileID: -6866762052617525962, guid: a1f975724395d2e41bb816b785139cfc, type: 3}
-    - {fileID: -923384936462518060, guid: a1f975724395d2e41bb816b785139cfc, type: 3}
+    - {fileID: -5130215297938788251, guid: 3206a50507f5bee4086f51c503d6e437, type: 3}
+    - {fileID: -5783094451452584931, guid: 3206a50507f5bee4086f51c503d6e437, type: 3}
+    - {fileID: -3424548894656071855, guid: 3206a50507f5bee4086f51c503d6e437, type: 3}
+    - {fileID: 7573779330003828531, guid: 3206a50507f5bee4086f51c503d6e437, type: 3}
+    - {fileID: 1583127274651013362, guid: 3206a50507f5bee4086f51c503d6e437, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -127,18 +127,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0
-    functionName: SetTrueIsJump
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.5
-    functionName: SetFalseIsJump
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []

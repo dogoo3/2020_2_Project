@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 6175882612710263409}
   - component: {fileID: 1638504429}
   m_Layer: 12
-  m_Name: Sample_conveyorbelt_0
+  m_Name: ConveyorBelt
   m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

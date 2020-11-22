@@ -32,7 +32,7 @@ public class ChangeActionPoint : MonoBehaviour
     {
         // 부딪친 애가 적인지를 판별.
         if (collision.CompareTag("enemy"))
-            _enemy = collision.GetComponent<Enemy>();
+            _enemy = collision.GetComponentInParent<Enemy>();
         else
             return;
 

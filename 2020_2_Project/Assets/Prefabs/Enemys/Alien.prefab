@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 6714495947009294422}
   - component: {fileID: 7961954012186395690}
   m_Layer: 10
-  m_Name: Alian
+  m_Name: Alien
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

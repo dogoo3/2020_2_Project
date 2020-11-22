@@ -1,0 +1,679 @@
+fileFormatVersion: 2
+guid: 018986b6d5ca21b429471ce25872f347
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7788644844315960438
+    second: alien boss dead_0
+  - first:
+      213: -521945634203690472
+    second: alien boss dead_1
+  - first:
+      213: 4356946126340123696
+    second: alien boss dead_2
+  - first:
+      213: -7819608226105562635
+    second: alien boss dead_3
+  - first:
+      213: 7447849442361312650
+    second: alien boss dead_4
+  - first:
+      213: -7112993854487497841
+    second: alien boss dead_5
+  - first:
+      213: -5497665415607118751
+    second: alien boss dead_6
+  - first:
+      213: 3128863874114024814
+    second: alien boss dead_7
+  - first:
+      213: 2065894443125824579
+    second: alien boss dead_8
+  - first:
+      213: -3736622772150680799
+    second: alien boss dead_9
+  - first:
+      213: -1670183247420021039
+    second: alien boss dead_10
+  - first:
+      213: -7517565840364912463
+    second: alien boss dead_11
+  - first:
+      213: 1523807559868500132
+    second: alien boss dead_12
+  - first:
+      213: 5428932047968390152
+    second: alien boss dead_0
+  - first:
+      213: -7813910402449467362
+    second: alien boss dead_1
+  - first:
+      213: -7039440034704446879
+    second: alien boss dead_2
+  - first:
+      213: -4976557045580947318
+    second: alien boss dead_3
+  - first:
+      213: -2969989699958687822
+    second: alien boss dead_4
+  - first:
+      213: 7736892977179368269
+    second: alien boss dead_5
+  - first:
+      213: 83440289287490856
+    second: alien boss dead_6
+  - first:
+      213: -3120227091512362747
+    second: alien boss dead_7
+  - first:
+      213: 8841067239449391374
+    second: alien boss dead_8
+  - first:
+      213: 6807411896224384077
+    second: alien boss dead_9
+  - first:
+      213: 4706714107221974310
+    second: alien boss dead_10
+  - first:
+      213: -4077739815487862174
+    second: alien boss dead_11
+  - first:
+      213: -6819019488809852581
+    second: alien boss dead_12
+  - first:
+      213: 6764609496918799234
+    second: alien boss dead_13
+  - first:
+      213: 2283980086488449070
+    second: alien boss dead_14
+  - first:
+      213: -1472332967027140785
+    second: alien boss dead_15
+  - first:
+      213: -7752104518098176688
+    second: alien boss dead_16
+  - first:
+      213: -7776449986421253411
+    second: alien boss dead_17
+  - first:
+      213: 4542050367329596184
+    second: alien boss dead_18
+  - first:
+      213: 7590479714977534979
+    second: alien boss dead_19
+  - first:
+      213: 1611680493740192121
+    second: alien boss dead_20
+  - first:
+      213: 7159863678604213655
+    second: alien boss dead_21
+  - first:
+      213: -1903970646728066822
+    second: alien boss dead_22
+  - first:
+      213: -7896526395099817246
+    second: alien boss dead_23
+  - first:
+      213: -1363581249707249527
+    second: alien boss dead_24
+  - first:
+      213: -7460614799140575927
+    second: alien boss dead_25
+  - first:
+      213: -716854508007135085
+    second: alien boss dead_26
+  - first:
+      213: -6020777250352020330
+    second: alien boss dead_27
+  - first:
+      213: 1599609758980099830
+    second: alien boss dead_28
+  - first:
+      213: -7772298713517102347
+    second: alien boss dead_29
+  - first:
+      213: -746474658026129647
+    second: alien boss dead_30
+  - first:
+      213: -5658729934071845898
+    second: alien boss dead_31
+  - first:
+      213: -521488169951464731
+    second: alien boss dead_32
+  - first:
+      213: 7170001552116141379
+    second: alien boss dead_33
+  - first:
+      213: -3475368474590404053
+    second: alien boss dead_34
+  - first:
+      213: -2952741982209606236
+    second: alien boss dead_35
+  - first:
+      213: -4629911205827884206
+    second: alien boss dead_36
+  - first:
+      213: -389086844002224854
+    second: alien boss dead_37
+  - first:
+      213: 6379714390915598283
+    second: alien boss dead_38
+  - first:
+      213: 6045011965060147657
+    second: alien boss dead_39
+  - first:
+      213: 6326937402171682588
+    second: alien boss dead_40
+  - first:
+      213: 5490545025193338210
+    second: alien boss dead_41
+  - first:
+      213: -7401772957199321568
+    second: alien boss dead_42
+  - first:
+      213: -587390899617850716
+    second: alien boss dead_43
+  - first:
+      213: 609584029739666915
+    second: alien boss dead_44
+  - first:
+      213: -3767920916386289148
+    second: alien boss dead_45
+  - first:
+      213: -2738988780302172281
+    second: alien boss dead_46
+  - first:
+      213: -4943543737730875788
+    second: alien boss dead_47
+  - first:
+      213: 1712790309416223786
+    second: alien boss dead_48
+  - first:
+      213: -4482630615814530759
+    second: alien boss dead_49
+  - first:
+      213: -8973934265321400364
+    second: alien boss dead_50
+  - first:
+      213: -7879171508347889673
+    second: alien boss dead_51
+  - first:
+      213: 5841637670563469307
+    second: alien boss dead_52
+  - first:
+      213: -2872388360103752122
+    second: alien boss dead_53
+  - first:
+      213: 53707794569446233
+    second: alien boss dead_54
+  - first:
+      213: -8351577611509921100
+    second: alien boss dead_55
+  - first:
+      213: 7884631506502797371
+    second: alien boss dead_56
+  - first:
+      213: -2440203245226300665
+    second: alien boss dead_57
+  - first:
+      213: 9004187253609344952
+    second: alien boss dead_58
+  - first:
+      213: 6394039887246985912
+    second: alien boss dead_59
+  - first:
+      213: 483221369030619926
+    second: alien boss dead_60
+  - first:
+      213: -888122033500643616
+    second: alien boss dead_61
+  - first:
+      213: 7920258981337653602
+    second: alien boss dead_62
+  - first:
+      213: 1010116469167574684
+    second: alien boss dead_63
+  - first:
+      213: 3523623893983328770
+    second: alien boss dead_64
+  - first:
+      213: -9205448217210925716
+    second: alien boss dead_65
+  - first:
+      213: 8009884224114316499
+    second: alien boss dead_66
+  - first:
+      213: 7984658180742985128
+    second: alien boss dead_67
+  - first:
+      213: -7968078303612305262
+    second: alien boss dead_68
+  - first:
+      213: 1412813451322323001
+    second: alien boss dead_69
+  - first:
+      213: 1456151583813240569
+    second: alien boss dead_70
+  - first:
+      213: 4945257599405815379
+    second: alienboss_dead_0
+  - first:
+      213: 4681709887915356957
+    second: alienboss_dead_1
+  - first:
+      213: -2355696872892370218
+    second: alienboss_dead_2
+  - first:
+      213: 9075953760173598579
+    second: alienboss_dead_3
+  - first:
+      213: 1054320052461127464
+    second: alienboss_dead_4
+  - first:
+      213: -433135316575088525
+    second: alienboss_dead_5
+  - first:
+      213: -4771048428253050350
+    second: alienboss_dead_6
+  - first:
+      213: 1373747952423323806
+    second: alienboss_dead_7
+  - first:
+      213: 6875433714264838685
+    second: alienboss_dead_8
+  - first:
+      213: 4002939292311233303
+    second: alienboss_dead_9
+  - first:
+      213: 7138014955912322092
+    second: alienboss_dead_10
+  - first:
+      213: -6279853948816850689
+    second: alienboss_dead_11
+  - first:
+      213: 2840558373788367565
+    second: alienboss_dead_12
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 130
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: alienboss_dead_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 500
+        height: 700
+      alignment: 9
+      pivot: {x: 0.45, y: 0.465}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3567267e59511a440800000000000000
+      internalID: 4945257599405815379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alienboss_dead_1
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 0
+        width: 500
+        height: 700
+      alignment: 9
+      pivot: {x: 0.45, y: 0.465}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d13f0aa9656c8f040800000000000000
+      internalID: 4681709887915356957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alienboss_dead_2
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 0
+        width: 500
+        height: 700
+      alignment: 9
+      pivot: {x: 0.45, y: 0.465}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d270c4dc22ee4fd0800000000000000
+      internalID: -2355696872892370218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alienboss_dead_3
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 0
+        width: 500
+        height: 700
+      alignment: 9
+      pivot: {x: 0.45, y: 0.465}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 377a401cbd344fd70800000000000000
+      internalID: 9075953760173598579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alienboss_dead_4
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 0
+        width: 500
+        height: 700
+      alignment: 9
+      pivot: {x: 0.45, y: 0.465}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 827448e6082b1ae00800000000000000
+      internalID: 1054320052461127464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alienboss_dead_5
+      rect:
+        serializedVersion: 2
+        x: 2500
+        y: 0
+        width: 500
+        height: 700
+      alignment: 9
+      pivot: {x: 0.45, y: 0.465}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3709dd379b13df9f0800000000000000
+      internalID: -433135316575088525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alienboss_dead_6
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 0
+        width: 500
+        height: 700
+      alignment: 9
+      pivot: {x: 0.45, y: 0.465}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21a8acb8bb4d9cdb0800000000000000
+      internalID: -4771048428253050350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alienboss_dead_7
+      rect:
+        serializedVersion: 2
+        x: 3500
+        y: 0
+        width: 500
+        height: 700
+      alignment: 9
+      pivot: {x: 0.45, y: 0.465}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e98cc1bfb78801310800000000000000
+      internalID: 1373747952423323806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alienboss_dead_8
+      rect:
+        serializedVersion: 2
+        x: 4000
+        y: 0
+        width: 500
+        height: 700
+      alignment: 9
+      pivot: {x: 0.45, y: 0.465}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d12108719827a6f50800000000000000
+      internalID: 6875433714264838685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alienboss_dead_9
+      rect:
+        serializedVersion: 2
+        x: 4500
+        y: 0
+        width: 500
+        height: 700
+      alignment: 9
+      pivot: {x: 0.45, y: 0.465}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7132aafe31c4d8730800000000000000
+      internalID: 4002939292311233303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alienboss_dead_10
+      rect:
+        serializedVersion: 2
+        x: 5000
+        y: 0
+        width: 500
+        height: 700
+      alignment: 9
+      pivot: {x: 0.45, y: 0.465}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2c549898c25f0360800000000000000
+      internalID: 7138014955912322092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alienboss_dead_11
+      rect:
+        serializedVersion: 2
+        x: 5500
+        y: 0
+        width: 500
+        height: 700
+      alignment: 9
+      pivot: {x: 0.45, y: 0.465}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff0007b0b1a79d8a0800000000000000
+      internalID: -6279853948816850689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alienboss_dead_12
+      rect:
+        serializedVersion: 2
+        x: 6000
+        y: 0
+        width: 500
+        height: 700
+      alignment: 9
+      pivot: {x: 0.45, y: 0.465}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcaba618ac0bb6720800000000000000
+      internalID: 2840558373788367565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

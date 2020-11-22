@@ -26,6 +26,7 @@ public class Gold : MonoBehaviour
 
     private void OnEnable()
     {
+        RoundManager.instance.PutCoin(this); // 활성화 코인 리스트에 등록
         _rigidbody2d.bodyType = RigidbodyType2D.Dynamic;
         _rigidbody2d.velocity = new Vector2(0, 4.0f);
         _coloralpha.a = 1; // 다시 보여야 하기 때문에 알파값 1로 설정
@@ -42,6 +43,7 @@ public class Gold : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             GoldManager.instance.GetGold(_goldValue);
+            RoundManager.instance.GetCoin(this);
             _isGet = true;
         }
     }

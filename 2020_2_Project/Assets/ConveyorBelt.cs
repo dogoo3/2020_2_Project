@@ -65,12 +65,11 @@ public class ConveyorBelt : MonoBehaviour
                     _enemies[i].OnConveyorBelt(Vector2.left * 5.0f);
             }
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
             _isOnPlayer = true;
 
         if (collision.CompareTag("enemy"))

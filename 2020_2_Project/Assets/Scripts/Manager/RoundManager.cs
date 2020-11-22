@@ -7,6 +7,7 @@ public class RoundManager : MonoBehaviour
 {
     public static RoundManager instance;
 
+    private List<Gold> _activeCoins = new List<Gold>();
     [SerializeField] private SpawnMonstersManager[] rounds = default;
 
     [SerializeField] private Transform[] roundStartPos = default;
@@ -65,4 +66,21 @@ public class RoundManager : MonoBehaviour
     {
         return roundStartPos[_index].position;
     }
+
+    public void PutCoin(Gold _coin) // 몬스터 사망 후 코인 활성화 시 
+    {
+        _activeCoins.Add(_coin);
+    }
+
+    public void GetCoin(Gold _coin) // 필드에 나타난 코인을 획득했을 때
+    {
+        _activeCoins.Remove(_coin);
+    }
+
+    public void AllGetCoin() // 라운드 재시작으로 인해 필드의 코인을 모두 없앨 시
+    {
+        for(int i=0;i<_activeCoins.Count;i++)
+            ObjectPoolingManager.instance.InsertQueue(_activeCoins[i], ObjectPoolingManager.instance.queue_gold);
+    }
+
 }
