@@ -419,6 +419,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotAngle: 0
   shotPower: 1
+  maxSpawnCount: 3
+  _maxSpawnCount: 0
 --- !u!4 &12440218
 Transform:
   m_ObjectHideFlags: 0
@@ -1085,6 +1087,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotAngle: 225
   shotPower: 1
+  maxSpawnCount: 2
+  _maxSpawnCount: 0
 --- !u!4 &42113844
 Transform:
   m_ObjectHideFlags: 0
@@ -2954,6 +2958,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotAngle: 45
   shotPower: 8
+  maxSpawnCount: 0
+  _maxSpawnCount: 0
 --- !u!1 &123176309
 GameObject:
   m_ObjectHideFlags: 0
@@ -3361,6 +3367,7 @@ MonoBehaviour:
   - {fileID: 429474630}
   - {fileID: 123063386}
   - {fileID: 2069178197}
+  _copypoint: []
   enemy: []
   elapseSpawnTime: 2
 --- !u!4 &167143998
@@ -5484,6 +5491,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotAngle: 180
   shotPower: 1
+  maxSpawnCount: 1
+  _maxSpawnCount: 0
 --- !u!4 &356904344
 Transform:
   m_ObjectHideFlags: 0
@@ -6463,6 +6472,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotAngle: 225
   shotPower: 4
+  maxSpawnCount: 0
+  _maxSpawnCount: 0
 --- !u!1001 &439615984
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7556,6 +7567,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotAngle: 315
   shotPower: 8
+  maxSpawnCount: 0
+  _maxSpawnCount: 0
 --- !u!1 &522726959
 GameObject:
   m_ObjectHideFlags: 0
@@ -8843,6 +8856,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotAngle: 135
   shotPower: 8
+  maxSpawnCount: 0
+  _maxSpawnCount: 0
 --- !u!1001 &636314876
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14215,6 +14230,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotAngle: 0
   shotPower: 1
+  maxSpawnCount: 3
+  _maxSpawnCount: 0
 --- !u!4 &1021063319
 Transform:
   m_ObjectHideFlags: 0
@@ -17374,6 +17391,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotAngle: 135
   shotPower: 8
+  maxSpawnCount: 0
+  _maxSpawnCount: 0
 --- !u!1 &1237037646
 GameObject:
   m_ObjectHideFlags: 0
@@ -18586,7 +18605,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1300158741}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.6430855, y: -6.4848824, z: -10}
+  m_LocalPosition: {x: -9.976419, y: -6.4848824, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -19215,6 +19234,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotAngle: 315
   shotPower: 4
+  maxSpawnCount: 0
+  _maxSpawnCount: 0
 --- !u!1001 &1385560932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22158,6 +22179,7 @@ MonoBehaviour:
   - {fileID: 1638904105}
   - {fileID: 520788876}
   - {fileID: 618417116}
+  _copypoint: []
   enemy: []
   elapseSpawnTime: 3
 --- !u!4 &1591563938
@@ -23214,6 +23236,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotAngle: 225
   shotPower: 4
+  maxSpawnCount: 0
+  _maxSpawnCount: 0
 --- !u!1001 &1645791082
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23949,6 +23973,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotAngle: 135
   shotPower: 8
+  maxSpawnCount: 0
+  _maxSpawnCount: 0
 --- !u!1001 &1723637803
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25333,6 +25359,7 @@ MonoBehaviour:
   - {fileID: 12440216}
   - {fileID: 356904342}
   - {fileID: 1021063317}
+  _copypoint: []
   enemy:
   - {fileID: 1324976402}
   - {fileID: 2121282628}
@@ -28562,6 +28589,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotAngle: 135
   shotPower: 8
+  maxSpawnCount: 0
+  _maxSpawnCount: 0
 --- !u!1001 &2078821489
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -11,6 +11,9 @@ public class SpawnMonstersPoint : MonoBehaviour
     [Header("발사할 강도")]
     public int shotPower; 
     private Vector2 _shotDirection;
+    [Header("최대 스폰 몬스터 수")]
+    public int maxSpawnCount; // 등록 및 백업
+    private int _maxSpawnCount; // 연산
 
     private void Awake()
     {
@@ -18,12 +21,23 @@ public class SpawnMonstersPoint : MonoBehaviour
         _shotDirection.x = Mathf.Cos(shotAngle * Mathf.Deg2Rad);
         _shotDirection.y = Mathf.Sin(shotAngle * Mathf.Deg2Rad);
         _shotDirection.Normalize();
+        _maxSpawnCount = maxSpawnCount; // 백업 
     }
 
-    public void Spawn(Enemy _enemy)
+    public bool Spawn(Enemy _enemy)
     {
         _enemy.transform.position = transform.position;
         _enemy.Spawn(_shotDirection, shotPower);
+        _maxSpawnCount--;
+        if (_maxSpawnCount == 0)
+            return true;
+        else
+            return false;
+    }
+
+    public void ResetCount()
+    {
+        _maxSpawnCount = maxSpawnCount;
     }
 }
 
