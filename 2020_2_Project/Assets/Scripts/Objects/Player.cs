@@ -88,7 +88,7 @@ public class Player : MonoBehaviour
         {
             if (!_isRope) // 로프를 타고 있는 상태가 아니면
             {
-                _detectRope = Physics2D.OverlapBox(transform.position, Vector2.one * 0.5f, 0, 1 << LayerMask.NameToLayer("Rope")); // 로프 탐색
+                _detectRope = Physics2D.OverlapBox(transform.position + Vector3.up * 1.25f, Vector2.one * 0.5f, 0, 1 << LayerMask.NameToLayer("Rope")); // 로프 
                 if (_detectRope == null) // 로프가 없으면 시점 위로
                 {
                     this._isLookup = true;
@@ -166,7 +166,7 @@ public class Player : MonoBehaviour
 
         if (!_isRope)
         {
-            _detectRope = Physics2D.OverlapBox(transform.position + Vector3.down * 1.25f, Vector2.one * 0.5f, 0, 1 << LayerMask.NameToLayer("Rope")); // 로프 탐색
+            _detectRope = Physics2D.OverlapBox(transform.position, Vector2.one * 0.5f, 0, 1 << LayerMask.NameToLayer("Rope")); // 로프 탐색
             if (_detectRope == null) // 로프가 없으면 실드 사용
             {
                 if (_shield > 30.0f)
