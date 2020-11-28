@@ -43,12 +43,15 @@ public class ConveyorBelt : MonoBehaviour
 
         if(_isOnPlayer)
         {
-            if (!Player.instance.GetSquash()) // DropTrap에 깔려있는경우에는 이동되지 않는다.
+            if(Player.instance != null)
             {
-                if (_arrow) // Left
-                    Player.instance.OnConveyorBelt(Vector2.right * 5.0f);
-                else
-                    Player.instance.OnConveyorBelt(Vector2.left * 5.0f);
+                if (!Player.instance.GetSquash()) // DropTrap에 깔려있는경우에는 이동되지 않는다.
+                {
+                    if (_arrow) // Left
+                        Player.instance.OnConveyorBelt(Vector2.right * 5.0f);
+                    else
+                        Player.instance.OnConveyorBelt(Vector2.left * 5.0f);
+                }
             }
         }
 
@@ -57,12 +60,31 @@ public class ConveyorBelt : MonoBehaviour
             if(_arrow)
             {
                 for (i = 0; i < _enemies.Count; i++)
-                    _enemies[i].OnConveyorBelt(Vector2.right * 5.0f);
+                {
+                    if (!_enemies[i].GetDead())
+                    {
+                        if (!_enemies[i].isattacked)
+                        {
+                            if (!_enemies[i].isattack)
+                                _enemies[i].OnConveyorBelt(Vector2.right * 5.0f);
+                        }
+                    }
+                }
             }
             else
             {
                 for (i = 0; i < _enemies.Count; i++)
-                    _enemies[i].OnConveyorBelt(Vector2.left * 5.0f);
+                {
+                    if (!_enemies[i].GetDead())
+                    {
+                        if (!_enemies[i].isattacked)
+                        {
+                            if(!_enemies[i].isattack)
+                                _enemies[i].OnConveyorBelt(Vector2.left * 5.0f);
+                        }
+                    }
+
+                }
             }
         }
     }

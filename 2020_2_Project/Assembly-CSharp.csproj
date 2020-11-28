@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Assets\ChangeActionPoint.cs" />
     <Compile Include="Assets\ConveyorBelt.cs" />
+    <Compile Include="Assets\DropTrapGround.cs" />
     <Compile Include="Assets\HoldTrap.cs" />
     <Compile Include="Assets\Scripts\BackDoor\RoundClear.cs" />
     <Compile Include="Assets\Scripts\Bullets\Bullet.cs" />
@@ -88,14 +89,14 @@
     <Compile Include="Assets\Scripts\Objects\Coin\GoldManager.cs" />
     <Compile Include="Assets\Scripts\Objects\Coin\InputGoldValue.cs" />
     <Compile Include="Assets\Scripts\Objects\DropTrap.cs" />
-    <Compile Include="Assets\Scripts\Objects\Enemys\Alien.cs" />
-    <Compile Include="Assets\Scripts\Objects\Enemys\Enemy.cs" />
-    <Compile Include="Assets\Scripts\Objects\Enemys\EnemyWeapon.cs" />
-    <Compile Include="Assets\Scripts\Objects\Enemys\Goblin.cs" />
-    <Compile Include="Assets\Scripts\Objects\Enemys\GoblinBoss.cs" />
-    <Compile Include="Assets\Scripts\Objects\Enemys\Robot.cs" />
-    <Compile Include="Assets\Scripts\Objects\Enemys\Zombie.cs" />
-    <Compile Include="Assets\Scripts\Objects\Enemys\ZombieBoss.cs" />
+    <Compile Include="Assets\Scripts\Objects\Enemies\Alien.cs" />
+    <Compile Include="Assets\Scripts\Objects\Enemies\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Objects\Enemies\EnemyWeapon.cs" />
+    <Compile Include="Assets\Scripts\Objects\Enemies\Goblin.cs" />
+    <Compile Include="Assets\Scripts\Objects\Enemies\GoblinBoss.cs" />
+    <Compile Include="Assets\Scripts\Objects\Enemies\Robot.cs" />
+    <Compile Include="Assets\Scripts\Objects\Enemies\Zombie.cs" />
+    <Compile Include="Assets\Scripts\Objects\Enemies\ZombieBoss.cs" />
     <Compile Include="Assets\Scripts\Objects\Farming\FarmingItem.cs" />
     <Compile Include="Assets\Scripts\Objects\Farming\FarmingManager.cs" />
     <Compile Include="Assets\Scripts\Objects\Farming\FarmingPoint.cs" />

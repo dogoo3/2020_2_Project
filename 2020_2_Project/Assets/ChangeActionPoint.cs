@@ -39,7 +39,7 @@ public class ChangeActionPoint : MonoBehaviour
         if (_enemy.GetVelocityForce() == 0f) // 점프 상태 및 낙하중일 때는 적용되지 않는다. (y의 속력값으로 판단)
         {
             // 플레이어 감지 상태일때 액션 변환
-            if(_enemy._isdetect)
+            if(_enemy.isdetect)
             {
                 CheckDetectMotion(collision.transform);
                 return;

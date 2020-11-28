@@ -282,7 +282,10 @@ MonoBehaviour:
   _isboss: 0
   deadSfxname: 
   _direction: {x: 0, y: 0}
-  _isdetect: 0
+  isdetect: 0
+  isjump: 0
+  isattacked: 0
+  isattack: 0
 --- !u!114 &1790564070067650244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,3 +299,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 8
+  _attackCooltime: 1
+  _damage: 30
+  _attackRange: 2

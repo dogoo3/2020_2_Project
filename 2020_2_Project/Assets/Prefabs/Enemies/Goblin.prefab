@@ -220,6 +220,10 @@ MonoBehaviour:
   _isboss: 0
   deadSfxname: goblindead
   _direction: {x: 0, y: 0}
+  isdetect: 0
+  isjump: 0
+  isattacked: 0
+  isattack: 0
 --- !u!114 &8271799489495260261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,6 +239,7 @@ MonoBehaviour:
   damage: 25
   moveSpeed: 5.5
   runSpeed: 9
-  minpatrolTime: 2.5
-  maxpatrolTime: 3.5
-  rayLength: 5
+  rayLength: 9
+  _attackedTime: 3
+  _detectTime: 3
+  _detectCoolTime: 3

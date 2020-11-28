@@ -11,6 +11,8 @@ public class DropTrap : MonoBehaviour
     private bool _islandGround, _isReset, _isTouchPlayer, _isUp;
     private float _elapsetime, _gravityScale;
 
+    private float _displacepos; // 얼마나 위치값이 바뀌었는지를 파악함.
+
     [Header("지면 충돌 후 N초뒤에 복귀")]
     [SerializeField] private float _resetTime = default;
     [Header("원래 포인트 도착 후 N초 뒤에 다시 떨굼")]

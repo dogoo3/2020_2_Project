@@ -171,11 +171,13 @@ MonoBehaviour:
   score: 900
   minGold: 300
   maxGold: 400
-  _detectTime: 3
   _isboss: 1
   deadSfxname: 
   _direction: {x: 0, y: 0}
-  _isdetect: 0
+  isdetect: 0
+  isjump: 0
+  isattacked: 0
+  isattack: 0
 --- !u!114 &7594978766752560631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,6 +194,7 @@ MonoBehaviour:
   _detectRange: 20
   _moveSpeed: 6
   _attackCooltime: 1
+  _detectTime: 2
 --- !u!1 &1397329634231595515
 GameObject:
   m_ObjectHideFlags: 0
