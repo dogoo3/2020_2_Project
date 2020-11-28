@@ -21,7 +21,7 @@ public class ShopWeaponIcon : MonoBehaviour
 
     public float upgradeDamage, upgradeCooltime; // 업그레이드 1회시 증가할 양
     public int cost_upgradeDamage, cost_upgradeCooltime; // 업그레이드를 하기 위한 비용
-
+    public string descText; // 무기설명
     public GameObject lockIcon; // 잠금 아이콘 오브젝트(하위)
     private string _fileindex_deal, _fileindex_respawn, _fileindex_cost;
 

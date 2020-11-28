@@ -771,6 +771,7 @@ MonoBehaviour:
   upgradeCooltime: 0.1
   cost_upgradeDamage: 10
   cost_upgradeCooltime: 10
+  descText: 
   lockIcon: {fileID: 0}
 --- !u!1 &151807545
 GameObject:
@@ -1089,7 +1090,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a9be532bc428f2f4a8a609004ed21679, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 85032ed0f8554f84a9122846973741d5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1131,6 +1132,7 @@ MonoBehaviour:
   upgradeCooltime: 0.1
   cost_upgradeDamage: 10
   cost_upgradeCooltime: 10
+  descText: "\uC77C\uC9C1\uC120\uC73C\uB85C 3\uBC1C\uC744 \uC810\uC0AC\uD568"
   lockIcon: {fileID: 971801710}
 --- !u!1 &183762137
 GameObject:
@@ -2560,6 +2562,7 @@ MonoBehaviour:
   image: {fileID: 1750705277}
   text: {fileID: 183762139}
   shopGoldText: {fileID: 1840455503}
+  descText: {fileID: 932061065}
 --- !u!1 &682795250
 GameObject:
   m_ObjectHideFlags: 0
@@ -3396,8 +3399,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -7050497288516532078, guid: c94b95a81baa49a4589caef34a67e397,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: a21d8266d42f64a4380a8d2bff3ab6aa, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3439,6 +3441,7 @@ MonoBehaviour:
   upgradeCooltime: 0.3
   cost_upgradeDamage: 20
   cost_upgradeCooltime: 20
+  descText: "\uC77C\uC9C1\uC120\uC73C\uB85C \uAD49\uC7A5\uD788 \uBE60\uB978 \uB2E8\uBC1C\uC0AC\uACA9"
   lockIcon: {fileID: 272241171}
 --- !u!1 &786270577
 GameObject:
@@ -3902,7 +3905,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "4 \uAC08\uB798\uB85C \uB098\uAC00\uB294 \uC0B0\uD0C4\uACF5\uACA9"
+  m_Text: 
 --- !u!222 &932061066
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4216,6 +4219,7 @@ MonoBehaviour:
   upgradeCooltime: 0.2
   cost_upgradeDamage: 10
   cost_upgradeCooltime: 10
+  descText: "\uC804\uBC29\uC73C\uB85C \uD3ED\uD0C4\uC744 1\uAC1C \uB358\uC9D0"
   lockIcon: {fileID: 840493356}
 --- !u!1 &1008801858
 GameObject:
@@ -5791,6 +5795,7 @@ MonoBehaviour:
   upgradeCooltime: 0.04
   cost_upgradeDamage: 10
   cost_upgradeCooltime: 10
+  descText: 
   lockIcon: {fileID: 0}
 --- !u!1 &1522663092
 GameObject:
@@ -5904,7 +5909,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 894194291491081068, guid: c94b95a81baa49a4589caef34a67e397, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a9be532bc428f2f4a8a609004ed21679, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5946,6 +5951,7 @@ MonoBehaviour:
   upgradeCooltime: 0.1
   cost_upgradeDamage: 10
   cost_upgradeCooltime: 10
+  descText: "4\uAC08\uB798\uB85C \uB098\uAC00\uB294 \uC0B0\uD0C4\uACF5\uACA9"
   lockIcon: {fileID: 1865022324}
 --- !u!1 &1531048665
 GameObject:

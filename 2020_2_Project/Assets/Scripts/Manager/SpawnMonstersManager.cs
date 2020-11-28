@@ -8,7 +8,7 @@ public class SpawnMonstersManager : MonoBehaviour
     
     public List<SpawnMonstersPoint> spawnMonstersPoint; // 등록 및 연산에 적용될 몬스터 소환 포인트
 
-    private List<SpawnMonstersPoint> _copypoint; // 백업용 몬스터 소환 포인트
+    private List<SpawnMonstersPoint> _copypoint = new List<SpawnMonstersPoint>(); // 백업용 몬스터 소환 포인트
 
     private List<Enemy> _copyEnemy = new List<Enemy>(); // 연산에 적용될 적 오브젝트 List
     [SerializeField] private List<Enemy> enemy = default; // 백업용 및 등록을 위한 적 오브젝트 List

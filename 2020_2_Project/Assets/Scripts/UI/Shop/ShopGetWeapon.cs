@@ -10,6 +10,8 @@ public class ShopGetWeapon : MonoBehaviour
 
     public Text shopGoldText;
 
+    public Text descText; 
+
     private ShopWeaponIcon _weaponInfo;
 
     public void Init(ShopWeaponIcon _info)
@@ -17,6 +19,7 @@ public class ShopGetWeapon : MonoBehaviour
         _weaponInfo = _info;
         image.sprite = _info._image.sprite;
         text.text = _info.cost.ToString();
+        descText.text = _info.descText;
         gameObject.SetActive(true);
     }
 

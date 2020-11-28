@@ -17,6 +17,11 @@ public class Robot : MonoBehaviour
         _enemy = GetComponent<Enemy>();
     }
 
+    private void OnEnable()
+    {
+
+    }
+
     private void Update()
     {
         transform.Translate(_enemy._direction * _moveSpeed * Time.deltaTime);

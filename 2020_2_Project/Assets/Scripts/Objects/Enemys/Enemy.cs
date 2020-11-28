@@ -119,6 +119,11 @@ public class Enemy : MonoBehaviour
         return HP;
     }
 
+    public float GetRemainHPRate() // 남은 HP의 비율을 반환하는 함수
+    {
+        return HP / _resetHP;
+    }
+
     public float GetVelocityForce()
     {
         return _rigidbody2d.velocity.y;

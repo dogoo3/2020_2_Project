@@ -16,7 +16,7 @@ public class Alien : MonoBehaviour
     [SerializeField] private Transform _muzzleGunPos = default;
     [SerializeField] private float _detectRange = default, _moveSpeed = default;
     [SerializeField] private float _attackCooltime = default;
-    private bool _isDetectStart, _isattacked, _isattack, _isJump, _isattackCool, _isonConveyorBelt;
+    private bool _isDetectStart, _isattacked, _isattack, _isJump, _isattackCool, _isonConveyorBelt, _israge;
 
     private float _maxHP, _elapsedtime, _elapsedChangetime, _elapsedAttackCooltime;
 
@@ -31,6 +31,9 @@ public class Alien : MonoBehaviour
     private void OnEnable()
     {
         _isDetectStart = false;
+        _animator.SetFloat("direction", 1.0f);
+        _animator.SetFloat("israge", 0.0f);
+        // _isRage true시 능력치 원상복구
     }
 
     private void Start()
@@ -102,6 +105,15 @@ public class Alien : MonoBehaviour
             {
                 _isattacked = true;
                 _animator.SetTrigger("attacked");
+                if(!_israge)
+                {
+                    if (_enemy.GetRemainHPRate() <= 0.5f) // Hp가 절반 아래로 내려가면
+                    {
+                        _israge = true;
+                        _animator.SetFloat("israge", 1.0f);
+                        // 능력치 변경사항 작성
+                    }
+                }
                 ChangeDir();
 
                 if (!_isJump)
