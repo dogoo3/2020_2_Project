@@ -17,8 +17,8 @@ public class HoldTrap : MonoBehaviour
             _elapsedTime += Time.deltaTime;
             if (_angle <= 90)
             {
-                _blade[0].rotation = Quaternion.Euler(0, 0, -_angle);
-                _blade[1].rotation = Quaternion.Euler(0, 0, _angle);
+                _blade[0].rotation = Quaternion.Euler(0, 0, -_angle * 0.902111f);
+                _blade[1].rotation = Quaternion.Euler(0, 0, _angle * 0.833f);
                 _angle += 6;
             }
         }
@@ -29,8 +29,8 @@ public class HoldTrap : MonoBehaviour
             if (_angle > 0)
             {
                 _angle -= 3;
-                _blade[0].rotation = Quaternion.Euler(0, 0, -_angle);
-                _blade[1].rotation = Quaternion.Euler(0, 0, _angle);
+                _blade[0].rotation = Quaternion.Euler(0, 0, -_angle * 0.902111f);
+                _blade[1].rotation = Quaternion.Euler(0, 0, _angle * 0.833f);
             }
             else
                 _elapsedTime = 0f;
