@@ -5,11 +5,14 @@ using UnityEngine;
 public class Bullet_Grenade : MonoBehaviour
 {
     private Rigidbody2D _rigidbody2d;
+    private Animator _animator;
 
     private Bullet _grenade;
     private Vector2 _direction;
     private Enemy _tempEnemy;
     private Collider2D[] _tempColliders;
+
+    private bool _isbomb;
 
     private int i;
 
@@ -23,6 +26,8 @@ public class Bullet_Grenade : MonoBehaviour
     private void Awake()
     {
         _rigidbody2d = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
+
         _direction = Vector2.up;
 
         _grenade = new B_Grenade();
@@ -35,26 +40,47 @@ public class Bullet_Grenade : MonoBehaviour
 
     public void Throw(Vector2 _direction)
     {
+        _rigidbody2d.angularVelocity = 300.0f * -_direction.x;
         _rigidbody2d.velocity =_grenade.Throw(_direction).normalized * _grenade.shotSpeed;
     }
 
     private void Update()
     {
-        if (_grenade.CheckElapsedTime())
+        if(!_isbomb)
         {
-            _tempColliders = Physics2D.OverlapCircleAll(transform.position, bombRadius, 1 << LayerMask.NameToLayer("Enemy"));
-            for (i = 0; i < _tempColliders.Length; i++)
+            if (_grenade.CheckElapsedTime())
             {
-                _tempEnemy = _tempColliders[i].GetComponent<Enemy>();
-                _tempEnemy.MinusHP(Mathf.Abs(Vector2.Distance(transform.position, _tempEnemy.transform.position) * _bombRadius - 1) * _grenade.damage);
+                _isbomb = true;
+                _rigidbody2d.freezeRotation = true;
+                transform.rotation = Quaternion.identity;
+                _tempColliders = Physics2D.OverlapCircleAll(transform.position, bombRadius, 1 << LayerMask.NameToLayer("Enemy"));
+                for (i = 0; i < _tempColliders.Length; i++)
+                {
+                    _tempEnemy = _tempColliders[i].GetComponent<Enemy>();
+                    _tempEnemy.MinusHP(Mathf.Abs(Vector2.Distance(transform.position, _tempEnemy.transform.position) * _bombRadius - 1) * _grenade.damage);
+                }
+                _animator.SetTrigger("bomb");
             }
-            ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_grenade);
+            _grenade.LoadElapsedTime();
         }
-        _grenade.LoadElapsedTime();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("ground"))
+            _rigidbody2d.velocity *= 0.2f;
     }
 
     private void OnDisable()
     {
         _grenade.ResetElapsedTime();
+        _isbomb = false;
+        _rigidbody2d.freezeRotation = false;
+        _animator.Rebind();
+    }
+
+    public void InsertQueue() // Animation Func
+    {
+        ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_grenade);
     }
 }

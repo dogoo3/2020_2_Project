@@ -112,7 +112,7 @@ public class ObjectPoolingManager : MonoBehaviour
 
         if (FileManager.weaponembargo["sg"])
         {
-            for (i = 0; i < 15; i++)
+            for (i = 0; i < 14; i++)
             {
                 Init(sg, queue_sg, "sg", i);
                 if (i < 5)
@@ -175,6 +175,11 @@ public class ObjectPoolingManager : MonoBehaviour
         {
             _sniper = queue_sniper.Dequeue();
             _sniper.transform.position = _origin;
+            if(_direction != Vector2.right && _direction != Vector2.left) // Vertical Attack
+            {
+                _sniper.transform.rotation = Quaternion.Euler(0, 0, Mathf.Acos(_direction.x) * 57.29578f); // 57.29578 = Mathf.Rad2Deg
+                _direction = Vector2.right;
+            }
             _sniper.gameObject.SetActive(true);
             _sniper.Direction(_direction);
         }
@@ -191,12 +196,15 @@ public class ObjectPoolingManager : MonoBehaviour
         }
     }
 
-    public void GetQueue_sg(Vector2 _origin, Vector2 _direction)
+    public void GetQueue_sg(Vector2 _origin, Vector2 _direction, Vector2 _playerDir)
     {
         if (queue_sg.Count != 0)
         {
             _sg = queue_sg.Dequeue();
             _sg.transform.position = _origin;
+            _sg.transform.rotation = Quaternion.Euler(0, 0, Mathf.Asin(_direction.y) * 57.29578f);
+            _playerDir.y = 0;
+            _direction = _playerDir;
             _sg.gameObject.SetActive(true);
             _sg.Direction(_direction);
         }

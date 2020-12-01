@@ -97,11 +97,12 @@ public class Player : MonoBehaviour
                     _directionPos = _upShootVector; // 위로 쏠 때 벡터 정규화값 저장
                     _directionPos.x *= _oldDirectionPos.x; // 방향 변경
                     _animator.SetFloat("float_Lookup", 1.0f); // Blend Tree 내 분기를 위한 Lookup 파라미터
-                    _animator.Play("Lookup", 0, _lookupTime);
+                    _animator.Play("Lookup", 0, _lookupTime); // Lookup 키를 반복 터치할 때 자연스러운 움직임을 주기 위해 사용함.
                 }
                 else // 로프가 감지되면
                 {
                     DetectRope();
+                    _animator.SetFloat("ropemove", 1.0f);
                     _isRopeUp = true;
                 }
             }
@@ -350,7 +351,13 @@ public class Player : MonoBehaviour
     
     private void DetectRope()
     {
+        if (!_isjump) // 점프 후 사다리를 타면 점프 애니메이션 취소
+            _animator.SetBool("jump", false);
+        if (_directionPos != Vector2.zero) // 이동하면서 사다리를 타면 이동 애니메이션 취소 
+            _animator.SetBool("move", false);
+
         _rope = _detectRope.GetComponent<Ladder>();
+        _animator.SetBool("ladder", true);
         _rigidbody2d.gravityScale = 0;
         _groundCollider.isTrigger = true; // 1행은 GroundCollider
         _catchRopeHeight = transform.position;
@@ -362,7 +369,7 @@ public class Player : MonoBehaviour
 
     private void EscapeRope()
     {
-        _animator.SetBool("jump", false);
+        _animator.SetBool("ladder", false);
         _isjump = false;
         _isRope = false;
         _rigidbody2d.gravityScale = 3.3f;

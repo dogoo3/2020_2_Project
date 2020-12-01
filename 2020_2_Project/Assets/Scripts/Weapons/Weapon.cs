@@ -147,16 +147,16 @@ public class SG : Weapon // 샷건
             {
                 dir_bullet.x = Mathf.Cos((angle * 0.5f - (angle / (line - 1)) * i) * Mathf.Deg2Rad) * _direction.x;
                 dir_bullet.y = Mathf.Sin((angle * 0.5f - (angle / (line - 1)) * i) * Mathf.Deg2Rad);
-                ObjectPoolingManager.instance.GetQueue_sg(_origin, dir_bullet);
+                ObjectPoolingManager.instance.GetQueue_sg(_origin, dir_bullet, _direction);
             }
         }
         else // 위를 바라보고 있을 때 
         {
             for (i = 0; i < line; i++)
             {
-                dir_bullet.x = Mathf.Cos((angle * 0.5f + (angle / (line - 1)) * i) * Mathf.Deg2Rad);
-                dir_bullet.y = Mathf.Sin((angle * 0.5f + (angle / (line - 1)) * i) * Mathf.Deg2Rad);
-                ObjectPoolingManager.instance.GetQueue_sg(_origin, dir_bullet);
+                dir_bullet.x = Mathf.Cos(((angle * 0.5f + (angle / (line - 1)) * i) + Mathf.Acos(_direction.x) * 57.29578f) * Mathf.Deg2Rad);
+                dir_bullet.y = Mathf.Sin(((angle * 0.5f + (angle / (line - 1)) * i) + Mathf.Acos(_direction.x) * 57.29578f) * Mathf.Deg2Rad);
+                ObjectPoolingManager.instance.GetQueue_sg(_origin, dir_bullet, _direction);
             }
         }
         SpendBullet();

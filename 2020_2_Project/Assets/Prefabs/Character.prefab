@@ -217,7 +217,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2460765724074957410}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -35.646, y: -5.012, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2460765722954065239}
@@ -329,7 +329,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02691096ad8b64d4aa37cf2f4e361a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collider2d: {fileID: 0}
   shieldsprite: {fileID: 2460765722954065238}
   muzzleGunPos: {fileID: 2460765723306169954}
 --- !u!70 &2460765724074957413
