@@ -62,10 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ChangeActionPoint.cs" />
-    <Compile Include="Assets\ConveyorBelt.cs" />
-    <Compile Include="Assets\DropTrapGround.cs" />
-    <Compile Include="Assets\HoldTrap.cs" />
+    <Compile Include="Assets\FireTrap.cs" />
     <Compile Include="Assets\Scripts\BackDoor\RoundClear.cs" />
     <Compile Include="Assets\Scripts\Bullets\Bullet.cs" />
     <Compile Include="Assets\Scripts\Bullets\Bullet_AR.cs" />
@@ -75,7 +72,11 @@
     <Compile Include="Assets\Scripts\Bullets\Bullet_SG.cs" />
     <Compile Include="Assets\Scripts\Bullets\Bullet_SMG.cs" />
     <Compile Include="Assets\Scripts\Bullets\Bullet_Sniper.cs" />
+    <Compile Include="Assets\Scripts\ChangeActionPoint.cs" />
     <Compile Include="Assets\Scripts\CineCamera.cs" />
+    <Compile Include="Assets\Scripts\ConveyorBelt.cs" />
+    <Compile Include="Assets\Scripts\ElecTrap.cs" />
+    <Compile Include="Assets\Scripts\HoldTrap.cs" />
     <Compile Include="Assets\Scripts\IngameWindow\GameOverWindow.cs" />
     <Compile Include="Assets\Scripts\Manager\FileManager.cs" />
     <Compile Include="Assets\Scripts\Manager\GaugeManager.cs" />
