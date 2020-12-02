@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class Bullet_SMG : MonoBehaviour
 {
+    private SpriteRenderer _spriteRenderer;
+
     private Bullet _smg;
+
+    private Color _color;
+    private Sprite _bulletSprite;
+    private bool _isCrash;
+
+    [SerializeField] private Sprite _crashSprite = default;
 
     public float damage;
     public float shotSpeed;
@@ -12,21 +20,37 @@ public class Bullet_SMG : MonoBehaviour
 
     private void Awake()
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         _smg = new B_SMG();
         _smg.damage = FileManager.weaponInfo["smg_deal"];
         _smg.shotSpeed = shotSpeed;
         _smg.surviveTime = surviveTime;
+        _color = Color.white;
+        _bulletSprite = _spriteRenderer.sprite;
     }
 
     private void Update()
     {
         if (_smg.CheckElapsedTime())
             ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_smg);
-        transform.Translate(_smg.Move());
+        if (_isCrash)
+        {
+            _spriteRenderer.sprite = _crashSprite;
+            _color.a = Mathf.Clamp(_color.a - 0.031372f, 0f, 1f);  // 0.5초에 사라지게 함.
+            _spriteRenderer.color = _color;
+            if (_color.a <= 0f)
+                ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_smg);
+        }
+        else
+            transform.Translate(_smg.Move());
     }
 
     private void OnDisable()
     {
+        _color.a = 1.0f;
+        _spriteRenderer.color = _color;
+        _spriteRenderer.sprite = _bulletSprite;
+        _isCrash = false;
         _smg.ResetElapsedTime();
     }
 
@@ -37,7 +61,7 @@ public class Bullet_SMG : MonoBehaviour
             case "ground":
             case "bullet":
             case "wall":
-                ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_smg);
+                _isCrash = true;
                 SoundManager.instance.PlaySFX("bulletTowall");
                 break;
         }
@@ -51,8 +75,8 @@ public class Bullet_SMG : MonoBehaviour
                 _smg.tempEnemy = collision.gameObject.GetComponent<Enemy>();
                 _smg.tempEnemy.MinusHP(_smg.damage);
                 // if (!_smg.tempEnemy.CheckBoss())
-                    // _smg.tempEnemy.Knockback(_smg._direction);
-                ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_smg);
+                // _smg.tempEnemy.Knockback(_smg._direction);
+                _isCrash = true;
                 SoundManager.instance.PlaySFX("bulletToenemy");
                 break;
         }

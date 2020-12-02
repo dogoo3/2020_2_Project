@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class Bullet_Pistol : MonoBehaviour
 {
+    private SpriteRenderer _spriteRenderer;
+
     private Bullet _pistol;
+
+    private Color _color;
+    private Sprite _bulletSprite;
+    private bool _isCrash;
+
+    [SerializeField] private Sprite _crashSprite = default;
 
     public float damage;
     public float shotSpeed;
@@ -12,21 +20,37 @@ public class Bullet_Pistol : MonoBehaviour
 
     private void Awake()
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         _pistol = new B_Pistol();
         _pistol.damage = FileManager.weaponInfo["pistol_deal"];
         _pistol.shotSpeed = shotSpeed;
         _pistol.surviveTime = surviveTime;
+        _color = Color.white;
+        _bulletSprite = _spriteRenderer.sprite;
     }
 
     private void Update()
     {
         if (_pistol.CheckElapsedTime())
             ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_pistol);
-        transform.Translate(_pistol.Move());
+        if(_isCrash)
+        {
+            _spriteRenderer.sprite = _crashSprite;
+            _color.a = Mathf.Clamp(_color.a - 0.031372f, 0f, 1f);  // 0.5초에 사라지게 함.
+            _spriteRenderer.color = _color;
+            if(_color.a <= 0f)
+                ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_pistol);
+        }
+        else
+            transform.Translate(_pistol.Move());
     }
 
     private void OnDisable()
     {
+        _color.a = 1.0f;
+        _spriteRenderer.color = _color;
+        _spriteRenderer.sprite = _bulletSprite;
+        _isCrash = false;
         _pistol.ResetElapsedTime();
     }
 
@@ -37,7 +61,7 @@ public class Bullet_Pistol : MonoBehaviour
             case "ground":
             case "bullet":
             case "wall":
-                ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_pistol);
+                _isCrash = true;
                 SoundManager.instance.PlaySFX("bulletTowall");
                 break;
         }
@@ -48,11 +72,12 @@ public class Bullet_Pistol : MonoBehaviour
         switch (collision.tag)
         {
             case "enemy":
+                _isCrash = true;
                 _pistol.tempEnemy = collision.gameObject.GetComponent<Enemy>();
                 _pistol.tempEnemy.MinusHP(_pistol.damage);
                 // if (!_pistol.tempEnemy.CheckBoss())
-                    // _pistol.tempEnemy.Knockback(_pistol._direction);
-                ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_pistol);
+                // _pistol.tempEnemy.Knockback(_pistol._direction);
+                _isCrash = true;
                 SoundManager.instance.PlaySFX("bulletToenemy");
                 break;
         }

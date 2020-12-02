@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class Bullet_AR : MonoBehaviour
 {
+    private SpriteRenderer _spriteRenderer;
+
     private Bullet _ar;
+
+    private Color _color;
+    private Sprite _bulletSprite;
+    private bool _isCrash;
+
+    [SerializeField] private Sprite _crashSprite = default;
 
     public float damage;
     public float shotSpeed;
@@ -12,21 +20,37 @@ public class Bullet_AR : MonoBehaviour
 
     private void Awake()
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         _ar = new B_AR();
         _ar.damage = FileManager.weaponInfo["ar_deal"];
         _ar.shotSpeed = shotSpeed;
         _ar.surviveTime = surviveTime;
+        _color = Color.white;
+        _bulletSprite = _spriteRenderer.sprite;
     }
 
     private void Update()
     {
         if (_ar.CheckElapsedTime())
             ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_ar);
-        transform.Translate(_ar.Move());
+        if (_isCrash)
+        {
+            _spriteRenderer.sprite = _crashSprite;
+            _color.a = Mathf.Clamp(_color.a - 0.031372f, 0f, 1f);  // 0.5초에 사라지게 함.
+            _spriteRenderer.color = _color;
+            if (_color.a <= 0f)
+                ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_ar);
+        }
+        else
+            transform.Translate(_ar.Move());
     }
 
     private void OnDisable()
     {
+        _color.a = 1.0f;
+        _spriteRenderer.color = _color;
+        _spriteRenderer.sprite = _bulletSprite;
+        _isCrash = false;
         _ar.ResetElapsedTime();
     }
 
@@ -37,7 +61,7 @@ public class Bullet_AR : MonoBehaviour
             case "ground":
             case "bullet":
             case "wall":
-                ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_ar);
+                _isCrash = true;
                 SoundManager.instance.PlaySFX("bulletTowall");
                 break;
         }
@@ -51,8 +75,8 @@ public class Bullet_AR : MonoBehaviour
                 _ar.tempEnemy = collision.gameObject.GetComponent<Enemy>();
                 _ar.tempEnemy.MinusHP(_ar.damage);
                 // if (!_ar.tempEnemy.CheckBoss())
-                    // _ar.tempEnemy.Knockback(_ar._direction);
-                ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_ar);
+                // _ar.tempEnemy.Knockback(_ar._direction);
+                _isCrash = true;
                 SoundManager.instance.PlaySFX("bulletToenemy");
                 break;
         }

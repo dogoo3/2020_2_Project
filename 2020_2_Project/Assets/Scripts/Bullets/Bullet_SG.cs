@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class Bullet_SG : MonoBehaviour
 {
+    private SpriteRenderer _spriteRenderer;
+
     private Bullet _sg;
+
+    private Color _color;
+    private Sprite _bulletSprite;
+    private bool _isCrash;
+
+    [SerializeField] private Sprite _crashSprite = default;
 
     public float damage;
     public float shotSpeed;
@@ -12,21 +20,37 @@ public class Bullet_SG : MonoBehaviour
 
     private void Awake()
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         _sg = new B_SG();
         _sg.damage = FileManager.weaponInfo["sg_deal"];
         _sg.shotSpeed = shotSpeed;
         _sg.surviveTime = surviveTime;
+        _color = Color.white;
+        _bulletSprite = _spriteRenderer.sprite;
     }
 
     private void Update()
     {
         if (_sg.CheckElapsedTime())
             ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_sg);
-        transform.Translate(_sg.Move());
+        if (_isCrash)
+        {
+            _spriteRenderer.sprite = _crashSprite;
+            _color.a = Mathf.Clamp(_color.a - 0.031372f, 0f, 1f);  // 0.5초에 사라지게 함.
+            _spriteRenderer.color = _color;
+            if (_color.a <= 0f)
+                ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_sg);
+        }
+        else
+            transform.Translate(_sg.Move());
     }
 
     private void OnDisable()
     {
+        _color.a = 1.0f;
+        _spriteRenderer.color = _color;
+        _spriteRenderer.sprite = _bulletSprite;
+        _isCrash = false;
         _sg.ResetElapsedTime();
     }
 
@@ -36,7 +60,7 @@ public class Bullet_SG : MonoBehaviour
         {
             case "ground":
             case "wall":
-                ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_sg);
+                _isCrash = true;
                 SoundManager.instance.PlaySFX("bulletTowall");
                 break;
         }
@@ -50,8 +74,8 @@ public class Bullet_SG : MonoBehaviour
                 _sg.tempEnemy = collision.gameObject.GetComponent<Enemy>();
                 _sg.tempEnemy.MinusHP(_sg.damage);
                 // if (!_sg.tempEnemy.CheckBoss())
-                    // _sg.tempEnemy.Knockback(_sg._direction);
-                ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_sg);
+                // _sg.tempEnemy.Knockback(_sg._direction);
+                _isCrash = true;
                 SoundManager.instance.PlaySFX("bulletToenemy");
                 break;
         }

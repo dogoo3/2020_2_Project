@@ -125,9 +125,9 @@
     <Compile Include="Assets\Scripts\Weapons\WeaponManager.cs" />
     <Compile Include="Assets\Scripts\Weapons\WeaponSelector.cs" />
     <Compile Include="Assets\Temp\TestScript.cs" />
-    <None Include="Assets\SampleSprites\Blur\SettingWindowBlur.shader" />
-    <None Include="Assets\SampleSprites\3DGold\README.txt" />
-    <None Include="Assets\SampleSprites\3DGold\UnlitTransParentsShader.shader" />
+    <None Include="Assets\Scripts\BlurShader\SettingWindowBlur.shader" />
+    <None Include="Assets\Sprites\3DGold\README.txt" />
+    <None Include="Assets\Sprites\3DGold\UnlitTransParentsShader.shader" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/2020_2_Project/2020_2_Project/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
