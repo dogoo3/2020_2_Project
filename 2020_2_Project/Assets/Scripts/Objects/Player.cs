@@ -301,7 +301,7 @@ public class Player : MonoBehaviour
         _rigidbody2d.velocity = _knockback;
     }
 
-    public void Fly(Vector2 _force)
+    public void Fly(Vector2 _force) // 1s3r 전용
     {
         _isjump = true;
         _animator.SetBool("jump", _isjump);
@@ -354,7 +354,7 @@ public class Player : MonoBehaviour
     
     private void DetectRope()
     {
-        if (!_isjump) // 점프 후 사다리를 타면 점프 애니메이션 취소
+        if (_isjump) // 점프 후 사다리를 타면 점프 애니메이션 취소
             _animator.SetBool("jump", false);
         if (_directionPos != Vector2.zero) // 이동하면서 사다리를 타면 이동 애니메이션 취소 
             _animator.SetBool("move", false);
@@ -366,7 +366,7 @@ public class Player : MonoBehaviour
         _catchRopeHeight = transform.position;
         _catchRopeHeight.x = _detectRope.transform.position.x;
         transform.position = _catchRopeHeight;
-        _oldDirectionPos = _directionPos;
+        //_oldDirectionPos = _directionPos;
         _isRope = true;
     }
 
@@ -376,7 +376,7 @@ public class Player : MonoBehaviour
         _isjump = false;
         _isRope = false;
         _rigidbody2d.gravityScale = 3.3f;
-        _directionPos = _oldDirectionPos;
+        //_directionPos = _oldDirectionPos;
         _animator.SetFloat("direction", _directionPos.x);
         _groundCollider.isTrigger = false; // 1행은 GroundCollider
     }
