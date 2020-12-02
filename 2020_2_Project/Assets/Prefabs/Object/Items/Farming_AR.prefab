@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemKind: 3
-  _sfxSoundname: 
+  _sfxSoundname: reload_ar
   _mySpawnPoint: {fileID: 0}
   supplyValue: 15
 --- !u!50 &8761716672067476809

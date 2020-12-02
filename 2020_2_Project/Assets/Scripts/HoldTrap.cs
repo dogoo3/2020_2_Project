@@ -47,6 +47,7 @@ public class HoldTrap : MonoBehaviour
                 {
                     _isdetect = false;
                     Player.instance.Attacked(_damage);
+                    SoundManager.instance.PlaySFX("attack_hold");
                 }
             }
         }

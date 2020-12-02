@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemKind: 5
-  _sfxSoundname: 
+  _sfxSoundname: reload_grenade
   _mySpawnPoint: {fileID: 0}
   supplyValue: 1
 --- !u!50 &-5212662434576159930

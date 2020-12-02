@@ -140,7 +140,10 @@ public class Player : MonoBehaviour
             if (_rayPlayer.collider != null)
             {
                 if (!_isjump)
+                {
                     JumpSet(_jumpvalue);
+                    SoundManager.instance.PlaySFX("player_jump");
+                }
             }
         }
         else // 로프를 타고 있을 때 다른 방향키를 누르고 있으면 로프를 탈출하면서 점프함.
@@ -424,19 +427,23 @@ public class Player : MonoBehaviour
 
             if(_isRopeDown)
             {
+                SoundManager.instance.PlaySFX("getladder", false);
                 transform.Translate(Vector3.down * 2.0f * Time.deltaTime);
                 if (_rope.CarculateDownPos(transform))
                 {
                     EscapeRope();
+                    SoundManager.instance.StopSFX("getladder");
                     _isRopeDown = false;
                 }
             }
             if(_isRopeUp)
             {
+                SoundManager.instance.PlaySFX("getladder", false);
                 transform.Translate(Vector3.up * 2.0f * Time.deltaTime);
                 if (_rope.CarculateUpPos(transform))
                 {
                     EscapeRope();
+                    SoundManager.instance.StopSFX("getladder");
                     _isRopeUp = false;
                 }
             }

@@ -24,15 +24,21 @@ public class Shop : MonoBehaviour
         playerSpeed.text = FileManager.playerInfo["speed"].ToString();
     }
 
+    private void Upgrade()
+    {
+        FileManager.playerInfo["skillpoint"]--;
+        FileManager.WriteData("DB_int_player.csv", FileManager.playerInfo);
+        skillPoint.text = FileManager.playerInfo["skillpoint"].ToString();
+        SoundManager.instance.PlaySFX("selectui");
+    }
+
     public void UpgradePlayerHP()
     {
         if(FileManager.playerInfo["skillpoint"] > 0)
         {
             FileManager.playerInfo["hp"] += upgradeValue_playerHP;
-            FileManager.playerInfo["skillpoint"]--;
-            FileManager.WriteData("DB_int_player.csv", FileManager.playerInfo);
             playerHP.text = FileManager.playerInfo["hp"].ToString();
-            skillPoint.text = FileManager.playerInfo["skillpoint"].ToString();
+            Upgrade();
         }
     }
 
@@ -41,10 +47,8 @@ public class Shop : MonoBehaviour
         if (FileManager.playerInfo["skillpoint"] > 0)
         {
             FileManager.playerInfo["shield"] += upgradeValue_playerShield;
-            FileManager.playerInfo["skillpoint"]--;
-            FileManager.WriteData("DB_int_player.csv", FileManager.playerInfo);
             playerShield.text = FileManager.playerInfo["shield"].ToString();
-            skillPoint.text = FileManager.playerInfo["skillpoint"].ToString();
+            Upgrade();
         }
     }
 
@@ -53,24 +57,17 @@ public class Shop : MonoBehaviour
         if (FileManager.playerInfo["skillpoint"] > 0)
         {
             FileManager.playerInfo["shield"] += upgradeValue_playerSpeed;
-            FileManager.playerInfo["skillpoint"]--;
-            FileManager.WriteData("DB_int_player.csv", FileManager.playerInfo);
             playerSpeed.text = FileManager.playerInfo["speed"].ToString();
-            skillPoint.text = FileManager.playerInfo["skillpoint"].ToString();
+            Upgrade();
         }
     }
 
     public void TouchWeaponIcon(int _index)
     {
         if(_shopWeaponIcons[_index].isembargo) // 무기가 해금되어 있는 상태라면
-        {
-            // 업그레이드를 위한 윈도우를 띄워준다.
-            _shopUpgradeWeaponWindow.Init(_shopWeaponIcons[_index]);
-        }
-        else 
-        {
-            // 해금을 위한 윈도우를 띄워준다.
-            _shopGetWeaponWindow.Init(_shopWeaponIcons[_index]);
-        }
+            _shopUpgradeWeaponWindow.Init(_shopWeaponIcons[_index]); // 업그레이드를 위한 윈도우를 띄워준다.
+        else
+            _shopGetWeaponWindow.Init(_shopWeaponIcons[_index]); // 해금을 위한 윈도우를 띄워준다.
+        SoundManager.instance.PlaySFX("selectui");
     }
 }

@@ -34,6 +34,7 @@ public class ShopGetWeapon : MonoBehaviour
             FileManager.WriteData("DB_int_player.csv", FileManager.playerInfo);
             FileManager.WriteData("DB_bool_weaponembargo.csv", FileManager.weaponembargo);
             shopGoldText.text = FileManager.playerInfo["gold"].ToString();
+            SoundManager.instance.PlaySFX("selectui");
             ExitButton();
         }
     }
@@ -41,5 +42,6 @@ public class ShopGetWeapon : MonoBehaviour
     public void ExitButton()
     {
         gameObject.SetActive(false);
+        SoundManager.instance.PlaySFX("selectui");
     }
 }

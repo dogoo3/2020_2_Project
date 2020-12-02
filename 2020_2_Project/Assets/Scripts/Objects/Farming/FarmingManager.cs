@@ -26,7 +26,7 @@ public class FarmingManager : MonoBehaviour
         instance = this;
 
         // 무기 해금여부에 따라서 스폰할 무기의 종류를 넣어줌
-        if (FileManager.weaponembargo["pistol"])
+        if (FileManager.weaponembargo[""])
             _activeItems.Add(i++, 0);
         if (FileManager.weaponembargo["smg"])
             _activeItems.Add(i++, 1);

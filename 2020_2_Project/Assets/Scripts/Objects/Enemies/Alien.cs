@@ -66,7 +66,7 @@ public class Alien : MonoBehaviour
                         _enemy._direction == Vector2.left && transform.position.x > _playerPos.position.x)
                     {
                         _animator.SetTrigger("attack");
-                        SoundManager.instance.PlaySFX("alien_Attack");
+                        SoundManager.instance.PlaySFX("alien_attack");
                         _enemy.isattack = true;
                         _isattackCool = true;
                     }
@@ -204,6 +204,7 @@ public class Alien : MonoBehaviour
     public void Dead() // Animator Func
     {
         gameObject.SetActive(false);
+        SoundManager.instance.PlaySFX("deadalien");
     }
     public void ShootMotion() // Animation Func
     {

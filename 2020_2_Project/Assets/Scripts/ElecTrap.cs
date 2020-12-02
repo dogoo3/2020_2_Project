@@ -39,7 +39,10 @@ public class ElecTrap : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
+        {
             Player.instance.Attacked(_damage);
+            SoundManager.instance.PlaySFX("attack_electrap");
+        }
     }
 
     public void StartCount() // Animation Func

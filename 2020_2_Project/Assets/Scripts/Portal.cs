@@ -12,6 +12,7 @@ public class Portal : MonoBehaviour
         {
             CineCamera.instance.SetOffset(collision.transform.position, _arrivePos.position);
             collision.transform.position = _arrivePos.position;
+            SoundManager.instance.PlaySFX("portal");
         }
     }
 }

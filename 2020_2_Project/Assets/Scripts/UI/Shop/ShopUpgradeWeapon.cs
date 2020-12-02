@@ -43,6 +43,7 @@ public class ShopUpgradeWeapon : MonoBehaviour
                 shopGoldText.text = FileManager.playerInfo["gold"].ToString();
                 upgDamageImage.fillAmount = ++FileManager.weaponLevel[_weaponInfo.weaponName + "_deal"] * 0.25f;
                 FileManager.WriteData("DB_int_weaponlevel.csv", FileManager.weaponLevel);
+                SoundManager.instance.PlaySFX("selectui");
             }
         }
     }
@@ -61,6 +62,7 @@ public class ShopUpgradeWeapon : MonoBehaviour
                 shopGoldText.text = FileManager.playerInfo["gold"].ToString();
                 upgCooltimeImage.fillAmount = ++FileManager.weaponLevel[_weaponInfo.weaponName + "_respawn"] * 0.25f;
                 FileManager.WriteData("DB_int_weaponlevel.csv", FileManager.weaponLevel);
+                SoundManager.instance.PlaySFX("selectui");
             }
         }
     }
@@ -68,5 +70,6 @@ public class ShopUpgradeWeapon : MonoBehaviour
     public void ExitButton()
     {
         gameObject.SetActive(false);
+        SoundManager.instance.PlaySFX("selectui");
     }
 }

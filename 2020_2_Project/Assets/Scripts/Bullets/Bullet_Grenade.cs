@@ -60,6 +60,7 @@ public class Bullet_Grenade : MonoBehaviour
                     _tempEnemy.MinusHP(Mathf.Abs(Vector2.Distance(transform.position, _tempEnemy.transform.position) * _bombRadius - 1) * _grenade.damage);
                 }
                 _animator.SetTrigger("bomb");
+                SoundManager.instance.PlaySFX("bombgre_deadrobot");
             }
             _grenade.LoadElapsedTime();
         }

@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemKind: 2
-  _sfxSoundname: 
+  _sfxSoundname: reload_sniper
   _mySpawnPoint: {fileID: 0}
   supplyValue: 5
 --- !u!50 &-3387910559147372471

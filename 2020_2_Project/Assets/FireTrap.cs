@@ -40,7 +40,10 @@ public class FireTrap : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
+        {
             Player.instance.Attacked(_damage);
+            SoundManager.instance.PlaySFX("attackfiretrap");
+        }
     }
 
     public void StartCount() // Animation Func

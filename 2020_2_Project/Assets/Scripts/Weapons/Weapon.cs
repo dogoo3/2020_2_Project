@@ -108,6 +108,7 @@ public class Sniper : Weapon // 저격소총
     public override void Shoot(Vector2 _origin, Vector2 _direction)
     {
         ObjectPoolingManager.instance.GetQueue_sniper(_origin, _direction);
+        SoundManager.instance.PlaySFX("shoot_sniper");
         SpendBullet();
     }
 
@@ -123,6 +124,7 @@ public class AR : Weapon // 기관단총
     public override void Shoot(Vector2 _origin, Vector2 _direction)
     {
         ObjectPoolingManager.instance.GetQueue_ar(_origin, _direction);
+        SoundManager.instance.PlaySFX("shoot_ar");
         SpendBullet();
     }
 
@@ -159,6 +161,7 @@ public class SG : Weapon // 샷건
                 ObjectPoolingManager.instance.GetQueue_sg(_origin, dir_bullet, _direction);
             }
         }
+        SoundManager.instance.PlaySFX("shoot_sg");
         SpendBullet();
     }
 
