@@ -128,8 +128,8 @@ GameObject:
   - component: {fileID: 8033967057350025738}
   - component: {fileID: 8033967057350025741}
   - component: {fileID: 8033967057350025740}
+  - component: {fileID: 2959430045912111492}
   - component: {fileID: 8033967057350025743}
-  - component: {fileID: 8033967057350025742}
   - component: {fileID: 8033967057350025739}
   - component: {fileID: 8149735091989305203}
   m_Layer: 10
@@ -227,6 +227,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!61 &2959430045912111492
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8033967057350025729}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.019166946, y: 0.010877132}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.535, y: 0.5}
+    oldSize: {x: 3.5, y: 3.5}
+    newSize: {x: 3.5, y: 3.5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.1396575, y: 2.912633}
+  m_EdgeRadius: 0
 --- !u!95 &8033967057350025743
 Animator:
   serializedVersion: 3
@@ -246,22 +272,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!70 &8033967057350025742
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8033967057350025729}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.08287525, y: 0.026083946}
-  m_Size: {x: 0.94273186, y: 2.997942}
-  m_Direction: 0
 --- !u!114 &8033967057350025739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,12 +288,13 @@ MonoBehaviour:
   score: 200
   minGold: 80
   maxGold: 100
-  _detectTime: 0
   _isboss: 0
   deadSfxname: 
   _direction: {x: 0, y: 0}
-  _isdetect: 0
-  _isjump: 0
+  isdetect: 0
+  isjump: 0
+  isattacked: 0
+  isattack: 0
 --- !u!114 &8149735091989305203
 MonoBehaviour:
   m_ObjectHideFlags: 0

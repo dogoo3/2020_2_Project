@@ -31,6 +31,7 @@ public class Alien : MonoBehaviour
     private void OnEnable()
     {
         _isDetectStart = false;
+        _isattackCool = true;
         _animator.SetFloat("direction", 1.0f);
         _animator.SetFloat("israge", 0.0f);
         // _isRage true시 능력치 원상복구

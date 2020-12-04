@@ -55,8 +55,11 @@ public class Enemy : MonoBehaviour
         }
         if(collision.CompareTag("bullet"))
         {
-            isattacked = true;
-            _animator.SetTrigger("attacked");
+            if (collision.gameObject.GetComponent<Bullet_Alian>() == null)
+            {
+                isattacked = true;
+                _animator.SetTrigger("attacked");
+            }
         }
     }
 

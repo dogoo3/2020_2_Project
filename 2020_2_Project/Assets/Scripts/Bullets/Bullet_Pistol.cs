@@ -9,10 +9,9 @@ public class Bullet_Pistol : MonoBehaviour
     private Bullet _pistol;
 
     private Color _color;
-    private Sprite _bulletSprite;
     private bool _isCrash;
 
-    [SerializeField] private Sprite _crashSprite = default;
+    [SerializeField] private Sprite[] _bulletSprites = default;
 
     public float damage;
     public float shotSpeed;
@@ -26,7 +25,7 @@ public class Bullet_Pistol : MonoBehaviour
         _pistol.shotSpeed = shotSpeed;
         _pistol.surviveTime = surviveTime;
         _color = Color.white;
-        _bulletSprite = _spriteRenderer.sprite;
+        _bulletSprites[2] = _spriteRenderer.sprite;
     }
 
     private void Update()
@@ -35,7 +34,6 @@ public class Bullet_Pistol : MonoBehaviour
             ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_pistol);
         if(_isCrash)
         {
-            _spriteRenderer.sprite = _crashSprite;
             _color.a = Mathf.Clamp(_color.a - 0.031372f, 0f, 1f);  // 0.5초에 사라지게 함.
             _spriteRenderer.color = _color;
             if(_color.a <= 0f)
@@ -49,7 +47,7 @@ public class Bullet_Pistol : MonoBehaviour
     {
         _color.a = 1.0f;
         _spriteRenderer.color = _color;
-        _spriteRenderer.sprite = _bulletSprite;
+        _spriteRenderer.sprite = _bulletSprites[2];
         _isCrash = false;
         _pistol.ResetElapsedTime();
     }
@@ -62,6 +60,7 @@ public class Bullet_Pistol : MonoBehaviour
             case "bullet":
             case "wall":
                 _isCrash = true;
+                _spriteRenderer.sprite = _bulletSprites[Random.Range(0, 2)];
                 SoundManager.instance.PlaySFX("bulletTowall");
                 break;
         }
@@ -72,12 +71,12 @@ public class Bullet_Pistol : MonoBehaviour
         switch (collision.tag)
         {
             case "enemy":
-                _isCrash = true;
                 _pistol.tempEnemy = collision.gameObject.GetComponent<Enemy>();
                 _pistol.tempEnemy.MinusHP(_pistol.damage);
                 // if (!_pistol.tempEnemy.CheckBoss())
                 // _pistol.tempEnemy.Knockback(_pistol._direction);
                 _isCrash = true;
+                _spriteRenderer.sprite = _bulletSprites[Random.Range(0, 2)];
                 SoundManager.instance.PlaySFX("bulletToenemy");
                 break;
         }

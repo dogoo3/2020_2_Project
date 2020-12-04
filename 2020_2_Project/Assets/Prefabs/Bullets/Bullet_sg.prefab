@@ -133,7 +133,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea9b0e3cd12d05246b72e2f1657c112f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _crashSprite: {fileID: 21300000, guid: 6936ed8cbb6242f47b7bdfa61e54c552, type: 3}
+  _bulletSprites:
+  - {fileID: -8785366120961519470, guid: 6cc047a293a097d43a608601cec56168, type: 3}
+  - {fileID: 1062731090831921314, guid: 6cc047a293a097d43a608601cec56168, type: 3}
+  - {fileID: 0}
   damage: 10
   shotSpeed: 22
   surviveTime: 0.07
