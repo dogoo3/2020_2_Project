@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 9168208334157468107}
   - component: {fileID: 5064595892958100184}
   - component: {fileID: 7594978766752560631}
+  - component: {fileID: 3944865318183327937}
   m_Layer: 10
   m_Name: AlienBoss
   m_TagString: enemy
@@ -195,6 +196,20 @@ MonoBehaviour:
   _moveSpeed: 6
   _attackCooltime: 1
   _detectTime: 2
+--- !u!114 &3944865318183327937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397329633978091416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b67e27c428b828049b5fb7cbf07aa7a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _monsters: []
+  _ActiveTime: 0
 --- !u!1 &1397329634231595515
 GameObject:
   m_ObjectHideFlags: 0

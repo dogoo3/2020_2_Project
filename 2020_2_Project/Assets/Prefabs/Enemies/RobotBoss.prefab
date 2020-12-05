@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 1790564070067650246}
   - component: {fileID: 1790564070067650245}
   - component: {fileID: 1790564070067650244}
+  - component: {fileID: 1099045747642870468}
   m_Layer: 10
   m_Name: RobotBoss
   m_TagString: enemy
@@ -281,3 +282,17 @@ MonoBehaviour:
   _moveSpeed: 8
   _attackCooltime: 1
   _attackRange: 2
+--- !u!114 &1099045747642870468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790564070067650243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b67e27c428b828049b5fb7cbf07aa7a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _monsters: []
+  _ActiveTime: 0

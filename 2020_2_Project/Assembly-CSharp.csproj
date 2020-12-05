@@ -87,6 +87,7 @@
     <Compile Include="Assets\Scripts\Manager\SoundManager.cs" />
     <Compile Include="Assets\Scripts\Manager\SpawnMonstersManager.cs" />
     <Compile Include="Assets\Scripts\Manager\WindowManager.cs" />
+    <Compile Include="Assets\Scripts\Objects\BossMonsterSpawn.cs" />
     <Compile Include="Assets\Scripts\Objects\Coin\Gold.cs" />
     <Compile Include="Assets\Scripts\Objects\Coin\GoldManager.cs" />
     <Compile Include="Assets\Scripts\Objects\Coin\InputGoldValue.cs" />

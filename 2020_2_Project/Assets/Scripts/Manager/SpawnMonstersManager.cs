@@ -64,8 +64,8 @@ public class SpawnMonstersManager : MonoBehaviour
 
     public void SpawnMonster(Enemy _enemy) // 외부에서 몬스터를 소환할 일이 있는 경우
     {
-        _spawnPointIndex = Random.Range(0, spawnMonstersPoint.Count); // 0 ~ 스폰 포인트의 범위에서 랜덤값 산출.
-        spawnMonstersPoint[_spawnPointIndex].Spawn(_enemy); // 랜덤으로 정해진 스폰포인트 인덱스의 위치에서 랜덤으로 정해진 적을 소환.
+        _spawnPointIndex = Random.Range(0, _copypoint.Count); // 0 ~ 스폰 포인트의 범위에서 랜덤값 산출.
+        _copypoint[_spawnPointIndex].Spawn(_enemy); // 랜덤으로 정해진 스폰포인트 인덱스의 위치에서 랜덤으로 정해진 적을 소환.
         _killNumber++; // 죽여야 하는 몬스터의마릿수를 1 증가시킴
     }
 

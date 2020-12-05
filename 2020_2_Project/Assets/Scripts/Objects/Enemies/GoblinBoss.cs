@@ -71,6 +71,7 @@ public class GoblinBoss : MonoBehaviour
         }
     }
 
+
     private void ActiveMonster()
     {
         for (int i = 0; i < goblins.Length; i++)
