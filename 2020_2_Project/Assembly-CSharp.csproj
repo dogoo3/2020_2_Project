@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\Bullets\Bullet_Alian.cs" />
     <Compile Include="Assets\Scripts\Bullets\Bullet_Grenade.cs" />
     <Compile Include="Assets\Scripts\Bullets\Bullet_Pistol.cs" />
+    <Compile Include="Assets\Scripts\Bullets\Bullet_Robot.cs" />
     <Compile Include="Assets\Scripts\Bullets\Bullet_SG.cs" />
     <Compile Include="Assets\Scripts\Bullets\Bullet_SMG.cs" />
     <Compile Include="Assets\Scripts\Bullets\Bullet_Sniper.cs" />

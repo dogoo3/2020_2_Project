@@ -205,7 +205,6 @@ public class Alien : MonoBehaviour
     public void Dead() // Animator Func
     {
         gameObject.SetActive(false);
-        SoundManager.instance.PlaySFX("deadalien");
     }
     public void ShootMotion() // Animation Func
     {

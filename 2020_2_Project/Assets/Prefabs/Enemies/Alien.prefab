@@ -259,7 +259,7 @@ MonoBehaviour:
   minGold: 200
   maxGold: 300
   _isboss: 0
-  deadSfxname: 
+  deadSfxname: deadalien
   _direction: {x: 0, y: 0}
   isdetect: 0
   isjump: 0

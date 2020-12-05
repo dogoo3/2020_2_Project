@@ -118,3 +118,13 @@ public class B_Ailan : Bullet
         return _direction * shotSpeed * Time.deltaTime;
     }
 }
+
+public class B_Robot : Bullet
+{
+    public override Vector2 Throw(Vector2 _direction)
+    {
+        this._direction = Vector2.up;
+        this._direction.x = _direction.x;
+        return this._direction;
+    }
+}

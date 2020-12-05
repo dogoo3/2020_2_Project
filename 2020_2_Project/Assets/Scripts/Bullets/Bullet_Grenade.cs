@@ -75,6 +75,7 @@ public class Bullet_Grenade : MonoBehaviour
     private void OnDisable()
     {
         _grenade.ResetElapsedTime();
+
         _isbomb = false;
         _rigidbody2d.freezeRotation = false;
         _animator.Rebind();

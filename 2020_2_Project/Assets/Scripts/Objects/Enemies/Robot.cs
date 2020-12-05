@@ -5,19 +5,18 @@ using UnityEngine;
 public class Robot : MonoBehaviour
 {
     private Rigidbody2D _rigidbody2d;
-    private CapsuleCollider2D _collider2d;
+    private BoxCollider2D _collider2d;
     private Animator _animator;
     private Collider2D _changemotionpoint;
     private Enemy _enemy;
-    private EnemyWeapon _weapon;
 
     private RaycastHit2D _rayPlayer;
 
     private Transform _playerPos;
 
+    [SerializeField] private Transform _handpos = default;
     [SerializeField] private float _moveSpeed = default;
     [SerializeField] private float _attackCooltime = default;
-    [SerializeField] private float _damage = default;
     [SerializeField] private float _attackRange = default;
 
     private bool _isDetectStart;
@@ -28,10 +27,8 @@ public class Robot : MonoBehaviour
     {
         _rigidbody2d = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
-        _collider2d = GetComponent<CapsuleCollider2D>();
+        _collider2d = GetComponent<BoxCollider2D>();
         _enemy = GetComponent<Enemy>();
-        _weapon = GetComponentInChildren<EnemyWeapon>();
-        _weapon.InputDamage(_damage);
     }
 
     private void Start()
@@ -89,7 +86,7 @@ public class Robot : MonoBehaviour
 
     public void CheckChangeMotionPoint()
     {
-        _changemotionpoint = Physics2D.OverlapCapsule((Vector2)transform.position + _collider2d.offset,
+        _changemotionpoint = Physics2D.OverlapBox((Vector2)transform.position + _collider2d.offset,
             _collider2d.size, 0, 0, 1 << LayerMask.NameToLayer("ChangePoint"));
         if (_changemotionpoint != null)
         {
@@ -130,5 +127,9 @@ public class Robot : MonoBehaviour
             }
         }
         CheckChangeMotionPoint();
+    }
+    public void ShootMotion()
+    {
+        ObjectPoolingManager.instance.GetQueue_RobotGrenade(_handpos.position, _enemy._direction);
     }
 }

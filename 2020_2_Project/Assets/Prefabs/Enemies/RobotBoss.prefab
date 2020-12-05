@@ -9,10 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1790564068559100665}
-  - component: {fileID: 1790564068559100667}
-  - component: {fileID: 1790564068559100666}
   m_Layer: 10
-  m_Name: AttackCollider
+  m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,34 +30,6 @@ Transform:
   m_Father: {fileID: 1790564070067650250}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &1790564068559100667
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1790564068559100664}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
---- !u!114 &1790564068559100666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1790564068559100664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4eeaba5ca9a9a849a31e2c201a7546e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1790564069943256903
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,7 +98,7 @@ GameObject:
   - component: {fileID: 1790564070067650250}
   - component: {fileID: 1790564070067650249}
   - component: {fileID: 1790564070067650248}
-  - component: {fileID: 1790564070067650247}
+  - component: {fileID: 5472708246336031865}
   - component: {fileID: 1790564070067650246}
   - component: {fileID: 1790564070067650245}
   - component: {fileID: 1790564070067650244}
@@ -227,8 +197,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!70 &1790564070067650247
-CapsuleCollider2D:
+--- !u!61 &5472708246336031865
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -240,9 +210,19 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.024627209, y: -0.018902302}
-  m_Size: {x: 2.2252703, y: 4.9139004}
-  m_Direction: 0
+  m_Offset: {x: 0.06250733, y: -0.007813215}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5, y: 5.5}
+    newSize: {x: 5, y: 5.5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.1246676, y: 4.7967944}
+  m_EdgeRadius: 0
 --- !u!95 &1790564070067650246
 Animator:
   serializedVersion: 3
@@ -278,7 +258,6 @@ MonoBehaviour:
   score: 1000
   minGold: 800
   maxGold: 900
-  _detectTime: 2
   _isboss: 0
   deadSfxname: 
   _direction: {x: 0, y: 0}
@@ -298,7 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27d9a71275b723b43a013fabb0ec869c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _handpos: {fileID: 1790564068559100665}
   _moveSpeed: 8
   _attackCooltime: 1
-  _damage: 30
   _attackRange: 2

@@ -17,6 +17,7 @@ public class ObjectPoolingManager : MonoBehaviour
     public Bullet_SG sg;
     public Bullet_Grenade grenade;
     public Bullet_Alian alianBullet;
+    public Bullet_Robot robotgrenade;
     public Gold gold;
 
     public FarmingItem farm_pistol;
@@ -36,6 +37,7 @@ public class ObjectPoolingManager : MonoBehaviour
     private Bullet_SG _sg;
     private Bullet_Grenade _grenade;
     private Bullet_Alian _alianBullet;
+    private Bullet_Robot _robotgrenade;
     private Gold _gold;
 
     private FarmingItem _farmItem;
@@ -48,6 +50,7 @@ public class ObjectPoolingManager : MonoBehaviour
     public Queue<Bullet_SG> queue_sg = new Queue<Bullet_SG>();
     public Queue<Bullet_Grenade> queue_grenade = new Queue<Bullet_Grenade>();
     public Queue<Bullet_Alian> queue_alianBullet = new Queue<Bullet_Alian>();
+    public Queue<Bullet_Robot> queue_robotgrenade = new Queue<Bullet_Robot>();
     public Queue<Gold> queue_gold = new Queue<Gold>();
 
     public Queue<FarmingItem> queue_f_pistol = new Queue<FarmingItem>();
@@ -139,6 +142,12 @@ public class ObjectPoolingManager : MonoBehaviour
             Init(farm_hp, queue_f_hp, "hp", i);
             Init(farm_shield, queue_f_shield, "shield", i);
         }
+
+        if(robotgrenade != null)
+        {
+            for (i = 0; i < 20; i++)
+                Init(robotgrenade, queue_robotgrenade, "RobotGrenade", i);
+        }
     }
 
     public void InsertQueue<T>(T _object, Queue<T> _queue) where T : MonoBehaviour
@@ -229,6 +238,17 @@ public class ObjectPoolingManager : MonoBehaviour
             _alianBullet.transform.position = _origin;
             _alianBullet.gameObject.SetActive(true);
             _alianBullet.Direction(_direction);
+        }
+    }
+
+    public void GetQueue_RobotGrenade(Vector2 _origin, Vector2 _direction)
+    {
+        if (queue_robotgrenade.Count != 0)
+        {
+            _robotgrenade = queue_robotgrenade.Dequeue();
+            _robotgrenade.transform.position = _origin;
+            _robotgrenade.gameObject.SetActive(true);
+            _robotgrenade.Throw(_direction);
         }
     }
 
