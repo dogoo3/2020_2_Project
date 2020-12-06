@@ -31,7 +31,7 @@ public class BossMonsterSpawn : MonoBehaviour
         }
     }
 
-    public void Dead() // Animation Func
+    public void InvalidSpawnMonster() // Animation Func
     {
         CancelInvoke("ActiveMonster");
     }

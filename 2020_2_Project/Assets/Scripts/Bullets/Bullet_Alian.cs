@@ -4,14 +4,14 @@ using System.Collections;
 public class Bullet_Alian : MonoBehaviour
 {
     private SpriteRenderer _spriteRenderer;
+    private CircleCollider2D _collider2d;
 
     private Bullet _alian;
 
     private Color _color;
-    private Sprite _bulletSprite;
     private bool _isCrash;
 
-    [SerializeField] private Sprite _crashSprite = default;
+    [SerializeField] private Sprite[] _bulletSprites = default;
 
     public float damage;
     public float shotSpeed;
@@ -20,12 +20,13 @@ public class Bullet_Alian : MonoBehaviour
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _collider2d = GetComponent<CircleCollider2D>();
         _alian = new B_Ailan();
         _alian.damage = damage;
         _alian.shotSpeed = shotSpeed;
         _alian.surviveTime = surviveTime;
         _color = Color.white;
-        _bulletSprite = _spriteRenderer.sprite;
+        _bulletSprites[2] = _spriteRenderer.sprite;
     }
 
     private void Update()
@@ -34,7 +35,6 @@ public class Bullet_Alian : MonoBehaviour
             ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_alianBullet);
         if (_isCrash)
         {
-            _spriteRenderer.sprite = _crashSprite;
             _color.a = Mathf.Clamp(_color.a - 0.031372f, 0f, 1f);  // 0.5초에 사라지게 함.
             _spriteRenderer.color = _color;
             if (_color.a <= 0f)
@@ -48,8 +48,9 @@ public class Bullet_Alian : MonoBehaviour
     {
         _color.a = 1.0f;
         _spriteRenderer.color = _color;
-        _spriteRenderer.sprite = _bulletSprite;
+        _spriteRenderer.sprite = _bulletSprites[2];
         _isCrash = false;
+        _collider2d.enabled = true;
         _alian.ResetElapsedTime();
     }
 
@@ -61,6 +62,8 @@ public class Bullet_Alian : MonoBehaviour
             case "bullet":
             case "wall":
                 _isCrash = true;
+                _spriteRenderer.sprite = _bulletSprites[Random.Range(0, 2)];
+                _collider2d.enabled = false;
                 SoundManager.instance.PlaySFX("bulletTowall");
                 break;
         }
@@ -73,7 +76,8 @@ public class Bullet_Alian : MonoBehaviour
             case "Player":
                 Player.instance.Attacked(damage);
                 _isCrash = true;
-                // SoundManager.instance.PlaySFX("bulletToenemy");
+                _collider2d.enabled = false;
+                _spriteRenderer.sprite = _bulletSprites[Random.Range(0, 2)];
                 break;
         }
     }

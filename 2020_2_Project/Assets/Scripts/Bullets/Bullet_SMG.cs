@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet_SMG : MonoBehaviour
 {
     private SpriteRenderer _spriteRenderer;
+    private CircleCollider2D _collider2d;
 
     private Bullet _smg;
 
@@ -20,6 +21,7 @@ public class Bullet_SMG : MonoBehaviour
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _collider2d = GetComponent<CircleCollider2D>();
         _smg = new B_SMG();
         _smg.damage = FileManager.weaponInfo["smg_deal"];
         _smg.shotSpeed = shotSpeed;
@@ -49,6 +51,7 @@ public class Bullet_SMG : MonoBehaviour
         _spriteRenderer.color = _color;
         _spriteRenderer.sprite = _bulletSprites[2];
         _isCrash = false;
+        _collider2d.enabled = transform;
         _smg.ResetElapsedTime();
     }
 
@@ -60,6 +63,7 @@ public class Bullet_SMG : MonoBehaviour
             case "bullet":
             case "wall":
                 _isCrash = true;
+                _collider2d.enabled = false;
                 _spriteRenderer.sprite = _bulletSprites[Random.Range(0, 2)];
                 SoundManager.instance.PlaySFX("bulletTowall");
                 break;
@@ -76,6 +80,7 @@ public class Bullet_SMG : MonoBehaviour
                 // if (!_smg.tempEnemy.CheckBoss())
                 // _smg.tempEnemy.Knockback(_smg._direction);
                 _isCrash = true;
+                _collider2d.enabled = false;
                 _spriteRenderer.sprite = _bulletSprites[Random.Range(0, 2)];
                 SoundManager.instance.PlaySFX("bulletToenemy");
                 break;

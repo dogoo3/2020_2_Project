@@ -1975,8 +1975,8 @@ MonoBehaviour:
   playerSpeed: {fileID: 932417243}
   playerShield: {fileID: 1404349587}
   upgradeValue_playerHP: 50
-  upgradeValue_playerSpeed: 10
-  upgradeValue_playerShield: 4
+  upgradeValue_playerSpeed: 3
+  upgradeValue_playerShield: 50
   _shopWeaponIcons:
   - {fileID: 125780039}
   - {fileID: 1500305396}

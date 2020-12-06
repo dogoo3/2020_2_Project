@@ -45,8 +45,6 @@ public class GameOverWindow : MonoBehaviour
         GoldManager.instance.FailResetGold();
         // 해당 라운드에 활성화되어있는 골드 삭제
         RoundManager.instance.AllGetCoin();
-        // 몬스터 스폰 포인트 초기화
-
     }
 
     public void TouchExitButton(string _stage)

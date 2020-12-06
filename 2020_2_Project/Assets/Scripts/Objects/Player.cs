@@ -182,6 +182,7 @@ public class Player : MonoBehaviour
             else // 로프 감지 시
             {
                 DetectRope();
+                _animator.SetFloat("ropemove", 1.0f);
                 _isRopeDown = true;
             }
         }

@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\FireTrap.cs" />
+    <Compile Include="Assets\Scripts\AdvertiseSAGE.cs" />
     <Compile Include="Assets\Scripts\BackDoor\RoundClear.cs" />
     <Compile Include="Assets\Scripts\Bullets\Bullet.cs" />
     <Compile Include="Assets\Scripts\Bullets\Bullet_AR.cs" />

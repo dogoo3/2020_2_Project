@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     private Rigidbody2D _rigidbody2d;
+    private Collider2D _collider2d;
     private Animator _animator;
 
     private bool _isDef; // Goblin을 위한 방어력 증가 변수
@@ -31,6 +32,7 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         _rigidbody2d = GetComponent<Rigidbody2D>();
+        _collider2d = GetComponent<Collider2D>();
         _animator = GetComponent<Animator>();
         _isDef = false;
         _resetHP = HP;
@@ -40,6 +42,7 @@ public class Enemy : MonoBehaviour
     {
         _isDead = false;
         isdetect = false;
+        _collider2d.enabled = true;
         _rigidbody2d.bodyType = RigidbodyType2D.Dynamic;
         _direction = Vector2.right;
         _animator.SetFloat("direction", _direction.x);
@@ -80,6 +83,7 @@ public class Enemy : MonoBehaviour
                     SpawnMonstersManager.instance.CatchMonster();
                     ObjectPoolingManager.instance.GetQueue_gold(transform.position, Random.Range(minGold, maxGold));
                     // 나중에 Parameter로 goldMin, goldMax도 같이 넘겨줄 것...
+                    _collider2d.enabled = false;
                     _animator.SetTrigger("dead");
                     SoundManager.instance.PlaySFX(deadSfxname);
                     _isDead = true;

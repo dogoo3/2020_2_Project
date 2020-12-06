@@ -50,6 +50,9 @@ public class Goblin : MonoBehaviour
         _enemy._direction = Vector2.right;
         _animator.SetFloat("direction", _enemy._direction.x);
         _isDetectStart = false;
+        _enemy.isattack = false;
+        _enemy.isjump = false;
+        _enemy.isdetect = false;
         _elapsedDetectTime = 0;
     }
 

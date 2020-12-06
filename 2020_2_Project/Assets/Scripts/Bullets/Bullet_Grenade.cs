@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet_Grenade : MonoBehaviour
 {
     private Rigidbody2D _rigidbody2d;
+    private CircleCollider2D _collider2d;
     private Animator _animator;
 
     private Bullet _grenade;
@@ -22,10 +23,12 @@ public class Bullet_Grenade : MonoBehaviour
 
     public float bombRadius; // 폭발 반경
     private float _bombRadius;
+    private bool _isground;
 
     private void Awake()
     {
         _rigidbody2d = GetComponent<Rigidbody2D>();
+        _collider2d = GetComponent<CircleCollider2D>();
         _animator = GetComponent<Animator>();
 
         _direction = Vector2.up;
@@ -60,16 +63,26 @@ public class Bullet_Grenade : MonoBehaviour
                     _tempEnemy.MinusHP(Mathf.Abs(Vector2.Distance(transform.position, _tempEnemy.transform.position) * _bombRadius - 1) * _grenade.damage);
                 }
                 _animator.SetTrigger("bomb");
+                _collider2d.enabled = false;
                 SoundManager.instance.PlaySFX("bombgre_deadrobot");
             }
-            _grenade.LoadElapsedTime();
+            else
+            {
+                _grenade.LoadElapsedTime();
+                if (_isground)
+                    _rigidbody2d.velocity -= _direction;
+            }
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("ground"))
+        {
             _rigidbody2d.velocity *= 0.2f;
+            _isground = true;
+            Invoke("Stop", 1.0f);
+        }
     }
 
     private void OnDisable()
@@ -77,12 +90,19 @@ public class Bullet_Grenade : MonoBehaviour
         _grenade.ResetElapsedTime();
 
         _isbomb = false;
+        _collider2d.enabled = true;
         _rigidbody2d.freezeRotation = false;
+        _isground = false;
         _animator.Rebind();
     }
 
     public void InsertQueue() // Animation Func
     {
         ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_grenade);
+    }
+    private void Stop()
+    {
+        _rigidbody2d.velocity = Vector2.zero;
+        _rigidbody2d.angularVelocity = 0f;
     }
 }

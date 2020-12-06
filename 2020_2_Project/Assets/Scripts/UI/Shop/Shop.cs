@@ -56,7 +56,7 @@ public class Shop : MonoBehaviour
     {
         if (FileManager.playerInfo["skillpoint"] > 0)
         {
-            FileManager.playerInfo["shield"] += upgradeValue_playerSpeed;
+            FileManager.playerInfo["speed"] += upgradeValue_playerSpeed;
             playerSpeed.text = FileManager.playerInfo["speed"].ToString();
             Upgrade();
         }

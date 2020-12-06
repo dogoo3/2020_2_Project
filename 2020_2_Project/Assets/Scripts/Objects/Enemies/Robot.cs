@@ -40,6 +40,8 @@ public class Robot : MonoBehaviour
     {
         _isDetectStart = false;
         _elapseAttackCooltime = 0f;
+        _enemy.isattack = false;
+        _enemy.isattacked = false;
     }
 
     private void Update()
