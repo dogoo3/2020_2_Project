@@ -1137,7 +1137,8 @@ MonoBehaviour:
   upgradeCooltime: 0.1
   cost_upgradeDamage: 10
   cost_upgradeCooltime: 10
-  descText: "\uC77C\uC9C1\uC120\uC73C\uB85C 3\uBC1C\uC744 \uC810\uC0AC\uD568"
+  descText: "\uC77C\uC9C1\uC120\uC73C\uB85C \uC7A5\uC2DC\uAC04 \uCD1D\uC54C\uC744
+    \uBC1C\uC0AC"
   lockIcon: {fileID: 971801710}
 --- !u!1 &183762137
 GameObject:

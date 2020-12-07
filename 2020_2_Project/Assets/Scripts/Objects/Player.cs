@@ -367,7 +367,7 @@ public class Player : MonoBehaviour
         _catchRopeHeight = transform.position;
         _catchRopeHeight.x = _detectRope.transform.position.x;
         transform.position = _catchRopeHeight;
-        //_oldDirectionPos = _directionPos;
+        // _oldDirectionPos = _directionPos;
         _isRope = true;
     }
 
