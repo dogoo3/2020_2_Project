@@ -73,7 +73,10 @@ public class SpawnMonstersManager : MonoBehaviour
     {
         _nowkillNumber++; // 처치 수 ++
         if (_killNumber == _nowkillNumber) // 라운드의 모든 몬스터 처치 시
+        {
             Invoke("ShowClearWindow", 3.0f); // 클리어 윈도우를 띄운다.
+            TimeManager.instance.SetTimer(false);
+        }
     }
 
     public void ResetEnemyList()

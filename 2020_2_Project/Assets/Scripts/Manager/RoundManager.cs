@@ -40,6 +40,8 @@ public class RoundManager : MonoBehaviour
         SoundManager.instance.PlayBGM(bgmname[nowRound]);
         SpawnMonstersManager.instance.GameStart();
         FarmingManager.instance.GameStart();
+        TimeManager.instance.Init(nowRound);
+        TimeManager.instance.SetTimer(true);
     }
 
     public void PlayBeepSound() // Animator Func

@@ -389,6 +389,7 @@ public class Player : MonoBehaviour
             _isdead = true;
             CancelBlink();
             SoundManager.instance.PlaySFX("playerdead");
+            TimeManager.instance.SetTimer(false);
             WindowManager.instance.Invoke("ShowFailWindow",3.0f); // 3초 뒤에 실패 윈도우를 띄운다.
             _animator.SetTrigger("dead");
             _movePos = Vector2.zero;
@@ -400,7 +401,6 @@ public class Player : MonoBehaviour
         _hp = 0;
         GaugeManager.instance.SetHpGauge(_hp);
         CheckDead();
-        // 나중에 여기에 SFX 하나 넣어줄 것.
     }
 
     private void Update()

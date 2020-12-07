@@ -73,7 +73,7 @@ public class GameOverWindow : MonoBehaviour
         ObjectPoolingManager.instance = null;
         SpawnMonstersManager.instance = null;
         WindowManager.instance = null;
-
+        TimeManager.instance = null;
         SceneManager.LoadScene("Title");
     }
 
@@ -92,5 +92,7 @@ public class GameOverWindow : MonoBehaviour
         FarmingManager.instance.ClearItem();
         // 이 UI 없앰
         gameObject.SetActive(false);
+        // TimeManager의 텍스트 삭제
+        TimeManager.instance.DeleteText();
     }
 }
