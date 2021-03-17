@@ -104,7 +104,7 @@ public class WeaponManager : MonoBehaviour
     public void Shoot(Vector2 _origin, Vector2 _direction)
     {
         _weapons[(int)selectWeapon].Shoot(_origin, _direction);
-        if (_weapons[(int)selectWeapon].bulletCount == 0)
+        if (_weapons[(int)selectWeapon].bulletCount <= 0)
             _weaponSelectors[(int)selectWeapon].Exhaust();
     }
 
@@ -124,7 +124,7 @@ public class WeaponManager : MonoBehaviour
 
     public bool IsShootWeapon() // 총알을 발사할 수 있는지를 판단하는 함수. 
     {
-        if (_weapons[(int)selectWeapon].bulletCount == 0) // 총알이 한 발도 없으면 false 반환
+        if (_weapons[(int)selectWeapon].bulletCount <= 0) // 총알이 한 발도 없으면 false 반환
             return false;
         else
         {
