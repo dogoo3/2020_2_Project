@@ -27,7 +27,7 @@ public class Weapon
 
     protected void SpendBullet()
     {
-        bulletCount = Mathf.Clamp(bulletCount--, 0, 999);
+        bulletCount = Mathf.Clamp(bulletCount-1, 0, 999);
         Init();
     }
 

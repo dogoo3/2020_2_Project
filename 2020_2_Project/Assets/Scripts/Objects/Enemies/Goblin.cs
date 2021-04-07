@@ -71,9 +71,11 @@ public class Goblin : MonoBehaviour
                     _rayPlayer = Physics2D.Raycast(transform.position + Vector3.down, _enemy._direction, 1.0f, 1 << LayerMask.NameToLayer("Player"));
                     if(_rayPlayer.collider != null)
                     {
-                        Player.instance.Attacked(damage);
-                        _enemy.isattack = true;
-                        _animator.SetTrigger("attack");
+                        if (Player.instance.Attacked(damage)) // 플레이어가 무적상태이면 공격모션 자체를 실행하지 않음.
+                        {
+                            _enemy.isattack = true;
+                            _animator.SetTrigger("attack");
+                        }
 
                         _elapsedDetectTime = 0;
                         _enemy.isdetect = false;
@@ -89,14 +91,13 @@ public class Goblin : MonoBehaviour
             }
             else
             {
-                if (!_enemy.isattack)
+                if (!_enemy.isattack) // 공격중이 아닐때는 이동
                     transform.Translate(_enemy._direction * moveSpeed * Time.deltaTime);
 
-                // 쿨타임 연산
+                // 감지 쿨타임 연산
                 if (_elapsedDetectTime <= _detectCoolTime)
                     _elapsedDetectTime += Time.deltaTime;
-
-                if (_elapsedDetectTime > _detectCoolTime) // 감지 쿨타임이  
+                else
                 {
                     // rayLength 안에 있을 때만 Raycast 발사
                     if (Vector2.Distance(transform.position, _playerPos.position) <= rayLength)

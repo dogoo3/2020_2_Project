@@ -220,6 +220,10 @@ MonoBehaviour:
   _isboss: 0
   deadSfxname: zombiedead
   _direction: {x: 0, y: 0}
+  isdetect: 0
+  isjump: 0
+  isattacked: 0
+  isattack: 0
 --- !u!114 &3230243925740643267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,7 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
-  moveSpeed: 3
-  detectPlayerSpeed: 7
+  moveSpeed: 5
+  detectPlayerSpeed: 8
   detectTime: 2
   rayLength: 5

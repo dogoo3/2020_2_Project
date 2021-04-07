@@ -252,10 +252,10 @@ public class Player : MonoBehaviour
         GaugeManager.instance.ResetGauge();
     }
 
-    public void Attacked(float _damage)
+    public bool Attacked(float _damage)
     {
         if (_isattacked)
-            return;
+            return false;
 
         if(_isshield)
         {
@@ -266,7 +266,7 @@ public class Player : MonoBehaviour
 
             SoundManager.instance.PlaySFX("shielddef");
             Invoke("DEFShield", 1.0f);
-            return;
+            return true;
         }
         _hp -= _damage;
         GaugeManager.instance.SetHpGauge(_hp);
@@ -279,6 +279,7 @@ public class Player : MonoBehaviour
             Invoke("CancelBlink", _invincibleTime);
         }
         CheckDead();
+        return true;
     }
 
     private void DEFShield()
