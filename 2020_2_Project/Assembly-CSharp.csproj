@@ -62,9 +62,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\FireTrap.cs" />
-    <Compile Include="Assets\GameNotice.cs" />
-    <Compile Include="Assets\GameNoticePanel.cs" />
     <Compile Include="Assets\Scripts\AdvertiseSAGE.cs" />
     <Compile Include="Assets\Scripts\BackDoor\RoundClear.cs" />
     <Compile Include="Assets\Scripts\Bullets\Bullet.cs" />
@@ -77,6 +74,9 @@
     <Compile Include="Assets\Scripts\Bullets\Bullet_SMG.cs" />
     <Compile Include="Assets\Scripts\Bullets\Bullet_Sniper.cs" />
     <Compile Include="Assets\Scripts\CineCamera.cs" />
+    <Compile Include="Assets\Scripts\FireTrap.cs" />
+    <Compile Include="Assets\Scripts\GameNotice.cs" />
+    <Compile Include="Assets\Scripts\GameNoticePanel.cs" />
     <Compile Include="Assets\Scripts\IngameWindow\GameOverWindow.cs" />
     <Compile Include="Assets\Scripts\Manager\FileManager.cs" />
     <Compile Include="Assets\Scripts\Manager\GaugeManager.cs" />
