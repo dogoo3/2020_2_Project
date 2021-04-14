@@ -62,7 +62,6 @@ public class TimeManager : MonoBehaviour
             {
                 if(_sec <= 30.0f && _sec >= 10.0f)
                 {
-                    Debug.Log("adshjfklasd");
                     _color.g = Mathf.Clamp(_color.g - 0.001f, 0, 255);                
                     _color.b = Mathf.Clamp(_color.b - 0.001f, 0, 255);
                     _text.color = _color;

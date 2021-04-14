@@ -14,7 +14,9 @@ public class Player : MonoBehaviour
     private BoxCollider2D _groundCollider;
 
     private Collider2D _detectRope;
-    
+
+    private RaycastHit2D _ray2d;
+
     private Vector2 _movePos, _directionPos, _jumpvalue;
     private Vector2 _oldDirectionPos; // 위 보는 키 누를 때 이전 시점을 저장하는 변수
     private Vector2 _catchRopeHeight;
@@ -61,12 +63,11 @@ public class Player : MonoBehaviour
     {
         GaugeManager.instance.InitMaxValue(_hp, _shield);
     }
-    
+
     public void Move(int _direction)
     {
         if (_isdead || _isSquash)
             return;
-
         _animator.SetFloat("direction", _direction);
         _animator.SetBool("move", true);
         _movePos.x = _direction;
@@ -231,7 +232,7 @@ public class Player : MonoBehaviour
 
     public void ShootMotion() // 발사 버튼을 누르고 난 뒤 애니메이션 프레임에서 작동하는 함수
     {
-         WeaponManager.instance.Shoot(muzzleGunPos.position, _directionPos);
+        WeaponManager.instance.Shoot(muzzleGunPos.position, _directionPos);
     }
 
     public void CheckShootAfterLookup()
@@ -257,7 +258,7 @@ public class Player : MonoBehaviour
         if (_isattacked)
             return false;
 
-        if(_isshield)
+        if (_isshield)
         {
             if (_shield >= 50.0f)
                 _shield -= 50.0f;
@@ -291,7 +292,7 @@ public class Player : MonoBehaviour
     {
         return _isattacked;
     }
-    
+
     public bool GetisDead() // 클리어를 띄울 때 플레이어 사망 유무를 반환하는 함수.
     {
         return _isdead;
@@ -353,7 +354,7 @@ public class Player : MonoBehaviour
         _shield = Mathf.Clamp(_shield + _healValue, 0, _maxshield);
         GaugeManager.instance.SetShieldGauge(_shield);
     }
-    
+
     private void DetectRope()
     {
         if (_isjump) // 점프 후 사다리를 타면 점프 애니메이션 취소
@@ -385,13 +386,13 @@ public class Player : MonoBehaviour
 
     private void CheckDead()
     {
-        if(_hp <= 0 && !_isdead)
+        if (_hp <= 0 && !_isdead)
         {
             _isdead = true;
             CancelBlink();
             SoundManager.instance.PlaySFX("playerdead");
             TimeManager.instance.SetTimer(false);
-            WindowManager.instance.Invoke("ShowFailWindow",3.0f); // 3초 뒤에 실패 윈도우를 띄운다.
+            WindowManager.instance.Invoke("ShowFailWindow", 3.0f); // 3초 뒤에 실패 윈도우를 띄운다.
             _animator.SetTrigger("dead");
             _movePos = Vector2.zero;
         }
@@ -408,8 +409,16 @@ public class Player : MonoBehaviour
     {
         if (!_isdead) // dead가 true이면 플레이어가 죽었다는 의미.
         {
-            if(!_isRope) // 로프를 타고 있을때는 키를 눌러도 이동하지 않음.
-                transform.Translate(_movePos.normalized * Time.deltaTime * _speed);
+            if (!_isRope) // 로프를 타고 있을때는 키를 눌러도 이동하지 않음.
+            {
+                if (_movePos.x != 0)
+                {
+                    _ray2d = Physics2D.Raycast(transform.position + (Vector3)_groundCollider.offset, _movePos, _groundCollider.size.x / 2.0f + 0.07f,
+                    1 << LayerMask.NameToLayer("Ground") | 1 << LayerMask.NameToLayer("Wall"));
+                }
+                if(_ray2d.collider == null)
+                    transform.Translate(_movePos.normalized * Time.deltaTime * _speed);
+            }
             if (_isshield) // 실드 키를 누르고 있을 때.
             {
                 GaugeManager.instance.SetShieldGauge(_shield -= 0.16f);
@@ -427,7 +436,7 @@ public class Player : MonoBehaviour
             else
                 _lookupTime = Mathf.Clamp(_lookupTime - 0.33333333f, 0, 1f);
 
-            if(_isRopeDown)
+            if (_isRopeDown)
             {
                 SoundManager.instance.PlaySFX("getladder", false);
                 transform.Translate(Vector3.down * 2.0f * Time.deltaTime);
@@ -438,7 +447,7 @@ public class Player : MonoBehaviour
                     _isRopeDown = false;
                 }
             }
-            if(_isRopeUp)
+            if (_isRopeUp)
             {
                 SoundManager.instance.PlaySFX("getladder", false);
                 transform.Translate(Vector3.up * 2.0f * Time.deltaTime);
