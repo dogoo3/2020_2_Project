@@ -32,6 +32,39 @@ public class FileManager : MonoBehaviour
         ReadData("DB_int_weaponlevel.csv", weaponLevel);
     }
 
+    public void ReadData<T>(string _filename, Dictionary<string, T> _readDic)
+    {
+        string filepath = PathForDocumentsFile(_filename);
+        
+        if (File.Exists(filepath)) // 이 파일이 존재한다면
+        {
+            List<string> readList = ReadData_oldFile(filepath);
+
+            for (int i = 0; i < readList.Count; i += 2)
+                _readDic.Add(readList[i].ToString(), (T)Convert.ChangeType(readList[i + 1], typeof(T)));
+        }
+        else // 파일이 존재하지 않다면(앱 설치 후 첫 실행 시에만 작동)
+        {
+            List<string> readList = ReadData_newFile(_filename);
+
+            for (int i = 0; i < readList.Count; i += 2)
+                _readDic.Add(readList[i].ToString(), (T)Convert.ChangeType(readList[i + 1], typeof(T)));
+        }
+    }
+
+    public static void WriteData<T>(string _filename, Dictionary<string, T> _saveDic)
+    {
+        string path = PathForDocumentsFile(_filename);
+        FileStream f = new FileStream(path, FileMode.Create, FileAccess.Write);
+
+        StreamWriter writer = new StreamWriter(f);
+
+        foreach (KeyValuePair<string, T> items in _saveDic)
+            writer.WriteLine(items.Key + "," + items.Value);
+        writer.Close();
+        f.Close();
+    }
+    /*
     public void ReadData(string _filename, Dictionary<string,float> _readDic)
     {
         string filepath = PathForDocumentsFile(_filename);
@@ -92,89 +125,20 @@ public class FileManager : MonoBehaviour
         }
     }
 
-    //public void ReadData<T>(string _filename, Dictionary<string, T> _readDic) where T : Parsing
-    //{
-    //    string filepath = PathForDocumentsFile(_filename);
-    //    if (File.Exists(filepath)) // 이 파일이 존재한다면
-    //    {
-    //        List<string> readList = ReadData_oldFile(filepath);
+    */
 
-    //        for (int i = 0; i < readList.Count; i += 2)
-    //            _readDic.Add(readList[i].ToString(), T.Parse(readList[i + 1]));
-    //    }
-    //    else // 파일이 존재하지 않다면(앱 설치 후 첫 실행 시에만 작동)
-    //    {
-    //        List<string> readList = ReadData_newFile(_filename);
-
-    //        for (int i = 0; i < readList.Count; i += 2)
-    //            _readDic.Add(readList[i].ToString(), T.Parse(readList[i + 1]));
-    //    }
-    //}
-
-    //public static void WriteData(string _filename, Dictionary<string, float> _saveDic)
+    //public static void WriteData(string _filename, Dictionary<string, int> _saveDic)
     //{
     //    string path = PathForDocumentsFile(_filename);
     //    FileStream f = new FileStream(path, FileMode.Create, FileAccess.Write);
 
     //    StreamWriter writer = new StreamWriter(f);
 
-    //    foreach (KeyValuePair<string, float> items in _saveDic)
+    //    foreach (KeyValuePair<string, int> items in _saveDic)
     //        writer.WriteLine(items.Key + "," + items.Value);
     //    writer.Close();
     //    f.Close();
     //}
-
-    //public static void WriteData(string _filename, Dictionary<string, bool> _saveDic)
-    //{
-    //    string path = PathForDocumentsFile(_filename);
-    //    FileStream f = new FileStream(path, FileMode.Create, FileAccess.Write);
-
-    //    StreamWriter writer = new StreamWriter(f);
-
-    //    foreach (KeyValuePair<string, bool> items in _saveDic)
-    //        writer.WriteLine(items.Key + "," + items.Value);
-    //    writer.Close();
-    //    f.Close();
-    //}
-
-    //public static void WriteData(string _filename, Dictionary<string, float> _saveDic)
-    //{
-    //    string path = PathForDocumentsFile(_filename);
-    //    FileStream f = new FileStream(path, FileMode.Create, FileAccess.Write);
-
-    //    StreamWriter writer = new StreamWriter(f);
-
-    //    foreach (KeyValuePair<string, float> items in _saveDic)
-    //        writer.WriteLine(items.Key + "," + items.Value);
-    //    writer.Close();
-    //    f.Close();
-    //}
-
-    public static void WriteData<T>(string _filename, Dictionary<string, T> _saveDic)
-    {
-        string path = PathForDocumentsFile(_filename);
-        FileStream f = new FileStream(path, FileMode.Create, FileAccess.Write);
-
-        StreamWriter writer = new StreamWriter(f);
-
-        foreach (KeyValuePair<string, T> items in _saveDic)
-            writer.WriteLine(items.Key + "," + items.Value);
-        writer.Close();
-        f.Close();
-    }
-
-    public static void WriteData(string _filename, Dictionary<string, int> _saveDic)
-    {
-        string path = PathForDocumentsFile(_filename);
-        FileStream f = new FileStream(path, FileMode.Create, FileAccess.Write);
-
-        StreamWriter writer = new StreamWriter(f);
-
-        foreach (KeyValuePair<string, int> items in _saveDic)
-            writer.WriteLine(items.Key + "," + items.Value);
-        writer.Close();
-        f.Close();
-    }
 
     private static string PathForDocumentsFile(string _filename) // 플랫폼의 데이터 저장 경로에 파일이름을 추가해주는 함수
     {
