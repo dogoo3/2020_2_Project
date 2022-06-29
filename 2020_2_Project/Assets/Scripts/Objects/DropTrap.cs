@@ -33,7 +33,7 @@ public class DropTrap : MonoBehaviour
 
     private void Update()
     {
-        if (_islandGround)
+        if (_islandGround) // 떨어지고 난 뒤 실행되는 부분
         {
             _elapsetime += Time.deltaTime;
             if (_elapsetime > _resetTime)
@@ -45,7 +45,7 @@ public class DropTrap : MonoBehaviour
             }
         }
 
-        if (_isReset)
+        if (_isReset) // 원래 위치 복귀 후에 실행되는 부분
         {
             _uppos = Vector2.Lerp(_uppos, _oripos, CalcTime());
             transform.parent.position = _uppos;
@@ -86,7 +86,7 @@ public class DropTrap : MonoBehaviour
         }
     }
 
-    private float CalcTime()
+    private float CalcTime() // 일정 시간이 지나면 1을 반환하여 오브젝트를 떨어뜨린다.
     {
         _elapsetime += Time.deltaTime;
         if (_elapsetime < 2.0f)

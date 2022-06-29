@@ -32,16 +32,16 @@ public class Bullet_Pistol : MonoBehaviour
 
     private void Update()
     {
-        if (_pistol.CheckElapsedTime())
+        if (_pistol.CheckElapsedTime()) // 총알의 유효시간이 지났을 경우
             ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_pistol);
-        if(_isCrash)
+        if(_isCrash) // 총알이 어딘가에 충돌했을 경우
         {
             _color.a = Mathf.Clamp(_color.a - 0.031372f, 0f, 1f);  // 0.5초에 사라지게 함.
             _spriteRenderer.color = _color;
             if(_color.a <= 0f)
                 ObjectPoolingManager.instance.InsertQueue(this, ObjectPoolingManager.instance.queue_pistol);
         }
-        else
+        else // 지속적으로 총알 이동
             transform.Translate(_pistol.Move());
     }
 

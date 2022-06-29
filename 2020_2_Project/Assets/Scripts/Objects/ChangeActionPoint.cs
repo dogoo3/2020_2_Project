@@ -86,7 +86,7 @@ public class ChangeActionPoint : MonoBehaviour
         }
     }
 
-    private void Motion(bool _is) // 일반모션은 랜덤이 진짜 랜덤이다.
+    private void Motion(bool _is) 
     {
         switch (_action)
         {
@@ -113,7 +113,7 @@ public class ChangeActionPoint : MonoBehaviour
         }
     }
 
-    private void DetectMotion(bool _is) // 플레이어 감지 모션은 랜덤 = 점프다.
+    private void DetectMotion(bool _is) // 플레이어를 감지했을때는 무조건 점프한다.
     {
         switch (_action)
         {
@@ -129,5 +129,4 @@ public class ChangeActionPoint : MonoBehaviour
                 break;
         }
     }
-
 }

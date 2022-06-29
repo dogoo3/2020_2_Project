@@ -60,7 +60,7 @@ public class Zombie : MonoBehaviour
                             // Player를 RayCast로 찾는다.
                             _rayPlayer = Physics2D.Raycast(transform.position, _enemy._direction, rayLength, 1 << LayerMask.NameToLayer("Player"));
 
-                            if (_rayPlayer.collider != null) // 플레이어가 감지되면 인페테란처럼 빠르게 플레이어가 있는 방향으로 달려간다.
+                            if (_rayPlayer.collider != null) // 플레이어가 감지되면 빠르게 플레이어가 있는 방향으로 달려간다.
                             {
                                 _enemy.isdetect = true;
                                 _animator.SetBool("Run", _enemy.isdetect);
@@ -107,7 +107,7 @@ public class Zombie : MonoBehaviour
         _isSuicide = true;
     }
 
-    public void Attack() // Animation Func, 폭발 프레임 쯤에 심어놓을 예정.
+    public void Attack() // Animation Func, 폭발 프레임에 삽입
     {
         SpawnMonstersManager.instance.CatchMonster();
         Player.instance.Attacked(damage);
@@ -115,7 +115,7 @@ public class Zombie : MonoBehaviour
 
     private void ChangeDir()
     {
-        _enemy._direction.x *= -1; // 시점변경
+        _enemy._direction.x *= -1; // 진행 방향 변경
         _animator.SetFloat("direction", _enemy._direction.x);
         _changedirTime = 0;
     }

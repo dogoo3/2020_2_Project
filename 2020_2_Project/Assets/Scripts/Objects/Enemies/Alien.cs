@@ -111,14 +111,14 @@ public class Alien : MonoBehaviour
     {
         if(collision.CompareTag("bullet"))
         {
-            if (collision.gameObject.GetComponent<Bullet_Alian>() == null) // 외계인들끼리 쏜 총알에는 당연히 반응하지 않는다.
+            if (collision.gameObject.GetComponent<Bullet_Alian>() == null) // 외계인들끼리 쏜 당연히 반응하지 않는다.
             {
                 if(!_israge)
                 {
                     if (_enemy.GetRemainHPRate() <= 0.5f) // Hp가 절반 아래로 내려가면
                     {
                         _israge = true;
-                        _animator.SetFloat("israge", 1.0f);
+                        _animator.SetFloat("israge", 1.0f); // 광분 상태로 변경
                         // 능력치 변경사항 작성
                     }
                 }
@@ -168,7 +168,7 @@ public class Alien : MonoBehaviour
     public void CheckChangeMotionPoint()
     {
         _changemotionpoint = Physics2D.OverlapBox((Vector2)transform.position + _collider2d.offset,
-       _collider2d.size, 0, 1 << LayerMask.NameToLayer("ChangePoint")); // (groundcollider box offset, size, angle)
+        _collider2d.size, 0, 1 << LayerMask.NameToLayer("ChangePoint")); // (groundcollider box offset, size, angle)
         if (_changemotionpoint != null)
         {
             ChangeActionPoint _point = _collider2d.GetComponent<ChangeActionPoint>();

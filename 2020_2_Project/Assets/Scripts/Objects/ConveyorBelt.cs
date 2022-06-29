@@ -25,6 +25,7 @@ public class ConveyorBelt : MonoBehaviour
     }
     private void Start()
     {
+        // _arrow 변수의 설정값에 따라 애니메이션이 달라집니다.
         _playerPos = Player.instance.transform;
         if (_arrow)
             _animator.runtimeAnimatorController = belt[1];

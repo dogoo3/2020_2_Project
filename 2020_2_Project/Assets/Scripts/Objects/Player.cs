@@ -66,19 +66,19 @@ public class Player : MonoBehaviour
 
     public void Move(int _direction)
     {
-        if (_isdead || _isSquash)
+        if (_isdead || _isSquash) // 사망 or 행동불가
             return;
-        _animator.SetFloat("direction", _direction);
-        _animator.SetBool("move", true);
+        _animator.SetFloat("direction", _direction); // animator의 방향 설정
+        _animator.SetBool("move", true); // animator motion 변경
         _movePos.x = _direction;
         _directionPos.x = _direction;
     }
 
-    public void Idle()
-    {
-        _animator.SetBool("move", false);
-        _movePos = Vector2.zero;
-    }
+public void Idle()
+{
+    _animator.SetBool("move", false);
+    _movePos = Vector2.zero;
+}
 
     public void LookUp(bool _isLookup)
     {
@@ -169,10 +169,10 @@ public class Player : MonoBehaviour
         if (_isdead || _isSquash)
             return;
 
-        if (!_isRope)
+        if (!_isRope) // 로프에 타고 있지 않으면
         {
             _detectRope = Physics2D.OverlapBox(transform.position, Vector2.one * 0.5f, 0, 1 << LayerMask.NameToLayer("Rope")); // 로프 탐색
-            if (_detectRope == null) // 로프가 없으면 실드 사용
+            if (_detectRope == null) // 로프가 감지되지 않으면 실드 사용
             {
                 if (_shield > 30.0f)
                 {
@@ -194,25 +194,25 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void UnShield()
-    {
-        if (_isdead || _isSquash)
-            return;
+public void UnShield()
+{
+    if (_isdead || _isSquash)
+        return;
 
-        if (!_isRope)
+    if (!_isRope)
+    {
+        if (_isshield)
         {
-            if (_isshield)
-            {
-                _isshield = false;
-                shieldsprite.SetActive(false);
-            }
-        }
-        else
-        {
-            _isRopeDown = false;
-            _animator.SetFloat("ropemove", 0.0f);
+            _isshield = false;
+            shieldsprite.SetActive(false);
         }
     }
+    else
+    {
+        _isRopeDown = false;
+        _animator.SetFloat("ropemove", 0.0f);
+    }
+}
 
     public void Shoot() // 버튼을 누르면 작동하는 함수
     {
@@ -253,35 +253,35 @@ public class Player : MonoBehaviour
         GaugeManager.instance.ResetGauge();
     }
 
-    public bool Attacked(float _damage)
+public bool Attacked(float _damage)
+{
+    if (_isattacked) // 공격당했으면(무적시간)
+        return false;
+
+    if (_isshield) // 실드 모드일 경우 실드가 차감되며, HP는 차감되지 않는다.
     {
-        if (_isattacked)
-            return false;
+        if (_shield >= 50.0f) 
+            _shield -= 50.0f;
+        else
+            _shield = 0f;
 
-        if (_isshield)
-        {
-            if (_shield >= 50.0f)
-                _shield -= 50.0f;
-            else
-                _shield = 0f;
-
-            SoundManager.instance.PlaySFX("shielddef");
-            Invoke("DEFShield", 1.0f);
-            return true;
-        }
-        _hp -= _damage;
-        GaugeManager.instance.SetHpGauge(_hp);
-        _isattacked = true;
-        _animator.SetTrigger("attacked");
-        SoundManager.instance.PlaySFX("playerattacked");
-        if (!_isBlink) // 처음 피격받는다면 깜빡임을 실행해준다.
-        {
-            Blink();
-            Invoke("CancelBlink", _invincibleTime);
-        }
-        CheckDead();
+        SoundManager.instance.PlaySFX("shielddef");
+        Invoke("DEFShield", 1.0f); // 1초간 무적상태가 된다.
         return true;
     }
+    _hp -= _damage;
+    GaugeManager.instance.SetHpGauge(_hp);
+    _isattacked = true;
+    _animator.SetTrigger("attacked");
+    SoundManager.instance.PlaySFX("playerattacked");
+    if (!_isBlink) // 처음 피격받는다면 깜빡임을 실행해준다.
+    {
+        Blink();
+        Invoke("CancelBlink", _invincibleTime);
+    }
+    CheckDead();
+    return true;
+}
 
     private void DEFShield()
     {
@@ -362,13 +362,13 @@ public class Player : MonoBehaviour
         if (_directionPos != Vector2.zero) // 이동하면서 사다리를 타면 이동 애니메이션 취소 
             _animator.SetBool("move", false);
 
-        _rope = _detectRope.GetComponent<Ladder>();
+        _rope = _detectRope.GetComponent<Ladder>(); // 사다리 컴포넌트를 얻어옴
         _animator.SetBool("ladder", true);
-        _rigidbody2d.gravityScale = 0;
-        _groundCollider.isTrigger = true; // 1행은 GroundCollider
+        _rigidbody2d.gravityScale = 0; 
+        _groundCollider.isTrigger = true; 
         _catchRopeHeight = transform.position;
-        _catchRopeHeight.x = _detectRope.transform.position.x;
-        transform.position = _catchRopeHeight;
+        _catchRopeHeight.x = _detectRope.transform.position.x; // 로프의 중심에 캐릭터를 위치시키기 위해 위치 변수 조정
+        transform.position = _catchRopeHeight; // 캐릭터의 위치를 로프의 위치에 맞게 수정
         // _oldDirectionPos = _directionPos;
         _isRope = true;
     }
@@ -413,10 +413,11 @@ public class Player : MonoBehaviour
             {
                 if (_movePos.x != 0)
                 {
-                    _ray2d = Physics2D.Raycast(transform.position + (Vector3)_groundCollider.offset, _movePos, _groundCollider.size.x / 2.0f + 0.07f,
+                    // 이동시 지형에 충돌하여 충돌연산이 오류가 나는 버그를 방지
+                    _ray2d = Physics2D.Raycast(transform.position + (Vector3)_groundCollider.offset, _movePos, _groundCollider.size.x / 2.0f + 0.07f, 
                     1 << LayerMask.NameToLayer("Ground") | 1 << LayerMask.NameToLayer("Wall"));
                 }
-                if(_ray2d.collider == null)
+                if(_ray2d.collider == null) // 위 Raycast에서 충돌되는 지형이 없을 경우 정상적으로 이동함
                     transform.Translate(_movePos.normalized * Time.deltaTime * _speed);
             }
             if (_isshield) // 실드 키를 누르고 있을 때.
